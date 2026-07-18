@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental Studio Recoleta — Implantes y odontología integral</title>
+<meta name="description" content="Dental Studio en Recoleta: implantes, coronas de porcelana y odontología integral. Primera consulta sin cargo. Turnos por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#1e63b0; --teal-dark:#154a86; --teal-soft:#e7f0fa; --aqua:#8ec5ff;
+    --ink:#1d2b2b; --ink-soft:#516363; --deep:#081c33; --deep2:#123055;
+    --bg:#fbfcfc; --white:#ffffff; --accent:#f0a35e; --radius:16px;
+    --shadow:0 10px 30px rgba(14,124,123,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;overflow-x:hidden}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.12;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+  section{padding:84px 0}
+  .kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);background:var(--teal-soft);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+  .section-title{font-size:clamp(1.7rem,3.8vw,2.5rem);margin-bottom:12px}
+  .section-sub{color:var(--ink-soft);max-width:580px;margin-bottom:44px}
+
+  /* ---- animaciones ---- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.2,.65,.3,1),transform .75s cubic-bezier(.2,.65,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+  .reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.40s}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.15)}}
+  @keyframes pulseRing{0%{box-shadow:0 8px 24px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 8px 24px rgba(37,211,102,.4),0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 8px 24px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,0)}}
+  @keyframes marqueeX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes shine{from{left:-80%}to{left:130%}}
+  @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+
+  /* barra de progreso de lectura */
+  #progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:90;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--aqua),var(--accent));pointer-events:none}
+
+  /* Nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:80;transition:background .35s,box-shadow .35s,border-color .35s;border-bottom:1px solid transparent}
+  nav .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  nav.solid{background:rgba(251,252,252,.9);backdrop-filter:blur(10px);border-color:#e8efef;box-shadow:0 6px 24px rgba(29,43,43,.07)}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;color:#fff;transition:color .35s}
+  nav.solid .logo{color:var(--ink)}
+  .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--teal);display:grid;place-items:center;color:#fff;font-size:1.05rem;transition:transform .3s}
+  .logo:hover .logo-mark{transform:rotate(-12deg) scale(1.08)}
+  .nav-links{display:flex;gap:26px;font-size:.92rem;font-weight:500;color:rgba(255,255,255,.85);transition:color .35s}
+  nav.solid .nav-links{color:var(--ink-soft)}
+  .nav-links a{position:relative;padding:4px 0}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);border-radius:2px;transition:width .25s}
+  .nav-links a:hover::after{width:100%}
+
+  .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#3a2410;font-weight:700;font-size:.95rem;padding:13px 24px;border-radius:999px;transition:.25s;box-shadow:0 10px 30px rgba(244,162,89,.35)}
+  .btn::before{content:"";position:absolute;top:0;left:-80%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg)}
+  .btn:hover::before{animation:shine .7s ease}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(244,162,89,.45)}
+  .btn.teal{background:var(--teal);color:#fff;box-shadow:var(--shadow)}
+  .btn.teal:hover{background:var(--teal-dark)}
+  .btn.ghost{background:transparent;color:#fff;box-shadow:none;border:1.5px solid rgba(255,255,255,.5)}
+  .btn.ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+  .btn-nav{padding:9px 18px;font-size:.88rem}
+
+  /* ---- HERO oscuro ---- */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(1200px 700px at 75% -10%,var(--deep2),var(--deep));color:#eaf6f5;overflow:hidden;padding:120px 0 60px}
+  .orb{position:absolute;border-radius:50%;pointer-events:none;will-change:transform}
+  .orb.o1{width:520px;height:520px;background:radial-gradient(circle,rgba(14,124,123,.55) 0%,rgba(14,124,123,0) 70%);top:-140px;left:-160px;animation:drift 16s ease-in-out infinite}
+  .orb.o2{width:460px;height:460px;background:radial-gradient(circle,rgba(244,162,89,.28) 0%,rgba(244,162,89,0) 70%);bottom:-140px;right:-120px;animation:drift 20s ease-in-out infinite reverse}
+  .orb.o3{width:300px;height:300px;background:radial-gradient(circle,rgba(127,212,210,.25) 0%,rgba(127,212,210,0) 70%);top:30%;left:55%;animation:drift 24s ease-in-out infinite}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center}
+  .hero .kicker{background:rgba(255,255,255,.1);color:var(--aqua);border:1px solid rgba(127,212,210,.3)}
+  .hero h1{font-size:clamp(2.3rem,5.2vw,3.7rem);color:#fff;margin-bottom:20px}
+  .hero h1 .shimmer{background:linear-gradient(90deg,var(--aqua),#f4c98a,var(--aqua));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 4s linear infinite}
+  .hero p{color:rgba(234,246,245,.78);font-size:1.08rem;max-width:500px;margin-bottom:30px}
+  .hero-copy>*{opacity:0;animation:fadeUp .85s cubic-bezier(.2,.65,.3,1) forwards}
+  .hero-copy>*:nth-child(1){animation-delay:.05s}.hero-copy>*:nth-child(2){animation-delay:.16s}
+  .hero-copy>*:nth-child(3){animation-delay:.3s}.hero-copy>*:nth-child(4){animation-delay:.44s}
+  .hero-copy>*:nth-child(5){animation-delay:.6s}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}
+  .trust{display:flex;gap:0;flex-wrap:wrap;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);backdrop-filter:blur(6px);border-radius:var(--radius);overflow:hidden;max-width:520px}
+  .trust-item{flex:1;min-width:140px;padding:16px 18px}
+  .trust-item + .trust-item{border-left:1px solid rgba(255,255,255,.12)}
+  .trust-item strong{display:block;font-family:'Fraunces',serif;font-size:1.55rem;color:var(--aqua)}
+  .trust-item span{font-size:.8rem;color:rgba(234,246,245,.65)}
+  .hero-stage{position:relative;perspective:1000px}
+  .hero-visual{position:relative;border-radius:26px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.45);aspect-ratio:4/4.4;background:linear-gradient(145deg,#0e7c7b,#062a29);opacity:0;animation:fadeUp 1s .3s cubic-bezier(.2,.65,.3,1) forwards;transform-style:preserve-3d;will-change:transform;transition:transform .18s ease-out}
+  .hero-visual svg{width:100%;height:100%}
+  .hero-visual .tooth-g{animation:floaty 5.5s ease-in-out infinite;transform-origin:center}
+  .badge{position:absolute;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.92);color:var(--ink);border-radius:14px;padding:10px 16px;font-size:.85rem;font-weight:600;box-shadow:0 16px 40px rgba(0,0,0,.35);opacity:0;animation:fadeUp .8s forwards}
+  .badge .b-ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:1rem}
+  .badge small{display:block;font-weight:400;color:var(--ink-soft);font-size:.72rem;line-height:1.2}
+  .badge.b1{top:8%;right:-14px;animation-delay:.9s}
+  .badge.b1 .b-ico{background:#fff3e3}
+  .badge.b2{bottom:10%;left:-18px;animation-delay:1.1s}
+  .badge.b2 .b-ico{background:var(--teal-soft)}
+  .badge.b1,.badge.b2{animation-name:fadeUp}
+  .hero-scroll{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:rgba(234,246,245,.5);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;animation:floaty 3s ease-in-out infinite}
+
+  /* Servicios */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{position:relative;background:var(--white);border:1px solid #e8efef;border-radius:var(--radius);padding:30px 26px;transition:box-shadow .3s,border-color .3s;transform-style:preserve-3d;will-change:transform}
+  .card:hover{box-shadow:0 22px 48px rgba(14,124,123,.16);border-color:transparent}
+  .card::after{content:"";position:absolute;inset:0;border-radius:var(--radius);padding:1.5px;background:linear-gradient(135deg,var(--aqua),var(--accent));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none}
+  .card:hover::after{opacity:1}
+  .card .icon{width:48px;height:48px;border-radius:12px;background:var(--teal-soft);display:grid;place-items:center;font-size:1.35rem;margin-bottom:16px;transition:transform .3s}
+  .card:hover .icon{transform:scale(1.15) rotate(-6deg)}
+  .card h3{font-size:1.12rem;margin-bottom:8px}
+  .card p{font-size:.92rem;color:var(--ink-soft)}
+
+  /* Tira tipográfica gigante */
+  .bigstrip{padding:34px 0;overflow:hidden;border-top:1px solid #e8efef;border-bottom:1px solid #e8efef;background:var(--white)}
+  .bigstrip-track{display:flex;width:max-content;animation:marqueeX 28s linear infinite;gap:0}
+  .bigstrip span{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(14,124,123,.35);padding-right:28px}
+  .bigstrip span em{font-style:normal;color:var(--accent);-webkit-text-stroke:0}
+
+  /* Antes / Después */
+  .ba-section{background:var(--white);border-bottom:1px solid #e8efef}
+  .ba-wrap{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/8.5;box-shadow:0 24px 60px rgba(14,124,123,.16);user-select:none;touch-action:none;cursor:ew-resize}
+  .ba-layer{position:absolute;inset:0}
+  .ba-layer svg{width:100%;height:100%;display:block}
+  .ba-after{clip-path:inset(0 0 0 50%)}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.08);transform:translateX(-50%);pointer-events:none}
+  .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);font-weight:700;color:var(--teal);font-size:1.05rem;pointer-events:none}
+  .ba-tag{position:absolute;top:16px;padding:6px 14px;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;backdrop-filter:blur(4px)}
+  .ba-tag.antes{left:16px;background:rgba(29,43,43,.55);color:#fff}
+  .ba-tag.despues{right:16px;background:rgba(255,255,255,.85);color:var(--teal-dark)}
+
+  /* Proceso */
+  .process-line{position:relative;height:3px;background:#e2eded;border-radius:3px;margin:54px 0 34px;overflow:hidden}
+  .process-line i{position:absolute;inset:0;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--teal),var(--accent));transition:transform 1.4s cubic-bezier(.2,.65,.3,1)}
+  .process.in .process-line i{transform:scaleX(1)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .step .num{width:52px;height:52px;border-radius:16px;background:var(--deep);color:var(--aqua);font-family:'Fraunces',serif;font-weight:700;font-size:1.2rem;display:grid;place-items:center;margin-bottom:14px;box-shadow:0 12px 26px rgba(6,42,41,.25)}
+  .step h3{font-size:1.05rem;margin-bottom:6px}
+  .step p{font-size:.9rem;color:var(--ink-soft)}
+
+  /* Sobre */
+  .about{background:var(--white);border-top:1px solid #e8efef;border-bottom:1px solid #e8efef}
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:52px;align-items:center}
+  .about-visual{border-radius:20px;overflow:hidden;aspect-ratio:4/4.4;background:linear-gradient(160deg,#f6dfc4,#f4a259);box-shadow:var(--shadow)}
+  .about-visual svg{width:100%;height:100%;display:block}
+  .about p{color:var(--ink-soft);margin-bottom:14px}
+  .creds{display:grid;gap:10px;margin-top:22px}
+  .cred{display:flex;gap:12px;align-items:flex-start;font-size:.94rem}
+  .cred::before{content:"✓";flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--teal-soft);color:var(--teal);font-weight:700;display:grid;place-items:center;font-size:.8rem;margin-top:2px}
+
+  /* Testimonios carrusel */
+  .caro{position:relative;overflow:hidden;border-radius:20px}
+  .caro-track{display:flex;transition:transform .6s cubic-bezier(.2,.65,.3,1)}
+  .t-slide{flex:0 0 100%;padding:44px clamp(24px,6vw,70px);background:var(--white);border:1px solid #e8efef;border-radius:20px;text-align:center}
+  .t-slide .stars{color:var(--accent);letter-spacing:3px;font-size:1.1rem;margin-bottom:16px}
+  .t-slide blockquote{font-family:'Fraunces',serif;font-size:clamp(1.1rem,2.2vw,1.45rem);line-height:1.45;color:var(--ink);margin-bottom:18px}
+  .t-slide footer{font-weight:600;font-size:.92rem}
+  .t-slide footer span{display:block;font-weight:400;font-size:.8rem;color:var(--ink-soft)}
+  .caro-dots{display:flex;gap:8px;justify-content:center;margin-top:20px}
+  .caro-dots button{width:10px;height:10px;border-radius:999px;border:none;background:#cfe0e0;cursor:pointer;transition:.3s}
+  .caro-dots button.on{background:var(--teal);width:26px}
+
+  /* Obras sociales */
+  .os-strip{background:var(--deep);color:#fff;padding:50px 0;overflow:hidden}
+  .os-strip h2{color:#fff;font-size:1.35rem;margin-bottom:20px}
+  .os-marquee{display:flex;width:max-content;gap:12px;animation:marqueeX 22s linear infinite}
+  .os-strip:hover .os-marquee{animation-play-state:paused}
+  .os-pill{flex-shrink:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:8px 18px;border-radius:999px;font-size:.9rem;font-weight:500}
+
+  /* FAQ */
+  .faq-item{background:var(--white);border:1px solid #e8efef;border-radius:var(--radius);margin-bottom:12px;overflow:hidden;transition:border-color .25s}
+  .faq-item.open{border-color:var(--teal)}
+  .faq-q{width:100%;background:none;border:none;font:inherit;font-weight:600;color:var(--ink);padding:18px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;text-align:left;gap:12px}
+  .faq-q::after{content:"+";font-size:1.4rem;color:var(--teal);transition:.25s;line-height:1}
+  .faq-item.open .faq-q::after{transform:rotate(45deg)}
+  .faq-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.65,.3,1)}
+  .faq-item.open .faq-body{grid-template-rows:1fr}
+  .faq-body>div{overflow:hidden}
+  .faq-body p{padding:0 22px 18px;color:var(--ink-soft);font-size:.94rem}
+
+  /* CTA final */
+  .cta-band{background:radial-gradient(900px 500px at 50% -20%,var(--deep2),var(--deep));color:#fff;text-align:center;padding:90px 0;position:relative;overflow:hidden}
+  .cta-band h2{color:#fff;font-size:clamp(1.9rem,4.5vw,3rem);margin-bottom:14px}
+  .cta-band h2 em{font-style:italic;color:var(--aqua)}
+  .cta-band p{color:rgba(234,246,245,.7);margin-bottom:30px}
+
+  /* Contacto */
+  .contact{background:var(--white)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .info-row{display:flex;gap:14px;margin-bottom:22px;align-items:flex-start}
+  .info-row .icon{width:42px;height:42px;flex-shrink:0;border-radius:12px;background:var(--teal-soft);display:grid;place-items:center;font-size:1.1rem}
+  .info-row strong{display:block;font-size:.95rem}
+  .info-row span{font-size:.9rem;color:var(--ink-soft)}
+  .map-ph{border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,#dfeeee,#bfe3e2);min-height:320px;display:grid;place-items:center;color:var(--teal-dark);font-weight:600;border:1px solid #e8efef}
+
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:70;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;animation:pulseRing 2.6s ease-out infinite;transition:transform .2s}
+  .wa-float:hover{transform:scale(1.1)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+
+  footer.site{background:var(--deep);color:#88a5a3;padding:36px 0;font-size:.88rem;border-top:1px solid rgba(255,255,255,.08)}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer.site a:hover{color:#fff}
+
+  @media(max-width:880px){
+    section{padding:60px 0}
+    .nav-links{display:none}
+    .hero{padding:110px 0 70px}
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+    .cards{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr;gap:30px}
+    .badge.b1{right:6px}.badge.b2{left:6px}
+    .trust-item{min-width:0;padding:12px}
+    .trust-item strong{font-size:1.2rem}
+    .ba-wrap{aspect-ratio:16/11}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal,.hero-copy>*,.hero-visual,.badge{opacity:1!important;transform:none!important}
+    .process-line i{transform:scaleX(1)!important}
+  }
+  /* embebida en un iframe (mockups del portfolio): sin barra de scroll */
+  html.embedded{scrollbar-width:none}
+  html.embedded::-webkit-scrollbar,html.embedded body::-webkit-scrollbar{display:none;width:0;height:0}
+</style>
+</head>
+<body>
+<div style="position:fixed;left:14px;bottom:14px;z-index:100;background:rgba(10,10,10,.82);color:#fff;font:600 11px/1.4 Inter,sans-serif;padding:8px 14px;border-radius:999px;backdrop-filter:blur(4px)">✨ Propuesta de diseño para Dental Studio Recoleta — demo de <a href="https://orionstudio.com.ar/webs/" style="color:#51e8b3;text-decoration:none" target="_blank" rel="noopener">Orion Studio</a></div>
+
+<div id="progress"></div>
+
+<nav id="topnav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo"><span class="logo-mark">✦</span> Dental Studio Recoleta</a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a class="btn btn-nav" href="https://wa.me/5491125688940?text=Hola%2C%20quiero%20pedir%20un%20turno" target="_blank" rel="noopener">Pedir turno</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="kicker">Implantes y odontología integral · Recoleta</span>
+      <h1>Recuperá tu <span class="shimmer">sonrisa</span> con especialistas en implantes</h1>
+      <p>Primera consulta sin cargo en pleno Recoleta. Pedí tu turno por WhatsApp en menos de un minuto — sin llamadas, sin esperas.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="https://wa.me/5491125688940?text=Hola%2C%20quiero%20pedir%20un%20turno" target="_blank" rel="noopener">Pedir turno por WhatsApp</a>
+        <a class="btn ghost" href="#resultados">Ver resultados</a>
+      </div>
+      <div class="trust">
+        <div class="trust-item"><strong><span class="count" data-target="1" data-suffix="ª">0ª</span></strong><span>consulta sin cargo</span></div>
+        <div class="trust-item"><strong><span class="count" data-target="24" data-suffix=" hs">0 hs</span></strong><span>pedí turno por WhatsApp</span></div>
+        <div class="trust-item"><strong>Uriburu 774</strong><span>3º piso · Recoleta</span></div>
+      </div>
+    </div>
+    <div class="hero-stage">
+      <div class="hero-visual" id="heroVisual" data-tilt role="img" aria-label="Ilustración de consultorio odontológico">
+        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#12908f"/><stop offset="1" stop-color="#062a29"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="440" fill="url(#g1)"/>
+          <g class="tooth-g">
+            <circle cx="200" cy="175" r="98" fill="#ffffff" opacity=".95"/>
+            <path d="M200 113c-31 0-54 23-54 57 0 47 21 109 39 109 13 0 9-39 15-39s2 39 15 39c18 0 39-62 39-109 0-34-23-57-54-57z" fill="#0e7c7b"/>
+            <path d="M162 145c8-15 23-23 38-23" stroke="#bfe3e2" stroke-width="9" stroke-linecap="round" fill="none"/>
+          </g>
+          <g fill="#ffffff" opacity=".8">
+            <circle cx="78" cy="320" r="5"/><circle cx="108" cy="352" r="3.5"/><circle cx="322" cy="330" r="5"/><circle cx="294" cy="364" r="3.5"/><circle cx="58" cy="76" r="4"/><circle cx="342" cy="66" r="4"/>
+          </g>
+          <rect x="70" y="382" width="260" height="14" rx="7" fill="#ffffff" opacity=".5"/>
+          <rect x="105" y="409" width="190" height="10" rx="5" fill="#ffffff" opacity=".3"/>
+        </svg>
+      </div>
+      <div class="badge b1"><span class="b-ico">🎁</span><div>1.ª consulta sin cargo<small>diagnóstico y plan incluidos</small></div></div>
+      <div class="badge b2"><span class="b-ico">🦷</span><div>Especialistas en implantes<small>coronas de porcelana</small></div></div>
+    </div>
+  </div>
+  <div class="hero-scroll">▾ deslizá</div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <span class="kicker reveal">Servicios</span>
+    <h2 class="section-title reveal">Todo lo que tu boca necesita, en un solo lugar</h2>
+    <p class="section-sub reveal d1">Tecnología actual, materiales de primera calidad y un trato humano que hace la diferencia.</p>
+    <div class="cards">
+      <div class="card reveal" data-tilt><div class="icon">🦷</div><h3>Implantes dentales</h3><p>Nuestra especialidad: recuperá piezas perdidas con implantes de primera calidad.</p></div>
+      <div class="card reveal d1" data-tilt><div class="icon">👑</div><h3>Coronas de porcelana</h3><p>Coronas y prótesis fijas que se ven y se sienten como dientes naturales.</p></div>
+      <div class="card reveal d2" data-tilt><div class="icon">✨</div><h3>Estética dental</h3><p>Blanqueamiento y diseño de sonrisa para acompañar tu rehabilitación.</p></div>
+      <div class="card reveal d1" data-tilt><div class="icon">🩺</div><h3>Odontología integral</h3><p>Controles, limpiezas y tratamientos generales en un solo lugar.</p></div>
+      <div class="card reveal d2" data-tilt><div class="icon">🎁</div><h3>Primera consulta gratis</h3><p>Diagnóstico completo y plan de tratamiento, sin cargo y sin compromiso.</p></div>
+      <div class="card reveal d3" data-tilt><div class="icon">🚨</div><h3>Urgencias</h3><p>Dolor agudo o roturas: escribinos y te damos prioridad en el día.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="bigstrip" aria-hidden="true">
+  <div class="bigstrip-track">
+    <span>IMPLANTES <em>✦</em> ORTODONCIA <em>✦</em> ESTÉTICA <em>✦</em> BLANQUEAMIENTO <em>✦</em> URGENCIAS <em>✦</em>&nbsp;</span>
+    <span>IMPLANTES <em>✦</em> ORTODONCIA <em>✦</em> ESTÉTICA <em>✦</em> BLANQUEAMIENTO <em>✦</em> URGENCIAS <em>✦</em>&nbsp;</span>
+  </div>
+</div>
+
+<section id="resultados" class="ba-section">
+  <div class="wrap">
+    <span class="kicker reveal">Resultados reales</span>
+    <h2 class="section-title reveal">Arrastrá y mirá la diferencia</h2>
+    <p class="section-sub reveal d1">Blanqueamiento + carillas. Deslizá el control para comparar el antes y el después.</p>
+    <div class="ba-wrap reveal d1" id="baWrap">
+      <div class="ba-layer ba-before">
+        <svg viewBox="0 0 800 425" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="800" height="425" fill="#8a9b9a"/>
+          <rect width="800" height="425" fill="url(#gb)"/>
+          <defs><linearGradient id="gb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7d8f8e"/><stop offset="1" stop-color="#5f7271"/></linearGradient></defs>
+          <path d="M180 260 Q400 150 620 260 Q400 420 180 260Z" fill="#5b3a3a"/>
+          <path d="M205 255 Q400 175 595 255 Q400 370 205 255Z" fill="#7a4a45"/>
+          <g fill="#d8c98f">
+            <rect x="255" y="218" width="50" height="58" rx="12" transform="rotate(-4 280 247)"/>
+            <rect x="315" y="205" width="52" height="66" rx="12" transform="rotate(2 341 238)"/>
+            <rect x="377" y="202" width="52" height="68" rx="12" transform="rotate(-2 403 236)"/>
+            <rect x="439" y="207" width="50" height="63" rx="12" transform="rotate(4 464 238)"/>
+            <rect x="497" y="220" width="46" height="54" rx="12" transform="rotate(-3 520 247)"/>
+          </g>
+          <text x="400" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="rgba(255,255,255,.55)" font-style="italic">foto real del paciente — antes</text>
+        </svg>
+      </div>
+      <div class="ba-layer ba-after" id="baAfter">
+        <svg viewBox="0 0 800 425" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12908f"/><stop offset="1" stop-color="#0a5c5b"/></linearGradient></defs>
+          <rect width="800" height="425" fill="url(#ga)"/>
+          <path d="M180 260 Q400 140 620 260 Q400 425 180 260Z" fill="#a34d4d"/>
+          <path d="M200 255 Q400 165 600 255 Q400 380 200 255Z" fill="#c25e57"/>
+          <g fill="#ffffff">
+            <rect x="252" y="212" width="52" height="64" rx="12"/>
+            <rect x="312" y="204" width="54" height="70" rx="12"/>
+            <rect x="374" y="202" width="54" height="72" rx="12"/>
+            <rect x="436" y="204" width="54" height="70" rx="12"/>
+            <rect x="496" y="212" width="52" height="64" rx="12"/>
+          </g>
+          <g fill="#ffffff" opacity=".9">
+            <path d="M655 90l6 16 16 6-16 6-6 16-6-16-16-6 16-6z"/>
+            <path d="M130 320l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/>
+          </g>
+          <text x="400" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="rgba(255,255,255,.75)" font-style="italic">foto real del paciente — después</text>
+        </svg>
+      </div>
+      <div class="ba-handle" id="baHandle"><div class="ba-knob">⇄</div></div>
+      <span class="ba-tag antes">Antes</span>
+      <span class="ba-tag despues">Después</span>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="proceso">
+  <div class="wrap">
+    <span class="kicker reveal">Cómo funciona</span>
+    <h2 class="section-title reveal">De tu mensaje a tu sonrisa, en 4 pasos</h2>
+    <div class="process-line"><i></i></div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">01</div><h3>Escribinos</h3><p>Un WhatsApp de 30 segundos. Te respondemos en el día.</p></div>
+      <div class="step reveal d1"><div class="num">02</div><h3>Diagnóstico</h3><p>Primera consulta con revisión completa y radiografías si hacen falta.</p></div>
+      <div class="step reveal d2"><div class="num">03</div><h3>Plan claro</h3><p>Opciones, tiempos y costos sobre la mesa. Sin sorpresas.</p></div>
+      <div class="step reveal d3"><div class="num">04</div><h3>Tratamiento</h3><p>Turnos que se respetan y seguimiento hasta el alta.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="equipo" class="about">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal" data-tilt role="img" aria-label="Retrato ilustrado de la el equipo de Dental Studio">
+      <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f6dfc4"/><stop offset="1" stop-color="#f4a259"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="440" fill="url(#g2)"/>
+        <circle cx="200" cy="150" r="70" fill="#8a5a3b"/>
+        <path d="M200 96c-38 0-58 28-54 62 2-30 24-32 54-32s52 2 54 32c4-34-16-62-54-62z" fill="#4a2f1d"/>
+        <path d="M105 440c0-75 43-118 95-118s95 43 95 118z" fill="#ffffff"/>
+        <path d="M172 322l28 34 28-34" fill="none" stroke="#0e7c7b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="200" cy="392" r="11" fill="#0e7c7b"/>
+        <rect x="188" y="403" width="24" height="37" fill="#0e7c7b" rx="4"/>
+      </svg>
+    </div>
+    <div>
+      <span class="kicker reveal">Nuestro equipo</span>
+      <h2 class="section-title reveal">Dental Studio · White Dental Group</h2>
+      <p class="reveal d1">Somos el consultorio de White Dental Group en Recoleta, especializado en implantes y rehabilitación oral. Atendemos en Uriburu 774, 3º piso, a metros de Av. Santa Fe.</p>
+      <p class="reveal d2">Creemos que ir al dentista no tiene por qué ser una mala experiencia: acá se trabaja sin apuro, explicándote cada paso y con todas las opciones sobre la mesa.</p>
+      <div class="creds">
+        <div class="cred reveal d1">Especialistas en implantología</div>
+        <div class="cred reveal d2">Coronas de porcelana y prótesis fijas</div>
+        <div class="cred reveal d3">Primera consulta de diagnóstico sin cargo</div>
+        <div class="cred reveal d4">En el corazón de Recoleta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker reveal">Ejemplo · acá van tus reseñas reales de Google</span>
+    <h2 class="section-title reveal">Lo que dicen de nosotros</h2>
+    <div class="caro reveal d1" id="caro">
+      <div class="caro-track" id="caroTrack">
+        <div class="t-slide"><div class="stars">★★★★★</div><blockquote>"Años evitando el dentista por miedo. La doctora me explicó todo con una paciencia increíble y no sentí nada."</blockquote><footer>Mariana G.<span>Tratamiento de conducto</span></footer></div>
+        <div class="t-slide"><div class="stars">★★★★★</div><blockquote>"Pedí el turno un lunes por WhatsApp y el miércoles ya tenía mi limpieza hecha. Rápido, prolijo y sin vueltas."</blockquote><footer>Julián R.<span>Limpieza y control</span></footer></div>
+        <div class="t-slide"><div class="stars">★★★★★</div><blockquote>"Llevé a mi hija de 5 años con terror y salió pidiendo volver. El trato con los chicos es otro nivel."</blockquote><footer>Carolina M.<span>Odontopediatría</span></footer></div>
+      </div>
+    </div>
+    <div class="caro-dots" id="caroDots"></div>
+  </div>
+</section>
+
+<div class="os-strip">
+  <div class="wrap"><h2>Trabajamos con tu obra social</h2></div>
+  <div class="os-marquee" id="osMarquee">
+    <span class="os-pill">OSDE</span><span class="os-pill">Swiss Medical</span><span class="os-pill">Galeno</span><span class="os-pill">Medifé</span><span class="os-pill">IOMA</span><span class="os-pill">PAMI</span><span class="os-pill">Omint</span><span class="os-pill">Sancor Salud</span><span class="os-pill">Particulares</span>
+  </div>
+</div>
+
+<section id="faq">
+  <div class="wrap">
+    <span class="kicker reveal">Preguntas frecuentes</span>
+    <h2 class="section-title reveal">Antes de tu primera visita</h2>
+    <div class="faq-item open reveal"><button class="faq-q">¿Cómo saco un turno?</button><div class="faq-body"><div><p>Por WhatsApp: tocás el botón verde, nos decís qué necesitás y te confirmamos día y horario en el momento. También podés llamarnos por teléfono.</p></div></div></div>
+    <div class="faq-item reveal d1"><button class="faq-q">¿Atienden urgencias?</button><div class="faq-body"><div><p>Sí. Si tenés dolor agudo, un traumatismo o se te rompió una pieza, escribinos y te damos prioridad en el día.</p></div></div></div>
+    <div class="faq-item reveal d2"><button class="faq-q">¿Cuánto sale la primera consulta?</button><div class="faq-body"><div><p>La primera consulta de diagnóstico incluye revisión completa y plan de tratamiento. Si venís por obra social, en la mayoría de los casos no tiene costo.</p></div></div></div>
+    <div class="faq-item reveal d3"><button class="faq-q">¿Hacen planes de pago?</button><div class="faq-body"><div><p>Sí, los tratamientos largos (ortodoncia, implantes) se pueden abonar en cuotas. Lo charlamos en la consulta sin compromiso.</p></div></div></div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="orb o2" style="opacity:.6"></div>
+  <div class="wrap">
+    <h2 class="reveal">Tu mejor sonrisa está a <em>un mensaje</em> de distancia</h2>
+    <p class="reveal d1">Respondemos en el día. Primera consulta con diagnóstico completo.</p>
+    <a class="btn reveal d2" href="https://wa.me/5491125688940?text=Hola%2C%20quiero%20pedir%20un%20turno" target="_blank" rel="noopener">Pedir turno por WhatsApp</a>
+  </div>
+</div>
+
+<section id="contacto" class="contact">
+  <div class="wrap">
+    <span class="kicker reveal">Contacto</span>
+    <h2 class="section-title reveal">Vení a conocernos</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="info-row reveal"><div class="icon">📍</div><div><strong>Dirección</strong><span>Uriburu 774, Piso 3º · Recoleta, CABA</span></div></div>
+        <div class="info-row reveal d1"><div class="icon">🕐</div><div><strong>Horarios</strong><span>Consultá disponibilidad por WhatsApp</span></div></div>
+        <div class="info-row reveal d2"><div class="icon">📱</div><div><strong>WhatsApp</strong><span>+54 9 11 2568-8940</span></div></div>
+        <div class="info-row reveal d3"><div class="icon">📷</div><div><strong>Instagram</strong><span>@dental.studio.recoleta</span></div></div>
+        <a class="btn teal reveal d4" href="https://wa.me/5491125688940?text=Hola%2C%20quiero%20pedir%20un%20turno" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+      </div>
+      <div class="map-ph reveal d1">🗺️ Acá va el mapa de Google con la ubicación real</div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap foot-inner">
+    <span>© 2026 Dental Studio Recoleta Odontología — Sitio de demostración</span>
+    <span>Diseño: <a href="#"><strong>[tu agencia]</strong></a></span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5491125688940?text=Hola%2C%20quiero%20pedir%20un%20turno" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.3l-.4-.2-4.9 1 1-4.8-.2-.4c-.9-1.5-1.4-3.3-1.4-5.1 0-5.5 4.4-9.9 9.9-9.9s9.9 4.4 9.9 9.9-4.4 9.8-9.9 9.8zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<noscript><style>.reveal,.hero-copy>*,.hero-visual,.badge{opacity:1!important;transform:none!important}</style></noscript>
+<script>
+(function(){
+  if(window.self !== window.top){ document.documentElement.classList.add('embedded'); }
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  // Fallback: sin IntersectionObserver, mostrar todo directamente
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.reveal, .process').forEach(function(el){ el.classList.add('in'); });
+    document.querySelectorAll('.count').forEach(function(el){
+      var d = parseInt(el.dataset.decimals||'0',10), t = parseFloat(el.dataset.target);
+      el.textContent = (el.dataset.prefix||'') + (el.dataset.grouped==='1' ? Math.round(t).toLocaleString('es-AR') : t.toFixed(d)) + (el.dataset.suffix||'');
+    });
+    reduced = true;
+  }
+
+  // Reveals
+  var io = !('IntersectionObserver' in window) ? null : new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal, .process').forEach(function(el){
+    if(reduced){ el.classList.add('in'); } else { io.observe(el); }
+  });
+
+  // Contadores
+  function animateCount(el){
+    var target = parseFloat(el.dataset.target),
+        decimals = parseInt(el.dataset.decimals||'0',10),
+        prefix = el.dataset.prefix||'', suffix = el.dataset.suffix||'',
+        grouped = el.dataset.grouped==='1', dur = 1400, t0 = null;
+    function fmt(v){
+      var s = v.toFixed(decimals);
+      if(grouped){ s = Math.round(v).toLocaleString('es-AR'); }
+      return prefix + s + suffix;
+    }
+    if(reduced){ el.textContent = fmt(target); return; }
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts-t0)/dur,1), eased = 1-Math.pow(1-p,3);
+      el.textContent = fmt(target*eased);
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if(io){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target); }
+      });
+    },{threshold:.6});
+    document.querySelectorAll('.count').forEach(function(el){ cio.observe(el); });
+  }
+
+  // Marquee obras sociales (duplicar para loop)
+  var mq = document.getElementById('osMarquee');
+  if(mq){ mq.innerHTML += mq.innerHTML; }
+
+  // Barra de progreso + nav + parallax
+  var prog = document.getElementById('progress'), nav = document.getElementById('topnav'),
+      heroV = document.getElementById('heroVisual');
+  window.addEventListener('scroll',function(){
+    var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+    prog.style.transform = 'scaleX(' + (max>0 ? window.scrollY/max : 0) + ')';
+    nav.classList.toggle('solid', window.scrollY > 40);
+  },{passive:true});
+
+  // Tilt 3D (solo mouse, no touch)
+  if(finePointer && !reduced){
+    document.querySelectorAll('[data-tilt]').forEach(function(el){
+      var max = el.classList.contains('hero-visual') ? 7 : 5;
+      el.addEventListener('mousemove',function(ev){
+        var r = el.getBoundingClientRect(),
+            x = (ev.clientX - r.left)/r.width - .5,
+            y = (ev.clientY - r.top)/r.height - .5;
+        el.style.transform = 'perspective(900px) rotateY('+(x*max)+'deg) rotateX('+(-y*max)+'deg) translateY(-3px)';
+      });
+      el.addEventListener('mouseleave',function(){ el.style.transform = ''; });
+    });
+  }
+
+  // Antes / Después
+  var ba = document.getElementById('baWrap'), after = document.getElementById('baAfter'),
+      handle = document.getElementById('baHandle');
+  function setBA(pct){
+    pct = Math.max(2, Math.min(98, pct));
+    after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+    handle.style.left = pct + '%';
+  }
+  if(ba){
+    var dragging = false;
+    function move(ev){
+      var r = ba.getBoundingClientRect(),
+          cx = ev.touches ? ev.touches[0].clientX : ev.clientX;
+      setBA((cx - r.left)/r.width*100);
+    }
+    ba.addEventListener('pointerdown',function(ev){ dragging = true; ba.setPointerCapture(ev.pointerId); move(ev); });
+    ba.addEventListener('pointermove',function(ev){ if(dragging) move(ev); });
+    ba.addEventListener('pointerup',function(){ dragging = false; });
+    ba.addEventListener('pointercancel',function(){ dragging = false; });
+    // pequeño vaivén inicial para invitar a interactuar
+    if(!reduced){
+      var bio = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){
+            bio.unobserve(ba);
+            var t0 = null;
+            function tease(ts){
+              if(!t0) t0 = ts;
+              var p = (ts-t0)/1600;
+              if(p>=1 || dragging){ if(!dragging) setBA(50); return; }
+              setBA(50 + Math.sin(p*Math.PI*2)*10);
+              requestAnimationFrame(tease);
+            }
+            requestAnimationFrame(tease);
+          }
+        });
+      },{threshold:.5});
+      bio.observe(ba);
+    }
+  }
+
+  // FAQ acordeón animado
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item = btn.parentElement, wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(o){ o.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Carrusel testimonios
+  var track = document.getElementById('caroTrack'), dots = document.getElementById('caroDots');
+  if(track){
+    var n = track.children.length, idx = 0, timer = null;
+    for(var i=0;i<n;i++){
+      var b = document.createElement('button');
+      b.setAttribute('aria-label','Testimonio '+(i+1));
+      (function(i){ b.addEventListener('click',function(){ go(i); restart(); }); })(i);
+      dots.appendChild(b);
+    }
+    function go(i){
+      idx = (i+n)%n;
+      track.style.transform = 'translateX(-'+(idx*100)+'%)';
+      Array.prototype.forEach.call(dots.children,function(d,j){ d.classList.toggle('on', j===idx); });
+    }
+    function restart(){
+      if(timer) clearInterval(timer);
+      if(!reduced) timer = setInterval(function(){ go(idx+1); }, 5000);
+    }
+    var caroEl = document.getElementById('caro');
+    caroEl.addEventListener('mouseenter',function(){ if(timer) clearInterval(timer); });
+    caroEl.addEventListener('mouseleave',restart);
+    go(0); restart();
+  }
+})();
+</script>
+
+</body>
+</html>
