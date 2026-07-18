@@ -109,7 +109,7 @@
   .phone{position:relative;width:282px;height:588px;border-radius:42px;background:#0c0f16;border:2px solid #2a3242;box-shadow:0 50px 110px rgba(0,0,0,.65),0 0 0 6px #10141d,0 0 90px rgba(81,232,179,.10);transform-style:preserve-3d;will-change:transform;animation:floaty 6s ease-in-out infinite}
   .phone .notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:96px;height:22px;background:#0c0f16;border-radius:12px;z-index:3;border:1px solid #1c2330}
   .phone .screen{position:absolute;inset:10px;border-radius:34px;overflow:hidden;background:#fff}
-  .phone .screen iframe{width:375px;height:812px;border:0;transform:scale(0.699);transform-origin:0 0;pointer-events:none}
+  .phone .screen iframe{width:375px;height:812px;border:0;transform:scale(0.699);transform-origin:0 0}
   .phone-caption{opacity:.9}
   .phone-caption h2{font-size:clamp(1.8rem,4vw,2.7rem);margin-bottom:14px}
   .phone-caption p{color:var(--muted);margin-bottom:18px}
@@ -542,6 +542,12 @@
       el.addEventListener('mouseenter',function(){ ring.classList.add('hot'); });
       el.addEventListener('mouseleave',function(){ ring.classList.remove('hot'); });
     });
+    /* sobre la pantalla del teléfono manda el cursor nativo (el iframe es interactivo) */
+    var phEl = document.querySelector('.phone');
+    if(phEl){
+      phEl.addEventListener('mouseenter',function(){ cur.style.display='none'; ring.style.display='none'; });
+      phEl.addEventListener('mouseleave',function(){ cur.style.display=''; ring.style.display=''; });
+    }
   }
 
   /* ---------- botones magnéticos ---------- */

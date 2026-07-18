@@ -219,6 +219,9 @@
     .reveal,.hero-copy>*,.hero-visual,.badge{opacity:1!important;transform:none!important}
     .process-line i{transform:scaleX(1)!important}
   }
+  /* embebida en un iframe (mockups del portfolio): sin barra de scroll */
+  html.embedded{scrollbar-width:none}
+  html.embedded::-webkit-scrollbar,html.embedded body::-webkit-scrollbar{display:none;width:0;height:0}
 </style>
 </head>
 <body>
@@ -477,6 +480,7 @@
 <noscript><style>.reveal,.hero-copy>*,.hero-visual,.badge{opacity:1!important;transform:none!important}</style></noscript>
 <script>
 (function(){
+  if(window.self !== window.top){ document.documentElement.classList.add('embedded'); }
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finePointer = window.matchMedia('(pointer: fine)').matches;
 
