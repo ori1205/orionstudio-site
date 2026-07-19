@@ -92,6 +92,18 @@
   .marquee span{font-family:'Cormorant Garamond',serif;font-size:1.15rem;letter-spacing:.28em;text-transform:uppercase;padding:0 28px;white-space:nowrap}
   .marquee i{color:var(--bronze);font-style:normal}
 
+  /* comparador antes/despues */
+  .ba-wrap{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:2.2/1;max-width:860px;margin:0 auto;box-shadow:0 30px 64px rgba(36,30,23,.18);user-select:none;touch-action:none;cursor:ew-resize;border:1px solid var(--line)}
+  .ba-layer{position:absolute;inset:0}
+  .ba-layer img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+  .ba-after{clip-path:inset(0 0 0 50%)}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.12);transform:translateX(-50%);pointer-events:none}
+  .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:var(--card);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);font-weight:600;color:var(--bronze-dark);font-size:1.05rem;pointer-events:none}
+  .ba-tag{position:absolute;top:14px;padding:5px 14px;border-radius:999px;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(4px)}
+  .ba-tag.antes{left:14px;background:rgba(36,30,23,.55);color:#f4ede2}
+  .ba-tag.despues{right:14px;background:rgba(255,253,249,.88);color:var(--bronze-dark)}
+  @media(max-width:900px){.ba-wrap{aspect-ratio:1.7/1}}
+
   /* resultados */
   .casos{background:var(--paper)}
   .casos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
@@ -234,6 +246,22 @@
   </div>
 </div>
 
+<!-- COMPARADOR -->
+<section id="comparador">
+  <div class="wrap">
+    <span class="kicker reveal">Antes y después</span>
+    <h2 class="section-title reveal">Arrastrá y mirá <em>la diferencia</em></h2>
+    <p class="section-sub reveal">Caso real de coronas publicado por la clínica. Deslizá el control para comparar.</p>
+    <div class="ba-wrap reveal" id="baWrap">
+      <div class="ba-layer"><img src="img/slider-antes.jpg" alt="Sonrisa antes del tratamiento"></div>
+      <div class="ba-layer ba-after" id="baAfter"><img src="img/slider-despues.jpg" alt="Sonrisa después del tratamiento"></div>
+      <div class="ba-handle" id="baHandle"><div class="ba-knob">⇄</div></div>
+      <span class="ba-tag antes">Antes</span>
+      <span class="ba-tag despues">Después</span>
+    </div>
+  </div>
+</section>
+
 <!-- RESULTADOS -->
 <section class="casos" id="resultados">
   <div class="wrap">
@@ -345,6 +373,17 @@
   addEventListener('scroll',()=>{nav.classList.toggle('solid',scrollY>40)},{passive:true});
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // comparador antes/despues
+  const ba=document.getElementById('baWrap'),after=document.getElementById('baAfter'),handle=document.getElementById('baHandle');
+  function setBA(pct){pct=Math.max(2,Math.min(98,pct));after.style.clipPath='inset(0 0 0 '+pct+'%)';handle.style.left=pct+'%'}
+  if(ba){
+    let dragging=false;
+    const move=ev=>{const r=ba.getBoundingClientRect(),cx=ev.touches?ev.touches[0].clientX:ev.clientX;setBA((cx-r.left)/r.width*100)};
+    ba.addEventListener('pointerdown',ev=>{dragging=true;ba.setPointerCapture(ev.pointerId);move(ev)});
+    ba.addEventListener('pointermove',ev=>{if(dragging)move(ev)});
+    addEventListener('pointerup',()=>dragging=false);
+  }
 </script>
 </body>
 </html>
