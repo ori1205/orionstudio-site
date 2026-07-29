@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Odontología Integral DR — Núñez 2602, CABA</title>
+<meta name="description" content="Odontología Integral DR — consultorio en Núñez. Turnos rápidos, explicaciones claras y puntualidad. 5.0 en Google. (Sitio de demostración)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#12403c; --petrol-2:#1c5a54; --petrol-soft:#e8f0ee;
+    --sand:#f6f4ef; --paper:#fdfcfa; --ink:#14201e; --muted:#6d7a77; --line:#e2ded5;
+    --lime:#c8e05f; --radius:4px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;font-weight:400}
+  h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:600;line-height:1.02;letter-spacing:-.025em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+  .narrow{max-width:820px}
+  section{padding:100px 0;position:relative}
+  .eyebrow{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--petrol-2);margin-bottom:20px}
+  .h2{font-size:clamp(2rem,4.8vw,3.2rem);margin-bottom:16px}
+  .lead{color:var(--muted);font-size:1.05rem;font-weight:300;max-width:520px}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--petrol);color:#cfe0dc;font-size:.72rem;letter-spacing:.06em;text-align:center;padding:7px 12px}
+  .demo-ribbon b{color:#fff;font-weight:500}
+
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.65,.3,1),transform .8s cubic-bezier(.2,.65,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+  /* NAV minimal centrado */
+  nav{position:fixed;top:30px;left:0;right:0;z-index:120;transition:.35s}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 26px;max-width:1180px;margin:0 auto}
+  .brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.02rem;font-style:italic;letter-spacing:-.02em;color:#fff;transition:color .35s}
+  .brand span{display:block;font-family:'DM Sans',sans-serif;font-style:normal;font-weight:400;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;opacity:.7;margin-top:1px}
+  nav.solid{background:rgba(253,252,250,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav.solid .brand{color:var(--ink)}
+  .nav-l{display:flex;gap:30px;font-size:.86rem;color:rgba(255,255,255,.82);transition:color .35s}
+  nav.solid .nav-l{color:var(--muted)}
+  .nav-l a:hover{color:var(--lime)} nav.solid .nav-l a:hover{color:var(--petrol)}
+  .tel-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.45);color:#fff;padding:10px 20px;border-radius:999px;font-size:.85rem;font-weight:500;transition:.3s}
+  .tel-btn:hover{background:#fff;color:var(--petrol);border-color:#fff}
+  nav.solid .tel-btn{border-color:var(--petrol);color:var(--petrol)}
+  nav.solid .tel-btn:hover{background:var(--petrol);color:#fff}
+
+  /* HERO a sangre completa */
+  .hero{position:relative;height:100svh;min-height:600px;display:grid;align-items:end;overflow:hidden}
+  .hero-img{position:absolute;inset:0}
+  .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 55%;transform:scale(1.06);animation:slowzoom 14s ease-out forwards}
+  @keyframes slowzoom{to{transform:scale(1)}}
+  .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,24,.6) 0%,rgba(10,26,24,.15) 38%,rgba(10,26,24,.78) 100%)}
+  .hero-in{position:relative;z-index:2;padding-bottom:clamp(90px,13vh,140px);color:#fff}
+  .hero h1{font-size:clamp(2.6rem,7.5vw,5.6rem);color:#fff;max-width:14ch;margin-bottom:22px;opacity:0;animation:up 1s .25s cubic-bezier(.2,.65,.3,1) forwards}
+  .hero h1 i{font-style:italic;color:var(--lime)}
+  .hero .sub{font-size:clamp(1rem,1.5vw,1.16rem);color:rgba(255,255,255,.86);max-width:440px;font-weight:300;margin-bottom:30px;opacity:0;animation:up 1s .42s cubic-bezier(.2,.65,.3,1) forwards}
+  .hero .acts{display:flex;gap:13px;flex-wrap:wrap;opacity:0;animation:up 1s .58s cubic-bezier(.2,.65,.3,1) forwards}
+  @keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  .b{display:inline-flex;align-items:center;gap:9px;font-weight:500;font-size:.96rem;padding:15px 30px;border-radius:999px;transition:.28s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+  .b-lime{background:var(--lime);color:var(--petrol)}
+  .b-lime:hover{transform:translateY(-2px);box-shadow:0 16px 36px -8px rgba(200,224,95,.5)}
+  .b-out{border:1px solid rgba(255,255,255,.5);color:#fff}
+  .b-out:hover{background:rgba(255,255,255,.14)}
+  .b svg{width:17px;height:17px}
+  .scroll-c{position:absolute;right:30px;bottom:34px;z-index:3;writing-mode:vertical-rl;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:12px}
+  .scroll-c::after{content:"";width:1px;height:44px;background:linear-gradient(rgba(255,255,255,.5),transparent)}
+
+  /* barra flotante de datos */
+  .stats{position:relative;z-index:5;margin-top:-46px}
+  .stats-in{background:var(--petrol);color:#fff;border-radius:var(--radius);display:grid;grid-template-columns:repeat(3,1fr);box-shadow:0 24px 60px rgba(18,64,60,.28)}
+  .stat{padding:28px 30px}
+  .stat+.stat{border-left:1px solid rgba(255,255,255,.14)}
+  .stat b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:1.7rem;font-weight:600;line-height:1;margin-bottom:5px}
+  .stat span{font-size:.82rem;color:rgba(255,255,255,.68);font-weight:300}
+  .stat .stars{color:var(--lime);font-size:1.05rem;letter-spacing:1px}
+
+  /* sticky scroll */
+  .sticky-sec{padding:110px 0}
+  .sticky-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:start}
+  .sticky-media{position:sticky;top:110px;border-radius:var(--radius);overflow:hidden;box-shadow:0 26px 60px rgba(20,32,30,.16);height:min(76vh,620px)}
+  .sticky-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease,transform 1.2s ease;transform:scale(1.04)}
+  .sticky-media img.on{opacity:1;transform:scale(1)}
+  .blocks>div{padding:44px 0;border-bottom:1px solid var(--line)}
+  .blocks>div:first-child{padding-top:0}
+  .blocks>div:last-child{border-bottom:none}
+  .blocks h3{font-size:1.5rem;margin-bottom:9px}
+  .blocks p{color:var(--muted);font-weight:300;font-size:.98rem}
+
+  /* proceso timeline */
+  .proceso{background:var(--sand)}
+  .tl{margin-top:56px;position:relative;padding-left:0}
+  .tl-row{display:grid;grid-template-columns:90px 1fr;gap:26px;padding:30px 0;border-top:1px solid var(--line);align-items:start}
+  .tl-row:last-child{border-bottom:1px solid var(--line)}
+  .tl-n{font-family:'Bricolage Grotesque',sans-serif;font-size:2.6rem;font-weight:600;line-height:.9;color:var(--petrol);opacity:.28}
+  .tl-row h3{font-size:1.3rem;margin-bottom:7px}
+  .tl-row p{color:var(--muted);font-weight:300;font-size:.96rem;max-width:520px}
+
+  /* tratamientos: índice, no tarjetas */
+  .idx{margin-top:46px;border-top:1px solid var(--line)}
+  .idx a,.idx div{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 6px;border-bottom:1px solid var(--line);transition:padding .3s,background .3s}
+  .idx div:hover{padding-left:20px;background:var(--petrol-soft)}
+  .idx h3{font-size:clamp(1.15rem,2.4vw,1.65rem);font-weight:500}
+  .idx small{color:var(--muted);font-size:.85rem;font-weight:300;text-align:right;max-width:280px}
+
+  /* FAQ */
+  .faq{background:var(--petrol);color:#fff}
+  .faq .eyebrow{color:var(--lime)}
+  .faq h2{color:#fff}
+  .faq-list{margin-top:46px;border-top:1px solid rgba(255,255,255,.16)}
+  details{border-bottom:1px solid rgba(255,255,255,.16)}
+  summary{list-style:none;cursor:pointer;padding:24px 0;display:flex;align-items:center;justify-content:space-between;gap:18px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1rem,2vw,1.22rem);font-weight:500}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.5rem;color:var(--lime);transition:transform .3s;flex:none;line-height:1}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:rgba(255,255,255,.72);font-weight:300;padding:0 40px 26px 0;max-width:660px;font-size:.97rem}
+
+  /* mapa full width */
+  .mapa-full{position:relative;height:520px}
+  .mapa-full iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.7) contrast(1.05)}
+  .mapa-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(430px,calc(100% - 44px));background:var(--paper);border-radius:var(--radius);padding:38px 36px;box-shadow:0 30px 70px rgba(20,32,30,.3)}
+  .mapa-card h2{font-size:1.9rem;margin-bottom:20px}
+  .mline{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+  .mline:last-of-type{border-bottom:none}
+  .mline i{font-style:normal;flex:none;opacity:.55}
+  .mline b{display:block;font-weight:500} .mline span{color:var(--muted);font-weight:300}
+  .mapa-card .b{margin-top:20px;width:100%;justify-content:center;background:var(--petrol);color:#fff}
+  .mapa-card .b:hover{background:var(--petrol-2)}
+
+  footer{background:var(--ink);color:#8e9a97;padding:44px 0;font-size:.82rem}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+  footer .brand{color:#fff}
+  footer a{color:#c3cecb} footer a:hover{color:#fff}
+
+  .call-float{position:fixed;right:22px;bottom:22px;z-index:150;display:inline-flex;align-items:center;gap:10px;background:var(--petrol);color:#fff;padding:15px 24px;border-radius:999px;font-weight:500;font-size:.92rem;box-shadow:0 14px 34px rgba(18,64,60,.4);transition:.3s}
+  .call-float:hover{background:var(--petrol-2);transform:translateY(-2px)}
+  .call-float svg{width:18px;height:18px;fill:var(--lime)}
+
+  @media(max-width:940px){
+    section,.sticky-sec{padding:70px 0}
+    .nav-l{display:none}
+    .stats-in{grid-template-columns:1fr}
+    .stat+.stat{border-left:none;border-top:1px solid rgba(255,255,255,.14)}
+    .sticky-grid{grid-template-columns:1fr;gap:36px}
+    .sticky-media{position:relative;top:0}
+    .sticky-media img{height:300px}
+    .tl-row{grid-template-columns:56px 1fr;gap:16px}
+    .tl-n{font-size:1.8rem}
+    .idx a,.idx div{flex-direction:column;align-items:flex-start;gap:6px}
+    .idx small{text-align:left}
+    .mapa-full{height:auto;padding:0}
+    .mapa-full iframe{height:280px}
+    .mapa-card{position:relative;top:0;left:0;transform:none;width:100%;border-radius:0;box-shadow:none;border-top:1px solid var(--line)}
+    .scroll-c{display:none}
+    .call-float{padding:14px 20px;font-size:.86rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-ribbon">Propuesta de diseño para <b>Odontología Integral DR</b> — demo de Orion Studio</div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#" class="brand">Odontología Integral<span>Núñez · CABA</span></a>
+    <div class="nav-l">
+      <a href="#consultorio">El consultorio</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#faq">Preguntas</a>
+    </div>
+    <a class="tel-btn" href="tel:+541147016469">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2Z"/></svg>
+      4701-6469
+    </a>
+  </div>
+</nav>
+
+<!-- HERO a sangre completa -->
+<header class="hero">
+  <div class="hero-img"><img src="img/consultorio.jpg" alt="Consultorio de Odontología Integral DR en Núñez"></div>
+  <div class="wrap hero-in">
+    <h1>Tu dentista en <i>Núñez</i></h1>
+    <p class="sub">Turnos que salen rápido, explicaciones que se entienden y la puntualidad que casi nadie respeta.</p>
+    <div class="acts">
+      <a class="b b-lime" href="tel:+541147016469">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2Z"/></svg>
+        Pedir un turno
+      </a>
+      <a class="b b-out" href="#visita">Cómo es la primera visita</a>
+    </div>
+  </div>
+  <div class="scroll-c">Deslizá</div>
+</header>
+
+<!-- barra de datos -->
+<div class="wrap stats">
+  <div class="stats-in">
+    <div class="stat"><b><span class="stars">★★★★★</span></b><span>5.0 de puntaje en Google, sobre 73 opiniones</span></div>
+    <div class="stat"><b>Núñez 2602</b><span>Piso 2°, depto. A — a metros de Cabildo</span></div>
+    <div class="stat"><b>4701-6469</b><span>Llamanos y coordinamos el turno</span></div>
+  </div>
+</div>
+
+<!-- STICKY: el consultorio -->
+<section class="sticky-sec" id="consultorio">
+  <div class="wrap sticky-grid">
+    <div class="sticky-media rv" id="sm">
+      <img class="on" src="img/consultorio.jpg" alt="Consultorio con ventanal">
+      <img src="img/espera.jpg" alt="Sala de espera">
+      <img src="img/tratamiento.jpg" alt="Tratamiento en curso">
+    </div>
+    <div>
+      <span class="eyebrow rv">El consultorio</span>
+      <h2 class="h2 rv">Luz, calma y<br>una vista linda</h2>
+      <div class="blocks" id="blocks">
+        <div class="rv" data-i="0"><h3>Un ambiente que no aprieta</h3><p>Consultorio luminoso con ventanal al frente. Nada de sótanos ni pasillos sin ventana: se atiende con luz natural y la ciudad de fondo.</p></div>
+        <div class="rv" data-i="1"><h3>Sala de espera con todo</h3><p>Sillones cómodos, balcón, agua fría y algo para leer o mirar mientras esperás. Aunque, si podemos, no vas a esperar casi nada.</p></div>
+        <div class="rv" data-i="2"><h3>Todo en un mismo lugar</h3><p>Desde el control anual hasta lo que se complicó: resolvemos la mayoría de los tratamientos sin mandarte a dar vueltas por otros consultorios.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso" id="visita">
+  <div class="wrap narrow">
+    <span class="eyebrow rv">Tu primera visita</span>
+    <h2 class="h2 rv">Sin sorpresas, paso a paso</h2>
+    <p class="lead rv">Así funciona desde que llamás hasta que te vas con un plan claro.</p>
+    <div class="tl">
+      <div class="tl-row rv"><span class="tl-n">01</span><div><h3>Llamás y te damos turno</h3><p>Contanos qué te pasa. Si es algo que duele, buscamos el hueco más cercano — los pacientes destacan lo rápido que salen los turnos.</p></div></div>
+      <div class="tl-row rv"><span class="tl-n">02</span><div><h3>Te revisamos con tiempo</h3><p>Una revisión completa de tu boca, sin apuro, para saber exactamente en qué estamos parados.</p></div></div>
+      <div class="tl-row rv"><span class="tl-n">03</span><div><h3>Te explicamos en criollo</h3><p>Te mostramos qué vemos y qué se puede hacer, con palabras que se entienden. Vos decidís, sin que nadie te empuje.</p></div></div>
+      <div class="tl-row rv"><span class="tl-n">04</span><div><h3>Salís con un plan</h3><p>Sabés qué hay que hacer, en cuántas sesiones y en qué orden. Y los turnos siguientes, coordinados.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTOS: índice -->
+<section id="tratamientos">
+  <div class="wrap">
+    <span class="eyebrow rv">Tratamientos</span>
+    <h2 class="h2 rv">Odontología integral</h2>
+    <p class="lead rv">Lo que necesites para tu salud bucal, resuelto en Núñez.</p>
+    <div class="idx">
+      <div class="rv"><h3>Controles y limpieza</h3><small>La visita que evita las otras visitas</small></div>
+      <div class="rv"><h3>Caries y arreglos</h3><small>Resolver a tiempo lo que después duele</small></div>
+      <div class="rv"><h3>Implantes</h3><small>Recuperar la pieza que falta</small></div>
+      <div class="rv"><h3>Prótesis y coronas</h3><small>Devolverle función y forma a tu boca</small></div>
+      <div class="rv"><h3>Estética dental</h3><small>Que tu sonrisa se vea como querés</small></div>
+      <div class="rv"><h3>Urgencias</h3><small>¿Te duele hoy? Llamanos</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap narrow">
+    <span class="eyebrow rv">Preguntas frecuentes</span>
+    <h2 class="h2 rv">Lo que todos preguntan</h2>
+    <div class="faq-list rv">
+      <details><summary>¿Cómo pido un turno?</summary><p>Llamando al 4701-6469. Te preguntamos qué necesitás y coordinamos el día y horario que mejor te venga.</p></details>
+      <details><summary>¿Cuánto tardan en darme turno?</summary><p>Depende de la agenda, pero tratamos de que sea lo antes posible — y si es una urgencia, buscamos hacerte un lugar el mismo día.</p></details>
+      <details><summary>¿Dónde quedan exactamente?</summary><p>En Núñez 2602, piso 2°, departamento A, en el barrio de Núñez, CABA. A pocas cuadras de Av. Cabildo.</p></details>
+      <details><summary>Hace años que no voy al dentista, ¿me van a retar?</summary><p>No. Vemos cómo está la situación, te lo explicamos con claridad y armamos un plan por etapas. El objetivo es resolver, no hacerte sentir mal.</p></details>
+      <details><summary>¿Atienden por obra social?</summary><p>Consultanos por teléfono según tu cobertura y te contamos las opciones disponibles.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- MAPA full width -->
+<div class="mapa-full">
+  <iframe title="Mapa Odontología Integral DR" src="https://www.google.com/maps?q=N%C3%BA%C3%B1ez%202602%2C%20CABA&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div class="mapa-card">
+    <h2>Te esperamos</h2>
+    <div class="mline"><i>📍</i><div><b>Núñez 2602, piso 2° A</b><span>Núñez, Ciudad de Buenos Aires</span></div></div>
+    <div class="mline"><i>📞</i><div><b>4701-6469</b><span>Turnos y consultas</span></div></div>
+    <div class="mline"><i>⭐</i><div><b>5.0 en Google</b><span>73 opiniones de pacientes</span></div></div>
+    <a class="b" href="tel:+541147016469">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2Z"/></svg>
+      Llamar ahora
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#" class="brand">Odontología Integral<span>Núñez 2602 · CABA</span></a>
+    <div>Sitio de demostración diseñado por <a href="https://orionstudio.com.ar/webs/">Orion Studio</a> — no es el sitio oficial del consultorio.</div>
+  </div>
+</footer>
+
+<a class="call-float" href="tel:+541147016469">
+  <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2Z"/></svg>
+  Llamar
+</a>
+
+<script>
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>{nav.classList.toggle('solid',scrollY>innerHeight*0.82)},{passive:true});
+  const rvs=[...document.querySelectorAll('.rv')];
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    rvs.forEach(el=>io.observe(el));
+  }
+  // red de seguridad: si algo falla, nada queda invisible
+  setTimeout(()=>rvs.forEach(el=>el.classList.add('in')),2500);
+  // acordeón: uno abierto por vez
+  const ds=[...document.querySelectorAll('details')];
+  ds.forEach(d=>d.addEventListener('toggle',()=>{if(d.open)ds.forEach(o=>{if(o!==d)o.open=false})}));
+
+  // la foto fija acompaña al bloque que estás leyendo
+  const shots=[...document.querySelectorAll('#sm img')];
+  const bls=[...document.querySelectorAll('#blocks > div')];
+  if(shots.length&&bls.length){
+    const so=new IntersectionObserver(es=>{es.forEach(e=>{
+      if(e.isIntersecting){const i=+e.target.dataset.i;
+        shots.forEach((s,k)=>s.classList.toggle('on',k===i));}
+    })},{rootMargin:'-45% 0px -45% 0px'});
+    bls.forEach(b=>so.observe(b));
+  }
+</script>
+</body>
+</html>
