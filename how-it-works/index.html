@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Orion Studio works</title>
+<meta name="description" content="Step by step: how Orion Studio turns a script into a finished short video and publishes it to your own connected accounts.">
+<style>
+  :root { --bg:#0b0d12; --panel:#131720; --text:#e8eaf0; --muted:#9aa3b2; --accent:#51e8b3; --line:#232a38; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; line-height:1.7; }
+  .wrap { max-width:860px; margin:0 auto; padding:0 24px; }
+  nav { border-bottom:1px solid var(--line); padding:20px 0; }
+  nav .inner { max-width:860px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
+  nav .brand { font-weight:800; letter-spacing:-0.5px; color:var(--text); text-decoration:none; margin-right:auto; }
+  nav .brand span { color:var(--accent); }
+  nav a { color:var(--muted); text-decoration:none; font-size:0.95rem; }
+  nav a:hover, nav a.on { color:var(--accent); }
+  h1 { font-size:2.1rem; margin:48px 0 8px; letter-spacing:-0.5px; }
+  .lead { color:var(--muted); font-size:1.1rem; margin-bottom:8px; }
+  h2 { color:var(--accent); font-size:1.25rem; margin:44px 0 12px; }
+  h3 { font-size:1.05rem; margin:24px 0 6px; }
+  p, li { color:#c9cfda; }
+  ul, ol { padding-left:22px; margin:10px 0; }
+  li { margin:6px 0; }
+  strong { color:var(--text); }
+  .step { background:var(--panel); border-radius:12px; padding:22px 24px; margin:14px 0; border-left:3px solid var(--accent); }
+  .step .n { color:var(--accent); font-weight:700; font-size:0.85rem; letter-spacing:1px; text-transform:uppercase; }
+  .note { border:1px solid var(--line); border-radius:12px; padding:20px 24px; margin:28px 0; }
+  footer { border-top:1px solid var(--line); margin-top:72px; padding:32px 0; color:var(--muted); font-size:0.9rem; text-align:center; }
+  footer a { color:var(--accent); text-decoration:none; margin:0 10px; }
+</style>
+</head>
+<body>
+<nav><div class="inner">
+  <a class="brand" href="/">Orion <span>Studio</span></a>
+  <a href="/how-it-works/" class="on">How it works</a>
+  <a href="/support/">Support</a>
+  <a href="/privacy-policy/">Privacy</a>
+  <a href="/terms-of-service/">Terms</a>
+</div></nav>
+
+<div class="wrap">
+  <h1>How Orion Studio works</h1>
+  <p class="lead">From a written script to a finished vertical video published on your own account.</p>
+
+  <h2>The production pipeline</h2>
+  <p>Orion Studio runs entirely on your own computer. Each step below happens locally, and you review the result before moving to the next one.</p>
+
+  <div class="step">
+    <div class="n">Step 1</div>
+    <h3>Write or generate the script</h3>
+    <p>You write the script yourself, or let the application draft one from a topic you choose. Every draft is reviewed and approved by you before anything else happens — nothing is produced from an unapproved script.</p>
+  </div>
+
+  <div class="step">
+    <div class="n">Step 2</div>
+    <h3>Narration and subtitles</h3>
+    <p>The approved script is turned into a voice-over using a text-to-speech provider you configure with your own credentials. The narration is then transcribed to obtain word-level timings, which produce subtitles that stay in sync with the audio.</p>
+  </div>
+
+  <div class="step">
+    <div class="n">Step 3</div>
+    <h3>Visuals</h3>
+    <p>The application splits the script into scenes and finds a visual for each one from licensed stock libraries, or uses images and clips you supply yourself. You can replace any scene before rendering.</p>
+  </div>
+
+  <div class="step">
+    <div class="n">Step 4</div>
+    <h3>Render</h3>
+    <p>Audio, subtitles, visuals and optional background music are composited into a single vertical video file on your machine. The finished file is yours: you can keep it, edit it elsewhere, or discard it.</p>
+  </div>
+
+  <div class="step">
+    <div class="n">Step 5</div>
+    <h3>Publish</h3>
+    <p>When you choose to publish, the video is uploaded to the accounts you have connected, through each platform's official API. You decide which videos are published and when.</p>
+  </div>
+
+  <h2>Connecting a social account</h2>
+  <p>Orion Studio never asks for your social media password. Connecting an account works like this:</p>
+  <ol>
+    <li>You start the connection from inside the application.</li>
+    <li>The application opens the platform's own authorization page — for example, TikTok's OAuth consent screen — in your browser.</li>
+    <li>You log in on the platform's own website and review exactly which permissions are being requested.</li>
+    <li>If you approve, the platform issues an access token. That token is written to a file on your computer and is never transmitted anywhere else.</li>
+    <li>Orion Studio uses that token only to upload the videos you explicitly choose to publish.</li>
+  </ol>
+
+  <div class="note">
+    <h3>Revoking access</h3>
+    <p>You can disconnect an account at any time from the platform's own settings — for example, in TikTok under <strong>Settings → Security &amp; permissions → Manage app permissions</strong>, or in your Google Account under <strong>Security → Third-party apps</strong>. Revoking access there immediately stops Orion Studio from being able to publish. You can also simply delete the local token file.</p>
+  </div>
+
+  <h2>What Orion Studio does not do</h2>
+  <ul>
+    <li>It does not post anything without an explicit action from you.</li>
+    <li>It does not read, collect or store other users' content or personal data.</li>
+    <li>It does not send your videos, scripts or tokens to our servers — there are no servers involved in producing or publishing your content.</li>
+    <li>It does not buy, sell or exchange engagement of any kind.</li>
+  </ul>
+
+  <footer>
+    <p><strong>Orion Studio</strong></p>
+    <p style="margin-top:8px;">
+      <a href="/">Home</a> ·
+      <a href="/support/">Support</a> ·
+      <a href="/privacy-policy/">Privacy Policy</a> ·
+      <a href="/terms-of-service/">Terms of Service</a>
+    </p>
+    <p style="margin-top:12px;">Contact: orionluciogame@gmail.com</p>
+  </footer>
+</div>
+</body>
+</html>

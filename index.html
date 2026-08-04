@@ -3,62 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orion Studio</title>
-<meta name="description" content="Orion Studio — a desktop application for creating and publishing short-form video content to your own social media accounts.">
+<title>Orion Studio — desktop app for short-form video production</title>
+<meta name="description" content="Orion Studio is a desktop application for producing short-form videos — script, narration, subtitles, visuals and rendering — and publishing them to your own social accounts.">
 <style>
-  :root { --bg:#0b0d12; --panel:#131720; --text:#e8eaf0; --muted:#9aa3b2; --accent:#51e8b3; }
+  :root { --bg:#0b0d12; --panel:#131720; --text:#e8eaf0; --muted:#9aa3b2; --accent:#51e8b3; --line:#232a38; }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; line-height:1.6; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; line-height:1.7; }
   .wrap { max-width:880px; margin:0 auto; padding:0 24px; }
-  header { padding:96px 0 64px; text-align:center; }
-  .logo { font-size:3rem; font-weight:800; letter-spacing:-1px; }
+  nav { border-bottom:1px solid var(--line); padding:20px 0; position:sticky; top:0; background:rgba(11,13,18,.94); backdrop-filter:blur(6px); }
+  nav .inner { max-width:880px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
+  nav .brand { font-weight:800; letter-spacing:-0.5px; color:var(--text); text-decoration:none; margin-right:auto; }
+  nav .brand span { color:var(--accent); }
+  nav a { color:var(--muted); text-decoration:none; font-size:0.95rem; }
+  nav a:hover, nav a.on { color:var(--accent); }
+  header { padding:84px 0 56px; text-align:center; }
+  .logo { font-size:3rem; font-weight:800; letter-spacing:-1.5px; }
   .logo span { color:var(--accent); }
-  .tagline { color:var(--muted); font-size:1.25rem; margin-top:12px; }
-  section { padding:40px 0; }
-  h2 { font-size:1.5rem; margin-bottom:16px; color:var(--accent); }
+  .tagline { color:var(--muted); font-size:1.2rem; margin-top:14px; max-width:620px; margin-left:auto; margin-right:auto; }
+  section { padding:36px 0; }
+  h2 { font-size:1.5rem; margin-bottom:14px; color:var(--accent); }
+  p, li { color:#c9cfda; }
   .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:24px; }
   .card { background:var(--panel); border-radius:12px; padding:24px; }
-  .card h3 { font-size:1.05rem; margin-bottom:8px; }
+  .card h3 { font-size:1.05rem; margin-bottom:8px; color:var(--text); }
   .card p { color:var(--muted); font-size:0.95rem; }
-  footer { border-top:1px solid #232a38; margin-top:64px; padding:32px 0; color:var(--muted); font-size:0.9rem; text-align:center; }
+  .steps { counter-reset:s; margin-top:22px; }
+  .steps li { list-style:none; counter-increment:s; padding:14px 0 14px 52px; position:relative; border-bottom:1px solid var(--line); }
+  .steps li::before { content:counter(s); position:absolute; left:0; top:14px; width:34px; height:34px; border-radius:50%; background:var(--panel); color:var(--accent); display:grid; place-items:center; font-weight:700; font-size:0.9rem; }
+  .steps li strong { display:block; color:var(--text); margin-bottom:2px; }
+  .more { display:inline-block; margin-top:22px; color:var(--accent); text-decoration:none; font-weight:600; }
+  .more:hover { text-decoration:underline; }
+  ul.plain { padding-left:22px; margin:12px 0; }
+  ul.plain li { margin:6px 0; }
+  footer { border-top:1px solid var(--line); margin-top:64px; padding:32px 0; color:var(--muted); font-size:0.9rem; text-align:center; }
   footer a { color:var(--accent); text-decoration:none; margin:0 10px; }
   footer a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
+<nav><div class="inner">
+  <a class="brand" href="/">Orion <span>Studio</span></a>
+  <a href="/how-it-works/">How it works</a>
+  <a href="/support/">Support</a>
+  <a href="/privacy-policy/">Privacy</a>
+  <a href="/terms-of-service/">Terms</a>
+</div></nav>
+
 <div class="wrap">
   <header>
     <div class="logo">Orion <span>Studio</span></div>
-    <p class="tagline">Create and publish short-form video content to your own social accounts — from one desktop app.</p>
+    <p class="tagline">A desktop application for producing short-form videos and publishing them to your own social accounts.</p>
   </header>
 
   <section>
     <h2>What is Orion Studio?</h2>
-    <p>Orion Studio is a desktop application that helps content creators produce short-form videos — script, voice-over, subtitles, visuals and rendering — and publish the finished videos directly to their own social media accounts, including TikTok and YouTube, using each platform's official API.</p>
+    <p>Orion Studio is a desktop application that helps a creator take a short video from an idea to a finished file: script, voice-over narration, synchronized subtitles, visuals, background music and rendering. Once a video is finished and you approve it, the application can upload it to the accounts you have connected — including TikTok and YouTube — through each platform's official API.</p>
     <div class="cards">
       <div class="card">
-        <h3>🎬 End-to-end production</h3>
-        <p>From script to rendered video: text-to-speech narration, synchronized subtitles, licensed visuals and background music.</p>
+        <h3>End-to-end production</h3>
+        <p>Script, narration, word-synchronized subtitles, visuals and rendering, all from one place.</p>
       </div>
       <div class="card">
-        <h3>📤 Direct publishing</h3>
-        <p>Publish finished videos to your own connected accounts through official platform APIs. You authorize each account yourself, and you can revoke access at any time.</p>
+        <h3>Publishing you control</h3>
+        <p>You connect each account yourself through the platform's own consent screen, and you can revoke access at any time.</p>
       </div>
       <div class="card">
-        <h3>🔒 Local-first &amp; private</h3>
-        <p>Orion Studio runs on your own computer. Your videos, credentials and account tokens are stored locally on your machine — never on our servers.</p>
+        <h3>Local-first and private</h3>
+        <p>It runs on your computer. Videos, credentials and tokens stay on your machine — we operate no servers that receive them.</p>
       </div>
     </div>
   </section>
 
   <section>
-    <h2>How publishing works</h2>
-    <p>When you connect a social account, Orion Studio redirects you to the platform's own login and consent screen (for example, TikTok's OAuth authorization page). The platform issues an access token that is stored only on your computer. Orion Studio then uses that token to upload the videos you choose to publish, on your behalf, to your own account. Orion Studio never posts content without your action, never accesses other users' data, and never shares your information with third parties.</p>
+    <h2>From a script to a published video</h2>
+    <ol class="steps">
+      <li><strong>Write or generate the script</strong>You approve every script before anything is produced from it.</li>
+      <li><strong>Narration and subtitles</strong>The script becomes a voice-over, and the transcription gives word-level timings for the subtitles.</li>
+      <li><strong>Visuals</strong>Each scene gets a visual from a licensed library or from your own material. You can replace any of them.</li>
+      <li><strong>Render</strong>Everything is composited into a vertical video file on your machine.</li>
+      <li><strong>Publish</strong>The videos you choose are uploaded to your own connected accounts.</li>
+    </ol>
+    <a class="more" href="/how-it-works/">See the full walkthrough →</a>
+  </section>
+
+  <section>
+    <h2>How account connection works</h2>
+    <p>Orion Studio never asks for your social media password. When you connect an account, the application opens the platform's own authorization page in your browser — for example, TikTok's OAuth consent screen. You log in there and review the permissions being requested. If you approve, the platform issues an access token, which is written to a file on your own computer and used only to upload the videos you choose to publish.</p>
+    <ul class="plain">
+      <li>Nothing is posted without an explicit action from you.</li>
+      <li>The application does not read, collect or store other users' content or personal data.</li>
+      <li>Your videos, scripts and tokens are never sent to us.</li>
+    </ul>
+    <a class="more" href="/support/">Questions? Read the FAQ →</a>
+  </section>
+
+  <section>
+    <h2>Who it is for</h2>
+    <p>Orion Studio was built for creators who publish short videos regularly and want the repetitive parts of production — narration, subtitles, formatting, rendering and uploading — handled consistently, so their time goes to the ideas and the writing instead.</p>
   </section>
 
   <footer>
     <p><strong>Orion Studio</strong></p>
     <p style="margin-top:8px;">
+      <a href="/how-it-works/">How it works</a> ·
+      <a href="/support/">Support</a> ·
       <a href="/privacy-policy/">Privacy Policy</a> ·
       <a href="/terms-of-service/">Terms of Service</a>
     </p>

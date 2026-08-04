@@ -17,11 +17,26 @@
   p, li { color:#c9cfda; }
   ul { padding-left:24px; margin:8px 0; }
   strong { color:var(--text); }
+  nav { border-bottom:1px solid #232a38; padding:20px 0; margin:-48px -24px 0; }
+  nav .inner { max-width:800px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
+  nav .brand { font-weight:800; letter-spacing:-0.5px; color:var(--text); text-decoration:none; margin-right:auto; }
+  nav .brand span { color:var(--accent); }
+  nav a { color:var(--muted); text-decoration:none; font-size:0.95rem; }
+  nav a:hover, nav a.on { color:var(--accent); }
+  .pie { border-top:1px solid #232a38; margin-top:56px; padding-top:24px; color:var(--muted); font-size:0.9rem; text-align:center; }
+  .pie a { color:var(--accent); text-decoration:none; margin:0 8px; }
 </style>
 </head>
 <body>
+<nav><div class="inner">
+  <a class="brand" href="/">Orion <span>Studio</span></a>
+  <a href="/how-it-works/">How it works</a>
+  <a href="/support/">Support</a>
+  <a href="/privacy-policy/" class="on">Privacy</a>
+  <a href="/terms-of-service/">Terms</a>
+</div></nav>
 <div class="wrap">
-  <a class="home" href="/">← Orion Studio</a>
+  
   <h1>Privacy Policy</h1>
   <p class="updated">Last updated: July 15, 2026</p>
 
@@ -72,6 +87,12 @@
 
   <h2>9. Contact</h2>
   <p>If you have questions about this Privacy Policy or how Orion Studio handles data, contact us at <strong>orionluciogame@gmail.com</strong>.</p>
+  <div class="pie">
+    <a href="/">Home</a> · <a href="/how-it-works/">How it works</a> ·
+    <a href="/support/">Support</a> · <a href="/privacy-policy/">Privacy Policy</a> ·
+    <a href="/terms-of-service/">Terms of Service</a>
+    <p style="margin-top:10px;">Contact: orionluciogame@gmail.com</p>
+  </div>
 </div>
 </body>
 </html>
