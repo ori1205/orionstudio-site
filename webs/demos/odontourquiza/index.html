@@ -74,17 +74,14 @@
   .hero-trust .stars{color:#d9a441;letter-spacing:1px}
   .hero-trust .sep{width:1px;height:28px;background:var(--line)}
 
-  /* mood board: grid de fotos reales con leve rotacion, estilo collage */
-  .mood{position:relative;height:440px}
-  .mood-item{position:absolute;border-radius:14px;overflow:hidden;box-shadow:0 22px 50px -10px rgba(92,63,160,.35);border:5px solid #fff;opacity:0;animation:pop .7s cubic-bezier(.2,.7,.2,1) forwards}
-  .mood-item img{width:100%;height:100%;object-fit:cover;display:block}
-  @keyframes pop{from{opacity:0;transform:scale(.85) rotate(var(--r,0deg))}to{opacity:1;transform:scale(1) rotate(var(--r,0deg))}}
-  .mood-item.m1{width:52%;aspect-ratio:1;top:0;left:4%;--r:-4deg;animation-delay:.3s;z-index:2}
-  .mood-item.m2{width:40%;aspect-ratio:1;top:6%;right:0;--r:5deg;animation-delay:.45s;z-index:1}
-  .mood-item.m3{width:38%;aspect-ratio:1;bottom:0;left:0;--r:6deg;animation-delay:.6s;z-index:1}
-  .mood-item.m4{width:46%;aspect-ratio:1;bottom:2%;right:6%;--r:-3deg;animation-delay:.75s;z-index:2}
-  .mood-tag{position:absolute;left:2%;bottom:20%;background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 16px 36px -8px rgba(92,63,160,.3);font-size:.8rem;z-index:3;opacity:0;animation:up .7s .95s forwards}
-  .mood-tag b{display:block;font-family:'Newsreader',serif;font-size:1.2rem;color:var(--violet-deep)}
+  /* hero: foto unica limpia + badge circular de la doctora, sin collage */
+  .hero-stage{position:relative;max-width:440px;margin:0 auto}
+  .hero-photo{border-radius:22px;overflow:hidden;box-shadow:0 30px 64px -14px rgba(92,63,160,.32);opacity:0;animation:up .9s .3s cubic-bezier(.2,.65,.3,1) forwards}
+  .hero-photo img{width:100%;aspect-ratio:4/4.6;object-fit:cover;display:block}
+  .doc-badge{position:absolute;left:-16px;bottom:32px;display:flex;align-items:center;gap:12px;background:#fff;border-radius:999px;padding:8px 22px 8px 8px;box-shadow:0 18px 40px -10px rgba(92,63,160,.35);opacity:0;animation:up .8s 1s forwards}
+  .doc-badge img{width:54px;height:54px;border-radius:50%;object-fit:cover;flex:none;border:2px solid var(--lilac-soft)}
+  .doc-badge b{display:block;font-family:'Newsreader',serif;font-weight:600;font-size:.92rem;color:var(--ink)}
+  .doc-badge span{font-size:.74rem;color:var(--muted)}
 
   /* franja de servicios: nube de tags, no grilla de tarjetas */
   .franja{background:var(--ink);color:#fff;padding:24px 0;overflow:hidden}
@@ -101,14 +98,16 @@
   .serv-row h3{font-size:1.3rem;font-weight:600}
   .serv-row span{color:var(--muted);font-size:.92rem}
 
-  /* antes/despues — tarjetas lado a lado, no slider (variedad respecto de otras demos) */
-  .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:560px;margin:0 auto}
-  .ba-card{border-radius:var(--radius);overflow:hidden;box-shadow:0 20px 44px -12px rgba(92,63,160,.3);border:1px solid var(--line)}
-  .ba-card img{width:100%;aspect-ratio:1;object-fit:cover}
-  .ba-card .tag{padding:12px;text-align:center;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-  .ba-card.antes .tag{background:var(--lilac-soft);color:var(--muted)}
-  .ba-card.despues .tag{background:var(--violet);color:#fff}
-  .ba-arrow{display:flex;align-items:center;justify-content:center;color:var(--violet);font-size:1.6rem;margin:0 auto}
+  /* antes/despues — comparador arrastrable */
+  .ba-wrap{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:1.1/1;max-width:420px;margin:0 auto;box-shadow:0 28px 60px -12px rgba(92,63,160,.32);user-select:none;touch-action:none;cursor:ew-resize;border:1px solid var(--line)}
+  .ba-layer{position:absolute;inset:0}
+  .ba-layer img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+  .ba-after{clip-path:inset(0 0 0 50%)}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.12);transform:translateX(-50%);pointer-events:none}
+  .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.28);font-weight:700;color:var(--violet-deep);pointer-events:none}
+  .ba-tag{position:absolute;top:14px;padding:5px 14px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(4px)}
+  .ba-tag.antes{left:14px;background:rgba(34,28,51,.6);color:#fff}
+  .ba-tag.despues{right:14px;background:rgba(255,255,255,.9);color:var(--violet-deep)}
 
   /* doctora + consultorio: dos columnas asimetricas */
   .team{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -156,10 +155,11 @@
     nav.menu-open .nav-links a:last-child{border-bottom:none}
     .hero{padding-top:150px}
     .hero-grid,.team-grid,.contacto-grid{grid-template-columns:1fr;gap:40px}
-    .mood{height:340px;max-width:380px;margin:0 auto}
+    .hero-stage{max-width:340px}
+    .doc-badge{left:6px}
     .hero-trust{gap:14px} .hero-trust .sep{display:none}
     .team-photo img{height:360px}
-    .ba-grid{max-width:400px}
+    .ba-wrap{max-width:340px}
     .cta{padding:76px 0}
   }
 </style>
@@ -207,12 +207,9 @@
         <div>Instagram<br><b>@odontourquiza</b></div>
       </div>
     </div>
-    <div class="mood">
-      <figure class="mood-item m1"><img src="img/consultorio.jpg" alt="Consultorio de Odonto Urquiza"></figure>
-      <figure class="mood-item m2"><img src="img/despues.jpg" alt="Caso de ortodoncia"></figure>
-      <figure class="mood-item m3"><img src="img/doctora.jpg" alt="Dra. Natalia Alejo"></figure>
-      <figure class="mood-item m4"><img src="img/antes.jpg" alt="Caso antes del tratamiento"></figure>
-      <div class="mood-tag">1718 seguidores<b>en Instagram</b></div>
+    <div class="hero-stage">
+      <div class="hero-photo"><img src="img/consultorio.jpg" alt="Consultorio de Odonto Urquiza"></div>
+      <div class="doc-badge"><img src="img/doctora.jpg" alt="Dra. Natalia Alejo"><div><b>Dra. Natalia Alejo</b><span>Odonto Urquiza</span></div></div>
     </div>
   </div>
 </header>
@@ -228,11 +225,14 @@
 <section id="casos">
   <div class="wrap">
     <span class="kicker rv">Casos reales</span>
-    <h2 class="section-title rv">Resultados que <em>se notan</em></h2>
-    <p class="section-sub rv">Caso real publicado por Odonto Urquiza en su Instagram.</p>
-    <div class="ba-grid rv">
-      <div class="ba-card antes"><img src="img/antes.jpg" alt="Antes del tratamiento de ortodoncia"><div class="tag">Antes</div></div>
-      <div class="ba-card despues"><img src="img/despues.jpg" alt="Después del tratamiento de ortodoncia"><div class="tag">Después</div></div>
+    <h2 class="section-title rv">Arrastrá y mirá <em>la diferencia</em></h2>
+    <p class="section-sub rv">Caso real de ortodoncia publicado por Odonto Urquiza. Deslizá el control para comparar.</p>
+    <div class="ba-wrap rv" id="baWrap">
+      <div class="ba-layer"><img src="img/antes.jpg" alt="Antes del tratamiento de ortodoncia"></div>
+      <div class="ba-layer ba-after" id="baAfter"><img src="img/despues.jpg" alt="Después del tratamiento de ortodoncia"></div>
+      <div class="ba-handle" id="baHandle"><div class="ba-knob">⇄</div></div>
+      <span class="ba-tag antes">Antes</span>
+      <span class="ba-tag despues">Después</span>
     </div>
   </div>
 </section>
@@ -334,6 +334,14 @@
       nav.classList.remove('menu-open'); hamburger.setAttribute('aria-expanded','false');
     }));
   }
+
+  const ba=document.getElementById('baWrap'),after=document.getElementById('baAfter'),handle=document.getElementById('baHandle');
+  function setBA(p){p=Math.max(2,Math.min(98,p));after.style.clipPath='inset(0 0 0 '+p+'%)';handle.style.left=p+'%'}
+  if(ba){let dragging=false;
+    const move=ev=>{const r=ba.getBoundingClientRect(),cx=ev.touches?ev.touches[0].clientX:ev.clientX;setBA((cx-r.left)/r.width*100)};
+    ba.addEventListener('pointerdown',ev=>{dragging=true;ba.setPointerCapture(ev.pointerId);move(ev)});
+    ba.addEventListener('pointermove',ev=>{if(dragging)move(ev)});
+    addEventListener('pointerup',()=>dragging=false);}
 </script>
 </body>
 </html>
