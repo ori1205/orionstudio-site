@@ -75,13 +75,13 @@
   .hero-trust .sep{width:1px;height:28px;background:var(--line)}
 
   /* hero: foto unica limpia + badge circular de la doctora, sin collage */
-  .hero-stage{position:relative;max-width:440px;margin:0 auto}
-  .hero-photo{border-radius:22px;overflow:hidden;box-shadow:0 30px 64px -14px rgba(92,63,160,.32);opacity:0;animation:up .9s .3s cubic-bezier(.2,.65,.3,1) forwards}
-  .hero-photo img{width:100%;aspect-ratio:4/4.6;object-fit:cover;display:block}
-  .doc-badge{position:absolute;left:-16px;bottom:32px;display:flex;align-items:center;gap:12px;background:#fff;border-radius:999px;padding:8px 22px 8px 8px;box-shadow:0 18px 40px -10px rgba(92,63,160,.35);opacity:0;animation:up .8s 1s forwards}
-  .doc-badge img{width:54px;height:54px;border-radius:50%;object-fit:cover;flex:none;border:2px solid var(--lilac-soft)}
-  .doc-badge b{display:block;font-family:'Newsreader',serif;font-weight:600;font-size:.92rem;color:var(--ink)}
-  .doc-badge span{font-size:.74rem;color:var(--muted)}
+  .hero-stage{position:relative;width:100%}
+  .hero-photo{width:100%;border-radius:22px;overflow:hidden;box-shadow:0 30px 64px -14px rgba(92,63,160,.32);opacity:0;animation:up .9s .3s cubic-bezier(.2,.65,.3,1) forwards}
+  .hero-photo img{width:100%;aspect-ratio:4/4.4;object-fit:cover;display:block}
+  .doc-badge{display:flex;align-items:center;gap:13px;margin-top:20px;opacity:0;animation:up .8s .6s forwards}
+  .doc-badge img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 10px 22px -8px rgba(92,63,160,.4)}
+  .doc-badge b{display:block;font-family:'Newsreader',serif;font-weight:600;font-size:.95rem;color:var(--ink)}
+  .doc-badge span{font-size:.76rem;color:var(--muted)}
 
   /* franja de servicios: nube de tags, no grilla de tarjetas */
   .franja{background:var(--ink);color:#fff;padding:24px 0;overflow:hidden}
@@ -155,8 +155,7 @@
     nav.menu-open .nav-links a:last-child{border-bottom:none}
     .hero{padding-top:150px}
     .hero-grid,.team-grid,.contacto-grid{grid-template-columns:1fr;gap:40px}
-    .hero-stage{max-width:340px}
-    .doc-badge{left:6px}
+    .hero-stage{max-width:420px;margin:0 auto}
     .hero-trust{gap:14px} .hero-trust .sep{display:none}
     .team-photo img{height:360px}
     .ba-wrap{max-width:340px}
