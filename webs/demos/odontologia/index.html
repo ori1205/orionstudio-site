@@ -214,6 +214,23 @@
   .hp-field{display:none!important}
   @media(max-width:880px){.lf-grid{grid-template-columns:1fr}}
 
+  /* Bloque Orion Studio: escalera de planes (voz del estudio, no de la clínica) */
+  .orion-plans{background:var(--deep);color:#eaf6f5;padding:70px 0;border-top:4px solid var(--aqua)}
+  .orion-plans .op-tag{display:inline-block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--aqua);border:1px solid rgba(127,222,215,.4);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .orion-plans h2{color:#fff;font-size:clamp(1.6rem,3.5vw,2.3rem);margin-bottom:10px}
+  .orion-plans .op-sub{color:rgba(234,246,245,.75);max-width:640px;margin-bottom:34px;font-size:.95rem}
+  .op-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:28px}
+  .op-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:22px}
+  .op-card.destacado{border-color:var(--aqua);background:rgba(127,222,215,.1)}
+  .op-card h3{color:#fff;font-size:1.05rem;margin-bottom:8px}
+  .op-precio{margin-bottom:10px}
+  .op-precio strong{font-size:1.25rem;color:#fff}
+  .op-precio span{font-size:.85rem;color:var(--aqua);font-weight:600}
+  .op-card p:last-child{font-size:.88rem;color:rgba(234,246,245,.72)}
+  .op-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .op-foot>span{font-size:.85rem;color:rgba(234,246,245,.6)}
+  @media(max-width:880px){.op-grid{grid-template-columns:1fr}}
+
   .wa-float{position:fixed;right:22px;bottom:22px;z-index:70;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;animation:pulseRing 2.6s ease-out infinite;transition:transform .2s}
   .wa-float:hover{transform:scale(1.1)}
   .wa-float svg{width:30px;height:30px;fill:#fff}
@@ -561,6 +578,37 @@
       }
     })();
     </script>
+  </div>
+</section>
+
+<!-- Bloque Orion Studio (escalera de planes). Al replicar a demos de prospectos:
+     este bloque queda IGUAL, con el WhatsApp de Orion — es la voz del estudio. -->
+<section class="orion-plans" id="planes-orion">
+  <div class="wrap">
+    <div class="op-tag">Nota de Orion Studio — el estudio que armó esta demo</div>
+    <h2>Esta web puede hacer más que verse linda</h2>
+    <p class="op-sub">Cada plan deja sistemas trabajando solos, y el abono mensual incluye mantenimiento, cambios y un informe con cuánta gente entró y cuántos te escribieron.</p>
+    <div class="op-grid">
+      <div class="op-card">
+        <h3>Presencia</h3>
+        <p class="op-precio"><strong>desde $400.000</strong> <span>+ $35.000/mes</span></p>
+        <p>Esta web, con tu dominio, hosting y botón de WhatsApp con mensaje armado.</p>
+      </div>
+      <div class="op-card destacado">
+        <h3>Turnos</h3>
+        <p class="op-precio"><strong>desde $600.000</strong> <span>+ $55.000/mes</span></p>
+        <p>Suma reserva de turnos online, reseñas de Google en la página y formularios que llegan a tu mail.</p>
+      </div>
+      <div class="op-card">
+        <h3>Inteligente</h3>
+        <p class="op-precio"><strong>desde $900.000</strong> <span>+ $85.000/mes</span></p>
+        <p>Suma asistente con IA que responde 24/7 y recordatorios automáticos de turno.</p>
+      </div>
+    </div>
+    <div class="op-foot">
+      <span>Los valores son "desde": el precio final depende de la propuesta para tu caso.</span>
+      <a class="btn teal" href="https://wa.me/5492235639535?text=Hola%2C%20vi%20la%20demo%20y%20quiero%20saber%20m%C3%A1s%20de%20los%20planes" target="_blank" rel="noopener">Hablar con Orion Studio</a>
+    </div>
   </div>
 </section>
 
