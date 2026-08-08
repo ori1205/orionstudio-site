@@ -158,6 +158,25 @@
   .plan li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
   .plan .btn{width:100%;justify-content:center}
 
+  /* Formulario de contacto (Web3Forms) */
+  .lead-form{max-width:560px;margin:52px auto 0;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:30px}
+  .lead-form .lf-head{margin-bottom:18px}
+  .lead-form .lf-head strong{display:block;font-size:1.12rem;margin-bottom:3px;font-family:'Fraunces',Georgia,serif}
+  .lead-form .lf-head span{font-size:.88rem;color:var(--muted)}
+  .lf-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}
+  .lead-form input,.lead-form textarea{width:100%;padding:13px 15px;background:var(--panel2);border:1px solid var(--line);border-radius:13px;font:inherit;color:var(--text);transition:border-color .2s}
+  .lead-form input::placeholder,.lead-form textarea::placeholder{color:#6b7688}
+  .lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:var(--accent)}
+  .lead-form textarea{resize:vertical;margin-bottom:15px}
+  .lf-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .lead-form .btn{border:none}
+  .lf-status{font-size:.9rem}
+  .lf-status.ok{color:var(--accent);font-weight:600}
+  .lf-status.err{color:#ff8a80}
+  .lf-status.err a{text-decoration:underline}
+  .hp-field{display:none!important}
+  @media(max-width:640px){.lf-grid{grid-template-columns:1fr}}
+
   /* CTA final */
   .cta-final{text-align:center;padding:130px 0;position:relative;overflow:hidden;border-top:1px solid var(--line)}
   .cta-final h2{font-size:clamp(2.2rem,6vw,4rem);margin-bottom:18px}
@@ -394,6 +413,53 @@
     <h2 class="reveal">Tu próximo cliente te está <em>googleando</em></h2>
     <p class="reveal d1">Escribinos hoy y en 72 horas puede encontrarte con una web que dé ganas de elegirte.</p>
     <a class="btn reveal d2" data-magnetic href="https://wa.me/5492235639535?text=Hola%2C%20quiero%20una%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Empezar por WhatsApp</a>
+
+    <form class="lead-form reveal d3" id="lead-form">
+      <input type="hidden" name="access_key" value="b243cc98-e26f-4156-99ab-8f815e33656b">
+      <input type="hidden" name="subject" value="CONSULTA REAL — Web de Orion Studio (/webs/)">
+      <input type="hidden" name="from_name" value="Orion Studio — formulario /webs">
+      <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off">
+      <div class="lf-head">
+        <strong>¿Preferís que te escribamos nosotros?</strong>
+        <span>Dejá tus datos y te mandamos una propuesta en el día.</span>
+      </div>
+      <div class="lf-grid">
+        <input type="text" name="nombre" placeholder="Tu nombre" aria-label="Tu nombre" required>
+        <input type="tel" name="whatsapp" placeholder="Tu WhatsApp" aria-label="Tu WhatsApp" required>
+      </div>
+      <textarea name="mensaje" rows="3" placeholder="Contanos de tu negocio (rubro, si ya tenés web…)" aria-label="Contanos de tu negocio" required></textarea>
+      <div class="lf-foot">
+        <button type="submit" class="btn">Pedir propuesta</button>
+        <span class="lf-status" aria-live="polite"></span>
+      </div>
+    </form>
+    <script>
+    (function(){
+      var f = document.getElementById('lead-form');
+      if(!f) return;
+      f.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        var btn = f.querySelector('button[type="submit"]'), st = f.querySelector('.lf-status');
+        var data = {};
+        new FormData(f).forEach(function(v,k){ data[k]=v; });
+        var t0 = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Enviando…'; st.className = 'lf-status'; st.textContent = '';
+        fetch('https://api.web3forms.com/submit', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)})
+          .then(function(r){ return r.json(); })
+          .then(function(j){
+            if(!j || !j.success) throw new Error('w3f');
+            f.reset();
+            st.className = 'lf-status ok'; st.textContent = '¡Listo! Te contactamos en el día.';
+            if(window.goatcounter && window.goatcounter.count){ window.goatcounter.count({path:'form-ok ' + location.pathname, title:'Formulario enviado', event:true}); }
+          })
+          .catch(function(){
+            st.className = 'lf-status err';
+            st.innerHTML = 'No se pudo enviar. Probá de nuevo o <a href="https://wa.me/5492235639535?text=Hola%2C%20quiero%20una%20web%20para%20mi%20negocio" target="_blank" rel="noopener">escribinos por WhatsApp</a>.';
+          })
+          .then(function(){ btn.disabled = false; btn.textContent = t0; });
+      });
+    })();
+    </script>
   </div>
 </div>
 

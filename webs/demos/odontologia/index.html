@@ -194,6 +194,23 @@
   .info-row span{font-size:.9rem;color:var(--ink-soft)}
   .map-ph{border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,#dfeeee,#bfe3e2);min-height:320px;display:grid;place-items:center;color:var(--teal-dark);font-weight:600;border:1px solid #e8efef}
 
+  /* Formulario de contacto (Web3Forms) */
+  .lead-form{margin-top:48px;background:var(--white);border:1px solid #e8efef;border-radius:var(--radius);padding:30px;box-shadow:0 14px 40px rgba(23,74,72,.07)}
+  .lead-form .lf-head{margin-bottom:18px}
+  .lead-form .lf-head strong{display:block;font-size:1.15rem;margin-bottom:2px}
+  .lead-form .lf-head span{font-size:.9rem;color:var(--ink-soft)}
+  .lf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .lead-form input[type="text"],.lead-form input[type="tel"],.lead-form textarea{width:100%;padding:13px 15px;border:1px solid #d8e6e5;border-radius:12px;font:inherit;color:inherit;background:#fbfdfd;transition:border-color .2s}
+  .lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:var(--teal-dark)}
+  .lead-form textarea{resize:vertical;margin-bottom:16px}
+  .lf-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .lf-status{font-size:.9rem}
+  .lf-status.ok{color:#1b7f5c;font-weight:600}
+  .lf-status.err{color:#b3423a}
+  .lf-status.err a{text-decoration:underline;font-weight:600}
+  .hp-field{display:none!important}
+  @media(max-width:880px){.lf-grid{grid-template-columns:1fr}}
+
   .wa-float{position:fixed;right:22px;bottom:22px;z-index:70;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;animation:pulseRing 2.6s ease-out infinite;transition:transform .2s}
   .wa-float:hover{transform:scale(1.1)}
   .wa-float svg{width:30px;height:30px;fill:#fff}
@@ -481,6 +498,53 @@
       </div>
       <div class="map-ph reveal d1">🗺️ Acá va el mapa de Google con la ubicación real</div>
     </div>
+
+    <form class="lead-form reveal" id="lead-form">
+      <input type="hidden" name="access_key" value="b243cc98-e26f-4156-99ab-8f815e33656b">
+      <input type="hidden" name="subject" value="[Demo Aluna] Consulta desde el formulario de la demo">
+      <input type="hidden" name="from_name" value="Web Clínica Aluna (demo)">
+      <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off">
+      <div class="lf-head">
+        <strong>Dejanos tu consulta</strong>
+        <span>Sin compromiso — te respondemos en el día.</span>
+      </div>
+      <div class="lf-grid">
+        <input type="text" name="nombre" placeholder="Tu nombre" aria-label="Tu nombre" required>
+        <input type="tel" name="telefono" placeholder="Tu WhatsApp o teléfono" aria-label="Tu WhatsApp o teléfono" required>
+      </div>
+      <textarea name="mensaje" rows="3" placeholder="Contanos qué necesitás (turno, consulta, tratamiento…)" aria-label="Tu consulta" required></textarea>
+      <div class="lf-foot">
+        <button type="submit" class="btn teal">Enviar consulta</button>
+        <span class="lf-status" aria-live="polite"></span>
+      </div>
+    </form>
+    <script>
+    (function(){
+      var f = document.getElementById('lead-form');
+      if(!f) return;
+      f.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        var btn = f.querySelector('button[type="submit"]'), st = f.querySelector('.lf-status');
+        var data = {};
+        new FormData(f).forEach(function(v,k){ data[k]=v; });
+        var t0 = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Enviando…'; st.className = 'lf-status'; st.textContent = '';
+        fetch('https://api.web3forms.com/submit', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)})
+          .then(function(r){ return r.json(); })
+          .then(function(j){
+            if(!j || !j.success) throw new Error('w3f');
+            f.reset();
+            st.className = 'lf-status ok'; st.textContent = '¡Listo! Recibimos tu consulta y te contactamos en el día.';
+            if(window.goatcounter && window.goatcounter.count){ window.goatcounter.count({path:'form-ok ' + location.pathname, title:'Formulario enviado', event:true}); }
+          })
+          .catch(function(){
+            st.className = 'lf-status err';
+            st.innerHTML = 'No se pudo enviar. Probá de nuevo o <a href="https://wa.me/5492235639535" target="_blank" rel="noopener">escribinos por WhatsApp</a>.';
+          })
+          .then(function(){ btn.disabled = false; btn.textContent = t0; });
+      });
+    })();
+    </script>
   </div>
 </section>
 
