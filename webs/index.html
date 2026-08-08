@@ -191,6 +191,24 @@
     .hero h1 .ch{opacity:1!important;transform:none!important}
   }
 </style>
+
+<!-- GoatCounter (analytics sin cookies). No cuenta si la página está embebida en un iframe (agencia). -->
+<script>
+(function(){
+  if (window.self !== window.top) return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter', 'https://orionstudio.goatcounter.com/count');
+  document.head.appendChild(s);
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"], a[href^="tel:"]') : null;
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    var tipo = (a.getAttribute('href') || '').indexOf('tel:') === 0 ? 'tel-click' : 'wa-click';
+    window.goatcounter.count({ path: tipo + ' ' + location.pathname, title: 'Click de contacto', event: true });
+  });
+})();
+</script>
 </head>
 <body>
 
