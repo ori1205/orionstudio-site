@@ -169,6 +169,44 @@
     .scroll-c{display:none}
     .call-float{padding:14px 20px;font-size:.86rem}
   }
+
+  /* Formulario (Web3Forms) + bloque Orion Studio — replicado, ver CLAUDE.md 2026-08-08 */
+  .lead-form{width:min(1060px,calc(100% - 44px));margin:54px auto 0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+  .lead-form .lf-head{margin-bottom:18px}
+  .lead-form .lf-head strong{display:block;font-size:1.15rem;margin-bottom:2px}
+  .lead-form .lf-head span{font-size:.9rem;color:var(--muted)}
+  .lf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .lead-form input,.lead-form textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:4px;font:inherit;color:inherit;background:var(--sand);transition:border-color .2s}
+  .lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:var(--petrol-2)}
+  .lead-form textarea{resize:vertical;margin-bottom:16px}
+  .lf-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .lf-btn{border:none;cursor:pointer;font:inherit;font-weight:700;font-size:.95rem;padding:13px 26px;border-radius:6px;background:var(--petrol);color:#fff;transition:opacity .2s}
+  .lf-btn:hover{opacity:.88}
+  .lf-btn.wa{background:transparent;color:var(--petrol);border:1.5px solid var(--petrol)}
+  .lf-status{font-size:.9rem}
+  .lf-status.ok{color:#2e7d54;font-weight:600}
+  .lf-status.err{color:#b3423a}
+  .lf-status.err a{text-decoration:underline;font-weight:600}
+  .hp-field{display:none!important}
+  .orion-plans{background:var(--petrol);color:rgba(255,255,255,.9);padding:70px 0;margin-top:64px}
+  .orion-plans .op-in{width:min(1060px,calc(100% - 44px));margin:0 auto}
+  .op-tag{display:inline-block;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);border:1px solid rgba(200,224,95,.45);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .orion-plans h2{color:#fff;font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:10px}
+  .orion-plans h2 em{font-style:italic;color:var(--lime)}
+  .orion-plans .op-sub{color:rgba(255,255,255,.75);max-width:640px;margin-bottom:34px;font-size:.95rem}
+  .op-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:28px}
+  .op-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:22px}
+  .op-card.destacado{border-color:var(--lime);background:rgba(200,224,95,.1)}
+  .op-card h3{color:#fff;font-size:1.05rem;margin-bottom:8px}
+  .op-precio{margin-bottom:10px}
+  .op-precio strong{font-size:1.25rem;color:#fff}
+  .op-precio span{font-size:.85rem;color:var(--lime);font-weight:600}
+  .op-card p:last-child{font-size:.88rem;color:rgba(255,255,255,.72)}
+  .op-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .op-foot>span{font-size:.85rem;color:rgba(255,255,255,.55)}
+  .op-btn{display:inline-block;font-weight:700;font-size:.95rem;padding:13px 26px;border-radius:6px;background:var(--lime);color:var(--petrol);transition:opacity .2s}
+  .op-btn:hover{opacity:.88}
+  @media(max-width:880px){.lf-grid,.op-grid{grid-template-columns:1fr}}
 </style>
 
 <!-- GoatCounter (analytics sin cookies). No cuenta si la página está embebida en un iframe (agencia). -->
@@ -318,6 +356,100 @@
     </a>
   </div>
 </div>
+
+
+<!-- Formulario real (Web3Forms): el mail va a Orion con asunto [Demo Odontología Integral DR];
+     el boton de WhatsApp va al numero del prospecto (es SU futura web). -->
+<form class="lead-form" id="lead-form">
+  <input type="hidden" name="access_key" value="b243cc98-e26f-4156-99ab-8f815e33656b">
+  <input type="hidden" name="subject" value="[Demo Odontología Integral DR] Consulta desde el formulario de la demo">
+  <input type="hidden" name="from_name" value="Web Odontología Integral DR (demo)">
+  <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off">
+  <div class="lf-head">
+    <strong>Dejanos tu consulta</strong>
+    <span>Sin compromiso — te respondemos en el día.</span>
+  </div>
+  <div class="lf-grid">
+    <input type="text" name="nombre" placeholder="Tu nombre" aria-label="Tu nombre" required>
+    <input type="tel" name="telefono" placeholder="Tu WhatsApp o teléfono" aria-label="Tu WhatsApp o teléfono" required>
+  </div>
+  <textarea name="mensaje" rows="3" placeholder="Contanos qué necesitás (turno, consulta, tratamiento…)" aria-label="Tu consulta" required></textarea>
+  <div class="lf-foot">
+    <button type="submit" class="lf-btn">Enviar consulta</button>
+    <button type="button" class="lf-btn wa" id="lead-wa-btn">Enviar por WhatsApp</button>
+    <span class="lf-status" aria-live="polite"></span>
+  </div>
+</form>
+<script>
+(function(){
+  var f = document.getElementById('lead-form');
+  if(!f) return;
+  f.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var btn = f.querySelector('button[type="submit"]'), st = f.querySelector('.lf-status');
+    var data = {};
+    new FormData(f).forEach(function(v,k){ data[k]=v; });
+    var t0 = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Enviando…'; st.className = 'lf-status'; st.textContent = '';
+    fetch('https://api.web3forms.com/submit', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)})
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if(!j || !j.success) throw new Error('w3f');
+        f.reset();
+        st.className = 'lf-status ok'; st.textContent = '¡Listo! Recibimos tu consulta y te contactamos en el día.';
+        if(window.goatcounter && window.goatcounter.count){ window.goatcounter.count({path:'form-ok ' + location.pathname, title:'Formulario enviado', event:true}); }
+      })
+      .catch(function(){
+        st.className = 'lf-status err';
+        st.innerHTML = 'No se pudo enviar. Probá de nuevo o <a href="https://wa.me/5491136196279" target="_blank" rel="noopener">escribinos por WhatsApp</a>.';
+      })
+      .then(function(){ btn.disabled = false; btn.textContent = t0; });
+  });
+  var waBtn = document.getElementById('lead-wa-btn');
+  if(waBtn){
+    waBtn.addEventListener('click', function(){
+      if(!f.reportValidity()) return;
+      var nombre = f.querySelector('[name="nombre"]').value.trim();
+      var tel = f.querySelector('[name="telefono"]').value.trim();
+      var msg = f.querySelector('[name="mensaje"]').value.trim();
+      var texto = 'Hola! Soy ' + nombre + ' (' + tel + '). ' + msg;
+      if(window.goatcounter && window.goatcounter.count){ window.goatcounter.count({path:'wa-lead-click ' + location.pathname, title:'WhatsApp desde formulario', event:true}); }
+      window.open('https://wa.me/5491136196279?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+    });
+  }
+})();
+</script>
+
+<!-- Bloque Orion Studio (escalera de planes): voz del estudio, igual en todas
+     las demos, CTA al WhatsApp de Orion. NO tocar al personalizar la demo. -->
+<section class="orion-plans" id="planes-orion">
+  <div class="op-in">
+    <div class="op-tag">Nota de Orion Studio — el estudio que armó esta demo</div>
+    <h2>Esta <em>web</em> puede hacer más que verse linda</h2>
+    <p class="op-sub">Cada plan deja sistemas trabajando solos, y el abono mensual incluye mantenimiento, cambios y un informe con cuánta gente entró y cuántos te escribieron.</p>
+    <div class="op-grid">
+      <div class="op-card">
+        <h3>Presencia</h3>
+        <p class="op-precio"><strong>desde $400.000</strong> <span>+ $35.000/mes</span></p>
+        <p>Esta web, con tu dominio, hosting y botón de WhatsApp con mensaje armado.</p>
+      </div>
+      <div class="op-card destacado">
+        <h3>Turnos</h3>
+        <p class="op-precio"><strong>desde $600.000</strong> <span>+ $55.000/mes</span></p>
+        <p>Suma reserva de turnos online, reseñas de Google en la página y formularios que llegan a tu mail.</p>
+      </div>
+      <div class="op-card">
+        <h3>Inteligente</h3>
+        <p class="op-precio"><strong>desde $900.000</strong> <span>+ $85.000/mes</span></p>
+        <p>Suma asistente con IA que responde 24/7 y recordatorios automáticos de turno.</p>
+      </div>
+    </div>
+    <div class="op-foot">
+      <span>Los valores son "desde": el precio final depende de la propuesta para tu caso.</span>
+      <a class="op-btn" href="https://wa.me/5492235639535?text=Hola%2C%20vi%20la%20demo%20y%20quiero%20saber%20m%C3%A1s%20de%20los%20planes" target="_blank" rel="noopener">Hablar con Orion Studio</a>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap foot">
