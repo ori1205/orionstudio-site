@@ -169,7 +169,7 @@
   .lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:var(--accent)}
   .lead-form textarea{resize:vertical;margin-bottom:15px}
   .lf-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-  .lead-form .btn{border:none}
+  .lead-form button[type="submit"]{border:none}
   .lf-status{font-size:.9rem}
   .lf-status.ok{color:var(--accent);font-weight:600}
   .lf-status.err{color:#ff8a80}
@@ -430,6 +430,7 @@
       <textarea name="mensaje" rows="3" placeholder="Contanos de tu negocio (rubro, si ya tenés web…)" aria-label="Contanos de tu negocio" required></textarea>
       <div class="lf-foot">
         <button type="submit" class="btn">Pedir propuesta</button>
+        <button type="button" class="btn ghost" id="lead-wa-btn">Enviar por WhatsApp</button>
         <span class="lf-status" aria-live="polite"></span>
       </div>
     </form>
@@ -458,6 +459,18 @@
           })
           .then(function(){ btn.disabled = false; btn.textContent = t0; });
       });
+      var waBtn = document.getElementById('lead-wa-btn');
+      if(waBtn){
+        waBtn.addEventListener('click', function(){
+          if(!f.reportValidity()) return;
+          var nombre = f.querySelector('[name="nombre"]').value.trim();
+          var tel = f.querySelector('[name="whatsapp"]').value.trim();
+          var msg = f.querySelector('[name="mensaje"]').value.trim();
+          var texto = 'Hola! Soy ' + nombre + ' (' + tel + '). ' + msg;
+          if(window.goatcounter && window.goatcounter.count){ window.goatcounter.count({path:'wa-lead-click ' + location.pathname, title:'WhatsApp desde formulario', event:true}); }
+          window.open('https://wa.me/5492235639535?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+        });
+      }
     })();
     </script>
   </div>

@@ -204,6 +204,9 @@
   .lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:var(--teal-dark)}
   .lead-form textarea{resize:vertical;margin-bottom:16px}
   .lf-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .lead-form button[type="submit"]{border:none}
+  .lead-form .btn-wa{background:transparent;color:var(--teal-dark);box-shadow:none;border:1.5px solid var(--teal-dark)}
+  .lead-form .btn-wa:hover{background:var(--teal-soft)}
   .lf-status{font-size:.9rem}
   .lf-status.ok{color:#1b7f5c;font-weight:600}
   .lf-status.err{color:#b3423a}
@@ -515,6 +518,7 @@
       <textarea name="mensaje" rows="3" placeholder="Contanos qué necesitás (turno, consulta, tratamiento…)" aria-label="Tu consulta" required></textarea>
       <div class="lf-foot">
         <button type="submit" class="btn teal">Enviar consulta</button>
+        <button type="button" class="btn btn-wa" id="lead-wa-btn">Enviar por WhatsApp</button>
         <span class="lf-status" aria-live="polite"></span>
       </div>
     </form>
@@ -543,6 +547,18 @@
           })
           .then(function(){ btn.disabled = false; btn.textContent = t0; });
       });
+      var waBtn = document.getElementById('lead-wa-btn');
+      if(waBtn){
+        waBtn.addEventListener('click', function(){
+          if(!f.reportValidity()) return;
+          var nombre = f.querySelector('[name="nombre"]').value.trim();
+          var tel = f.querySelector('[name="telefono"]').value.trim();
+          var msg = f.querySelector('[name="mensaje"]').value.trim();
+          var texto = 'Hola! Soy ' + nombre + ' (' + tel + '). ' + msg;
+          if(window.goatcounter && window.goatcounter.count){ window.goatcounter.count({path:'wa-lead-click ' + location.pathname, title:'WhatsApp desde formulario', event:true}); }
+          window.open('https://wa.me/5492235639535?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+        });
+      }
     })();
     </script>
   </div>
