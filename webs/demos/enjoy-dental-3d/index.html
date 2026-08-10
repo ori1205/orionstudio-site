@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Enjoy Dental — versión película 3D (comparativa)</title>
+<meta name="description" content="Versión alternativa en formato película 3D de la demo de Enjoy Dental. Solo para comparar formatos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="motion.css">
+<style>
+  :root{
+    --mk-primario:#e8564f;
+    --coral:#e8564f; --coral-deep:#c23f3a; --coral-soft:#fdece9;
+    --ink:#0d0b0b; --wa:#25d366;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:auto}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--ink);color:#fff;line-height:1.6;overflow-x:hidden}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.05}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:9999;background:#000;color:#e6cfcd;font-size:.72rem;letter-spacing:.06em;text-align:center;padding:7px 12px}
+  .demo-ribbon b{color:#fff;font-weight:700}
+  .cmp-tag{position:fixed;top:30px;left:0;right:0;z-index:9998;background:rgba(232,86,79,.92);color:#fff;font-size:.72rem;text-align:center;padding:6px 12px}
+  .cmp-tag a{text-decoration:underline;font-weight:700}
+
+  /* barra fija de conversión: vive FUERA de la película */
+  .topbar{position:fixed;top:56px;left:0;right:0;z-index:9990;display:flex;align-items:center;justify-content:space-between;
+    padding:12px clamp(16px,4vw,40px);background:rgba(13,11,11,.55);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .topbar .brand{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-weight:700;font-size:.98rem}
+  .topbar .bmark{width:28px;height:28px;border-radius:8px;background:var(--coral);display:grid;place-items:center;font-size:.9rem}
+  .topbar .acts{display:flex;gap:9px;align-items:center}
+  .tb-btn{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.82rem;padding:9px 16px;border-radius:999px;white-space:nowrap}
+  .tb-btn.wa{background:var(--wa);color:#fff}
+  .tb-btn.tel{border:1px solid rgba(255,255,255,.35);color:#fff}
+  .tb-btn svg{width:14px;height:14px}
+
+  /* --- planos de la película --- */
+  .shot-in{width:min(1000px,calc(100% - 48px));margin:0 auto;text-align:center;position:relative;z-index:3}
+  .shot-bg{position:absolute;inset:0;z-index:0}
+  .shot-bg img{width:100%;height:100%;object-fit:cover}
+  .shot-bg::after{content:"";position:absolute;inset:0;background:rgba(10,8,8,.62)}
+  .eyebrow{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--coral);background:rgba(232,86,79,.14);border:1px solid rgba(232,86,79,.4);padding:6px 15px;border-radius:999px;margin-bottom:18px}
+  .big{font-size:clamp(2rem,6.6vw,4.6rem);line-height:1.02;text-shadow:0 4px 30px rgba(0,0,0,.75)}
+  .big em{font-style:italic;color:var(--coral)}
+  .sub{font-size:clamp(.98rem,1.8vw,1.2rem);color:rgba(255,255,255,.82);max-width:620px;margin:16px auto 0;text-shadow:0 2px 18px rgba(0,0,0,.8)}
+  .logo-shot{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2.6rem,10vw,6rem);letter-spacing:-.02em}
+  .logo-shot span{color:var(--coral)}
+  .num{font-family:'Fraunces',serif;font-size:clamp(3.4rem,13vw,8rem);line-height:1;color:var(--coral);text-shadow:0 6px 40px rgba(0,0,0,.7)}
+  .num-label{font-size:clamp(.95rem,2vw,1.25rem);color:#fff;margin-top:6px;text-shadow:0 2px 18px rgba(0,0,0,.8)}
+  .quote{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.3rem,3.6vw,2.4rem);line-height:1.3;max-width:900px;margin:0 auto;text-shadow:0 3px 26px rgba(0,0,0,.8)}
+  .quote-who{margin-top:16px;font-size:.9rem;color:rgba(255,255,255,.72)}
+  .chips-3d{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
+  .chip-3d{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.07);padding:9px 17px;border-radius:999px;font-size:.9rem;backdrop-filter:blur(4px)}
+  .cta-big{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;font-weight:700;font-size:1.05rem;padding:17px 34px;border-radius:999px;margin-top:26px}
+  .tel-big{display:block;font-family:'Fraunces',serif;font-size:clamp(1.6rem,5vw,3rem);margin-top:14px}
+
+  /* footer estático (la conversión NO se anima) */
+  footer{background:#08090b;padding:64px 0 44px;position:relative;z-index:5}
+  .foot-in{width:min(1060px,calc(100% - 48px));margin:0 auto}
+  .foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;margin-bottom:30px}
+  .foot-grid h3{font-size:1.3rem;margin-bottom:14px}
+  .fline{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.09);font-size:.93rem;color:rgba(255,255,255,.78)}
+  .fline b{color:#fff;display:block}
+  .foot-map{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+  .foot-map iframe{width:100%;height:260px;border:0;display:block;filter:grayscale(.4)}
+  .foot-legal{border-top:1px solid rgba(255,255,255,.09);padding-top:20px;font-size:.8rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .foot-legal a{color:var(--coral)}
+
+  @media(max-width:820px){
+    .topbar{padding:10px 14px}
+    .topbar .brand span:last-child{display:none}
+    .tb-btn{padding:8px 13px;font-size:.76rem}
+    .foot-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-ribbon">Propuesta de diseño para <b>Enjoy Dental</b> — demo de Orion Studio</div>
+<div class="cmp-tag">Versión <b>película 3D</b> (experimento de formato) · <a href="../enjoy-dental/">ver la versión principal →</a></div>
+
+<!-- barra de conversión: siempre alcanzable, fuera de la película -->
+<header class="topbar">
+  <a href="#" class="brand"><span class="bmark">🦷</span><span>Enjoy Dental</span></a>
+  <div class="acts">
+    <a class="tb-btn tel" href="tel:+541143723301">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2Z"/></svg>
+      4372-3301
+    </a>
+    <a class="tb-btn wa" href="https://wa.me/5491164590061?text=Hola%2C%20quiero%20pedir%20un%20turno" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.24.66-1.37 1.26-1.92 1.3-.5.05-1.12.23-3.76-.78-3.18-1.25-5.2-4.5-5.36-4.7-.16-.21-1.28-1.7-1.28-3.24s.8-2.3 1.1-2.6c.28-.32.62-.4.83-.4h.6c.2 0 .45-.07.7.54.26.6.87 2.1.94 2.26.08.15.13.34.03.55-.1.2-.16.34-.3.52-.16.18-.33.4-.47.55-.16.15-.32.32-.14.63.18.3.8 1.32 1.72 2.14 1.18 1.05 2.17 1.38 2.48 1.53.3.15.5.13.66-.08.18-.2.76-.88.97-1.19.2-.3.4-.25.68-.15.28.1 1.8.85 2.1 1 .3.16.52.23.6.36.06.13.06.75-.18 1.4Z"/></svg>
+      Pedir turno
+    </a>
+  </div>
+</header>
+
+<!-- ============ LA PELÍCULA: 15 planos ============ -->
+<div class="mk-film" data-mk-scrolly data-mk-shots="15" style="--mk-nshots:15">
+  <div class="mk-film-stage mk-tunnel">
+
+    <!-- 0 · logo emergiendo -->
+    <div class="mk-zshot" style="--zi:0">
+      <div class="shot-in">
+        <p class="logo-shot">en<span>joy</span></p>
+        <p class="sub">Odontología integral · Viamonte 1526, CABA</p>
+      </div>
+    </div>
+
+    <!-- 1 · titular sobre foto -->
+    <div class="mk-zshot" style="--zi:1">
+      <div class="shot-bg mk-zfog"><img src="img/hero.jpg" alt=""></div>
+      <div class="shot-in">
+        <span class="eyebrow">Tribunales · CABA</span>
+        <h1 class="big">Una clínica grande,<br><em>de verdad</em></h1>
+      </div>
+    </div>
+
+    <!-- 2 · entramos por la foto de los consultorios -->
+    <div class="mk-zshot" style="--zi:2">
+      <div class="shot-bg mk-zfog"><img class="mk-fx-dive" src="img/consultorios.jpg" alt=""></div>
+      <div class="shot-in mk-zdepth" style="--z:60px">
+        <p class="num">6</p>
+        <p class="num-label">consultorios funcionando a la vez</p>
+      </div>
+    </div>
+
+    <!-- 3 · cifra: profesionales -->
+    <div class="mk-zshot" style="--zi:3">
+      <div class="shot-in">
+        <p class="num">16</p>
+        <p class="num-label">profesionales, cada especialidad con su referente</p>
+      </div>
+    </div>
+
+    <!-- 4 · el equipo -->
+    <div class="mk-zshot" style="--zi:4">
+      <div class="shot-bg mk-zfog"><img src="img/equipo.jpg" alt=""></div>
+      <div class="shot-in">
+        <h2 class="big">Dra. Silvina Alperin<br><em>y equipo</em></h2>
+      </div>
+    </div>
+
+    <!-- 5 · especialidades -->
+    <div class="mk-zshot" style="--zi:5">
+      <div class="shot-in">
+        <span class="eyebrow">Especialidades</span>
+        <h2 class="big">Todo, <em>en un lugar</em></h2>
+        <div class="chips-3d">
+          <span class="chip-3d">Implantes</span>
+          <span class="chip-3d">Ortodoncia</span>
+          <span class="chip-3d">Endodoncia</span>
+          <span class="chip-3d">Cirugía</span>
+          <span class="chip-3d">Prótesis</span>
+          <span class="chip-3d">Carillas</span>
+          <span class="chip-3d">Blanqueamiento</span>
+          <span class="chip-3d">Urgencias</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 · atravesamos el consultorio en acción -->
+    <div class="mk-zshot" style="--zi:6">
+      <div class="shot-bg mk-zfog"><img class="mk-fx-dive" src="img/trabajo1.jpg" alt=""></div>
+      <div class="shot-in mk-zdepth" style="--z:80px">
+        <h2 class="big">Bioseguridad y<br><em>última generación</em></h2>
+      </div>
+    </div>
+
+    <!-- 7 · centro de imágenes: la radiografía nos traga -->
+    <div class="mk-zshot" style="--zi:7">
+      <div class="shot-bg"><img class="mk-fx-dive" src="img/rx.jpg" alt=""></div>
+      <div class="shot-in mk-zdepth" style="--z:120px">
+        <span class="eyebrow">Centro propio</span>
+        <h2 class="big">Diagnóstico<br>por <em>imágenes</em></h2>
+      </div>
+    </div>
+
+    <!-- 8 · estudios -->
+    <div class="mk-zshot" style="--zi:8">
+      <div class="shot-in">
+        <h2 class="big" style="font-size:clamp(1.5rem,4vw,2.6rem)">Todos los estudios,<br><em>sin salir de la clínica</em></h2>
+        <div class="chips-3d">
+          <span class="chip-3d">Cone Beam</span>
+          <span class="chip-3d">Tomografía de ATM</span>
+          <span class="chip-3d">Piezas retenidas</span>
+          <span class="chip-3d">Cefalométricos</span>
+          <span class="chip-3d">Escaneo 3D</span>
+        </div>
+        <p class="sub">¿Sos profesional? También atendemos pacientes derivados.</p>
+      </div>
+    </div>
+
+    <!-- 9 · cifra reseñas -->
+    <div class="mk-zshot" style="--zi:9">
+      <div class="shot-in">
+        <p class="num">4,3 ★</p>
+        <p class="num-label">sobre 358 opiniones en Google</p>
+      </div>
+    </div>
+
+    <!-- 10 · reseña 1 -->
+    <div class="mk-zshot" style="--zi:10">
+      <div class="shot-in">
+        <p class="quote">"Siempre le tuve mucho miedo al dentista y acá me demostraron que no tiene por qué ser una experiencia traumática."</p>
+        <p class="quote-who">Luján Florentín · Google</p>
+      </div>
+    </div>
+
+    <!-- 11 · reseña 2 -->
+    <div class="mk-zshot" style="--zi:11">
+      <div class="shot-bg mk-zfog"><img src="img/marca.jpg" alt=""></div>
+      <div class="shot-in">
+        <p class="quote">"Desde que entrás se siente un ambiente súper cálido. Todo el equipo trabaja con mucha armonía."</p>
+        <p class="quote-who">Abril Galante · Google</p>
+      </div>
+    </div>
+
+    <!-- 12 · coberturas -->
+    <div class="mk-zshot" style="--zi:12">
+      <div class="shot-in">
+        <span class="eyebrow">Coberturas</span>
+        <h2 class="big" style="font-size:clamp(1.5rem,4vw,2.6rem)">Trabajamos con</h2>
+        <div class="chips-3d">
+          <span class="chip-3d">OSDE</span>
+          <span class="chip-3d">Galeno</span>
+          <span class="chip-3d">Swiss Medical</span>
+          <span class="chip-3d">Medicus</span>
+          <span class="chip-3d">Apross</span>
+          <span class="chip-3d">OSPJN</span>
+          <span class="chip-3d">Particulares</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13 · dónde -->
+    <div class="mk-zshot" style="--zi:13">
+      <div class="shot-bg mk-zfog"><img src="img/recepcion.jpg" alt=""></div>
+      <div class="shot-in">
+        <h2 class="big">Viamonte 1526<br><em>5º piso</em></h2>
+        <p class="sub">Entre Paraná y Montevideo · Lunes a viernes de 9 a 19 hs</p>
+      </div>
+    </div>
+
+    <!-- 14 · CTA final -->
+    <div class="mk-zshot" style="--zi:14">
+      <div class="shot-in">
+        <h2 class="big">Pedí tu <em>turno</em></h2>
+        <a class="cta-big mk-pulse" href="https://wa.me/5491164590061?text=Hola%2C%20quiero%20pedir%20un%20turno" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.24.66-1.37 1.26-1.92 1.3-.5.05-1.12.23-3.76-.78-3.18-1.25-5.2-4.5-5.36-4.7-.16-.21-1.28-1.7-1.28-3.24s.8-2.3 1.1-2.6c.28-.32.62-.4.83-.4h.6c.2 0 .45-.07.7.54.26.6.87 2.1.94 2.26.08.15.13.34.03.55-.1.2-.16.34-.3.52-.16.18-.33.4-.47.55-.16.15-.32.32-.14.63.18.3.8 1.32 1.72 2.14 1.18 1.05 2.17 1.38 2.48 1.53.3.15.5.13.66-.08.18-.2.76-.88.97-1.19.2-.3.4-.25.68-.15.28.1 1.8.85 2.1 1 .3.16.52.23.6.36.06.13.06.75-.18 1.4Z"/></svg>
+          Escribinos por WhatsApp
+        </a>
+        <a class="tel-big" href="tel:+541143723301">(011) 4372-3301</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ FOOTER ESTÁTICO — la conversión no se anima ============ -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-grid">
+      <div>
+        <h3>Enjoy Dental</h3>
+        <div class="fline"><span>📍</span><div><b>Viamonte 1526, 5º piso</b>Tribunales, CABA</div></div>
+        <div class="fline"><span>💬</span><a href="https://wa.me/5491164590061" target="_blank" rel="noopener"><b>11 6459-0061</b>WhatsApp</a></div>
+        <div class="fline"><span>📞</span><a href="tel:+541143723301"><b>(011) 4372-3301</b>Teléfono</a></div>
+        <div class="fline"><span>✉️</span><a href="mailto:info@enjoydental.com.ar"><b>info@enjoydental.com.ar</b>Mail</a></div>
+        <div class="fline"><span>🕐</span><div><b>Lunes a viernes de 9 a 19 hs</b>Con reserva previa de turno</div></div>
+        <div class="fline"><span>⭐</span><div><b>4,3 en Google · 358 opiniones</b></div></div>
+      </div>
+      <div class="foot-map">
+        <iframe title="Mapa Enjoy Dental" src="https://www.google.com/maps?q=Viamonte%201526%2C%20CABA&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>Sitio de demostración diseñado por <a href="https://orionstudio.com.ar/webs/">Orion Studio</a> — no es el sitio oficial de la clínica.</span>
+      <a href="../enjoy-dental/">← Volver a la versión principal</a>
+    </div>
+  </div>
+</footer>
+
+<script src="motion.js"></script>
+<script>
+(function(){
+  if (window.self !== window.top) return;
+  var s=document.createElement('script'); s.async=true; s.src='https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter','https://orionstudio.goatcounter.com/count');
+  document.head.appendChild(s);
+  document.addEventListener('click', function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me"], a[href^="tel:"]'):null;
+    if(!a||!window.goatcounter||!window.goatcounter.count) return;
+    var tipo=(a.getAttribute('href')||'').indexOf('tel:')===0?'tel-click':'wa-click';
+    window.goatcounter.count({path:tipo+' '+location.pathname, title:'Click de contacto', event:true});
+  });
+})();
+</script>
+</body>
+</html>
