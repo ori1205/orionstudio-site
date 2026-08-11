@@ -199,6 +199,11 @@ em{font-style:italic}
 .ba-tag.a{left:16px}
 .ba-tag.b{right:16px}
 .nota{font-size:13.5px;color:var(--tinta-suave);margin-top:18px;font-style:italic}
+.ba-cap{
+  margin-top:14px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tinta-suave);text-align:center;
+}
+.ba-cap span{color:var(--oro)}
 
 /* --- aparatologia --- */
 .aparatos{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:50px}
@@ -421,10 +426,10 @@ footer{padding:44px 0;border-top:1px solid var(--linea)}
     <h2 class="titulo rv">Lo que hacemos <em>por vos</em></h2>
     <div class="sumario">
       <div class="plate rv">
-        <img src="img/celulitis.jpg" alt="Sesión de tratamiento corporal en MB Estética &amp; Salud" data-plate="1" class="on">
+        <img src="img/facial.jpg" alt="Tratamiento facial en el salón de MB Estética &amp; Salud" data-plate="1" class="on">
         <img src="img/adiposidad.jpg" alt="Tratamiento corporal de adiposidad localizada" data-plate="2">
-        <img src="img/exilis.jpg" alt="Equipo Exilis en manos de una profesional de MB Estética &amp; Salud" data-plate="3">
-        <img src="img/cafe.jpg" alt="Detalle del salón de MB Estética &amp; Salud" data-plate="4">
+        <img src="img/celulitis.jpg" alt="Sesión de tratamiento sobre la piel en MB Estética &amp; Salud" data-plate="3">
+        <img src="img/exilis.jpg" alt="Equipo Exilis en manos de una profesional de MB Estética &amp; Salud" data-plate="4">
       </div>
       <div class="indice">
         <article class="fila rv" data-target="1">
@@ -433,7 +438,7 @@ footer{padding:44px 0;border-top:1px solid var(--linea)}
             <h3>Faciales</h3>
             <p>Limpieza facial profunda y protocolos de cuidado de la piel, con la
               evaluación previa que define qué necesita tu rostro.</p>
-            <div class="fila-img"><img src="img/celulitis.jpg" alt="Tratamiento en MB Estética &amp; Salud" loading="lazy"></div>
+            <div class="fila-img"><img src="img/facial.jpg" alt="Tratamiento facial en MB Estética &amp; Salud" loading="lazy"></div>
           </div>
         </article>
         <article class="fila rv d1" data-target="2">
@@ -450,7 +455,7 @@ footer{padding:44px 0;border-top:1px solid var(--linea)}
           <div>
             <h3>Depilación definitiva</h3>
             <p>Sesiones de láser con equipamiento profesional, en las cuatro sedes.</p>
-            <div class="fila-img"><img src="img/exilis.jpg" alt="Equipamiento profesional" loading="lazy"></div>
+            <div class="fila-img"><img src="img/celulitis.jpg" alt="Sesión sobre la piel en MB Estética &amp; Salud" loading="lazy"></div>
           </div>
         </article>
         <article class="fila rv d3" data-target="4">
@@ -458,7 +463,7 @@ footer{padding:44px 0;border-top:1px solid var(--linea)}
           <div>
             <h3>Aparatología</h3>
             <p>Exilis, Venus y Alidya™: tecnología que acompaña al protocolo, nunca al revés.</p>
-            <div class="fila-img"><img src="img/cafe.jpg" alt="Salón de MB Estética &amp; Salud" loading="lazy"></div>
+            <div class="fila-img"><img src="img/exilis.jpg" alt="Equipo Exilis en MB Estética &amp; Salud" loading="lazy"></div>
           </div>
         </article>
       </div>
@@ -474,21 +479,33 @@ footer{padding:44px 0;border-top:1px solid var(--linea)}
     <div class="res-grid">
       <div class="rv d1">
         <div class="casos">
-          <button class="caso-btn on" data-caso="2">Protocolo adiposidad</button>
-          <button class="caso-btn" data-caso="1">Protocolo a medida</button>
+          <button class="caso-btn on" data-caso="2" data-nombre="Protocolo adiposidad">Protocolo adiposidad</button>
+          <button class="caso-btn" data-caso="1" data-nombre="Protocolo a medida">Protocolo a medida</button>
         </div>
-        <p>Arrastrá el círculo para ver el antes y el después de un mismo caso.
-          Son fotos publicadas por MB Estética &amp; Salud en su Instagram.</p>
-        <p class="nota">Cada tratamiento se define después de una evaluación:
-          los resultados varían según la persona y el protocolo indicado.</p>
+        <p>Ningún protocolo arranca por la máquina. Arranca por una
+          <b>evaluación sin cargo</b>: qué tipo de adiposidad o de celulitis hay,
+          en qué zona y desde cuándo. Recién ahí se define qué aparatología entra,
+          cuántas sesiones hacen falta y cada cuánto.</p>
+        <p style="margin-top:16px">Por eso dos personas que llegan con la misma
+          consulta se van con planes distintos. Y por eso los resultados se
+          pueden mostrar.</p>
+        <p class="nota">Los resultados varían según cada persona, la zona tratada
+          y la constancia. La primera evaluación es sin cargo y sin compromiso.</p>
         <a class="btn btn-solid" style="margin-top:26px" href="https://wa.me/5491133451152?text=Hola!%20Vi%20los%20resultados%20y%20quiero%20una%20evaluaci%C3%B3n" target="_blank" rel="noopener">Quiero mi evaluación</a>
       </div>
-      <div class="ba-wrap rv d2" id="comparador">
-        <img class="ba-a" id="ba-antes" src="img/ba2-antes.jpg" alt="Antes del tratamiento">
-        <div class="ba-after"><img class="ba-b" id="ba-despues" src="img/ba2-despues.jpg" alt="Después del tratamiento"></div>
-        <span class="ba-tag a">Antes</span>
-        <span class="ba-tag b">Después</span>
-        <div class="ba-handle" role="slider" tabindex="0" aria-label="Comparar antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+      <div class="rv d2">
+        <!-- OJO con el orden: .ba-after tapa la MITAD IZQUIERDA, así que la foto
+             que va adentro es la que se ve a la izquierda. Para que quede
+             "antes | después" en el orden natural de lectura, el ANTES va
+             adentro del .ba-after y el DESPUÉS es la imagen de fondo. -->
+        <div class="ba-wrap" id="comparador">
+          <img class="ba-a" id="ba-base" src="img/ba2-despues.jpg" alt="Después del tratamiento">
+          <div class="ba-after"><img id="ba-overlay" src="img/ba2-antes.jpg" alt="Antes del tratamiento"></div>
+          <span class="ba-tag a">Antes</span>
+          <span class="ba-tag b">Después</span>
+          <div class="ba-handle" role="slider" tabindex="0" aria-label="Comparar antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+        </div>
+        <p class="ba-cap">Arrastrá el círculo para comparar · <span id="ba-cap-caso">Protocolo adiposidad</span></p>
       </div>
     </div>
   </div>
@@ -708,16 +725,19 @@ footer{padding:44px 0;border-top:1px solid var(--linea)}
     f.addEventListener('focusin', function(){ mostrar(f.dataset.target); });
   });
 
-  /* Comparador: cambiar de caso sin recargar. */
-  var antes = document.getElementById('ba-antes');
-  var despues = document.getElementById('ba-despues');
+  /* Comparador: cambiar de caso sin recargar. El "base" es el DESPUÉS y el
+     "overlay" el ANTES (ver comentario en el HTML). */
+  var base = document.getElementById('ba-base');
+  var overlay = document.getElementById('ba-overlay');
+  var cap = document.getElementById('ba-cap-caso');
   document.querySelectorAll('.caso-btn').forEach(function(b){
     b.addEventListener('click', function(){
       document.querySelectorAll('.caso-btn').forEach(function(x){ x.classList.remove('on'); });
       b.classList.add('on');
       var n = b.dataset.caso;
-      antes.src = 'img/ba' + n + '-antes.jpg';
-      despues.src = 'img/ba' + n + '-despues.jpg';
+      base.src = 'img/ba' + n + '-despues.jpg';
+      overlay.src = 'img/ba' + n + '-antes.jpg';
+      cap.textContent = b.dataset.nombre;
     });
   });
 })();
