@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D-M Estética Flores — Débora · Lautaro 422, CABA</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="D-M Estética Flores: tratamientos faciales y corporales, depilación láser, masajes y HIFU en Flores, CABA. Propuesta de diseño de Orion Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   D-M Estética Flores — identidad propia.
+   La paleta sale de sus DOS salas reales: una turquesa y una rosa.
+   Arquetipo: cálido y personal, con la persona (Débora) al frente
+   en vez de la marca — distinto del editorial de MB y de todo lo
+   dental. Comportamiento comun: /webs/assets/orion-demo.js
+   ============================================================ */
+:root{
+  --crema:#faf6f2;
+  --crema-2:#f3ece6;
+  --carbon:#2c2b30;
+  --gris:#6c666b;
+  --turquesa:#4fb8a8;
+  --turquesa-claro:#dff2ef;
+  --rosa:#e2b3ae;
+  --rosa-claro:#f8e9e7;
+  --linea:rgba(44,43,48,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--crema);color:var(--carbon);
+  font-family:'Karla',system-ui,sans-serif;font-weight:400;
+  font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:'Marcellus',Georgia,serif;font-weight:400;line-height:1.12}
+.wrap{width:min(1160px,92vw);margin:0 auto}
+
+.demo-band{
+  background:var(--carbon);color:#efe7e2;font-size:12.5px;letter-spacing:.12em;
+  text-transform:uppercase;text-align:center;padding:9px 14px;position:relative;z-index:60;
+}
+.demo-band b{color:var(--turquesa);font-weight:500}
+
+#nav{position:sticky;top:0;z-index:50;transition:background .3s,box-shadow .3s}
+#nav.solid{background:rgba(250,246,242,.95);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--linea)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:15px 0}
+.logo{text-decoration:none;display:flex;align-items:center;gap:11px}
+.logo .mono{
+  width:42px;height:42px;border-radius:50%;background:var(--turquesa);color:#fff;
+  display:grid;place-content:center;font-family:'Marcellus',serif;font-size:16px;letter-spacing:.04em;
+}
+.logo b{font-family:'Marcellus',serif;font-weight:400;font-size:19px;display:block;line-height:1.2}
+.logo span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gris)}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{text-decoration:none;font-size:14.5px;color:var(--gris);transition:color .2s}
+.nav-links a:hover{color:var(--turquesa)}
+.nav-cta{
+  background:var(--carbon);color:#fff !important;padding:11px 22px !important;border-radius:999px;
+  font-size:13.5px !important;transition:background .25s !important;
+}
+.nav-cta:hover{background:var(--turquesa)}
+#hamburger{display:none;background:none;border:0;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+#hamburger span{display:block;width:23px;height:2px;background:var(--carbon);border-radius:2px;transition:.3s}
+#nav.menu-open #hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#nav.menu-open #hamburger span:nth-child(2){opacity:0}
+#nav.menu-open #hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* --- HERO: foto ancha con tarjeta que se monta desde abajo-izquierda --- */
+.hero{position:relative;padding-bottom:120px}
+.hero-foto{position:relative;height:clamp(340px,54vh,540px);overflow:hidden;border-radius:0 0 0 90px}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.hero-foto::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(44,43,48,.45),rgba(44,43,48,.05) 62%)}
+.hero-card{
+  position:relative;margin-top:-92px;z-index:2;background:var(--crema);
+  padding:44px 46px 40px;max-width:660px;border-radius:4px;
+  box-shadow:0 26px 60px rgba(44,43,48,.13);
+}
+.kicker{
+  font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--turquesa);
+  display:block;margin-bottom:16px;
+}
+.hero-card h1{font-size:clamp(2.3rem,5.2vw,3.5rem)}
+.hero-card h1 em{font-style:italic;color:var(--turquesa)}
+.hero-card p{color:var(--gris);margin-top:18px;max-width:50ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{
+  display:inline-block;text-decoration:none;font-size:14.5px;font-weight:500;
+  padding:14px 28px;border-radius:999px;transition:.25s;
+}
+.btn-solid{background:var(--carbon);color:#fff}
+.btn-solid:hover{background:var(--turquesa)}
+.btn-line{border:1px solid var(--linea);color:var(--carbon)}
+.btn-line:hover{border-color:var(--carbon)}
+/* sello: prueba social, círculo (nunca collage) */
+.sello{
+  position:absolute;right:6%;top:clamp(200px,32vh,330px);z-index:3;
+  width:132px;height:132px;border-radius:50%;background:var(--crema);
+  display:grid;place-content:center;text-align:center;gap:1px;
+  box-shadow:0 16px 40px rgba(44,43,48,.22);
+}
+.sello .n{font-family:'Marcellus',serif;font-size:32px;line-height:1}
+.sello .st{color:var(--turquesa);font-size:12px;letter-spacing:.1em}
+.sello small{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);max-width:100px}
+
+/* --- franja de datos duros --- */
+.franja{background:var(--turquesa-claro);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.franja-in{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.dato-duro{padding:26px 22px;text-align:center}
+.dato-duro b{font-family:'Marcellus',serif;font-size:20px;display:block;margin-bottom:3px}
+.dato-duro span{font-size:14px;color:var(--gris)}
+
+.seccion{padding:96px 0}
+.eyebrow{font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--turquesa);display:block;margin-bottom:16px}
+.titulo{font-size:clamp(2rem,4.6vw,3.2rem)}
+.titulo em{font-style:italic;color:var(--turquesa)}
+.bajada{color:var(--gris);margin-top:18px;max-width:62ch}
+
+/* --- Débora --- */
+.deb{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center}
+.deb-foto{border-radius:6px;overflow:hidden;box-shadow:0 22px 50px rgba(44,43,48,.14)}
+.deb-foto img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.deb p{margin-top:18px;color:var(--gris)}
+.deb .firma{
+  font-family:'Marcellus',serif;font-size:22px;color:var(--carbon);margin-top:26px;
+  display:flex;align-items:center;gap:12px;
+}
+.deb .firma::before{content:'';width:44px;height:1px;background:var(--turquesa)}
+
+/* --- tratamientos: chips (el "muro" real que tienen en la pared) --- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:38px}
+.chip{
+  border:1px solid var(--linea);border-radius:999px;padding:10px 18px;font-size:14px;
+  background:#fff;transition:.22s;
+}
+.chip:hover{border-color:var(--turquesa);color:var(--turquesa)}
+.destacados{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:52px;border-top:1px solid var(--linea)}
+.dest{padding:32px 30px;border-bottom:1px solid var(--linea);border-right:1px solid var(--linea);transition:background .3s}
+.dest:nth-child(2n){border-right:0}
+.dest:hover{background:var(--crema-2)}
+.dest h3{font-size:24px;margin-bottom:10px}
+.dest p{font-size:15.5px;color:var(--gris)}
+
+/* --- las dos salas (díptico) --- */
+.salas{background:var(--crema-2)}
+.diptico{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:46px}
+.sala{position:relative;overflow:hidden;border-radius:6px}
+.sala img{width:100%;aspect-ratio:16/11;object-fit:cover;transition:transform .8s ease}
+.sala:hover img{transform:scale(1.05)}
+.sala-cap{
+  position:absolute;left:0;right:0;bottom:0;padding:22px 24px;color:#fff;
+  background:linear-gradient(transparent,rgba(44,43,48,.78));
+}
+.sala-cap b{font-family:'Marcellus',serif;font-weight:400;font-size:21px;display:block}
+.sala-cap span{font-size:14px;opacity:.85}
+
+/* --- pasos --- */
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:48px}
+.paso .n{
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--turquesa);color:var(--turquesa);
+  display:grid;place-content:center;font-family:'Marcellus',serif;font-size:18px;margin-bottom:18px;
+}
+.paso h3{font-size:21px;margin-bottom:8px}
+.paso p{font-size:15.5px;color:var(--gris)}
+
+/* --- HIFU --- */
+.hifu{background:var(--rosa-claro)}
+.hifu-in{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+.hifu .eyebrow{color:var(--rosa)}
+.hifu .titulo em{color:var(--rosa)}
+.hifu-foto{border-radius:6px;overflow:hidden}
+.hifu-foto img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.hifu-lista{margin-top:26px;display:grid;gap:12px}
+.hifu-lista li{list-style:none;padding-left:26px;position:relative;color:var(--gris);font-size:16px}
+.hifu-lista li::before{content:'';position:absolute;left:0;top:11px;width:12px;height:1px;background:var(--rosa)}
+
+/* --- reseñas --- */
+.res-head{display:flex;align-items:flex-end;justify-content:space-between;gap:26px;flex-wrap:wrap}
+.puntaje b{font-family:'Marcellus',serif;font-size:52px;display:block;line-height:1}
+.puntaje span{font-size:13px;color:var(--gris)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
+.quote{background:#fff;border:1px solid var(--linea);border-radius:6px;padding:32px 28px}
+.quote .st{color:var(--turquesa);letter-spacing:.12em;font-size:13px;margin-bottom:14px}
+.quote p{font-size:16px;color:var(--carbon)}
+.quote footer{margin-top:18px;font-size:13px;color:var(--gris)}
+.ver-google{display:inline-block;margin-top:28px;font-size:14.5px;border-bottom:1px solid var(--turquesa);padding-bottom:4px;text-decoration:none}
+
+/* --- contacto --- */
+.contacto{background:var(--crema-2);border-top:1px solid var(--linea)}
+.cont-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:start;margin-top:44px}
+.dato{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--linea);text-decoration:none}
+.dato .ico{color:var(--turquesa);font-size:17px;width:22px}
+.dato b{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);font-weight:500;margin-bottom:4px}
+.dato span{font-size:16.5px}
+.mapa{margin-top:34px;aspect-ratio:16/9;border-radius:6px;overflow:hidden;border:1px solid var(--linea)}
+.mapa iframe{width:100%;height:100%;border:0}
+.lead-form{background:var(--crema);border:1px solid var(--linea);border-radius:6px;padding:34px}
+.lf-head strong{font-family:'Marcellus',serif;font-size:25px;font-weight:400;display:block}
+.lf-head span{font-size:14.5px;color:var(--gris)}
+.lf-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:22px}
+.lead-form input,.lead-form textarea{
+  width:100%;font-family:'Karla',sans-serif;font-size:15.5px;color:var(--carbon);
+  background:#fff;border:1px solid var(--linea);padding:13px 15px;border-radius:5px;
+}
+.lead-form textarea{margin-top:11px;resize:vertical}
+.lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:var(--turquesa)}
+.hp-field{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.lf-foot{display:flex;flex-wrap:wrap;gap:11px;align-items:center;margin-top:18px}
+.lf-btn{
+  font-family:'Karla',sans-serif;font-size:14.5px;font-weight:500;padding:13px 26px;
+  cursor:pointer;border:none;border-radius:999px;background:var(--carbon);color:#fff;transition:.25s;
+}
+.lf-btn:hover{background:var(--turquesa)}
+.lf-btn.wa{background:#fff;border:1px solid var(--linea);color:var(--carbon)}
+.lf-btn.wa:hover{border-color:var(--carbon);background:#fff}
+.lf-status{font-size:14px;flex-basis:100%}
+.lf-status.ok{color:#2f7a4f}
+.lf-status.err{color:#b3323c}
+
+/* --- bloque Orion --- */
+.orion-plans{background:var(--carbon);color:#f3efec;padding:92px 0}
+.op-in{width:min(1160px,92vw);margin:0 auto}
+.op-tag{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--turquesa);margin-bottom:20px}
+.orion-plans h2{font-family:'Marcellus',serif;font-size:clamp(1.9rem,4.2vw,3rem)}
+.orion-plans h2 em{font-style:italic;color:var(--turquesa)}
+.op-sub{color:rgba(243,239,236,.72);margin-top:16px;max-width:66ch}
+.op-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:42px}
+.op-card{border:1px solid rgba(243,239,236,.2);border-radius:6px;padding:30px 26px}
+.op-card.destacado{background:rgba(79,184,168,.14);border-color:rgba(79,184,168,.5)}
+.op-card h3{font-family:'Marcellus',serif;font-size:23px;margin-bottom:12px}
+.op-precio strong{font-size:19px;font-weight:600;display:block}
+.op-precio span{font-size:13.5px;color:var(--turquesa)}
+.op-card p:last-child{color:rgba(243,239,236,.68);font-size:15px;margin-top:12px}
+.op-foot{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-top:32px}
+.op-foot span{font-size:13.5px;color:rgba(243,239,236,.55)}
+.op-btn{background:var(--crema);color:var(--carbon);text-decoration:none;padding:14px 28px;border-radius:999px;font-size:14.5px;font-weight:500;transition:.25s}
+.op-btn:hover{background:var(--turquesa);color:#fff}
+
+footer{padding:40px 0;border-top:1px solid var(--linea)}
+.foot-in{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.foot-in .marca{font-family:'Marcellus',serif;font-size:20px}
+.foot-in div:last-child{font-size:13.5px;color:var(--gris)}
+
+.wa-float{
+  position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;
+  background:#25d366;display:grid;place-content:center;z-index:70;box-shadow:0 10px 28px rgba(0,0,0,.25);
+}
+.wa-float svg{width:29px;height:29px;fill:#fff}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+@media (max-width:960px){
+  .deb,.hifu-in,.cont-grid{grid-template-columns:1fr;gap:38px}
+  .diptico,.destacados{grid-template-columns:1fr}
+  .dest{border-right:0}
+  .pasos{grid-template-columns:1fr;gap:26px}
+  .quotes,.op-grid{grid-template-columns:1fr}
+  .franja-in{grid-template-columns:1fr}
+  .dato-duro{border-bottom:1px solid var(--linea)}
+  .sello{width:108px;height:108px;right:5%;top:auto;bottom:calc(100% - 46vh)}
+  .hero-foto{border-radius:0 0 0 56px}
+  .hero-card{padding:34px 28px;margin-top:-64px}
+}
+@media (max-width:720px){
+  .nav-links{
+    display:none;position:absolute;top:100%;left:0;right:0;background:var(--crema);
+    flex-direction:column;gap:0;padding:8px 0;box-shadow:0 18px 40px rgba(44,43,48,.12);
+  }
+  #nav.menu-open .nav-links{display:flex}
+  .nav-links a{padding:14px 22px;width:100%}
+  .nav-cta{border-radius:0;text-align:left;background:none;color:var(--carbon) !important}
+  #hamburger{display:flex}
+  .seccion{padding:68px 0}
+  .lf-grid{grid-template-columns:1fr}
+  .lead-form{padding:24px 20px}
+  .sello{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-band">
+  Propuesta de diseño para <b>D-M Estética Flores</b> — demo de Orion Studio
+</div>
+
+<header id="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="logo">
+      <span class="mono">DM</span>
+      <span><b>D-M Estética</b><span>Flores · CABA</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#salas">El lugar</a>
+      <a href="#hifu">HIFU 14D</a>
+      <a href="#contacto">Contacto</a>
+      <a class="nav-cta" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quiero%20un%20turno" target="_blank" rel="noopener">Pedir turno</a>
+    </nav>
+    <button id="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO: foto real de la sala turquesa + tarjeta montada -->
+<section class="hero">
+  <div class="hero-foto">
+    <img src="img/sala-turquesa.jpg" alt="Sala de tratamientos de D-M Estética Flores, con camilla, aparatología y los diplomas en la pared" loading="eager">
+  </div>
+  <div class="sello rv d2">
+    <div class="st">★★★★★</div>
+    <div class="n">5,0</div>
+    <small>121 opiniones</small>
+  </div>
+  <div class="wrap">
+    <div class="hero-card rv">
+      <span class="kicker">Flores · Lautaro 422, piso 6b</span>
+      <h1>Tu piel, en manos de <em>alguien que te conoce</em></h1>
+      <p>Tratamientos faciales y corporales, depilación láser, masajes y HIFU.
+        Atiende Débora, en persona, con la aparatología a la vista y los
+        diplomas colgados en la pared.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quiero%20un%20turno" target="_blank" rel="noopener">Pedir turno por WhatsApp</a>
+        <a class="btn btn-line" href="#tratamientos">Ver tratamientos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="franja">
+  <div class="wrap franja-in">
+    <div class="dato-duro rv"><b>5,0 en Google</b><span>121 opiniones, sin una sola mala</span></div>
+    <div class="dato-duro rv d1"><b>Mujeres y hombres</b><span>Faciales, corporales y masajes descontracturantes</span></div>
+    <div class="dato-duro rv d2"><b>Turno por WhatsApp</b><span>Escribís y te contesta ella</span></div>
+  </div>
+</div>
+
+<!-- DÉBORA: la persona al frente, no la marca -->
+<section class="seccion">
+  <div class="wrap deb">
+    <div class="deb-foto rv">
+      <img src="img/facial.jpg" alt="Tratamiento facial en curso en D-M Estética Flores" loading="lazy">
+    </div>
+    <div class="rv d1">
+      <span class="eyebrow">Quién te atiende</span>
+      <h2 class="titulo">Acá no te atiende <em>un mostrador</em></h2>
+      <p class="bajada">Si leés las opiniones, casi todas dicen lo mismo y dicen un nombre:
+        Débora. Que explica el procedimiento antes de empezar. Que va suave. Que
+        pregunta si algo molesta. Que el lugar está impecable.</p>
+      <p>En un centro grande eso se pierde entre turnos. Acá es el modo de trabajar:
+        una persona, dos salas, y el tiempo que haga falta para explicarte qué te
+        van a hacer y por qué.</p>
+      <div class="firma">Débora — D-M Estética</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTOS -->
+<section class="seccion" id="tratamientos">
+  <div class="wrap">
+    <span class="eyebrow rv">Tratamientos</span>
+    <h2 class="titulo rv">Todo lo que <em>hay adentro</em></h2>
+    <p class="bajada rv">Los mismos que están escritos en la pared del consultorio.
+      Si no sabés cuál te sirve, se define en la primera consulta.</p>
+    <div class="chips rv d1">
+      <span class="chip">Higiene facial</span>
+      <span class="chip">Punta de diamantes</span>
+      <span class="chip">Dermapen</span>
+      <span class="chip">Micro needling</span>
+      <span class="chip">LED Therapy</span>
+      <span class="chip">Luz pulsada intensa</span>
+      <span class="chip">Acné</span>
+      <span class="chip">Rosácea</span>
+      <span class="chip">Manchas solares</span>
+      <span class="chip">Lifting de pestañas</span>
+      <span class="chip">Depilación láser</span>
+      <span class="chip">Radiofrecuencia tripolar</span>
+      <span class="chip">Crioliposis plana</span>
+      <span class="chip">Vela Slim Plus</span>
+      <span class="chip">Body Up Pro</span>
+      <span class="chip">Celulitis</span>
+      <span class="chip">Adiposidad localizada</span>
+      <span class="chip">Drenaje linfático</span>
+      <span class="chip">Masajes</span>
+      <span class="chip">HIFU 14D</span>
+    </div>
+    <div class="destacados">
+      <div class="dest rv">
+        <h3>Faciales</h3>
+        <p>Higiene profunda, punta de diamantes, dermapen, micro needling y LED.
+          Protocolos para acné, rosácea y manchas solares.</p>
+      </div>
+      <div class="dest rv d1">
+        <h3>Corporales</h3>
+        <p>Crioliposis plana, Vela Slim Plus, Body Up Pro y radiofrecuencia tripolar
+          para celulitis y adiposidad localizada.</p>
+      </div>
+      <div class="dest rv d2">
+        <h3>Depilación láser</h3>
+        <p>Con equipo propio, en el consultorio, con la evaluación previa de la
+          zona y del tipo de piel.</p>
+      </div>
+      <div class="dest rv d3">
+        <h3>Masajes y drenaje</h3>
+        <p>Descontracturantes y drenaje linfático. Uno de los motivos más
+          repetidos por los que vuelven, también entre los pacientes hombres.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAS DOS SALAS -->
+<section class="seccion salas" id="salas">
+  <div class="wrap">
+    <span class="eyebrow rv">El lugar</span>
+    <h2 class="titulo rv">Dos salas, <em>ningún apuro</em></h2>
+    <p class="bajada rv">Las opiniones repiten "el lugar es muy prolijo, muy bien puesto".
+      Es literal: son estas dos.</p>
+    <div class="diptico">
+      <div class="sala rv d1">
+        <img src="img/sala-turquesa.jpg" alt="Sala turquesa de D-M Estética Flores" loading="lazy">
+        <div class="sala-cap"><b>Sala turquesa</b><span>Faciales y aparatología</span></div>
+      </div>
+      <div class="sala rv d2">
+        <img src="img/sala-rosa.jpg" alt="Sala rosa de D-M Estética Flores" loading="lazy">
+        <div class="sala-cap"><b>Sala rosa</b><span>Corporales, masajes y láser</span></div>
+      </div>
+    </div>
+    <div class="pasos">
+      <div class="paso rv">
+        <div class="n">1</div>
+        <h3>Escribís por WhatsApp</h3>
+        <p>Contás qué te preocupa o qué querés hacerte. No hace falta que sepas el
+          nombre del tratamiento.</p>
+      </div>
+      <div class="paso rv d1">
+        <div class="n">2</div>
+        <h3>Se define el protocolo</h3>
+        <p>En la primera consulta se ve tu piel o la zona, y recién ahí se define
+          qué aparatología entra y cuántas sesiones.</p>
+      </div>
+      <div class="paso rv d2">
+        <div class="n">3</div>
+        <h3>Se hace seguimiento</h3>
+        <p>Sesión a sesión, con ajustes si hace falta. Siempre con la misma
+          persona atendiéndote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIFU 14D: explicado con las palabras que ellos publican -->
+<section class="seccion hifu" id="hifu">
+  <div class="wrap hifu-in">
+    <div class="rv">
+      <span class="eyebrow">Lo más pedido</span>
+      <h2 class="titulo">HIFU <em>14D</em></h2>
+      <p class="bajada">Ultrasonido de alta frecuencia y energía que actúa en las
+        capas más profundas de la piel.</p>
+      <ul class="hifu-lista">
+        <li>Se aplica tanto en el rostro como en el cuerpo.</li>
+        <li>Reduce grasa localizada, celulitis y arrugas.</li>
+        <li>Tensa y rejuvenece la piel.</li>
+        <li>Sin cirugía y sin período de reposo.</li>
+      </ul>
+      <a class="btn btn-solid" style="margin-top:28px" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quiero%20consultar%20por%20HIFU%2014D" target="_blank" rel="noopener">Consultar por HIFU</a>
+    </div>
+    <div class="hifu-foto rv d1">
+      <img src="img/sala-rosa.jpg" alt="Sala de D-M Estética Flores donde se realizan los tratamientos de HIFU" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS reales de Google -->
+<section class="seccion">
+  <div class="wrap">
+    <div class="res-head">
+      <div class="rv">
+        <span class="eyebrow">Lo que dicen</span>
+        <h2 class="titulo">121 opiniones y <em>ninguna mala</em></h2>
+      </div>
+      <div class="puntaje rv d1"><b>5,0</b><span>★★★★★ en Google</span></div>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote rv">
+        <div class="st">★★★★★</div>
+        <p>“Excelente atención de Débora, muy profesional. Me explicó todo el
+          procedimiento con mucha calidez, muy suave en el tratamiento, atenta a
+          si sentía algún malestar. El lugar es muy prolijo, valió la pena.”</p>
+        <footer>Claudia C. · Local Guide · hace 2 meses</footer>
+      </blockquote>
+      <blockquote class="quote rv d1">
+        <div class="st">★★★★★</div>
+        <p>“Muy lindo el lugar y la atención de Débora. Te transmite buena energía
+          y te hace sentir cómodo, es dedicada a lo que hace y su trabajo es
+          espectacular.”</p>
+        <footer>Camila S. · hace 1 mes</footer>
+      </blockquote>
+      <blockquote class="quote rv d2">
+        <div class="st">★★★★★</div>
+        <p>“Un trabajo muy profesional de masajes, donde pude solucionar el
+          problema de la espalda. El lugar, muy confortable y tranquilo.”</p>
+        <footer>Alan D. · hace 3 meses</footer>
+      </blockquote>
+    </div>
+    <a class="ver-google" href="https://www.google.com/maps/search/DM+est%C3%A9tica+Flores+Lautaro+422" target="_blank" rel="noopener">Ver las 121 opiniones en Google</a>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="seccion contacto" id="contacto">
+  <div class="wrap">
+    <span class="eyebrow rv">Contacto</span>
+    <h2 class="titulo rv">Pedí tu turno <em>hoy</em></h2>
+    <div class="cont-grid">
+      <div class="rv d1">
+        <a class="dato" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quiero%20un%20turno" target="_blank" rel="noopener">
+          <span class="ico">💬</span><span><b>WhatsApp</b><span>11 3604-4940</span></span>
+        </a>
+        <div class="dato">
+          <span class="ico">📍</span><span><b>Dirección</b><span>Lautaro 422, piso 6b — Flores, CABA</span></span>
+        </div>
+        <a class="dato" href="https://www.instagram.com/dmesteticaflores/" target="_blank" rel="noopener">
+          <span class="ico">◎</span><span><b>Instagram</b><span>@dmesteticaflores</span></span>
+        </a>
+        <div class="dato">
+          <span class="ico">★</span><span><b>Reseñas</b><span>5,0 en Google · 121 opiniones</span></span>
+        </div>
+        <div class="mapa">
+          <iframe title="Mapa D-M Estética Flores" src="https://www.google.com/maps?q=Lautaro%20422%2C%20CABA&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- El mail llega a Orion con asunto [Demo DM Estética]; el botón de
+           WhatsApp abre el chat DEL PROSPECTO (data-wa). -->
+      <form class="lead-form rv d2" data-wa="5491136044940">
+        <input type="hidden" name="access_key" value="b243cc98-e26f-4156-99ab-8f815e33656b">
+        <input type="hidden" name="subject" value="[Demo DM Estética] Consulta desde el formulario de la demo">
+        <input type="hidden" name="from_name" value="Web D-M Estética Flores (demo)">
+        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off">
+        <div class="lf-head">
+          <strong>Dejanos tu consulta</strong>
+          <span>Sin compromiso — te respondemos en el día.</span>
+        </div>
+        <div class="lf-grid">
+          <input type="text" name="nombre" placeholder="Tu nombre" aria-label="Tu nombre" required>
+          <input type="tel" name="telefono" placeholder="Tu WhatsApp" aria-label="Tu WhatsApp" required>
+        </div>
+        <textarea name="mensaje" rows="3" placeholder="Contanos qué te gustaría hacerte" aria-label="Tu consulta" required></textarea>
+        <div class="lf-foot">
+          <button type="submit" class="lf-btn">Enviar consulta</button>
+          <button type="button" class="lf-btn wa">Enviar por WhatsApp</button>
+          <span class="lf-status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Bloque Orion Studio (escalera de planes). Igual en todas las demos. -->
+<section class="orion-plans" id="planes-orion">
+  <div class="op-in">
+    <div class="op-tag">Nota de Orion Studio — el estudio que armó esta demo</div>
+    <h2>Esta <em>web</em> puede hacer más que verse linda</h2>
+    <p class="op-sub">Cada plan deja sistemas trabajando solos, y el abono mensual incluye mantenimiento, cambios y un informe con cuánta gente entró y cuántos te escribieron.</p>
+    <div class="op-grid">
+      <div class="op-card">
+        <h3>Presencia</h3>
+        <p class="op-precio"><strong>desde $400.000</strong> <span>+ $35.000/mes</span></p>
+        <p>Esta web, con tu dominio, hosting y botón de WhatsApp con mensaje armado.</p>
+      </div>
+      <div class="op-card destacado">
+        <h3>Turnos</h3>
+        <p class="op-precio"><strong>desde $600.000</strong> <span>+ $55.000/mes</span></p>
+        <p>Suma reserva de turnos online, reseñas de Google en la página y formularios que llegan a tu mail.</p>
+      </div>
+      <div class="op-card">
+        <h3>Inteligente</h3>
+        <p class="op-precio"><strong>desde $900.000</strong> <span>+ $85.000/mes</span></p>
+        <p>Suma asistente con IA que responde 24/7 y recordatorios automáticos de turno.</p>
+      </div>
+    </div>
+    <div class="op-foot">
+      <span>Los valores son "desde": el precio final depende de la propuesta para tu caso.</span>
+      <a class="op-btn" href="https://wa.me/5492235639535?text=Hola%2C%20vi%20la%20demo%20y%20quiero%20saber%20m%C3%A1s%20de%20los%20planes" target="_blank" rel="noopener">Hablar con Orion Studio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span class="marca">D-M Estética Flores</span>
+    <div>Sitio de demostración diseñado por <a href="https://orionstudio.com.ar/webs/">Orion Studio</a> — no es el sitio oficial del centro.</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quiero%20un%20turno" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.24.66-1.37 1.26-1.92 1.3-.5.05-1.12.23-3.76-.78-3.18-1.25-5.2-4.5-5.36-4.7-.16-.21-1.28-1.7-1.28-3.24s.8-2.3 1.1-2.6c.28-.32.62-.4.83-.4h.6c.2 0 .45-.07.7.54.26.6.87 2.1.94 2.26.08.15.13.34.03.55-.1.2-.16.34-.3.52-.16.18-.33.4-.47.55-.16.15-.32.32-.14.63.18.3.8 1.32 1.72 2.14 1.18 1.05 2.17 1.38 2.48 1.53.3.15.5.13.66-.08.18-.2.76-.88.97-1.19.2-.3.4-.25.68-.15.28.1 1.8.85 2.1 1 .3.16.52.23.6.36.06.13.06.75-.18 1.4Z"/></svg>
+</a>
+
+<script src="/webs/assets/orion-demo.js" defer></script>
+</body>
+</html>
