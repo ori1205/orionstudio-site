@@ -15,7 +15,13 @@
 
   /* ---------- Analytics (GoatCounter, sin cookies) ----------
      No cuenta si la pagina esta embebida en un iframe (la agencia muestra
-     demos adentro de un telefono 3D: esas visitas no son del prospecto). */
+     demos adentro de un telefono 3D: esas visitas no son del prospecto).
+
+     Para excluir un navegador propio NO hace falta tocar este archivo:
+     GoatCounter trae su propio interruptor. Abrir cualquier pagina del sitio
+     con  #toggle-goatcounter  al final de la URL y ese navegador deja de
+     contarse (guarda skipgc en localStorage, por origen: con hacerlo una vez
+     quedan cubiertas las 9 demos y la agencia). La misma URL lo reactiva. */
   if (window.self === window.top) {
     var gc = document.createElement('script');
     gc.async = true;
