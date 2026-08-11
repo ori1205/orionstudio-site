@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MB Estética &amp; Salud — Caballito · Puerto Madero · Canning · Devoto</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="MB Estética &amp; Salud — tratamientos faciales, corporales y depilación definitiva en cuatro sedes de Buenos Aires. Propuesta de diseño de Orion Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MB Estética & Salud — identidad propia de esta demo.
+   Paleta sacada de su material real: marfil del local, dorado de
+   la bandeja, fucsia del logo impreso en la servilleta.
+   Arquetipo: revista de moda (masthead, sumario numerado, plates)
+   — deliberadamente distinto al esqueleto de las demos dentales.
+   El comportamiento comun (analytics, reveal, hamburguesa,
+   comparador, formulario) vive en /webs/assets/orion-demo.js
+   ============================================================ */
+:root{
+  --marfil:#f7f2ec;
+  --marfil-2:#fbf8f4;
+  --tinta:#221d20;
+  --tinta-suave:#5c5257;
+  --oro:#b3924f;
+  --fucsia:#d4187f;
+  --rosa:#f2dde6;
+  --linea:rgba(34,29,32,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--marfil);color:var(--tinta);
+  font-family:'Jost',system-ui,sans-serif;font-weight:300;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:'Bodoni Moda',Georgia,serif;font-weight:400;line-height:1.06}
+em{font-style:italic}
+.wrap{width:min(1180px,92vw);margin:0 auto}
+
+/* --- cinta de demo (obligatoria en toda demo de prospecto) --- */
+.demo-band{
+  background:var(--tinta);color:#efe6dc;font-size:12.5px;letter-spacing:.14em;
+  text-transform:uppercase;text-align:center;padding:9px 14px;position:relative;z-index:60;
+}
+.demo-band b{color:var(--oro);font-weight:500}
+
+/* --- nav --- */
+#nav{
+  position:sticky;top:0;z-index:50;transition:background .3s,box-shadow .3s;
+  border-bottom:1px solid transparent;
+}
+#nav.solid{background:rgba(247,242,236,.94);backdrop-filter:blur(10px);border-bottom-color:var(--linea)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0}
+.logo{font-family:'Bodoni Moda',serif;font-size:26px;letter-spacing:.02em;text-decoration:none;display:flex;align-items:baseline;gap:9px}
+.logo span{font-family:'Jost',sans-serif;font-size:10px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--tinta-suave)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{
+  text-decoration:none;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tinta-suave);transition:color .2s;
+}
+.nav-links a:hover{color:var(--fucsia)}
+.nav-cta{
+  border:1px solid var(--tinta);padding:10px 20px !important;color:var(--tinta) !important;
+  transition:background .25s,color .25s,border-color .25s !important;
+}
+.nav-cta:hover{background:var(--tinta);color:var(--marfil) !important}
+#hamburger{
+  display:none;background:none;border:0;cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;
+}
+#hamburger span{display:block;width:24px;height:1.5px;background:var(--tinta);transition:.3s}
+#nav.menu-open #hamburger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+#nav.menu-open #hamburger span:nth-child(2){opacity:0}
+#nav.menu-open #hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* --- hero tipo tapa de revista --- */
+.hero{padding:40px 0 90px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.kicker{
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);
+  display:block;margin-bottom:26px;
+}
+.masthead{font-size:clamp(5.5rem,13vw,11rem);line-height:.82;letter-spacing:-.02em;font-weight:500}
+.masthead .amp{font-style:italic;color:var(--fucsia)}
+.sub-mast{
+  font-size:clamp(.78rem,1.5vw,1rem);letter-spacing:.42em;text-transform:uppercase;
+  margin-top:18px;color:var(--tinta-suave);font-weight:400;
+}
+.hero-rule{height:1px;background:var(--linea);margin:32px 0 26px}
+.lede{font-size:19px;max-width:44ch;color:var(--tinta-suave)}
+.lede b{font-weight:500;color:var(--tinta)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{
+  display:inline-block;text-decoration:none;font-size:12.5px;letter-spacing:.18em;
+  text-transform:uppercase;padding:16px 32px;transition:.28s;
+}
+.btn-solid{background:var(--tinta);color:var(--marfil)}
+.btn-solid:hover{background:var(--fucsia)}
+.btn-line{border:1px solid var(--tinta)}
+.btn-line:hover{background:var(--tinta);color:var(--marfil)}
+
+.hero-plate{position:relative}
+.hero-plate img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.hero-plate::after{
+  content:'';position:absolute;inset:16px -16px -16px 16px;border:1px solid var(--oro);z-index:-1;
+}
+/* sello circular: la prueba social, encima de la foto pero sin tapar el centro */
+.sello{
+  position:absolute;left:-46px;bottom:44px;width:148px;height:148px;border-radius:50%;
+  background:var(--marfil);border:1px solid var(--oro);
+  display:grid;place-content:center;text-align:center;gap:2px;
+  box-shadow:0 14px 40px rgba(34,29,32,.13);
+}
+.sello .n{font-family:'Bodoni Moda',serif;font-size:34px;line-height:1}
+.sello .estrellas{color:var(--oro);font-size:13px;letter-spacing:.12em}
+.sello small{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);max-width:110px}
+
+/* --- banda de sedes (marquesina) --- */
+.sedes-band{background:var(--tinta);color:var(--marfil);overflow:hidden;padding:15px 0}
+.marquee{display:flex;gap:56px;width:max-content;animation:slide 34s linear infinite}
+.marquee span{
+  font-size:12px;letter-spacing:.26em;text-transform:uppercase;white-space:nowrap;
+  display:flex;align-items:center;gap:56px;
+}
+.marquee span::after{content:'✦';color:var(--oro);font-size:10px}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee{animation:none}}
+
+/* --- sumario editorial con plate que cambia --- */
+.seccion{padding:110px 0}
+.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);display:block;margin-bottom:20px}
+.titulo{font-size:clamp(2.4rem,5.4vw,4.1rem)}
+.titulo em{color:var(--fucsia)}
+.sumario{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;margin-top:56px;align-items:start}
+.plate{position:sticky;top:110px;aspect-ratio:4/5;background:var(--rosa);overflow:hidden}
+.plate img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity .55s ease;
+}
+.plate img.on{opacity:1}
+.indice{border-top:1px solid var(--linea)}
+.fila{
+  display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:baseline;
+  padding:30px 4px;border-bottom:1px solid var(--linea);cursor:default;
+  transition:padding-left .35s ease,background .35s ease;
+}
+.fila:hover,.fila.activa{padding-left:18px;background:linear-gradient(90deg,rgba(242,221,230,.5),transparent)}
+.fila .num{font-family:'Bodoni Moda',serif;font-size:15px;color:var(--oro);min-width:26px}
+.fila h3{font-size:clamp(1.5rem,3vw,2.05rem);margin-bottom:8px;transition:color .3s}
+.fila:hover h3,.fila.activa h3{color:var(--fucsia)}
+.fila p{font-size:15.5px;color:var(--tinta-suave);max-width:52ch}
+.fila-img{display:none}
+
+/* --- resultados / comparador --- */
+.resultados{background:var(--marfil-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.res-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;margin-top:50px}
+.casos{display:flex;gap:10px;margin-bottom:26px;flex-wrap:wrap}
+.caso-btn{
+  background:none;border:1px solid var(--linea);font-family:'Jost',sans-serif;font-weight:400;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;padding:11px 20px;cursor:pointer;
+  color:var(--tinta-suave);transition:.25s;
+}
+.caso-btn:hover{border-color:var(--tinta)}
+.caso-btn.on{background:var(--tinta);border-color:var(--tinta);color:var(--marfil)}
+.ba-wrap{
+  position:relative;aspect-ratio:1/1;overflow:hidden;user-select:none;
+  cursor:ew-resize;background:#ddd;touch-action:none;
+}
+.ba-wrap > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-after{position:absolute;top:0;left:0;height:100%;width:50%;overflow:hidden}
+/* La mitad "después" se recorta cambiando el ANCHO del contenedor. La imagen
+   de adentro no puede encogerse con él: como el .ba-wrap es cuadrado, fijarle
+   aspect-ratio 1/1 y height 100% le da exactamente el ancho del wrapper, así
+   las dos fotos quedan calzadas y no se deforman al arrastrar. */
+.ba-after > img{
+  position:absolute;top:0;left:0;height:100%;width:auto;aspect-ratio:1/1;
+  max-width:none;object-fit:cover;
+}
+.ba-handle{
+  position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--marfil);
+  transform:translateX(-1px);z-index:3;cursor:ew-resize;
+}
+.ba-handle::after{
+  content:'‹ ›';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:52px;height:52px;border-radius:50%;background:var(--marfil);color:var(--tinta);
+  display:grid;place-content:center;font-size:20px;letter-spacing:2px;
+  box-shadow:0 6px 22px rgba(0,0,0,.22);
+}
+.ba-tag{
+  position:absolute;bottom:16px;z-index:4;font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;background:rgba(34,29,32,.72);color:var(--marfil);padding:7px 14px;
+}
+.ba-tag.a{left:16px}
+.ba-tag.b{right:16px}
+.nota{font-size:13.5px;color:var(--tinta-suave);margin-top:18px;font-style:italic}
+
+/* --- aparatologia --- */
+.aparatos{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:50px}
+.aparato-lista{display:grid;gap:2px;margin-top:30px}
+.aparato{display:flex;gap:20px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--linea)}
+.aparato b{font-family:'Bodoni Moda',serif;font-weight:400;font-size:21px;min-width:130px}
+.aparato span{font-size:15px;color:var(--tinta-suave)}
+
+/* --- experiencia --- */
+.experiencia{background:var(--tinta);color:var(--marfil)}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.experiencia .eyebrow{color:var(--oro)}
+.experiencia .titulo em{color:var(--rosa)}
+.exp-texto p{color:rgba(247,242,236,.72);margin-top:22px;font-size:18px}
+.exp-lista{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.exp-lista i{
+  font-style:normal;border:1px solid rgba(247,242,236,.3);padding:9px 17px;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+}
+
+/* --- reseñas --- */
+.resenas-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.puntaje{text-align:right}
+.puntaje b{font-family:'Bodoni Moda',serif;font-size:56px;font-weight:400;display:block;line-height:1}
+.puntaje span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px;border-top:1px solid var(--linea)}
+.quote{padding:44px 34px;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.quote:last-child{border-right:0}
+.quote p{font-family:'Bodoni Moda',serif;font-size:21px;line-height:1.42;font-style:italic}
+.quote footer{margin-top:24px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-suave)}
+.quote .stars{color:var(--oro);letter-spacing:.14em;margin-bottom:18px;font-size:13px}
+.ver-google{
+  display:inline-block;margin-top:34px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  border-bottom:1px solid var(--oro);padding-bottom:5px;text-decoration:none;
+}
+
+/* --- sedes --- */
+.sedes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:52px;border-top:1px solid var(--linea)}
+.sede{padding:36px 26px;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);transition:background .3s}
+.sede:last-child{border-right:0}
+.sede:hover{background:var(--marfil-2)}
+.sede h3{font-size:26px;margin-bottom:12px}
+.sede p{font-size:15px;color:var(--tinta-suave)}
+.sede .principal{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);display:block;margin-bottom:10px}
+.mapa{margin-top:56px;aspect-ratio:21/8;border:1px solid var(--linea)}
+.mapa iframe{width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.05)}
+
+/* --- contacto / formulario --- */
+.contacto{background:var(--marfil-2);border-top:1px solid var(--linea)}
+.cont-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:start;margin-top:50px}
+.dato{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--linea);text-decoration:none}
+.dato .ico{color:var(--oro);font-size:18px;width:24px}
+.dato b{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-suave);font-weight:400;margin-bottom:5px}
+.dato span{font-size:17px}
+.lead-form{background:var(--marfil);border:1px solid var(--linea);padding:38px}
+.lf-head strong{font-family:'Bodoni Moda',serif;font-size:27px;font-weight:400;display:block}
+.lf-head span{font-size:14.5px;color:var(--tinta-suave)}
+.lf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.lead-form input,.lead-form textarea{
+  width:100%;font-family:'Jost',sans-serif;font-size:15.5px;font-weight:300;color:var(--tinta);
+  background:var(--marfil-2);border:1px solid var(--linea);padding:14px 16px;border-radius:0;
+}
+.lead-form textarea{margin-top:12px;resize:vertical}
+.lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:var(--oro)}
+.hp-field{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.lf-foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+.lf-btn{
+  font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  padding:15px 28px;cursor:pointer;border:none;background:var(--tinta);color:var(--marfil);transition:.25s;
+}
+.lf-btn:hover{background:var(--fucsia)}
+.lf-btn.wa{background:none;border:1px solid var(--linea);color:var(--tinta)}
+.lf-btn.wa:hover{border-color:var(--tinta);background:none}
+.lf-status{font-size:14px;flex-basis:100%}
+.lf-status.ok{color:#2f7a4f}
+.lf-status.err{color:#b3323c}
+
+/* --- bloque Orion (escalera de planes) --- */
+.orion-plans{background:var(--tinta);color:var(--marfil);padding:96px 0}
+.op-in{width:min(1180px,92vw);margin:0 auto}
+.op-tag{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--oro);margin-bottom:22px}
+.orion-plans h2{font-size:clamp(2rem,4.4vw,3.2rem)}
+.orion-plans h2 em{color:var(--rosa)}
+.op-sub{color:rgba(247,242,236,.7);margin-top:18px;max-width:66ch;font-size:17px}
+.op-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:46px;border-top:1px solid rgba(247,242,236,.2)}
+.op-card{
+  padding:34px 28px;border-right:1px solid rgba(247,242,236,.2);
+  border-bottom:1px solid rgba(247,242,236,.2);
+}
+.op-card:last-child{border-right:0}
+.op-card.destacado{background:rgba(212,24,127,.13)}
+.op-card h3{font-size:25px;margin-bottom:14px}
+.op-precio strong{font-family:'Jost',sans-serif;font-size:19px;font-weight:500;display:block}
+.op-precio span{font-size:13.5px;color:var(--oro)}
+.op-card p:last-child{color:rgba(247,242,236,.68);font-size:15px;margin-top:14px}
+.op-foot{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between;margin-top:34px}
+.op-foot span{font-size:13.5px;color:rgba(247,242,236,.55)}
+.op-btn{
+  background:var(--marfil);color:var(--tinta);text-decoration:none;padding:15px 30px;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;transition:.25s;
+}
+.op-btn:hover{background:var(--oro);color:var(--marfil)}
+
+footer{padding:44px 0;border-top:1px solid var(--linea)}
+.foot-in{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.foot-in .marca{font-family:'Bodoni Moda',serif;font-size:22px}
+.foot-in div:last-child{font-size:13.5px;color:var(--tinta-suave)}
+
+.wa-float{
+  position:fixed;right:22px;bottom:22px;width:56px;height:56px;border-radius:50%;
+  background:#25d366;display:grid;place-content:center;z-index:70;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.wa-float svg{width:29px;height:29px;fill:#fff}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .hero-grid,.sumario,.res-grid,.aparatos,.exp-grid,.cont-grid{grid-template-columns:1fr;gap:44px}
+  .plate{position:relative;top:0;display:none}
+  .fila-img{display:block;margin-top:18px;aspect-ratio:16/10;overflow:hidden}
+  .fila-img img{width:100%;height:100%;object-fit:cover}
+  .quotes,.op-grid{grid-template-columns:1fr}
+  .quote{border-right:0}
+  .op-card{border-right:0}
+  .sedes-grid{grid-template-columns:1fr 1fr}
+  .sede:nth-child(2n){border-right:0}
+  .sello{left:auto;right:16px;bottom:-30px;width:124px;height:124px}
+  .hero-plate::after{inset:12px -12px -12px 12px}
+}
+@media (max-width:720px){
+  .nav-links{
+    display:none;position:absolute;top:100%;left:0;right:0;background:var(--marfil);
+    flex-direction:column;gap:0;padding:8px 0;border-bottom:1px solid var(--linea);
+    box-shadow:0 18px 40px rgba(34,29,32,.1);
+  }
+  #nav.menu-open .nav-links{display:flex}
+  .nav-links a{padding:15px 22px;width:100%}
+  .nav-cta{border:0;text-align:left}
+  #hamburger{display:flex}
+  .seccion{padding:72px 0}
+  .sedes-grid{grid-template-columns:1fr}
+  .sede{border-right:0}
+  .lead-form{padding:26px 22px}
+  .lf-grid{grid-template-columns:1fr}
+  .mapa{aspect-ratio:4/3}
+  .resenas-head{align-items:flex-start}
+  .puntaje{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-band">
+  Propuesta de diseño para <b>MB Estética &amp; Salud</b> — demo de Orion Studio
+</div>
+
+<header id="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="logo">MB <span>Estética &amp; Salud</span></a>
+    <nav class="nav-links">
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#experiencia">La experiencia</a>
+      <a href="#sedes">Sedes</a>
+      <a class="nav-cta" href="https://wa.me/5491133451152?text=Hola!%20Quiero%20un%20turno" target="_blank" rel="noopener">Pedir turno</a>
+    </nav>
+    <button id="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO: tapa de revista. Foto real del local (la bandeja de bienvenida). -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker rv">Caballito · Puerto Madero · Canning · Devoto</span>
+      <h1 class="masthead rv d1">MB</h1>
+      <div class="sub-mast rv d1">Estética <span class="amp">&amp;</span> Salud</div>
+      <div class="hero-rule rv d2"></div>
+      <p class="lede rv d2">
+        Cuatro sedes en Buenos Aires, <b>protocolos armados a medida</b> y un equipo
+        que hace de cada sesión un momento para vos. Empezá con una
+        <b>evaluación sin cargo</b>.
+      </p>
+      <div class="hero-cta rv d3">
+        <a class="btn btn-solid" href="https://wa.me/5491133451152?text=Hola!%20Quiero%20una%20evaluaci%C3%B3n%20sin%20cargo" target="_blank" rel="noopener">Evaluación sin cargo</a>
+        <a class="btn btn-line" href="#tratamientos">Ver tratamientos</a>
+      </div>
+    </div>
+    <div class="hero-plate rv d2">
+      <img src="img/cafe.jpg" alt="Bandeja de bienvenida de MB Estética &amp; Salud: café servido junto a libros de moda, en el salón de Caballito" loading="eager">
+      <div class="sello">
+        <div class="estrellas">★★★★★</div>
+        <div class="n">4,6</div>
+        <small>278 opiniones en Google</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquesina de sedes: reemplaza a la "banda de servicios" tipica -->
+<div class="sedes-band">
+  <div class="marquee">
+    <span>Caballito · Colpayo 52</span><span>Puerto Madero · A. M. de Justo 846</span>
+    <span>Canning · Plaza Canning</span><span>Devoto · Asunción 4157</span>
+    <span>Caballito · Colpayo 52</span><span>Puerto Madero · A. M. de Justo 846</span>
+    <span>Canning · Plaza Canning</span><span>Devoto · Asunción 4157</span>
+  </div>
+</div>
+
+<!-- SUMARIO: indice numerado de revista. Al pasar por cada fila cambia la
+     foto del plate de la izquierda (en mobile cada fila muestra la suya). -->
+<section class="seccion" id="tratamientos">
+  <div class="wrap">
+    <span class="eyebrow rv">El sumario</span>
+    <h2 class="titulo rv">Lo que hacemos <em>por vos</em></h2>
+    <div class="sumario">
+      <div class="plate rv">
+        <img src="img/celulitis.jpg" alt="Sesión de tratamiento corporal en MB Estética &amp; Salud" data-plate="1" class="on">
+        <img src="img/adiposidad.jpg" alt="Tratamiento corporal de adiposidad localizada" data-plate="2">
+        <img src="img/exilis.jpg" alt="Equipo Exilis en manos de una profesional de MB Estética &amp; Salud" data-plate="3">
+        <img src="img/cafe.jpg" alt="Detalle del salón de MB Estética &amp; Salud" data-plate="4">
+      </div>
+      <div class="indice">
+        <article class="fila rv" data-target="1">
+          <span class="num">01</span>
+          <div>
+            <h3>Faciales</h3>
+            <p>Limpieza facial profunda y protocolos de cuidado de la piel, con la
+              evaluación previa que define qué necesita tu rostro.</p>
+            <div class="fila-img"><img src="img/celulitis.jpg" alt="Tratamiento en MB Estética &amp; Salud" loading="lazy"></div>
+          </div>
+        </article>
+        <article class="fila rv d1" data-target="2">
+          <span class="num">02</span>
+          <div>
+            <h3>Corporales</h3>
+            <p>Protocolos a medida para adiposidad localizada y celulitis. No hay dos
+              cuerpos iguales: por eso no hay dos protocolos iguales.</p>
+            <div class="fila-img"><img src="img/adiposidad.jpg" alt="Tratamiento corporal" loading="lazy"></div>
+          </div>
+        </article>
+        <article class="fila rv d2" data-target="3">
+          <span class="num">03</span>
+          <div>
+            <h3>Depilación definitiva</h3>
+            <p>Sesiones de láser con equipamiento profesional, en las cuatro sedes.</p>
+            <div class="fila-img"><img src="img/exilis.jpg" alt="Equipamiento profesional" loading="lazy"></div>
+          </div>
+        </article>
+        <article class="fila rv d3" data-target="4">
+          <span class="num">04</span>
+          <div>
+            <h3>Aparatología</h3>
+            <p>Exilis, Venus y Alidya™: tecnología que acompaña al protocolo, nunca al revés.</p>
+            <div class="fila-img"><img src="img/cafe.jpg" alt="Salón de MB Estética &amp; Salud" loading="lazy"></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS: comparador arrastrable con los casos que ellos mismos publican -->
+<section class="seccion resultados" id="resultados">
+  <div class="wrap">
+    <span class="eyebrow rv">Resultados</span>
+    <h2 class="titulo rv">Casos <em>reales</em>, no promesas</h2>
+    <div class="res-grid">
+      <div class="rv d1">
+        <div class="casos">
+          <button class="caso-btn on" data-caso="2">Protocolo adiposidad</button>
+          <button class="caso-btn" data-caso="1">Protocolo a medida</button>
+        </div>
+        <p>Arrastrá el círculo para ver el antes y el después de un mismo caso.
+          Son fotos publicadas por MB Estética &amp; Salud en su Instagram.</p>
+        <p class="nota">Cada tratamiento se define después de una evaluación:
+          los resultados varían según la persona y el protocolo indicado.</p>
+        <a class="btn btn-solid" style="margin-top:26px" href="https://wa.me/5491133451152?text=Hola!%20Vi%20los%20resultados%20y%20quiero%20una%20evaluaci%C3%B3n" target="_blank" rel="noopener">Quiero mi evaluación</a>
+      </div>
+      <div class="ba-wrap rv d2" id="comparador">
+        <img class="ba-a" id="ba-antes" src="img/ba2-antes.jpg" alt="Antes del tratamiento">
+        <div class="ba-after"><img class="ba-b" id="ba-despues" src="img/ba2-despues.jpg" alt="Después del tratamiento"></div>
+        <span class="ba-tag a">Antes</span>
+        <span class="ba-tag b">Después</span>
+        <div class="ba-handle" role="slider" tabindex="0" aria-label="Comparar antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APARATOLOGIA -->
+<section class="seccion">
+  <div class="wrap aparatos">
+    <div class="rv">
+      <img src="img/exilis.jpg" alt="Profesional de MB Estética &amp; Salud con el equipo Exilis" loading="lazy">
+    </div>
+    <div class="rv d1">
+      <span class="eyebrow">Aparatología</span>
+      <h2 class="titulo">La tecnología <em>sirve</em><br>si alguien sabe usarla</h2>
+      <div class="aparato-lista">
+        <div class="aparato"><b>Exilis</b><span>Reafirma y remodela. Se trabaja por zona: brazos, abdomen, piernas.</span></div>
+        <div class="aparato"><b>Venus</b><span>Tratamiento corporal dentro de los protocolos combinados.</span></div>
+        <div class="aparato"><b>Alidya™</b><span>Protocolo específico para adiposidad y celulitis.</span></div>
+        <div class="aparato"><b>Láser</b><span>Depilación definitiva, disponible en las cuatro sedes.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA EXPERIENCIA: lo que repiten las reseñas (la atencion, el cafecito) -->
+<section class="seccion experiencia" id="experiencia">
+  <div class="wrap exp-grid">
+    <div class="exp-texto rv">
+      <span class="eyebrow">La experiencia</span>
+      <h2 class="titulo">Venís por un tratamiento.<br><em>Te quedás</em> por cómo te tratan.</h2>
+      <p>Si leés las opiniones de MB, casi ninguna habla primero del equipo o de la
+        máquina: hablan de cómo te reciben. Del café servido en bandeja mientras
+        esperás. De que el lugar está impecable. De que te explican qué te van a
+        hacer antes de hacerlo.</p>
+      <p>Eso no sale en un folleto de tratamientos, pero es la razón por la que
+        vuelven.</p>
+      <div class="exp-lista">
+        <i>Evaluación sin cargo</i><i>Protocolo explicado</i><i>Café de bienvenida</i><i>Cuatro sedes</i>
+      </div>
+    </div>
+    <div class="rv d1">
+      <img src="img/cafe.jpg" alt="Café de bienvenida servido en bandeja en el salón de MB Estética &amp; Salud" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS reales de Google (sede Caballito) -->
+<section class="seccion">
+  <div class="wrap">
+    <div class="resenas-head">
+      <div class="rv">
+        <span class="eyebrow">Lo que dicen</span>
+        <h2 class="titulo">278 opiniones,<br>y todas cuentan <em>lo mismo</em></h2>
+      </div>
+      <div class="puntaje rv d1">
+        <b>4,6</b>
+        <span>★★★★★ en Google</span>
+      </div>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote rv">
+        <div class="stars">★★★★★</div>
+        <p>“Mis mañanas son lo más en MB, amo su atención, carisma y buena onda.”</p>
+        <footer>Giorgiana O. · Local Guide</footer>
+      </blockquote>
+      <blockquote class="quote rv d1">
+        <div class="stars">★★★★★</div>
+        <p>“Recomiendo 100% esta estética. Siempre bien cuidada y mimada por todo su personal, todo en excelente estado y limpio.”</p>
+        <footer>Agustina N. · Google</footer>
+      </blockquote>
+      <blockquote class="quote rv d2">
+        <div class="stars">★★★★★</div>
+        <p>“Desde que me reciben hasta que me voy todo es excelente. Destaco el profesionalismo y la atención que dedican.”</p>
+        <footer>Maite F. · Local Guide</footer>
+      </blockquote>
+    </div>
+    <a class="ver-google" href="https://www.google.com/maps/search/MB+est%C3%A9tica+y+salud+Colpayo+52+Caballito" target="_blank" rel="noopener">Ver las 278 opiniones en Google</a>
+  </div>
+</section>
+
+<!-- SEDES -->
+<section class="seccion" id="sedes">
+  <div class="wrap">
+    <span class="eyebrow rv">Dónde estamos</span>
+    <h2 class="titulo rv">Cuatro sedes, <em>el mismo</em> estándar</h2>
+    <div class="sedes-grid">
+      <div class="sede rv">
+        <span class="principal">Casa central</span>
+        <h3>Caballito</h3>
+        <p>Colpayo 52<br>Tel. 11 3260-8220</p>
+      </div>
+      <div class="sede rv d1">
+        <span class="principal">Sede</span>
+        <h3>Puerto Madero</h3>
+        <p>Alicia Moreau de Justo 846</p>
+      </div>
+      <div class="sede rv d2">
+        <span class="principal">Sede</span>
+        <h3>Canning</h3>
+        <p>Plaza Canning<br>Local 213, primer piso</p>
+      </div>
+      <div class="sede rv d3">
+        <span class="principal">Sede</span>
+        <h3>Devoto</h3>
+        <p>Asunción 4157</p>
+      </div>
+    </div>
+    <div class="mapa rv">
+      <iframe title="Mapa MB Estética &amp; Salud Caballito" src="https://www.google.com/maps?q=Colpayo%2052%2C%20CABA&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO + formulario real -->
+<section class="seccion contacto" id="contacto">
+  <div class="wrap">
+    <span class="eyebrow rv">Contacto</span>
+    <h2 class="titulo rv">Pedí tu turno <em>hoy</em></h2>
+    <div class="cont-grid">
+      <div class="rv d1">
+        <a class="dato" href="https://wa.me/5491133451152?text=Hola!%20Quiero%20un%20turno" target="_blank" rel="noopener">
+          <span class="ico">💬</span><span><b>WhatsApp turnos</b><span>11 3345-1152</span></span>
+        </a>
+        <a class="dato" href="https://www.instagram.com/mbesteticaysalud/" target="_blank" rel="noopener">
+          <span class="ico">◎</span><span><b>Instagram</b><span>@mbesteticaysalud · 55 mil seguidores</span></span>
+        </a>
+        <div class="dato">
+          <span class="ico">◷</span><span><b>Caballito</b><span>Colpayo 52 — abierto hasta las 22 h</span></span>
+        </div>
+        <div class="dato">
+          <span class="ico">★</span><span><b>Reseñas</b><span>4,6 en Google · 278 opiniones</span></span>
+        </div>
+      </div>
+
+      <!-- El mail llega a Orion con asunto [Demo MB Estética]; el botón de
+           WhatsApp abre el chat DEL PROSPECTO (data-wa). Son destinos distintos. -->
+      <form class="lead-form rv d2" data-wa="5491133451152">
+        <input type="hidden" name="access_key" value="b243cc98-e26f-4156-99ab-8f815e33656b">
+        <input type="hidden" name="subject" value="[Demo MB Estética] Consulta desde el formulario de la demo">
+        <input type="hidden" name="from_name" value="Web MB Estética (demo)">
+        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off">
+        <div class="lf-head">
+          <strong>Dejanos tu consulta</strong>
+          <span>Sin compromiso — te respondemos en el día.</span>
+        </div>
+        <div class="lf-grid">
+          <input type="text" name="nombre" placeholder="Tu nombre" aria-label="Tu nombre" required>
+          <input type="tel" name="telefono" placeholder="Tu WhatsApp" aria-label="Tu WhatsApp" required>
+        </div>
+        <textarea name="mensaje" rows="3" placeholder="Contanos qué buscás (facial, corporal, depilación…)" aria-label="Tu consulta" required></textarea>
+        <div class="lf-foot">
+          <button type="submit" class="lf-btn">Enviar consulta</button>
+          <button type="button" class="lf-btn wa">Enviar por WhatsApp</button>
+          <span class="lf-status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Bloque Orion Studio (escalera de planes). Igual en todas las demos. -->
+<section class="orion-plans" id="planes-orion">
+  <div class="op-in">
+    <div class="op-tag">Nota de Orion Studio — el estudio que armó esta demo</div>
+    <h2>Esta <em>web</em> puede hacer más que verse linda</h2>
+    <p class="op-sub">Cada plan deja sistemas trabajando solos, y el abono mensual incluye mantenimiento, cambios y un informe con cuánta gente entró y cuántos te escribieron.</p>
+    <div class="op-grid">
+      <div class="op-card">
+        <h3>Presencia</h3>
+        <p class="op-precio"><strong>desde $400.000</strong> <span>+ $35.000/mes</span></p>
+        <p>Esta web, con tu dominio, hosting y botón de WhatsApp con mensaje armado.</p>
+      </div>
+      <div class="op-card destacado">
+        <h3>Turnos</h3>
+        <p class="op-precio"><strong>desde $600.000</strong> <span>+ $55.000/mes</span></p>
+        <p>Suma reserva de turnos online, reseñas de Google en la página y formularios que llegan a tu mail.</p>
+      </div>
+      <div class="op-card">
+        <h3>Inteligente</h3>
+        <p class="op-precio"><strong>desde $900.000</strong> <span>+ $85.000/mes</span></p>
+        <p>Suma asistente con IA que responde 24/7 y recordatorios automáticos de turno.</p>
+      </div>
+    </div>
+    <div class="op-foot">
+      <span>Los valores son "desde": el precio final depende de la propuesta para tu caso.</span>
+      <a class="op-btn" href="https://wa.me/5492235639535?text=Hola%2C%20vi%20la%20demo%20y%20quiero%20saber%20m%C3%A1s%20de%20los%20planes" target="_blank" rel="noopener">Hablar con Orion Studio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span class="marca">MB Estética &amp; Salud</span>
+    <div>Sitio de demostración diseñado por <a href="https://orionstudio.com.ar/webs/">Orion Studio</a> — no es el sitio oficial del centro.</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5491133451152?text=Hola!%20Quiero%20un%20turno" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.24.66-1.37 1.26-1.92 1.3-.5.05-1.12.23-3.76-.78-3.18-1.25-5.2-4.5-5.36-4.7-.16-.21-1.28-1.7-1.28-3.24s.8-2.3 1.1-2.6c.28-.32.62-.4.83-.4h.6c.2 0 .45-.07.7.54.26.6.87 2.1.94 2.26.08.15.13.34.03.55-.1.2-.16.34-.3.52-.16.18-.33.4-.47.55-.16.15-.32.32-.14.63.18.3.8 1.32 1.72 2.14 1.18 1.05 2.17 1.38 2.48 1.53.3.15.5.13.66-.08.18-.2.76-.88.97-1.19.2-.3.4-.25.68-.15.28.1 1.8.85 2.1 1 .3.16.52.23.6.36.06.13.06.75-.18 1.4Z"/></svg>
+</a>
+
+<!-- Comportamiento comun (analytics, reveal, hamburguesa, comparador, form) -->
+<script src="/webs/assets/orion-demo.js" defer></script>
+
+<!-- Especifico de esta demo: sumario con plate y selector de casos -->
+<script>
+(function(){
+  /* Sumario: al pasar por una fila, cambia la foto del plate sticky. */
+  var filas = document.querySelectorAll('.fila[data-target]');
+  var plates = document.querySelectorAll('.plate img[data-plate]');
+  function mostrar(id){
+    plates.forEach(function(p){ p.classList.toggle('on', p.dataset.plate === id); });
+    filas.forEach(function(f){ f.classList.toggle('activa', f.dataset.target === id); });
+  }
+  filas.forEach(function(f){
+    f.addEventListener('mouseenter', function(){ mostrar(f.dataset.target); });
+    f.addEventListener('focusin', function(){ mostrar(f.dataset.target); });
+  });
+
+  /* Comparador: cambiar de caso sin recargar. */
+  var antes = document.getElementById('ba-antes');
+  var despues = document.getElementById('ba-despues');
+  document.querySelectorAll('.caso-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.caso-btn').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      var n = b.dataset.caso;
+      antes.src = 'img/ba' + n + '-antes.jpg';
+      despues.src = 'img/ba' + n + '-despues.jpg';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
