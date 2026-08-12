@@ -139,9 +139,10 @@ h1,h2,h3{font-family:'Marcellus',Georgia,serif;font-weight:400;line-height:1.12}
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
 .chip{
   border:1px solid var(--linea);border-radius:999px;padding:10px 18px;font-size:14px;
-  background:#fff;transition:.22s;
+  background:#fff;transition:.22s;text-decoration:none;color:inherit;cursor:pointer;
 }
-.chip:hover{border-color:var(--turquesa);color:var(--turquesa)}
+.chip:hover{border-color:var(--turquesa);color:var(--turquesa);background:var(--turquesa-claro)}
+.chips-nota{margin-top:18px;font-size:14px;color:var(--gris)}
 .destacados{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:40px;border-top:1px solid var(--linea)}
 .dest{padding:32px 30px;border-bottom:1px solid var(--linea);border-right:1px solid var(--linea);transition:background .3s}
 .dest:nth-child(2n){border-right:0}
@@ -393,28 +394,32 @@ footer{padding:40px 0;border-top:1px solid var(--linea)}
       </div>
     </div>
     <p class="lista-label rv">La lista completa</p>
+    <!-- Cada tratamiento abre WhatsApp con el mensaje ya escrito: el cliente no
+         tiene que saber cómo se llama lo que quiere, y la consulta llega
+         calificada. El contador de wa-click los toma solos (son a[href*=wa.me]). -->
     <div class="chips rv d1">
-      <span class="chip">Higiene facial</span>
-      <span class="chip">Punta de diamantes</span>
-      <span class="chip">Dermapen</span>
-      <span class="chip">Micro needling</span>
-      <span class="chip">LED Therapy</span>
-      <span class="chip">Luz pulsada intensa</span>
-      <span class="chip">Acné</span>
-      <span class="chip">Rosácea</span>
-      <span class="chip">Manchas solares</span>
-      <span class="chip">Lifting de pestañas</span>
-      <span class="chip">Depilación láser</span>
-      <span class="chip">Radiofrecuencia tripolar</span>
-      <span class="chip">Crioliposis plana</span>
-      <span class="chip">Vela Slim Plus</span>
-      <span class="chip">Body Up Pro</span>
-      <span class="chip">Celulitis</span>
-      <span class="chip">Adiposidad localizada</span>
-      <span class="chip">Drenaje linfático</span>
-      <span class="chip">Masajes</span>
-      <span class="chip">HIFU 14D</span>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Higiene%20facial">Higiene facial</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Punta%20de%20diamantes">Punta de diamantes</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Dermapen">Dermapen</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Micro%20needling">Micro needling</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20LED%20Therapy">LED Therapy</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Luz%20pulsada%20intensa">Luz pulsada intensa</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20un%20tratamiento%20para%20acn%C3%A9">Acné</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20un%20tratamiento%20para%20ros%C3%A1cea">Rosácea</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20manchas%20solares">Manchas solares</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Lifting%20de%20pesta%C3%B1as">Lifting de pestañas</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Depilaci%C3%B3n%20l%C3%A1ser">Depilación láser</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Radiofrecuencia%20tripolar">Radiofrecuencia tripolar</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Crioliposis%20plana">Crioliposis plana</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Vela%20Slim%20Plus">Vela Slim Plus</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Body%20Up%20Pro">Body Up Pro</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20un%20tratamiento%20para%20celulitis">Celulitis</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20adiposidad%20localizada">Adiposidad localizada</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Drenaje%20linf%C3%A1tico">Drenaje linfático</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20Masajes">Masajes</a>
+      <a class="chip" target="_blank" rel="noopener" href="https://wa.me/5491136044940?text=Hola%20D%C3%A9bora!%20Quer%C3%ADa%20consultar%20por%20HIFU%2014D">HIFU 14D</a>
     </div>
+    <p class="chips-nota rv">Tocá el tratamiento que te interesa y se abre el chat con la consulta ya escrita.</p>
   </div>
 </section>
 
