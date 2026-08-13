@@ -50,12 +50,17 @@
   .brand { display:inline-flex; align-items:center; gap:10px; }
   .brand img { width:28px; height:28px; border-radius:7px; display:block; }
   .mark { width:104px; height:104px; border-radius:24px; display:block; margin:0 auto 20px; }
+  figure { margin:28px 0 6px; }
+  figure img { width:100%; height:auto; display:block; border-radius:10px;
+               border:1px solid var(--line); }
+  figcaption { color:var(--muted); font-size:0.88rem; margin-top:10px; }
 </style>
 </head>
 <body>
 <nav><div class="inner">
   <a class="brand" href="/"><img src="/icon-96.png" alt="Orion Studio" width="28" height="28">Orion <span>Studio</span></a>
   <a href="/how-it-works/">How it works</a>
+  <a href="/security/">Security</a>
   <a href="/support/">Support</a>
   <a href="/privacy-policy/">Privacy</a>
   <a href="/terms-of-service/">Terms</a>
@@ -96,6 +101,10 @@
       <li><strong>Render</strong>Everything is composited into a vertical video file on your machine.</li>
       <li><strong>Publish</strong>The videos you choose are uploaded to your own connected accounts.</li>
     </ol>
+<figure>
+      <img src="/img/app-panel.png" alt="The Orion Studio window, with the video list and the production steps" width="1032" height="754" loading="lazy">
+      <figcaption>The application. Each video is a project on the left; the steps on the right go from the script to the finished file, and the last one publishes it.</figcaption>
+    </figure>
     <a class="more" href="/how-it-works/">See the full walkthrough →</a>
   </section>
 
@@ -107,6 +116,10 @@
       <li>The application does not read, collect or store other users' content or personal data.</li>
       <li>Your videos, scripts and tokens are never sent to us.</li>
     </ul>
+<figure>
+      <img src="/img/app-tiktok.png" alt="The confirmation dialog shown before a video is published to TikTok" width="1032" height="754" loading="lazy">
+      <figcaption>Nothing is uploaded until you confirm. The dialog shows which account is connected, the caption, the privacy level allowed by that account, and TikTok's Community Guidelines notice.</figcaption>
+    </figure>
     <a class="more" href="/support/">Questions? Read the FAQ →</a>
   </section>
 
@@ -119,7 +132,8 @@
     <p><strong>Orion Studio</strong></p>
     <p style="margin-top:8px;">
       <a href="/how-it-works/">How it works</a> ·
-      <a href="/support/">Support</a> ·
+      <a href="/security/">Security</a> ·
+    <a href="/support/">Support</a> ·
       <a href="/privacy-policy/">Privacy Policy</a> ·
       <a href="/terms-of-service/">Terms of Service</a>
     </p>

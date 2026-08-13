@@ -41,12 +41,17 @@
   .brand { display:inline-flex; align-items:center; gap:10px; }
   .brand img { width:28px; height:28px; border-radius:7px; display:block; }
   .mark { width:104px; height:104px; border-radius:24px; display:block; margin:0 auto 20px; }
+  figure { margin:28px 0 6px; }
+  figure img { width:100%; height:auto; display:block; border-radius:10px;
+               border:1px solid var(--line); }
+  figcaption { color:var(--muted); font-size:0.88rem; margin-top:10px; }
 </style>
 </head>
 <body>
 <nav><div class="inner">
   <a class="brand" href="/"><img src="/icon-96.png" alt="Orion Studio" width="28" height="28">Orion <span>Studio</span></a>
   <a href="/how-it-works/" class="on">How it works</a>
+  <a href="/security/">Security</a>
   <a href="/support/">Support</a>
   <a href="/privacy-policy/">Privacy</a>
   <a href="/terms-of-service/">Terms</a>
@@ -89,7 +94,12 @@
     <p>When you choose to publish, the video is uploaded to the accounts you have connected, through each platform's official API. You decide which videos are published and when.</p>
   </div>
 
-  <h2>Connecting a social account</h2>
+  <figure>
+      <img src="/img/app-subiendo.png" alt="A video being uploaded, with the progress bar and the activity log" width="1032" height="754" loading="lazy">
+      <figcaption>An upload in progress. The log on the lower right records each step: authorizing the account, querying the creator options, starting the upload, and waiting for the platform to finish processing.</figcaption>
+    </figure>
+
+    <h2>Connecting a social account</h2>
   <p>Orion Studio never asks for your social media password. Connecting an account works like this:</p>
   <ol>
     <li>You start the connection from inside the application.</li>
@@ -116,7 +126,8 @@
     <p><strong>Orion Studio</strong></p>
     <p style="margin-top:8px;">
       <a href="/">Home</a> ·
-      <a href="/support/">Support</a> ·
+      <a href="/security/">Security</a> ·
+    <a href="/support/">Support</a> ·
       <a href="/privacy-policy/">Privacy Policy</a> ·
       <a href="/terms-of-service/">Terms of Service</a>
     </p>

@@ -1,0 +1,142 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security and data handling — Orion Studio</title>
+<meta name="description" content="Where Orion Studio stores your data, which permissions it requests from each platform, what it never does, and how to revoke access.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/icon-96.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
+<meta property="og:title" content="Orion Studio">
+<meta property="og:description" content="Desktop app for short-form video production and publishing to your own social accounts.">
+<meta property="og:image" content="https://orionstudio.com.ar/icon-512.png">
+<meta property="og:url" content="https://orionstudio.com.ar/">
+<style>
+  :root { --bg:#0b0d12; --panel:#131720; --text:#e8eaf0; --muted:#9aa3b2; --accent:#51e8b3; --line:#232a38; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; line-height:1.7; }
+  .wrap { max-width:880px; margin:0 auto; padding:0 24px; }
+  nav { border-bottom:1px solid var(--line); padding:20px 0; position:sticky; top:0; background:rgba(11,13,18,.94); backdrop-filter:blur(6px); z-index:5; }
+  nav .inner { max-width:880px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
+  nav .brand { font-weight:800; letter-spacing:-0.5px; color:var(--text); text-decoration:none; margin-right:auto; }
+  nav .brand span { color:var(--accent); }
+  nav a { color:var(--muted); text-decoration:none; font-size:0.95rem; }
+  nav a:hover, nav a.on { color:var(--accent); }
+  header { padding:64px 0 32px; }
+  h1 { font-size:2.1rem; letter-spacing:-1px; }
+  .sub { color:var(--muted); margin-top:12px; max-width:640px; }
+  section { padding:30px 0; border-top:1px solid var(--line); }
+  h2 { font-size:1.35rem; margin-bottom:14px; color:var(--accent); }
+  h3 { font-size:1.02rem; margin:20px 0 6px; }
+  p, li { color:#c9cfda; }
+  ul.plain { padding-left:22px; margin:12px 0; }
+  ul.plain li { margin:7px 0; }
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:0.94rem; }
+  th, td { text-align:left; padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--text); font-weight:600; }
+  td { color:var(--muted); }
+  td code { color:var(--accent); font-family:ui-monospace,Consolas,monospace; font-size:0.88rem; }
+  .tabla-scroll { overflow-x:auto; }
+  .nota { background:var(--panel); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; padding:16px 20px; margin:18px 0; }
+  .nota p { color:var(--text); }
+  footer { border-top:1px solid var(--line); margin-top:56px; padding:32px 0; color:var(--muted); font-size:0.9rem; text-align:center; }
+  footer a { color:var(--accent); text-decoration:none; margin:0 10px; }
+  footer a:hover { text-decoration:underline; }
+  .brand { display:inline-flex; align-items:center; gap:10px; }
+  .brand img { width:28px; height:28px; border-radius:7px; display:block; }
+</style>
+
+<nav><div class="inner">
+  <a class="brand" href="/"><img src="/icon-96.png" alt="Orion Studio" width="28" height="28">Orion <span>Studio</span></a>
+  <a href="/how-it-works/">How it works</a>
+  <a href="/security/" class="on">Security</a>
+  <a href="/support/">Support</a>
+  <a href="/privacy-policy/">Privacy</a>
+  <a href="/terms-of-service/">Terms</a>
+</div></nav>
+
+<div class="wrap">
+  <header>
+    <h1>Security and data handling</h1>
+    <p class="sub">Orion Studio runs on your own computer and talks to each platform's official API on your behalf. This page describes exactly what that means: what is stored, where, which permissions are requested, and what the application will never do.</p>
+  </header>
+
+  <section>
+    <h2>Where your data lives</h2>
+    <p>Orion Studio is a desktop application. There is no Orion Studio account, no sign-up, and no server of ours that receives your videos, your scripts or your credentials. Everything the application produces is written to folders on your own machine.</p>
+    <div class="tabla-scroll">
+    <table>
+      <tr><th>What</th><th>Where it is stored</th></tr>
+      <tr><td>Scripts, narration audio, subtitle files, rendered videos</td><td>In a folder per video, on your computer</td></tr>
+      <tr><td>Access and refresh tokens for connected accounts</td><td>A configuration file inside that account's folder, on your computer</td></tr>
+      <tr><td>Titles, descriptions and publication status</td><td>A metadata file alongside each video</td></tr>
+      <tr><td>Your account password for any platform</td><td>Never stored, never requested, never seen by the application</td></tr>
+    </table>
+    </div>
+    <div class="nota">
+      <p>Because the tokens live on your machine, anyone with access to that machine can use them. Treat the application's folders like you would treat a saved browser session.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>How an account is connected</h2>
+    <p>You connect each account from inside the application. Orion Studio opens the platform's own authorization page in your browser — TikTok's or Google's, on their own domain — where you log in and review the permissions being requested. Orion Studio never sees what you type there.</p>
+    <p>If you approve, the platform sends back an authorization code, which the application exchanges for an access token. That token is what allows it to upload the videos you choose. If you decline, nothing is stored and nothing changes.</p>
+    <h3>What the authorization uses</h3>
+    <ul class="plain">
+      <li>The exchange uses <strong>PKCE</strong>, so the authorization code cannot be reused by anything that intercepts it.</li>
+      <li>A random <strong>state</strong> value is generated per attempt and verified when the platform responds, which is what prevents a forged callback from connecting an account you did not authorize.</li>
+      <li>The response is received on <code>localhost</code>, on your own machine — it never passes through a server of ours.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Permissions requested</h2>
+    <p>The application asks for the narrowest set of permissions that lets it do what it does. It does not request permission to read your feed, your followers, your messages, or other people's content.</p>
+    <div class="tabla-scroll">
+    <table>
+      <tr><th>Platform</th><th>Permission</th><th>Used for</th></tr>
+      <tr><td>TikTok</td><td><code>user.info.basic</code></td><td>Showing you which account is connected before you publish</td></tr>
+      <tr><td>TikTok</td><td><code>video.publish</code></td><td>Uploading a video you selected, after you confirm</td></tr>
+      <tr><td>YouTube</td><td><code>youtube.upload</code></td><td>Uploading a video you selected</td></tr>
+    </table>
+    </div>
+    <p>Before a TikTok post is created, the application queries the creator information endpoint so that the privacy options it offers you are the ones your account actually allows, rather than a guess.</p>
+  </section>
+
+  <section>
+    <h2>What it never does</h2>
+    <ul class="plain">
+      <li>It never posts anything without an explicit action from you. Every upload starts with you selecting a video and confirming a dialog that shows the account, the caption and the privacy level.</li>
+      <li>It never asks for your password to any platform.</li>
+      <li>It never reads, collects, or stores other users' content, profiles or personal data.</li>
+      <li>It never sends your videos, scripts or tokens to us. We operate no server that receives them.</li>
+      <li>It does not track your usage, set cookies, or run analytics on you.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Revoking access</h2>
+    <p>You can cut the application off at any time, from the platform's side, without needing the application at all:</p>
+    <ul class="plain">
+      <li><strong>TikTok</strong> — in the TikTok app, under Settings and privacy, in the security and permissions section, remove Orion Studio from the list of authorized apps.</li>
+      <li><strong>YouTube</strong> — at <a href="https://myaccount.google.com/permissions" style="color:var(--accent)">myaccount.google.com/permissions</a>, remove Orion Studio's access.</li>
+    </ul>
+    <p>Revoking takes effect immediately and the stored token stops working. Deleting the token file on your computer disconnects the account locally as well.</p>
+  </section>
+
+  <section>
+    <h2>Reporting a problem</h2>
+    <p>If you find a security issue, write to <a href="mailto:orionluciogame@gmail.com" style="color:var(--accent)">orionluciogame@gmail.com</a> with enough detail to reproduce it. Please do not post it publicly before it is fixed.</p>
+  </section>
+
+  <footer>
+    <strong>Orion Studio</strong><br>
+    <a href="/how-it-works/">How it works</a> ·
+    <a href="/security/">Security</a> ·
+    <a href="/support/">Support</a> ·
+    <a href="/privacy-policy/">Privacy Policy</a> ·
+    <a href="/terms-of-service/">Terms of Service</a><br>
+    Contact: orionluciogame@gmail.com
+  </footer>
+</div>
