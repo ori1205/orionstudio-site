@@ -54,6 +54,14 @@
   figure img { width:100%; height:auto; display:block; border-radius:10px;
                border:1px solid var(--line); }
   figcaption { color:var(--muted); font-size:0.88rem; margin-top:10px; }
+  .integracion { border:1px solid var(--line); border-radius:12px; padding:26px 28px; background:var(--panel); }
+  .integracion h2 { margin-top:0; }
+  table.permisos { width:100%; border-collapse:collapse; font-size:0.95rem; margin:14px 0; }
+  table.permisos th, table.permisos td { text-align:left; padding:10px 14px 10px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.permisos th { color:var(--text); font-weight:600; white-space:nowrap; }
+  table.permisos td { color:var(--muted); }
+  table.permisos code { color:var(--accent); font-family:ui-monospace,Consolas,monospace; font-size:0.88rem; white-space:nowrap; }
+  .tabla-scroll { overflow-x:auto; }
 </style>
 </head>
 <body>
@@ -70,8 +78,26 @@
   <header>
     <img class="mark" src="/icon-512.png" alt="Orion Studio" width="104" height="104">
     <div class="logo">Orion <span>Studio</span></div>
-    <p class="tagline">A desktop application for producing short-form videos and publishing them to your own social accounts.</p>
+    <p class="tagline">A desktop application that produces short-form videos and publishes them to your own TikTok and YouTube accounts, which you connect yourself through each platform's OAuth consent screen.</p>
   </header>
+
+  <section class="integracion">
+    <h2>How Orion Studio uses TikTok</h2>
+    <p>Orion Studio publishes videos to TikTok on behalf of the person using it, through TikTok's
+    Content Posting API. The user connects their own TikTok account from inside the application,
+    on TikTok's own authorization screen, and can revoke that access at any time.</p>
+    <div class="tabla-scroll">
+      <table class="permisos">
+        <thead><tr><th>Permission requested</th><th>What the application uses it for</th></tr></thead>
+        <tbody>
+          <tr><td><code>user.info.basic</code></td><td>Show which TikTok account is connected, so the user can confirm they are publishing to the right one.</td></tr>
+          <tr><td><code>video.publish</code></td><td>Upload the finished video that the user selected, after they confirm a dialog showing the caption, the privacy level and TikTok's Community Guidelines notice. Nothing is uploaded without that confirmation.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Orion Studio does not read, collect or store other people's content or profiles, and it never
+    asks for a TikTok password. <a class="more" href="/security/">Full details on the Security page &rarr;</a></p>
+  </section>
 
   <section>
     <h2>What is Orion Studio?</h2>
