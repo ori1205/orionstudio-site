@@ -78,6 +78,7 @@
   .hero h1{font-size:clamp(2.6rem,6.4vw,4.6rem);margin-bottom:26px;color:#fff}
   .hero h1 .ln{display:block;overflow:hidden}
   .hero h1 .ch{display:inline-block;opacity:0;transform:translateY(110%)}
+  .hero h1 .w{display:inline-block;white-space:nowrap}
   .hero h1 .ch.sp{width:.28em}
   .word-slot{color:var(--accent);display:inline-block;min-width:6.2ch;text-align:left}
   .hero p{color:var(--muted);font-size:1.15rem;max-width:560px;margin-bottom:34px;opacity:0;animation:fadeUp .8s .9s forwards}
@@ -507,6 +508,7 @@
   function splitLine(el, baseDelay){
     var txt = el.dataset.text || '';
     el.textContent = '';
+    var palabra = null;
     for(var i=0;i<txt.length;i++){
       var s = document.createElement('span');
       s.className = 'ch' + (txt[i]===' ' ? ' sp' : '');
@@ -514,7 +516,10 @@
       if(!reduced){
         s.style.transition = 'opacity .6s cubic-bezier(.2,.65,.3,1) '+(baseDelay+i*0.035)+'s, transform .6s cubic-bezier(.2,.65,.3,1) '+(baseDelay+i*0.035)+'s';
       } else { s.style.opacity = 1; s.style.transform = 'none'; }
-      el.appendChild(s);
+      /* cada palabra en un bloque: si no, en el celular corta "convie-rten" */
+      if(txt[i]===' '){ palabra = null; el.appendChild(s); continue; }
+      if(!palabra){ palabra = document.createElement('span'); palabra.className = 'w'; el.appendChild(palabra); }
+      palabra.appendChild(s);
     }
     requestAnimationFrame(function(){ requestAnimationFrame(function(){
       el.querySelectorAll('.ch').forEach(function(c){ c.style.opacity = 1; c.style.transform = 'translateY(0)'; });
