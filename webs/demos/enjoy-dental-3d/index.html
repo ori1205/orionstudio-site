@@ -27,7 +27,7 @@
   .demo-ribbon b{color:#fff;font-weight:700}
 
   /* barra fija de conversión: vive FUERA de la película */
-  .topbar{position:fixed;top:30px;left:0;right:0;z-index:9990;display:flex;align-items:center;justify-content:space-between;
+  .topbar{position:fixed;top:var(--cinta-h,30px);left:0;right:0;z-index:9990;display:flex;align-items:center;justify-content:space-between;
     padding:12px clamp(16px,4vw,40px);background:rgba(13,11,11,.55);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
   .topbar .brand{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-weight:700;font-size:.98rem}
   .topbar .bmark{width:28px;height:28px;border-radius:8px;background:var(--coral);display:grid;place-items:center;font-size:.9rem}
@@ -309,5 +309,6 @@
   });
 })();
 </script>
+<script>(function(){var c=document.querySelector('.demo-ribbon');if(!c)return;function f(){document.documentElement.style.setProperty('--cinta-h',c.offsetHeight+'px')}f();addEventListener('resize',f);addEventListener('load',f)})();</script>
 </body>
 </html>

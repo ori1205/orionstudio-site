@@ -86,7 +86,7 @@
   .trust-item{flex:1;min-width:140px;padding:16px 18px}
   .trust-item + .trust-item{border-left:1px solid rgba(255,255,255,.12)}
   .trust-item strong{display:block;font-family:'Fraunces',serif;font-size:1.55rem;color:var(--aqua)}
-  .trust-item span{font-size:.8rem;color:rgba(234,246,245,.65)}
+  .trust-item > span{font-size:.8rem;color:rgba(234,246,245,.65)}
   .hero-stage{position:relative;perspective:1000px}
   .hero-visual{position:relative;border-radius:26px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.45);aspect-ratio:4/4.4;background:linear-gradient(145deg,#0e7c7b,#062a29);opacity:0;animation:fadeUp 1s .3s cubic-bezier(.2,.65,.3,1) forwards;transform-style:preserve-3d;will-change:transform;transition:transform .18s ease-out}
   .hero-visual svg{width:100%;height:100%}
@@ -386,7 +386,6 @@
             <rect x="439" y="207" width="50" height="63" rx="12" transform="rotate(4 464 238)"/>
             <rect x="497" y="220" width="46" height="54" rx="12" transform="rotate(-3 520 247)"/>
           </g>
-          <text x="400" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="rgba(255,255,255,.55)" font-style="italic">foto real del paciente — antes</text>
         </svg>
       </div>
       <div class="ba-layer ba-after" id="baAfter">
@@ -406,7 +405,6 @@
             <path d="M655 90l6 16 16 6-16 6-6 16-6-16-16-6 16-6z"/>
             <path d="M130 320l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/>
           </g>
-          <text x="400" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="rgba(255,255,255,.75)" font-style="italic">foto real del paciente — después</text>
         </svg>
       </div>
       <div class="ba-handle" id="baHandle"><div class="ba-knob">⇄</div></div>
@@ -454,7 +452,7 @@
       <p class="reveal d1">Odontóloga (UBA) con más de 15 años de trayectoria en odontología integral y estética. Al frente de Clínica Aluna desde 2012, formó un equipo que combina especialistas en ortodoncia, implantes y odontopediatría.</p>
       <p class="reveal d2">Creemos que ir al dentista no tiene por qué ser una mala experiencia: acá se trabaja sin apuro, explicándote cada paso y con todas las opciones sobre la mesa.</p>
       <div class="creds">
-        <div class="cred reveal d1">Odontóloga UBA · M.N. 00.000</div>
+        <div class="cred reveal d1">Odontóloga UBA</div>
         <div class="cred reveal d2">Especialista en rehabilitación oral e implantes</div>
         <div class="cred reveal d3">Miembro de la Asociación Odontológica Argentina</div>
         <div class="cred reveal d4">Equipo de 5 profesionales + radiología digital propia</div>
@@ -513,11 +511,11 @@
       <div>
         <div class="info-row reveal"><div class="icon">📍</div><div><strong>Dirección</strong><span>Av. Santa Fe 3456, Piso 2 · Palermo, CABA</span></div></div>
         <div class="info-row reveal d1"><div class="icon">🕐</div><div><strong>Horarios</strong><span>Lunes a viernes 9–19 hs · Sábados 9–13 hs</span></div></div>
-        <div class="info-row reveal d2"><div class="icon">📱</div><div><strong>WhatsApp</strong><span>+54 9 11 0000-0000</span></div></div>
+        <div class="info-row reveal d2"><div class="icon">📱</div><div><strong>WhatsApp</strong><span>+54 9 223 563-9535</span></div></div>
         <div class="info-row reveal d3"><div class="icon">✉️</div><div><strong>Email</strong><span>turnos@clinicaaluna.com.ar</span></div></div>
         <a class="btn teal reveal d4" href="https://wa.me/5492235639535?text=Hola%2C%20quiero%20pedir%20un%20turno" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
       </div>
-      <div class="map-ph reveal d1">🗺️ Acá va el mapa de Google con la ubicación real</div>
+      <iframe class="map-ph reveal d1" src="https://www.google.com/maps?q=Palermo,+Buenos+Aires&output=embed" loading="lazy" title="Mapa" style="border:0;padding:0"></iframe>
     </div>
 
     <form class="lead-form reveal" id="lead-form">
@@ -616,7 +614,7 @@
 <footer class="site">
   <div class="wrap foot-inner">
     <span>© 2026 Clínica Aluna Odontología — Sitio de demostración</span>
-    <span>Diseño: <a href="#"><strong>[tu agencia]</strong></a></span>
+    <span>Diseño: <a href="https://orionstudio.com.ar/webs/" target="_blank" rel="noopener"><strong>Orion Studio</strong></a></span>
   </div>
 </footer>
 

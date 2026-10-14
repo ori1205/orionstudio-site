@@ -36,7 +36,7 @@
   .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
 
   /* NAV minimal centrado */
-  nav{position:fixed;top:30px;left:0;right:0;z-index:120;transition:.35s}
+  nav{position:fixed;top:var(--cinta-h,30px);left:0;right:0;z-index:120;transition:.35s}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 26px;max-width:1180px;margin:0 auto}
   .brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.02rem;font-style:italic;letter-spacing:-.02em;color:#fff;transition:color .35s}
   .brand span{display:block;font-family:'DM Sans',sans-serif;font-style:normal;font-weight:400;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;opacity:.7;margin-top:1px}
@@ -151,13 +151,13 @@
     section,.sticky-sec{padding:70px 0}
     .nav-l{display:none}
     .hamburger{display:flex}
-    nav.menu-open .nav-l{display:flex;flex-direction:column;gap:2px;position:fixed;top:94px;left:0;right:0;background:var(--paper);padding:10px 26px 26px;border-bottom:1px solid var(--line);box-shadow:0 24px 48px rgba(20,32,30,.16)}
+    nav.menu-open .nav-l{display:flex;flex-direction:column;gap:2px;position:fixed;top:calc(var(--cinta-h,30px) + 64px);left:0;right:0;background:var(--paper);padding:10px 26px 26px;border-bottom:1px solid var(--line);box-shadow:0 24px 48px rgba(20,32,30,.16)}
     nav.menu-open .nav-l a{color:var(--ink);padding:14px 2px;border-bottom:1px solid var(--line);font-size:1rem}
     nav.menu-open .nav-l a:last-child{border-bottom:none}
     .stats-in{grid-template-columns:1fr}
     .stat+.stat{border-left:none;border-top:1px solid rgba(255,255,255,.14)}
     .sticky-grid{grid-template-columns:1fr;gap:36px}
-    .sticky-media{position:relative;top:0}
+    .sticky-media{position:relative;top:0;height:300px}
     .sticky-media img{height:300px}
     .tl-row{grid-template-columns:56px 1fr;gap:16px}
     .tl-n{font-size:1.8rem}
@@ -499,5 +499,6 @@
     bls.forEach(b=>so.observe(b));
   }
 </script>
+<script>(function(){var c=document.querySelector('.demo-ribbon');if(!c)return;function f(){document.documentElement.style.setProperty('--cinta-h',c.offsetHeight+'px')}f();addEventListener('resize',f);addEventListener('load',f)})();</script>
 </body>
 </html>

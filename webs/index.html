@@ -108,7 +108,7 @@
   .phone-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
   .phone-stage{perspective:1200px;display:grid;place-items:center;min-height:620px}
   .phone{position:relative;width:282px;height:588px;border-radius:42px;background:#0c0f16;border:2px solid #2a3242;box-shadow:0 50px 110px rgba(0,0,0,.65),0 0 0 6px #10141d,0 0 90px rgba(81,232,179,.10);transform-style:preserve-3d;will-change:transform;animation:floaty 6s ease-in-out infinite}
-  .phone .notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:96px;height:22px;background:#0c0f16;border-radius:12px;z-index:3;border:1px solid #1c2330}
+  .phone .notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:68px;height:16px;background:#0c0f16;border-radius:12px;z-index:3;border:1px solid #1c2330}
   .phone .screen{position:absolute;inset:10px;border-radius:34px;overflow:hidden;background:#fff}
   .phone .screen iframe{width:375px;height:812px;border:0;transform:scale(0.699);transform-origin:0 0}
   .phone-caption{opacity:.9}
@@ -119,9 +119,9 @@
   .phone-caption .mini span::before{content:"→ ";color:var(--accent);font-weight:700}
 
   /* portfolio horizontal cinemático */
-  #folioPin{height:300vh;position:relative}
+  #folioPin{height:230vh;position:relative}
   .pin-viewport{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
-  .pin-head{margin-bottom:40px}
+  .pin-head{margin-bottom:40px;width:100%}
   .folio-track{display:flex;gap:30px;will-change:transform;padding:0 24px}
   .fcard{flex:0 0 min(560px,82vw);background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:border-color .3s}
   .fcard:hover{border-color:rgba(81,232,179,.4)}
@@ -142,7 +142,7 @@
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
   .stat{padding:36px 20px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)}
   .stat strong{display:block;font-family:'Fraunces',serif;font-size:clamp(2.2rem,5vw,3.4rem);background:linear-gradient(90deg,var(--accent),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .stat span{color:var(--muted);font-size:.92rem}
+  .stat > span{color:var(--muted);font-size:.92rem}
 
   /* planes */
   .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
@@ -232,6 +232,10 @@
   });
 })();
 </script>
+<meta property="og:title" content="Orion Studio · Webs a medida en Mar del Plata">
+<meta property="og:description" content="Webs que convierten visitas en clientes. Te armamos una muestra gratis con tus fotos.">
+<meta property="og:image" content="https://orionstudio.com.ar/webs/og.jpg">
+<meta property="og:type" content="website">
 </head>
 <body>
 
@@ -337,14 +341,10 @@
         <div class="fshot"><iframe src="https://orionstudio.com.ar/webs/demos/odontologia/" title="Demo odontología" loading="lazy" tabindex="-1"></iframe></div>
         <div class="fmeta"><div><h3>Clínica Aluna</h3><p>Odontología · turnos + antes/después</p></div><span class="tag">Salud</span></div>
       </a>
-      <div class="fcard">
-        <div class="fshot"><div class="soonbox">🧠</div></div>
-        <div class="fmeta"><div><h3>Consultorio de psicología</h3><p>Reserva de sesiones online</p></div><span class="tag soon">En producción</span></div>
-      </div>
-      <div class="fcard">
-        <div class="fshot"><div class="soonbox">💇</div></div>
-        <div class="fmeta"><div><h3>Estética y belleza</h3><p>Booking + galería de trabajos</p></div><span class="tag soon">En producción</span></div>
-      </div>
+      <a class="fcard" href="https://orionstudio.com.ar/webs/demos/nacar/" target="_blank" rel="noopener">
+        <div class="fshot"><iframe src="https://orionstudio.com.ar/webs/demos/nacar/" title="Demo estética" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="fmeta"><div><h3>Nácar Estética</h3><p>Estética · turnos online en tres toques</p></div><span class="tag">Belleza</span></div>
+      </a>
       <div class="fcard cta-card">
         <div>
           <h3>¿Tu negocio acá?</h3>

@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nácar · Estética facial y corporal en Mar del Plata</title>
+<meta name="description" content="Tratamientos faciales y corporales sin apuro, en Güemes, Mar del Plata. Reservá tu turno online.">
+<!-- Web de EJEMPLO de Orion Studio: Nácar es un negocio ficticio. No indexar. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#e9d9c2">
+<meta property="og:title" content="Nácar · Estética en Mar del Plata">
+<meta property="og:description" content="Web de ejemplo diseñada por Orion Studio.">
+<meta property="og:image" content="https://orionstudio.com.ar/webs/demos/nacar/fotos/01.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#e9d9c2;--crema2:#f2e8da;--papel:#fbf7f1;--salvia:#aaac94;--salvia2:#5f6352;--terra:#b95c2d;--terra2:#9c4a22;
+  --cafe:#482a0d;--cafe2:#6e5642;--linea:rgba(72,42,13,.14);--serif:'Cormorant Garamond',Georgia,serif;--sans:Jost,system-ui,sans-serif;
+  --r:28px;--g:22px;--cinta:36px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--papel);color:var(--cafe);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--terra);color:#fff}
+.grano{pointer-events:none;position:fixed;inset:0;z-index:80;opacity:.06;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.envolver{max-width:1240px;margin:0 auto;padding:0 var(--g)}
+.envolver>*{min-width:0}  /* si no, la fila de días ensancha la grilla y la página se sale en el celular */
+.kicker{font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--terra)}
+.h2{font-family:var(--serif);font-weight:600;font-size:clamp(46px,9vw,104px);line-height:.95;letter-spacing:-.015em}
+.h2 em,.titulo em,.manifiesto em{font-style:italic;font-weight:500;color:var(--terra)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--terra);color:#fff;border-radius:999px;padding:17px 30px;
+  font-weight:500;letter-spacing:.02em;transition:background .3s,transform .3s;will-change:transform}
+.btn:hover{background:var(--terra2)}
+.btn.claro{background:transparent;color:var(--cafe);box-shadow:inset 0 0 0 1.5px var(--cafe)}
+.btn.claro:hover{background:var(--cafe);color:var(--papel)}
+.btn[disabled]{opacity:.35;pointer-events:none}
+
+/* cinta de demo */
+.cinta{position:fixed;top:0;left:0;right:0;height:var(--cinta);z-index:70;background:var(--cafe);color:var(--crema);
+  display:flex;align-items:center;justify-content:center;gap:14px;font-size:12.5px;letter-spacing:.06em;padding:0 12px;white-space:nowrap;overflow:hidden}
+.cinta a{color:#fff;font-weight:600;border-bottom:1px solid rgba(255,255,255,.5)}
+@media (max-width:600px){.cinta .largo{display:none}}
+
+/* intro */
+.intro{position:fixed;inset:0;z-index:100;background:var(--crema);display:grid;place-items:center}
+.intro-marca{font-family:var(--serif);font-weight:600;font-size:clamp(64px,18vw,200px);letter-spacing:-.02em;display:flex;overflow:hidden}
+.intro-marca span{display:inline-block}
+.intro-linea{position:absolute;left:50%;bottom:38%;width:min(320px,60vw);height:1.5px;background:var(--cafe);transform:translateX(-50%) scaleX(0)}
+html:not(.anim) .intro{display:none}
+
+/* nav */
+.nav{position:fixed;top:var(--cinta);left:0;right:0;z-index:60;transition:background .4s,box-shadow .4s,transform .4s}
+.nav .envolver{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav.solida{background:rgba(251,247,241,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--linea)}
+.logo{font-family:var(--serif);font-weight:700;font-size:34px;letter-spacing:.01em;line-height:1}
+.logo small{display:block;font-family:var(--sans);font-weight:500;font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:var(--cafe2);margin-top:2px}
+.nav-links{display:none;gap:34px;font-size:15px}
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .4s}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav .btn{padding:12px 22px;font-size:15px}
+.hambur{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1.5px var(--cafe)}
+.hambur i{display:block;width:18px;height:1.5px;background:var(--cafe);position:relative}
+.hambur i::before,.hambur i::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--cafe)}
+.hambur i::before{top:-6px} .hambur i::after{top:6px}
+.nav-der{display:flex;align-items:center;gap:12px}
+.nav-der .btn{display:none}
+.menu{position:fixed;inset:0;z-index:65;background:var(--crema);padding:150px var(--g) 40px;display:flex;flex-direction:column;
+  justify-content:space-between;clip-path:circle(0% at calc(100% - 45px) 75px);transition:clip-path .7s cubic-bezier(.7,0,.2,1)}
+.menu.abierto{clip-path:circle(150% at calc(100% - 45px) 75px)}
+.menu a.grande{font-family:var(--serif);font-size:clamp(46px,13vw,90px);font-weight:600;line-height:1.08;display:block}
+.menu-cerrar{position:absolute;top:calc(var(--cinta) + 14px);right:var(--g);width:46px;height:46px;border-radius:50%;
+  box-shadow:inset 0 0 0 1.5px var(--cafe);font-size:22px}
+@media (min-width:900px){.nav-links{display:flex}.hambur{display:none}.nav-der .btn{display:inline-flex}}
+
+/* hero */
+.hero{position:relative;padding:calc(var(--cinta) + 120px) 0 70px;min-height:100svh}
+.hero .envolver{display:grid;gap:40px;align-items:center}
+.titulo{font-family:var(--serif);font-weight:600;font-size:clamp(64px,16vw,168px);line-height:.88;letter-spacing:-.025em;margin:18px 0 26px}
+.titulo .p{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.titulo .p>span{display:inline-block}
+.bajada{max-width:440px;font-size:19px;color:var(--cafe2)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.arco-caja{position:relative}
+.arco{height:min(118vw,640px);border-radius:999px 999px var(--r) var(--r);overflow:hidden;position:relative}
+.arco img{width:100%;height:118%;object-fit:cover;position:absolute;top:-9%}
+.sello{position:absolute;left:-18px;bottom:-40px;width:150px;height:150px;border-radius:50%;background:var(--terra);color:#fff;display:grid;place-items:center;
+  box-shadow:0 18px 40px rgba(156,74,34,.35)}
+.sello svg{position:absolute;inset:0;animation:girar 16s linear infinite}
+.sello text{fill:#fff;font-size:15.5px;letter-spacing:3.2px;font-family:var(--sans);font-weight:500}
+.sello span{font-size:30px;line-height:1}
+@keyframes girar{to{transform:rotate(360deg)}}
+.datos{display:flex;gap:28px;margin-top:44px;padding-top:24px;border-top:1px solid var(--linea)}
+.datos b{display:block;font-family:var(--serif);font-size:44px;font-weight:600;line-height:1}
+.datos span{font-size:13px;color:var(--cafe2);letter-spacing:.04em}
+@media (min-width:900px){
+  .hero .envolver{grid-template-columns:1.12fr .88fr;gap:70px}
+  .arco{height:78vh;max-height:760px}
+  .sello{left:-75px;bottom:60px;width:170px;height:170px}
+}
+
+/* marquesina */
+.marquesina{padding:30px 0;border-block:1px solid var(--linea);overflow:hidden;background:var(--crema2)}
+.mq-pista{display:flex;width:max-content;animation:correr 32s linear infinite}
+.mq-pista span{font-family:var(--serif);font-style:italic;font-size:clamp(40px,8vw,84px);white-space:nowrap;padding-right:44px;line-height:1.1}
+.mq-pista span i{font-style:normal;color:var(--terra);margin-left:44px;font-size:.6em;vertical-align:middle}
+@keyframes correr{to{transform:translateX(-50%)}}
+
+/* manifiesto */
+.manifiesto{padding:130px 0}
+.manifiesto p{font-family:var(--serif);font-weight:500;font-size:clamp(36px,6.6vw,74px);line-height:1.12;max-width:1060px}
+.manifiesto .pal{opacity:1;transition:none}
+.anim .manifiesto .pal{opacity:.14}
+.firma{display:flex;align-items:center;gap:16px;margin-top:38px;font-size:15px;color:var(--cafe2)}
+.firma img{width:58px;height:58px;border-radius:50%;object-fit:cover}
+
+/* tratamientos */
+.trat{padding:110px 0 120px;background:var(--crema);overflow:hidden}
+.trat-cab{display:flex;flex-direction:column;gap:18px;margin-bottom:46px}
+.trat-cab p:not(.kicker){max-width:420px;color:var(--cafe2)}
+.pista{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--g) 10px;scrollbar-width:none}
+.pista::-webkit-scrollbar{display:none}
+.tcard{flex:0 0 min(80vw,440px);scroll-snap-align:center;background:var(--papel);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.tcard-img{aspect-ratio:4/4.6;overflow:hidden}
+.tcard-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.tcard:hover .tcard-img img{transform:scale(1.07)}
+.tcard-txt{padding:26px 26px 28px;display:flex;flex-direction:column;gap:10px;flex:1}
+.tnum{font-size:13px;letter-spacing:.2em;color:var(--terra);font-weight:600}
+.tcard h3{font-family:var(--serif);font-weight:600;font-size:36px;line-height:1}
+.tcard p{color:var(--cafe2);font-size:16px}
+.tmeta{margin-top:auto;padding-top:16px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--linea);font-size:15px}
+.tmeta a{font-weight:600;color:var(--terra)}
+.pista-ayuda{display:flex;align-items:center;gap:10px;margin:22px var(--g) 0;font-size:13px;color:var(--cafe2);letter-spacing:.05em}
+@media (min-width:900px){
+  .trat{padding-bottom:0}
+  .trat-cab{flex-direction:row;justify-content:space-between;align-items:flex-end}
+  .pista{overflow:visible;scroll-snap-type:none;padding:0 0 120px calc((100vw - min(1240px,100vw)) / 2 + var(--g));width:max-content}
+  .tcard{flex-basis:420px}
+  .pista-ayuda{display:none}
+}
+
+/* ritual */
+.ritual{padding:120px 0}
+.ritual .envolver{display:grid;gap:30px}
+.ritual-img{position:sticky;top:calc(var(--cinta) + 86px);height:46vh;border-radius:var(--r);overflow:hidden;z-index:2}
+.ritual-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .8s,transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.ritual-img img.activa{opacity:1;transform:scale(1)}
+.ritual-img .contador{position:absolute;left:18px;bottom:16px;background:rgba(251,247,241,.9);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;letter-spacing:.14em}
+.paso{min-height:58vh;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:30px 0}
+.paso span{font-family:var(--serif);font-style:italic;font-size:64px;color:var(--terra);line-height:1}
+.paso h3{font-family:var(--serif);font-weight:600;font-size:clamp(40px,6vw,64px);line-height:1}
+.paso p{max-width:440px;color:var(--cafe2);font-size:18px}
+@media (min-width:900px){
+  .ritual .envolver{grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+  .ritual-img{height:76vh;top:calc(var(--cinta) + 100px)}
+  .paso{min-height:76vh}
+}
+
+/* galería */
+.galeria{padding:110px 0 120px;background:var(--cafe);color:var(--crema)}
+.galeria .kicker{color:var(--salvia)}
+.galeria .h2 em{color:var(--crema)}
+.gal-cab{display:flex;flex-direction:column;gap:16px;margin-bottom:48px}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gal figure{overflow:hidden;border-radius:20px;position:relative;cursor:zoom-in}
+.gal figure:nth-child(3n+1){grid-row:span 2}
+.gal img{width:100%;height:100%;object-fit:cover;min-height:180px;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.gal figure:hover img{transform:scale(1.06)}
+.gal figcaption{position:absolute;left:14px;bottom:12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+@media (min-width:900px){.gal{grid-template-columns:repeat(3,1fr);gap:18px}.gal img{min-height:260px}}
+.caja-luz{position:fixed;inset:0;z-index:95;background:rgba(30,18,6,.92);display:grid;place-items:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s}
+.caja-luz.abierta{opacity:1;pointer-events:auto}
+.caja-luz img{max-height:86vh;border-radius:18px}
+
+/* reseñas */
+.resenas{padding:120px 0}
+.res-cab{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+.puntaje{display:flex;align-items:baseline;gap:12px}
+.puntaje b{font-family:var(--serif);font-size:82px;font-weight:600;line-height:1}
+.puntaje .est{color:var(--terra);font-size:26px;letter-spacing:4px}
+.puntaje small{color:var(--cafe2);font-size:14px}
+.res-pista{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--g) 10px;scrollbar-width:none}
+.res-pista::-webkit-scrollbar{display:none}
+.resena{flex:0 0 min(82vw,420px);scroll-snap-align:center;background:var(--crema2);border-radius:var(--r);padding:32px 30px;display:flex;flex-direction:column;gap:18px}
+.resena q{font-family:var(--serif);font-size:30px;line-height:1.18;font-weight:500;quotes:"“" "”"}
+.resena .quien{margin-top:auto;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--cafe2)}
+.resena .ini{width:42px;height:42px;border-radius:50%;background:var(--salvia);color:#fff;display:grid;place-items:center;font-weight:600}
+.nota-ej{margin:18px var(--g) 0;font-size:12px;color:var(--cafe2);letter-spacing:.06em}
+@media (min-width:900px){.res-pista{padding-left:calc((100vw - min(1240px,100vw)) / 2 + var(--g))}.nota-ej{margin-left:calc((100vw - min(1240px,100vw)) / 2 + var(--g))}}
+
+/* turnos */
+.turnos{padding:120px 0;background:var(--salvia);color:var(--cafe)}
+.turnos .envolver{display:grid;gap:46px}
+.turnos .kicker{color:var(--cafe)}
+.turnos .h2 em{color:var(--papel)}
+.turnos-cab p:not(.kicker){margin-top:18px;max-width:420px;font-size:18px}
+.reserva{background:var(--papel);border-radius:34px;padding:28px 22px;box-shadow:0 30px 80px rgba(72,42,13,.18);display:flex;flex-direction:column;gap:30px}
+.r-paso h4{display:flex;align-items:center;gap:12px;font-weight:500;font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.r-paso h4 span{width:30px;height:30px;border-radius:50%;background:var(--cafe);color:var(--papel);display:grid;place-items:center;font-size:13px;letter-spacing:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border-radius:999px;padding:12px 18px;box-shadow:inset 0 0 0 1.5px var(--linea);font-size:15px;transition:all .25s;background:#fff}
+.chip small{color:var(--cafe2);margin-left:6px}
+.chip.sel{background:var(--cafe);color:var(--papel);box-shadow:none}
+.chip.sel small{color:var(--crema)}
+.dias{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.dias::-webkit-scrollbar{display:none}
+.dia{flex:0 0 74px;border-radius:20px;padding:12px 0;text-align:center;box-shadow:inset 0 0 0 1.5px var(--linea);background:#fff;transition:all .25s}
+.dia small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cafe2)}
+.dia b{display:block;font-family:var(--serif);font-size:30px;line-height:1.1}
+.dia.sel{background:var(--terra);color:#fff;box-shadow:none}
+.dia.sel small{color:#fff}
+.horas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.hora{border-radius:14px;padding:12px 0;box-shadow:inset 0 0 0 1.5px var(--linea);background:#fff;font-size:15px;transition:all .25s}
+.hora.sel{background:var(--cafe);color:var(--papel);box-shadow:none}
+.hora[disabled]{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.r-resumen{display:flex;flex-direction:column;gap:16px;padding-top:22px;border-top:1px solid var(--linea)}
+.r-resumen p{font-size:16px;color:var(--cafe2)}
+.r-resumen p b{color:var(--cafe)}
+@media (min-width:900px){.turnos .envolver{grid-template-columns:.8fr 1.2fr;align-items:start}.reserva{padding:40px}.r-resumen{flex-direction:row;align-items:center;justify-content:space-between}}
+.modal{position:fixed;inset:0;z-index:96;background:rgba(30,18,6,.55);display:grid;place-items:end center;opacity:0;pointer-events:none;transition:opacity .35s;padding:16px}
+.modal.abierto{opacity:1;pointer-events:auto}
+.modal-caja{width:min(460px,100%);background:var(--papel);border-radius:30px;padding:28px 24px;transform:translateY(40px);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.modal.abierto .modal-caja{transform:none}
+.modal h5{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.05}
+.modal .sub{font-size:14px;color:var(--cafe2);margin:8px 0 18px}
+.chat{background:#e7ddd0;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.burbuja{align-self:flex-end;max-width:88%;background:#d7f6c4;color:#16240f;border-radius:16px 16px 4px 16px;padding:12px 14px;font-size:15px;line-height:1.4}
+.burbuja.ella{align-self:flex-start;background:#fff;color:var(--cafe);border-radius:16px 16px 16px 4px}
+.modal-btns{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+@media (min-width:600px){.modal{place-items:center}}
+
+/* ubicación */
+.donde{padding:120px 0}
+.donde .envolver{display:grid;gap:40px}
+.estado{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:500;background:var(--crema2)}
+.estado i{width:9px;height:9px;border-radius:50%;background:#999}
+.estado.abierto i{background:#3fa34d;box-shadow:0 0 0 0 rgba(63,163,77,.6);animation:latido 1.8s infinite}
+@keyframes latido{70%{box-shadow:0 0 0 10px rgba(63,163,77,0)}100%{box-shadow:0 0 0 0 rgba(63,163,77,0)}}
+.horario{margin-top:26px;border-top:1px solid var(--linea)}
+.horario div{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--linea);font-size:16px}
+.horario div.hoy{font-weight:600;color:var(--terra)}
+.mapa{position:relative;border-radius:var(--r);overflow:hidden;background:var(--salvia);min-height:380px}
+.mapa svg{position:absolute;inset:0;width:100%;height:100%}
+.mapa path{fill:none;stroke:rgba(251,247,241,.65);stroke-linecap:round}
+.mapa .mar{fill:#93a3a3;stroke:none}
+.pin{position:absolute;left:55%;top:46%;transform:translate(-50%,-100%)}
+.pin b{display:block;width:54px;height:54px;border-radius:50% 50% 50% 0;background:var(--terra);transform:rotate(-45deg);box-shadow:0 10px 24px rgba(72,42,13,.35)}
+.pin span{position:absolute;left:50%;top:-46px;transform:translateX(-50%);background:var(--papel);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;white-space:nowrap}
+.mapa .onda{position:absolute;left:55%;top:46%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;border:2px solid var(--terra);animation:onda 2.4s infinite}
+@keyframes onda{to{transform:scale(6);opacity:0}}
+@media (min-width:900px){.donde .envolver{grid-template-columns:.9fr 1.1fr;align-items:center;gap:80px}.mapa{min-height:520px}}
+
+/* preguntas */
+.faq{padding:40px 0 130px}
+.faq details{border-bottom:1px solid var(--linea)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;
+  font-family:var(--serif);font-weight:600;font-size:clamp(26px,4.2vw,40px);line-height:1.1}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:40px;height:40px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--cafe);position:relative;transition:transform .4s,background .3s}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1.5px;background:var(--cafe);transform:translate(-50%,-50%)}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] summary i{transform:rotate(45deg);background:var(--crema)}
+.faq details p{padding:0 0 28px;max-width:720px;color:var(--cafe2);font-size:18px}
+
+/* pie */
+.pie{background:var(--cafe);color:var(--crema);padding:90px 0 30px;overflow:hidden}
+.pie-cta{display:flex;flex-direction:column;gap:26px;margin-bottom:70px}
+.pie-cta .h2 em{color:var(--crema)}
+.pie-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;font-size:15px;color:rgba(233,217,194,.75)}
+.pie-cols b{display:block;color:var(--crema);font-weight:500;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+.pie-marca{font-family:var(--serif);font-weight:700;font-size:31vw;line-height:.8;letter-spacing:-.04em;margin:60px 0 20px;
+  color:transparent;-webkit-text-stroke:1.5px rgba(233,217,194,.45);white-space:nowrap}
+.creditos{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:13px;color:rgba(233,217,194,.6);border-top:1px solid rgba(233,217,194,.15);padding-top:22px}
+.creditos a{color:var(--crema);border-bottom:1px solid rgba(233,217,194,.4)}
+@media (min-width:900px){.pie-cta{flex-direction:row;justify-content:space-between;align-items:flex-end}.pie-cols{grid-template-columns:repeat(4,1fr)}.pie-marca{font-size:26vw}}
+
+/* flotante, progreso y cursor */
+.flota{position:fixed;right:18px;bottom:18px;z-index:58;display:flex;align-items:center;gap:10px;background:var(--cafe);color:var(--papel);
+  border-radius:999px;padding:14px 20px 14px 16px;font-weight:500;box-shadow:0 14px 34px rgba(72,42,13,.35);transform:translateY(120px);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.flota.ver{transform:none}
+.flota i{width:10px;height:10px;border-radius:50%;background:#7bd389;box-shadow:0 0 0 0 rgba(123,211,137,.6);animation:latido 1.8s infinite}
+.progreso{position:fixed;top:var(--cinta);left:0;right:0;height:2px;z-index:61;background:var(--terra);transform-origin:left;transform:scaleX(0)}
+.cursor{position:fixed;left:0;top:0;z-index:99;pointer-events:none;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--terra);
+  transition:width .3s,height .3s,margin .3s,background .3s;display:none;mix-blend-mode:multiply}
+.cursor.grande{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(185,92,45,.18)}
+@media (hover:hover) and (pointer:fine){.cursor{display:block}}
+
+/* estados iniciales de las animaciones (solo si GSAP cargó y no se pidió reducir movimiento) */
+.anim .rv{opacity:0;transform:translateY(46px)}
+.anim .rv-hero{opacity:0;transform:translateY(30px)}
+.turnos .h2{font-size:clamp(46px,7vw,84px)}
+.cursor{opacity:0}
+.cursor.vivo{opacity:1}
+@media (prefers-reduced-motion:reduce){.sello svg,.mq-pista,.estado.abierto i,.flota i,.mapa .onda{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="grano" aria-hidden="true"></div>
+<div class="cinta"><span class="largo">Negocio ficticio ·&nbsp;</span>Web de ejemplo de Orion Studio <a href="https://wa.me/5492235639535?text=Hola%20Orion%20Studio!%20Vi%20la%20web%20de%20ejemplo%20de%20N%C3%A1car%20y%20quiero%20una%20as%C3%AD%20para%20mi%20negocio" target="_blank" rel="noopener">Quiero una así →</a></div>
+<div class="intro" aria-hidden="true"><div class="intro-marca"><span>N</span><span>á</span><span>c</span><span>a</span><span>r</span></div><div class="intro-linea"></div></div>
+<div class="progreso" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="envolver">
+    <a class="logo" href="#inicio">Nácar<small>estética</small></a>
+    <div class="nav-links"><a href="#tratamientos">Tratamientos</a><a href="#ritual">El ritual</a><a href="#espacio">El espacio</a><a href="#donde">Dónde estamos</a></div>
+    <div class="nav-der"><a class="btn" href="#turnos" data-iman>Reservá tu turno</a><button class="hambur" aria-label="Abrir menú"><i></i></button></div>
+  </div>
+</nav>
+<div class="menu" aria-hidden="true">
+  <button class="menu-cerrar" aria-label="Cerrar menú">✕</button>
+  <div><a class="grande" href="#tratamientos">Tratamientos</a><a class="grande" href="#ritual">El ritual</a><a class="grande" href="#espacio">El espacio</a><a class="grande" href="#turnos">Turnos</a><a class="grande" href="#donde">Dónde estamos</a></div>
+  <p class="kicker">Güemes · Mar del Plata</p>
+</div>
+
+<header class="hero" id="inicio">
+  <div class="envolver">
+    <div>
+      <p class="kicker rv-hero">Estética facial y corporal · Güemes, Mar del Plata</p>
+      <h1 class="titulo" data-partir>Tu piel, <em>en buenas</em> manos.</h1>
+      <p class="bajada rv-hero">Tratamientos sin apuro, productos nobles y un espacio pensado para que bajes un cambio.</p>
+      <div class="ctas rv-hero"><a class="btn" href="#turnos" data-iman>Reservá tu turno</a><a class="btn claro" href="#tratamientos">Ver tratamientos</a></div>
+      <div class="datos rv-hero"><div><b data-cuenta="9">0</b><span>años en Güemes</span></div><div><b data-cuenta="4.9" data-dec="1">0</b><span>en Google</span></div><div><b data-cuenta="6">0</b><span>tratamientos</span></div></div>
+    </div>
+    <div class="arco-caja">
+      <div class="arco"><img src="fotos/01.jpg" alt="Sala de tratamientos de Nácar con luz natural" fetchpriority="high"></div>
+      <a class="sello" href="#turnos" aria-label="Reservá tu turno"><svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text><textPath href="#circ">RESERVÁ TU TURNO · NÁCAR · ESTÉTICA · </textPath></text></svg><span>↓</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="marquesina" aria-hidden="true"><div class="mq-pista">
+  <span>Limpieza facial<i>✦</i>Masajes<i>✦</i>Hidratación profunda<i>✦</i>Aromaterapia<i>✦</i>Drenaje con jade<i>✦</i></span>
+  <span>Limpieza facial<i>✦</i>Masajes<i>✦</i>Hidratación profunda<i>✦</i>Aromaterapia<i>✦</i>Drenaje con jade<i>✦</i></span>
+</div></div>
+
+<section class="manifiesto"><div class="envolver">
+  <p data-palabras>Creemos en los tratamientos sin apuro, en los productos nobles y en que salgas de acá sintiéndote vos, pero <em>descansada</em>.</p>
+  <div class="firma rv"><img src="fotos/06.jpg" alt=""><span>— El equipo de Nácar</span></div>
+</div></section>
+
+<section class="trat" id="tratamientos">
+  <div class="envolver trat-cab"><div><p class="kicker rv">Tratamientos</p><h2 class="h2 rv">Lo que hacemos,<br><em>con tiempo</em>.</h2></div>
+    <p class="rv">Cada sesión arranca con una charla: qué necesita tu piel hoy, no lo que dice un folleto.</p></div>
+  <div class="pista">
+    <article class="tcard"><div class="tcard-img"><img src="fotos/02.jpg" alt="Productos de cuidado facial" loading="lazy"></div><div class="tcard-txt"><span class="tnum">01</span><h3>Limpieza facial profunda</h3><p>Higiene, extracción suave, máscara y masaje facial. Para pieles que necesitan respirar.</p><div class="tmeta"><span>60 min</span><a href="#turnos" data-trat="Limpieza facial">Reservar →</a></div></div></article>
+    <article class="tcard"><div class="tcard-img"><img src="fotos/03.jpg" alt="Toallas y piedras de masaje" loading="lazy"></div><div class="tcard-txt"><span class="tnum">02</span><h3>Masaje descontracturante</h3><p>Piedras calientes y aceites tibios para soltar cuello, espalda y hombros.</p><div class="tmeta"><span>50 min</span><a href="#turnos" data-trat="Masaje">Reservar →</a></div></div></article>
+    <article class="tcard"><div class="tcard-img"><img src="fotos/08.jpg" alt="Textura de máscara hidratante" loading="lazy"></div><div class="tcard-txt"><span class="tnum">03</span><h3>Hidratación profunda</h3><p>Máscaras y activos que devuelven el agua a la piel después del sol y el viento de la costa.</p><div class="tmeta"><span>45 min</span><a href="#turnos" data-trat="Hidratación">Reservar →</a></div></div></article>
+    <article class="tcard"><div class="tcard-img"><img src="fotos/05.jpg" alt="Aceites esenciales y velas" loading="lazy"></div><div class="tcard-txt"><span class="tnum">04</span><h3>Aromaterapia</h3><p>Aceites esenciales elegidos para vos: para dormir mejor, para arrancar o para bajar un cambio.</p><div class="tmeta"><span>40 min</span><a href="#turnos" data-trat="Aromaterapia">Reservar →</a></div></div></article>
+    <article class="tcard"><div class="tcard-img"><img src="fotos/06.jpg" alt="Rodillo de jade y peonías" loading="lazy"></div><div class="tcard-txt"><span class="tnum">05</span><h3>Drenaje facial con jade</h3><p>Masaje con rodillo frío que desinflama y le devuelve luz a la cara.</p><div class="tmeta"><span>30 min</span><a href="#turnos" data-trat="Drenaje con jade">Reservar →</a></div></div></article>
+  </div>
+  <p class="pista-ayuda">Deslizá para ver más →</p>
+</section>
+
+<section class="ritual" id="ritual"><div class="envolver">
+  <div class="ritual-img"><img class="activa" src="fotos/04.jpg" alt="Recepción de Nácar" loading="lazy"><img src="fotos/07.jpg" alt="Rincón de descanso" loading="lazy"><img src="fotos/02.jpg" alt="Productos para el cuidado en casa" loading="lazy"><span class="contador">01 / 03</span></div>
+  <div>
+    <p class="kicker rv">El ritual</p>
+    <div class="paso"><span>01</span><h3>Te escuchamos</h3><p>Antes de tocar tu piel, charlamos: cómo dormís, qué usás, qué te molesta. Sin formularios eternos.</p></div>
+    <div class="paso"><span>02</span><h3>Bajás un cambio</h3><p>Luz baja, música suave y un tratamiento hecho con tiempo. El celular puede esperar una hora.</p></div>
+    <div class="paso"><span>03</span><h3>Te llevás la rutina</h3><p>Salís con los pasos para cuidarte en casa, escritos y simples. Y te los mandamos por WhatsApp.</p></div>
+  </div>
+</div></section>
+
+<section class="galeria" id="espacio"><div class="envolver">
+  <div class="gal-cab"><p class="kicker rv">El espacio</p><h2 class="h2 rv">Un lugar para<br><em>quedarse</em>.</h2></div>
+  <div class="gal">
+    <figure data-vel="-6"><img src="fotos/01.jpg" alt="Sala de tratamientos" loading="lazy"><figcaption>Sala 1</figcaption></figure>
+    <figure data-vel="4"><img src="fotos/03.jpg" alt="Toallas y piedras" loading="lazy"><figcaption>Masajes</figcaption></figure>
+    <figure data-vel="-3"><img src="fotos/05.jpg" alt="Aceites y velas" loading="lazy"><figcaption>Aromas</figcaption></figure>
+    <figure data-vel="6"><img src="fotos/04.jpg" alt="Recepción con espejo en arco" loading="lazy"><figcaption>Recepción</figcaption></figure>
+    <figure data-vel="-5"><img src="fotos/07.jpg" alt="Rincón con cortinas de lino" loading="lazy"><figcaption>Descanso</figcaption></figure>
+    <figure data-vel="3"><img src="fotos/06.jpg" alt="Peonías y rodillo de jade" loading="lazy"><figcaption>Detalles</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="resenas">
+  <div class="envolver res-cab"><p class="kicker rv">Lo que dicen</p>
+    <div class="puntaje rv"><b>4,9</b><div><div class="est">★★★★★</div><small>en Google</small></div></div></div>
+  <div class="res-pista">
+    <div class="resena"><q>Salí renovada. La atención es un mimo y se nota que saben lo que hacen.</q><div class="quien"><span class="ini">M</span>Micaela · limpieza facial</div></div>
+    <div class="resena"><q>El masaje con piedras me sacó una contractura de meses. Ya reservé el próximo.</q><div class="quien"><span class="ini">J</span>Julián · masaje</div></div>
+    <div class="resena"><q>Me explicaron todo con paciencia y me mandaron la rutina por WhatsApp. Un diez.</q><div class="quien"><span class="ini">C</span>Carla · hidratación</div></div>
+    <div class="resena"><q>El lugar es hermoso, te olvidás de todo. Y reservar desde la web fue facilísimo.</q><div class="quien"><span class="ini">S</span>Sofía · aromaterapia</div></div>
+  </div>
+  <p class="nota-ej">Reseñas de ejemplo para esta demo.</p>
+</section>
+
+<section class="turnos" id="turnos"><div class="envolver">
+  <div class="turnos-cab"><p class="kicker rv">Turnos online</p><h2 class="h2 rv">Reservá en<br><em>tres toques</em>.</h2>
+    <p class="rv">Elegí el tratamiento, el día y el horario. Te confirmamos por WhatsApp en el momento.</p></div>
+  <div class="reserva rv">
+    <div class="r-paso"><h4><span>1</span>Tratamiento</h4><div class="chips" id="rTrat"></div></div>
+    <div class="r-paso"><h4><span>2</span>Día</h4><div class="dias" id="rDia"></div></div>
+    <div class="r-paso"><h4><span>3</span>Horario</h4><div class="horas" id="rHora"></div></div>
+    <div class="r-resumen"><p id="rTexto">Elegí tratamiento, día y horario.</p><button class="btn" id="rConfirmar" disabled>Confirmar turno</button></div>
+  </div>
+</div></section>
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitulo"><div class="modal-caja">
+  <h5 id="mTitulo">Así le llega tu turno a Nácar</h5>
+  <p class="sub">En una web real, este mensaje se abre en WhatsApp listo para enviar.</p>
+  <div class="chat"><div class="burbuja" id="mMensaje"></div><div class="burbuja ella">¡Hola! Te esperamos 🌿 Te mandamos la dirección y las indicaciones.</div></div>
+  <div class="modal-btns"><a class="btn" id="mOrion" target="_blank" rel="noopener" href="https://wa.me/5492235639535?text=Hola%20Orion%20Studio!%20Vi%20la%20web%20de%20ejemplo%20de%20N%C3%A1car%20y%20quiero%20una%20as%C3%AD%20para%20mi%20negocio">Quiero una web así para mi negocio</a><button class="btn claro" id="mCerrar">Cerrar</button></div>
+</div></div>
+
+<section class="donde" id="donde"><div class="envolver">
+  <div>
+    <p class="kicker rv">Dónde estamos</p>
+    <h2 class="h2 rv">A dos cuadras<br>de <em>Güemes</em>.</h2>
+    <p class="rv" style="margin-top:22px"><span class="estado" id="estado"><i></i><span>Calculando horario…</span></span></p>
+    <div class="horario rv" id="horario"></div>
+  </div>
+  <div class="mapa rv" aria-label="Mapa ilustrado de la zona">
+    <svg viewBox="0 0 600 520" preserveAspectRatio="xMidYMid slice">
+      <path class="mar" d="M470 0 C430 120 520 220 480 330 C450 420 520 470 500 520 L600 520 L600 0 Z"/>
+      <path d="M-20 90 L620 40" stroke-width="16"/><path d="M-20 250 L620 210" stroke-width="22"/><path d="M-20 410 L620 380" stroke-width="16"/>
+      <path d="M110 -20 L150 540" stroke-width="16"/><path d="M290 -20 L320 540" stroke-width="22"/><path d="M430 -20 L450 540" stroke-width="12"/>
+      <path d="M-20 330 C150 300 260 360 420 300" stroke-width="10" stroke-dasharray="2 16"/>
+    </svg>
+    <i class="onda"></i>
+    <div class="pin"><span>Nácar</span><b></b></div>
+  </div>
+</div></section>
+
+<section class="faq"><div class="envolver">
+  <p class="kicker rv" style="margin-bottom:10px">Preguntas frecuentes</p>
+  <details><summary>¿Tengo que llevar algo?<i></i></summary><p>Nada. Tenemos todo: batas, toallas y productos. Si tenés la piel sensible o alguna alergia, contanos al reservar.</p></details>
+  <details><summary>¿Puedo cambiar o cancelar el turno?<i></i></summary><p>Sí, avisanos por WhatsApp con 24 horas de anticipación y lo movemos sin problema.</p></details>
+  <details><summary>¿Qué medios de pago aceptan?<i></i></summary><p>Efectivo, transferencia y tarjetas de débito y crédito.</p></details>
+  <details><summary>¿Hacen tarjetas de regalo?<i></i></summary><p>Sí: elegís el tratamiento y te mandamos una tarjeta digital lista para regalar.</p></details>
+</div></section>
+
+<footer class="pie"><div class="envolver">
+  <div class="pie-cta"><h2 class="h2">Tu próximo<br><em>respiro</em>.</h2><a class="btn" href="#turnos" style="align-self:flex-start" data-iman>Reservá tu turno</a></div>
+  <div class="pie-cols">
+    <div><b>Visitanos</b>Zona Güemes<br>Mar del Plata</div>
+    <div><b>Horarios</b>Lun a vie 9 a 20<br>Sábados 9 a 14</div>
+    <div><b>Seguinos</b>@nacar.estetica</div>
+    <div><b>Turnos</b>Online, en esta web<br>o por WhatsApp</div>
+  </div>
+  <div class="pie-marca" aria-hidden="true">Nácar</div>
+  <div class="creditos"><span>Nácar es un negocio ficticio: esta es una web de ejemplo.</span><span>Diseño y desarrollo: <a href="https://orionstudio.com.ar/webs/" target="_blank" rel="noopener">Orion Studio</a></span></div>
+</div></footer>
+
+<a class="flota" href="#turnos"><i></i>Turnos online</a>
+<div class="caja-luz" aria-hidden="true"><img alt=""></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const animar = !!(window.gsap && window.ScrollTrigger) && !reducir;
+  if (animar) { document.documentElement.classList.add('anim'); gsap.registerPlugin(ScrollTrigger); }
+
+  /* título partido en palabras con máscara */
+  $$('[data-partir]').forEach(el => {
+    const partes = [];
+    el.childNodes.forEach(n => {
+      if (n.nodeType === 3) n.textContent.split(/(\s+)/).forEach(p => p && partes.push(/^\s+$/.test(p) ? ' ' : `<span class="p"><span>${p}</span></span>`));
+      else partes.push(`<span class="p"><span>${n.outerHTML}</span></span>`);
+    });
+    el.innerHTML = partes.join('');
+  });
+  /* manifiesto palabra por palabra */
+  $$('[data-palabras]').forEach(el => {
+    const partes = [];
+    el.childNodes.forEach(n => {
+      if (n.nodeType === 3) n.textContent.split(/(\s+)/).forEach(p => p && partes.push(/^\s+$/.test(p) ? ' ' : `<span class="pal">${p}</span>`));
+      else { n.classList.add('pal'); partes.push(n.outerHTML); }
+    });
+    el.innerHTML = partes.join('');
+  });
+
+  /* nav, menú y progreso */
+  const nav = $('.nav'), flota = $('.flota'), progreso = $('.progreso');
+  const alScroll = () => {
+    const y = scrollY, alto = document.documentElement.scrollHeight - innerHeight;
+    nav.classList.toggle('solida', y > 40);
+    flota.classList.toggle('ver', y > innerHeight * .8 && y < alto - innerHeight * .6);
+    progreso.style.transform = `scaleX(${alto > 0 ? y / alto : 0})`;
+  };
+  addEventListener('scroll', alScroll, {passive: true}); alScroll();
+  const menu = $('.menu');
+  $('.hambur').addEventListener('click', () => { menu.classList.add('abierto'); menu.setAttribute('aria-hidden', 'false'); });
+  const cerrarMenu = () => { menu.classList.remove('abierto'); menu.setAttribute('aria-hidden', 'true'); };
+  $('.menu-cerrar').addEventListener('click', cerrarMenu);
+  $$('.menu a').forEach(a => a.addEventListener('click', cerrarMenu));
+
+  /* contadores */
+  const contar = el => {
+    const fin = parseFloat(el.dataset.cuenta), dec = +(el.dataset.dec || 0);
+    if (!animar) { el.textContent = fin.toFixed(dec).replace('.', ','); return; }
+    const o = {v: 0};
+    gsap.to(o, {v: fin, duration: 1.6, ease: 'power2.out', onUpdate: () => { el.textContent = o.v.toFixed(dec).replace('.', ','); }});
+  };
+
+  /* reservas en tres toques */
+  const TRAT = [['Limpieza facial', '60 min'], ['Masaje', '50 min'], ['Hidratación', '45 min'], ['Aromaterapia', '40 min'], ['Drenaje con jade', '30 min']];
+  const DIAS = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'], MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  const eleccion = {trat: null, dia: null, hora: null};
+  $('#rTrat').innerHTML = TRAT.map(([n, d]) => `<button class="chip" data-v="${n}">${n}<small>${d}</small></button>`).join('');
+  const dias = [];
+  for (let i = 0, d = new Date(); dias.length < 10; i++) {
+    const f = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i);
+    if (f.getDay() !== 0) dias.push(f);
+  }
+  $('#rDia').innerHTML = dias.map((f, i) => `<button class="dia" data-i="${i}"><small>${i === 0 ? 'hoy' : DIAS[f.getDay()]}</small><b>${f.getDate()}</b><small>${MESES[f.getMonth()]}</small></button>`).join('');
+  const pintarHoras = () => {
+    const f = eleccion.dia, sab = f && f.getDay() === 6, fin = sab ? 13 : 19;
+    const horas = []; for (let h = 9; h <= fin; h++) horas.push(h);
+    $('#rHora').innerHTML = horas.map(h => {
+      const ocupada = f && ((f.getDate() * 7 + h * 3) % 5 === 0);
+      return `<button class="hora" data-h="${h}" ${ocupada || !f ? 'disabled' : ''}>${h}:00</button>`;
+    }).join('');
+  };
+  pintarHoras();
+  const resumen = () => {
+    const {trat, dia, hora} = eleccion, listo = trat && dia && hora !== null;
+    $('#rConfirmar').disabled = !listo;
+    $('#rTexto').innerHTML = listo ? `<b>${trat}</b> · ${DIAS[dia.getDay()]} ${dia.getDate()}/${dia.getMonth() + 1} · <b>${hora}:00 hs</b>` : 'Elegí tratamiento, día y horario.';
+  };
+  const elegir = (cont, sel, fn) => cont.addEventListener('click', e => {
+    const b = e.target.closest(sel); if (!b || b.disabled) return;
+    $$(sel, cont).forEach(x => x.classList.remove('sel')); b.classList.add('sel'); fn(b); resumen();
+  });
+  elegir($('#rTrat'), '.chip', b => { eleccion.trat = b.dataset.v; });
+  elegir($('#rDia'), '.dia', b => { eleccion.dia = dias[+b.dataset.i]; eleccion.hora = null; pintarHoras(); });
+  elegir($('#rHora'), '.hora', b => { eleccion.hora = +b.dataset.h; });
+  $$('[data-trat]').forEach(a => a.addEventListener('click', () => {
+    const chip = $(`#rTrat .chip[data-v="${a.dataset.trat}"]`); if (chip) chip.click();
+  }));
+  const modal = $('.modal');
+  $('#rConfirmar').addEventListener('click', () => {
+    const {trat, dia, hora} = eleccion;
+    $('#mMensaje').textContent = `¡Hola Nácar! Quiero reservar ${trat} el ${DIAS[dia.getDay()]} ${dia.getDate()}/${dia.getMonth() + 1} a las ${hora}:00. ¿Tienen lugar?`;
+    modal.classList.add('abierto');
+  });
+  $('#mCerrar').addEventListener('click', () => modal.classList.remove('abierto'));
+  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('abierto'); });
+
+  /* abierto ahora (hora de Argentina) */
+  const HORARIO = [null, [9, 20], [9, 20], [9, 20], [9, 20], [9, 20], [9, 14]];
+  const NOMBRES = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  const ahora = new Date(new Date().toLocaleString('en-US', {timeZone: 'America/Argentina/Buenos_Aires'}));
+  const hoy = ahora.getDay(), hhmm = ahora.getHours() + ahora.getMinutes() / 60, franja = HORARIO[hoy];
+  const abierto = franja && hhmm >= franja[0] && hhmm < franja[1];
+  $('#estado').classList.toggle('abierto', !!abierto);
+  $('#estado span').textContent = abierto ? `Abierto ahora · cierra a las ${franja[1]}` : 'Cerrado ahora · reservá online cuando quieras';
+  $('#horario').innerHTML = [1, 2, 3, 4, 5, 6, 0].map(d => `<div class="${d === hoy ? 'hoy' : ''}"><span>${NOMBRES[d]}</span><span>${HORARIO[d] ? `${HORARIO[d][0]} a ${HORARIO[d][1]} hs` : 'Cerrado'}</span></div>`).join('');
+
+  /* caja de luz de la galería */
+  const caja = $('.caja-luz');
+  $$('.gal figure').forEach(f => f.addEventListener('click', () => { $('img', caja).src = $('img', f).src; caja.classList.add('abierta'); }));
+  caja.addEventListener('click', () => caja.classList.remove('abierta'));
+  addEventListener('keydown', e => { if (e.key === 'Escape') { caja.classList.remove('abierta'); modal.classList.remove('abierto'); cerrarMenu(); } });
+
+  /* cursor y botones imán (solo con mouse) */
+  if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    const cur = $('.cursor'); let cx = innerWidth / 2, cy = innerHeight / 2, x = cx, y = cy;
+    addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; cur.classList.add('vivo'); });
+    (function bucle() { x += (cx - x) * .2; y += (cy - y) * .2; cur.style.transform = `translate(${x}px,${y}px)`; requestAnimationFrame(bucle); })();
+    $$('a,button,.gal figure').forEach(el => { el.addEventListener('mouseenter', () => cur.classList.add('grande')); el.addEventListener('mouseleave', () => cur.classList.remove('grande')); });
+    $$('[data-iman]').forEach(b => {
+      b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .25}px,${(e.clientY - r.top - r.height / 2) * .35}px)`; });
+      b.addEventListener('mouseleave', () => { b.style.transform = ''; });
+    });
+  }
+
+  if (!animar) { $$('[data-cuenta]').forEach(contar); return; }
+
+  /* intro: la marca sube, la línea se dibuja y el telón se levanta */
+  const intro = gsap.timeline({defaults: {ease: 'expo.out'}});
+  intro.from('.intro-marca span', {yPercent: 110, duration: .9, stagger: .06})
+    .to('.intro-linea', {scaleX: 1, duration: .7}, .3)
+    .to('.intro', {yPercent: -100, duration: .9, ease: 'expo.inOut'}, 1.15)
+    .from('.titulo .p > span', {yPercent: 110, duration: 1.1, stagger: .08}, 1.55)
+    .fromTo('.arco', {clipPath: 'inset(100% 0% 0% 0% round 999px 999px 28px 28px)'}, {clipPath: 'inset(0% 0% 0% 0% round 999px 999px 28px 28px)', duration: 1.3, ease: 'expo.inOut'}, 1.35)
+    .to('.rv-hero', {opacity: 1, y: 0, duration: 1, stagger: .1}, 1.75)
+    .from('.sello', {scale: 0, rotation: -120, duration: 1, ease: 'back.out(1.6)'}, 2.1)
+    .add(() => $$('.datos [data-cuenta]').forEach(contar), 2.0)
+    .set('.intro', {display: 'none'});
+
+  /* apariciones al scrollear */
+  ScrollTrigger.batch('.rv', {start: 'top 88%', once: true, onEnter: els => gsap.to(els, {opacity: 1, y: 0, duration: 1, ease: 'expo.out', stagger: .1})});
+
+  /* el arco: la foto se mueve más lenta que la página */
+  gsap.to('.arco img', {yPercent: -10, ease: 'none', scrollTrigger: {trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true}});
+  gsap.to('.titulo', {yPercent: -18, ease: 'none', scrollTrigger: {trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true}});
+
+  /* la marquesina se acelera y se inclina con la velocidad del scroll */
+  const pista = $('.mq-pista'); let sesgo = 0;
+  ScrollTrigger.create({onUpdate: s => { sesgo = gsap.utils.clamp(-8, 8, s.getVelocity() / -300); }});
+  gsap.ticker.add(() => { sesgo *= .9; pista.style.transform = `skewX(${sesgo}deg)`; });
+
+  /* manifiesto: las palabras se encienden al pasar */
+  gsap.to('.manifiesto .pal', {opacity: 1, stagger: .1, ease: 'none', scrollTrigger: {trigger: '.manifiesto p', start: 'top 80%', end: 'bottom 45%', scrub: true}});
+
+  /* tratamientos: en compu la fila se recorre de costado mientras scrolleás */
+  ScrollTrigger.matchMedia({
+    '(min-width: 900px)': () => {
+      const fila = $('.pista');
+      gsap.to(fila, {x: () => -(fila.scrollWidth - innerWidth), ease: 'none',
+        scrollTrigger: {trigger: '.trat', start: 'top top', end: () => '+=' + (fila.scrollWidth - innerWidth), pin: true, scrub: 1, invalidateOnRefresh: true}});
+      $$('.gal figure').forEach(f => gsap.to(f, {yPercent: +f.dataset.vel * 2, ease: 'none', scrollTrigger: {trigger: '.galeria', start: 'top bottom', end: 'bottom top', scrub: true}}));
+    }
+  });
+  gsap.utils.toArray('.tcard').forEach(c => gsap.from(c, {opacity: 0, y: 60, duration: 1, ease: 'expo.out', scrollTrigger: {trigger: c, start: 'top 90%', once: true}}));
+
+  /* el ritual: la foto cambia con cada paso */
+  const fotos = $$('.ritual-img img'), cont = $('.ritual-img .contador');
+  $$('.paso').forEach((p, i) => ScrollTrigger.create({trigger: p, start: 'top 60%', end: 'bottom 60%',
+    onToggle: s => { if (!s.isActive) return; fotos.forEach((f, j) => f.classList.toggle('activa', i === j)); cont.textContent = `0${i + 1} / 03`; }}));
+  gsap.utils.toArray('.paso').forEach(p => gsap.from(p.children, {opacity: 0, y: 40, duration: .9, ease: 'expo.out', stagger: .08, scrollTrigger: {trigger: p, start: 'top 75%', once: true}}));
+
+  /* galería: cada foto se descubre */
+  gsap.utils.toArray('.gal figure').forEach((f, i) => gsap.from(f, {clipPath: 'inset(100% 0% 0% 0%)', duration: 1.2, ease: 'expo.inOut', delay: (i % 3) * .08,
+    scrollTrigger: {trigger: f, start: 'top 92%', once: true}}));
+
+  /* mapa: el pin cae */
+  gsap.from('.pin', {y: -140, opacity: 0, duration: 1, ease: 'bounce.out', scrollTrigger: {trigger: '.mapa', start: 'top 70%', once: true}});
+
+  /* pie: la marca gigante se desliza */
+  gsap.fromTo('.pie-marca', {xPercent: 8}, {xPercent: -8, ease: 'none', scrollTrigger: {trigger: '.pie', start: 'top bottom', end: 'bottom bottom', scrub: true}});
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+<script>
+(function(){
+  if (window.self !== window.top) return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter', 'https://orionstudio.goatcounter.com/count');
+  document.head.appendChild(s);
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    window.goatcounter.count({ path: 'wa-click ' + location.pathname, title: 'Click de contacto', event: true });
+  });
+})();
+</script>
+</body>
+</html>
