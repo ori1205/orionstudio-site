@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Toia Cerámica · Cerámica hecha a mano en Chapadmalal</title>
+<meta name="description" content="Tazas, cuencos y jarras de cerámica hechas a mano por Salomé y Victoria en Chapadmalal. Elegí tus piezas y pedilas por WhatsApp.">
+<!-- Propuesta de diseño de Orion Studio para Toia Cerámica. NO es la tienda oficial. No indexar. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f1ea">
+<meta property="og:title" content="Toia Cerámica · Propuesta de tienda online">
+<meta property="og:description" content="Propuesta de diseño de Orion Studio para Toia Cerámica.">
+<meta property="og:image" content="https://orionstudio.com.ar/webs/demos/toia-ceramica/fotos/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#f7f1ea;--arcilla:#efe4d7;--papel:#fffdfa;--tinta:#3a2e2a;--tinta2:#6f625b;--linea:rgba(58,46,42,.13);
+  --rosa:#b9535d;--rosa2:#9f4550;--rosa-claro:#f6cfd1;--lila:#b3bbe8;--celeste:#c4dbf0;--durazno:#f6d2b4;--verde:#1f7a4a;
+  --serif:'Young Serif',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--mano:'Caveat',cursive;
+  --r:22px;--g:20px;--cinta:32px;--cab:64px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--crema);color:var(--tinta);font-family:var(--sans);font-size:16.5px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+::selection{background:var(--rosa);color:#fff}
+.envolver{max-width:1180px;margin:0 auto;padding:0 var(--g)}
+.envolver>*{min-width:0}
+.mano{font-family:var(--mano);font-weight:700}
+.kicker{font-size:12.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rosa)}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,6.4vw,58px);line-height:1.05;letter-spacing:-.01em}
+.h2 .mano{font-size:1.15em;color:var(--rosa);font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--rosa);color:#fff;border-radius:999px;padding:15px 26px;font-weight:700;transition:background .25s,transform .25s}
+.btn:hover{background:var(--rosa2)}
+.btn.claro{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.btn.claro:hover{background:var(--tinta);color:var(--papel)}
+.btn.wa{background:var(--verde)}
+.btn.wa:hover{background:#17623a}
+.btn[disabled]{opacity:.4;pointer-events:none}
+
+/* cinta de propuesta */
+.cinta{position:fixed;top:0;left:0;right:0;height:var(--cinta);z-index:70;background:var(--tinta);color:var(--arcilla);display:flex;align-items:center;justify-content:center;gap:12px;
+  font-size:12px;letter-spacing:.05em;padding:0 12px;white-space:nowrap;overflow:hidden}
+.cinta a{color:#fff;font-weight:700;border-bottom:1px solid rgba(255,255,255,.5)}
+@media (max-width:600px){.cinta .largo{display:none}}
+
+/* cabecera */
+.cab{position:sticky;top:var(--cinta);z-index:60;background:rgba(247,241,234,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+.cab.linea{border-color:var(--linea)}
+.cab .envolver{height:var(--cab);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:baseline;gap:8px}
+.logo b{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1;letter-spacing:.01em}
+.logo span{font-family:var(--mano);font-size:20px;color:var(--rosa);line-height:1}
+.cab nav{display:none;gap:28px;font-size:15px;font-weight:500}
+.bolsa{position:relative;display:flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;background:var(--papel);box-shadow:inset 0 0 0 1.5px var(--linea);font-weight:700;font-size:14.5px}
+.bolsa svg{width:20px;height:20px}
+.bolsa i{min-width:22px;height:22px;border-radius:11px;background:var(--rosa);color:#fff;font-style:normal;font-size:12.5px;display:grid;place-items:center;padding:0 6px;transition:transform .3s cubic-bezier(.3,1.8,.5,1)}
+.bolsa i.salto{transform:scale(1.35)}
+@media (min-width:860px){.cab nav{display:flex}}
+
+/* hero */
+.hero{padding:44px 0 70px}
+.hero .envolver{display:grid;gap:44px;align-items:center}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(42px,8.6vw,64px);line-height:1.02;letter-spacing:-.015em;margin:14px 0 20px}
+.hero h1 .mano{color:var(--rosa);font-size:1.12em}
+.bajada{font-size:18px;color:var(--tinta2);max-width:470px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.collage{position:relative;height:430px;max-width:520px;width:100%;justify-self:center}
+.polaroid{position:absolute;background:#fff;padding:10px 10px 38px;border-radius:6px;box-shadow:0 18px 40px rgba(58,46,42,.18);width:58%}
+.polaroid img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.polaroid figcaption{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:var(--mano);font-size:21px;color:var(--tinta2)}
+.p1{left:0;top:30px;transform:rotate(-7deg);z-index:2}
+.p2{right:0;top:0;transform:rotate(5deg);z-index:1}
+.p3{left:24%;top:150px;transform:rotate(-1.5deg);z-index:3;width:52%}
+.nota{position:absolute;right:2%;bottom:-6px;z-index:4;font-family:var(--mano);font-size:26px;color:var(--rosa);transform:rotate(-6deg);line-height:1.1;text-align:right}
+@media (min-width:900px){.hero{padding:70px 0 90px}.hero .envolver{grid-template-columns:1fr 1fr;gap:60px}.collage{height:540px}}
+@media (prefers-reduced-motion:no-preference){.polaroid{animation:flota 7s ease-in-out infinite}.p2{animation-delay:-2.3s}.p3{animation-delay:-4.6s}}
+@keyframes flota{50%{translate:0 -8px}}
+
+/* tienda */
+.tienda{padding:30px 0 90px}
+.tienda-cab{display:flex;flex-direction:column;gap:14px;margin-bottom:22px}
+.chips{display:flex;gap:10px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border-radius:999px;padding:10px 18px;background:var(--papel);box-shadow:inset 0 0 0 1.5px var(--linea);font-size:15px;font-weight:500;transition:all .2s}
+.chip.sel{background:var(--tinta);color:var(--papel);box-shadow:none}
+.grilla{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
+.pieza{background:var(--papel);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 0 var(--linea);transition:transform .35s,box-shadow .35s}
+.pieza:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(58,46,42,.1)}
+.pieza-foto{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--arcilla)}
+.pieza-foto img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.pieza:hover .pieza-foto img{transform:scale(1.05)}
+.unica{position:absolute;left:10px;top:10px;background:rgba(255,253,250,.94);border-radius:999px;padding:2px 12px 4px;font-family:var(--mano);font-size:18px;color:var(--rosa);transform:rotate(-4deg)}
+.pieza-txt{padding:14px 14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pieza h3{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.15}
+.pieza p{font-size:13.5px;color:var(--tinta2);line-height:1.45}
+.precio{font-size:13px;font-weight:700;color:var(--tinta2);margin-top:auto;padding-top:6px}
+.agregar{margin-top:8px;border-radius:999px;padding:11px 10px;box-shadow:inset 0 0 0 1.5px var(--tinta);font-weight:700;font-size:14px;transition:all .2s}
+.agregar:hover{background:var(--tinta);color:var(--papel)}
+.agregar.en{background:var(--rosa);color:#fff;box-shadow:none}
+@media (min-width:700px){.grilla{grid-template-columns:repeat(3,1fr);gap:18px}.pieza h3{font-size:21px}.pieza p{font-size:14.5px}}
+@media (min-width:1050px){.grilla{grid-template-columns:repeat(4,1fr)}}
+
+/* cómo comprar */
+.pasos{padding:80px 0;background:var(--arcilla)}
+.pasos-lista{display:grid;gap:16px;margin-top:34px}
+.paso{background:var(--papel);border-radius:var(--r);padding:26px 24px;display:flex;gap:18px;align-items:flex-start}
+.paso b{font-family:var(--mano);font-size:46px;line-height:.9;color:var(--rosa);flex:none;width:34px}
+.paso h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.15;margin-bottom:6px}
+.paso p{color:var(--tinta2);font-size:15.5px}
+.cita{margin-top:26px;font-family:var(--mano);font-size:26px;color:var(--tinta2)}
+@media (min-width:860px){.pasos-lista{grid-template-columns:repeat(3,1fr)}}
+
+/* personalizados y mayoristas */
+.dos{padding:90px 0}
+.dos .envolver{display:grid;gap:18px}
+.tarjeta{border-radius:28px;padding:34px 28px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.tarjeta.rosa{background:var(--rosa-claro)}
+.tarjeta.lila{background:var(--lila)}
+.tarjeta h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,40px);line-height:1.08}
+.tarjeta p{max-width:430px;color:var(--tinta)}
+.tarjeta .btn{align-self:flex-start;margin-top:8px}
+.combos{display:flex;flex-wrap:wrap;gap:8px}
+.combos span{background:rgba(255,253,250,.7);border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px}
+.tarjeta .garabato{position:absolute;right:-20px;bottom:-30px;width:170px;opacity:.45}
+@media (min-width:860px){.dos .envolver{grid-template-columns:1fr 1fr}}
+
+/* nosotras */
+.nosotras{padding:30px 0 90px}
+.nosotras .envolver{display:grid;gap:34px;align-items:center}
+.nos-fotos{position:relative;max-width:440px;height:340px;width:100%}
+.nos-fotos img{position:absolute;border-radius:18px;object-fit:cover;box-shadow:0 16px 36px rgba(58,46,42,.15)}
+.nos-fotos .f1{left:0;top:0;width:62%;height:62%}
+.nos-fotos .f2{right:0;bottom:0;width:56%;height:70%}
+.nos-txt p{color:var(--tinta2);font-size:17.5px;margin-top:16px;max-width:520px}
+.firma{margin-top:18px;font-family:var(--mano);font-size:30px;color:var(--rosa)}
+@media (min-width:860px){.nosotras .envolver{grid-template-columns:.9fr 1.1fr;gap:70px}.nos-fotos{height:420px}}
+
+/* reseñas */
+.resenas{padding:80px 0;background:var(--arcilla)}
+.puntaje{display:flex;align-items:center;gap:14px;margin:14px 0 30px}
+.puntaje b{font-family:var(--serif);font-weight:400;font-size:64px;line-height:1}
+.puntaje span{color:var(--rosa);font-size:22px;letter-spacing:3px}
+.puntaje small{display:block;color:var(--tinta2);font-size:14px}
+.res-lista{display:grid;gap:14px}
+.resena{background:var(--papel);border-radius:var(--r);padding:26px 24px;display:flex;flex-direction:column;gap:14px}
+.resena q{font-family:var(--serif);font-size:21px;line-height:1.3;quotes:"“" "”"}
+.resena small{color:var(--tinta2);font-size:14px}
+.nota-res{margin-top:16px;font-size:12.5px;color:var(--tinta2)}
+@media (min-width:860px){.res-lista{grid-template-columns:repeat(3,1fr)}}
+
+/* panel (capa de propuesta) */
+.panel{padding:90px 0;background:var(--tinta);color:var(--arcilla)}
+.panel .envolver{display:grid;gap:44px;align-items:center}
+.panel .kicker{color:var(--rosa-claro)}
+.panel .h2 .mano{color:var(--rosa-claro)}
+.panel-lista{margin-top:24px;display:grid;gap:14px}
+.panel-lista div{display:flex;gap:14px;align-items:flex-start;font-size:16.5px}
+.panel-lista i{flex:none;width:30px;height:30px;border-radius:50%;background:var(--rosa);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:14px}
+.etiqueta{display:inline-block;margin-top:24px;font-size:12.5px;letter-spacing:.06em;color:rgba(239,228,215,.65);border:1px dashed rgba(239,228,215,.35);border-radius:999px;padding:6px 14px}
+.tel{justify-self:center;width:290px;border-radius:40px;background:#1b1513;padding:12px;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.tel-pant{background:var(--papel);color:var(--tinta);border-radius:30px;padding:22px 18px 20px;display:flex;flex-direction:column;gap:12px}
+.tel-pant h4{font-family:var(--serif);font-weight:400;font-size:21px}
+.tel-foto{display:flex;gap:10px;align-items:center}
+.tel-foto img{width:64px;height:64px;border-radius:14px;object-fit:cover}
+.tel-foto span{font-size:13px;color:var(--tinta2)}
+.campo{border-radius:12px;box-shadow:inset 0 0 0 1.5px var(--linea);padding:9px 12px;font-size:14px}
+.campo small{display:block;font-size:11px;color:var(--tinta2);letter-spacing:.05em;text-transform:uppercase}
+.interruptor{display:flex;border-radius:999px;background:var(--arcilla);padding:4px;font-size:13.5px;font-weight:700}
+.interruptor span{flex:1;text-align:center;border-radius:999px;padding:7px 0;cursor:pointer;transition:all .25s}
+.interruptor span.on{background:var(--papel);box-shadow:0 2px 6px rgba(58,46,42,.15)}
+.tel .btn{padding:12px;font-size:14.5px}
+@media (min-width:860px){.panel .envolver{grid-template-columns:1.1fr .9fr;gap:70px}}
+
+/* preguntas */
+.faq{padding:80px 0}
+.faq details{border-bottom:1px solid var(--linea)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-family:var(--serif);font-size:clamp(20px,3.2vw,26px);line-height:1.2}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--tinta);position:relative;transition:transform .35s}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--tinta);transform:translate(-50%,-50%)}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] summary i{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--tinta2);max-width:680px;font-size:16.5px}
+
+/* pie */
+.pie{background:var(--arcilla);padding:60px 0 28px}
+.pie-arriba{display:flex;flex-direction:column;gap:22px;margin-bottom:40px}
+.pie-arriba .logo b{font-size:44px}
+.pie-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;font-size:15px;color:var(--tinta2)}
+.pie-cols b{display:block;color:var(--tinta);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.pie-cols a{border-bottom:1px solid var(--linea)}
+.creditos{margin-top:40px;padding-top:18px;border-top:1px solid var(--linea);display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;font-size:12.5px;color:var(--tinta2)}
+.creditos a{color:var(--tinta);border-bottom:1px solid var(--linea)}
+@media (min-width:860px){.pie-arriba{flex-direction:row;justify-content:space-between;align-items:flex-end}.pie-cols{grid-template-columns:repeat(4,1fr)}}
+
+/* barra de pedido (celu) */
+.barra{position:fixed;left:12px;right:12px;bottom:12px;z-index:58;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--tinta);color:var(--papel);
+  border-radius:20px;padding:12px 12px 12px 18px;box-shadow:0 16px 36px rgba(58,46,42,.35);transform:translateY(140%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.barra.ver{transform:none}
+.barra b{font-weight:700}
+.barra .btn{padding:11px 18px;font-size:14.5px}
+@media (min-width:860px){.barra{left:auto;right:20px;bottom:20px;width:360px}}
+
+/* carrito */
+.velo{position:fixed;inset:0;z-index:80;background:rgba(40,30,27,.45);opacity:0;pointer-events:none;transition:opacity .3s}
+.velo.ver{opacity:1;pointer-events:auto}
+.carrito{position:fixed;top:0;right:0;bottom:0;z-index:81;width:min(420px,100%);background:var(--crema);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.carrito.ver{transform:none}
+.car-cab{display:flex;justify-content:space-between;align-items:center;padding:20px var(--g);border-bottom:1px solid var(--linea)}
+.car-cab h4{font-family:var(--serif);font-weight:400;font-size:26px}
+.cerrar{width:40px;height:40px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--linea);font-size:18px}
+.car-cuerpo{flex:1;overflow-y:auto;padding:16px var(--g);display:flex;flex-direction:column;gap:12px}
+.item{display:flex;gap:12px;align-items:center;background:var(--papel);border-radius:16px;padding:10px}
+.item img{width:58px;height:58px;border-radius:12px;object-fit:cover}
+.item div{flex:1;font-size:15px;line-height:1.3}
+.item small{display:block;color:var(--tinta2);font-size:12.5px}
+.item button{width:32px;height:32px;border-radius:50%;color:var(--tinta2);font-size:16px}
+.vacio{color:var(--tinta2);text-align:center;padding:40px 10px}
+.vacio b{display:block;font-family:var(--mano);font-size:28px;color:var(--rosa);margin-bottom:6px}
+.car-pie{padding:16px var(--g) 22px;border-top:1px solid var(--linea);display:flex;flex-direction:column;gap:12px}
+.car-pie h5{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta2)}
+.entrega{display:grid;gap:8px}
+.entrega label{display:flex;gap:10px;align-items:flex-start;background:var(--papel);border-radius:14px;padding:12px 14px;cursor:pointer;box-shadow:inset 0 0 0 1.5px transparent;font-size:15px;line-height:1.35}
+.entrega label:has(input:checked){box-shadow:inset 0 0 0 1.5px var(--rosa)}
+.entrega input{accent-color:var(--rosa);margin-top:3px}
+.entrega small{display:block;color:var(--tinta2);font-size:13px}
+.car-pie input[type=text]{border:0;border-radius:14px;background:var(--papel);padding:13px 14px;box-shadow:inset 0 0 0 1.5px var(--linea);outline:none}
+.car-pie input[type=text]:focus{box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.car-nota{font-size:13px;color:var(--tinta2)}
+
+/* mensaje (vista previa de WhatsApp) */
+.modal{position:fixed;inset:0;z-index:90;background:rgba(40,30,27,.55);display:grid;place-items:end center;padding:14px;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal.ver{opacity:1;pointer-events:auto}
+.modal-caja{width:min(460px,100%);background:var(--papel);border-radius:28px;padding:26px 22px;transform:translateY(40px);transition:transform .45s cubic-bezier(.2,.8,.2,1);max-height:92vh;overflow-y:auto}
+.modal.ver .modal-caja{transform:none}
+.modal h5{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1}
+.modal .sub{font-size:14px;color:var(--tinta2);margin:8px 0 16px}
+.chat{background:#efeae2;border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.burbuja{align-self:flex-end;max-width:90%;background:#d9fdd3;color:#14240f;border-radius:16px 16px 4px 16px;padding:11px 13px;font-size:14.5px;line-height:1.45;white-space:pre-line}
+.burbuja.ellas{align-self:flex-start;background:#fff;color:var(--tinta);border-radius:16px 16px 16px 4px}
+.modal-btns{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+@media (min-width:600px){.modal{place-items:center}}
+
+/* aparición al scrollear (solo si hay JS) */
+.js .rv{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .rv.dentro{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="cinta"><span class="largo">Propuesta de diseño para&nbsp;</span>Toia Cerámica · demo de Orion Studio <a href="https://wa.me/5492235639535?text=Hola%20Ori!%20Vi%20la%20propuesta%20de%20tienda%20para%20Toia%20Cer%C3%A1mica" target="_blank" rel="noopener">Hablemos →</a></div>
+
+<header class="cab">
+  <div class="envolver">
+    <a class="logo" href="#inicio"><b>Toia</b><span>cerámica</span></a>
+    <nav><a href="#tienda">Tienda</a><a href="#personalizados">Personalizados</a><a href="#mayoristas">Mayoristas</a><a href="#nosotras">Nosotras</a></nav>
+    <button class="bolsa" id="abrirCarrito" aria-label="Ver tu pedido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Pedido <i id="cuenta">0</i></button>
+  </div>
+</header>
+
+<section class="hero" id="inicio"><div class="envolver">
+  <div>
+    <p class="kicker rv">Salomé y Victoria · madre e hija · Chapadmalal</p>
+    <h1 class="rv">Cerámica hecha a mano, <span class="mano">pieza por pieza.</span></h1>
+    <p class="bajada rv">Tazas, cuencos y jarras pintadas a mano en nuestro taller. Elegí tus piezas y te confirmamos todo por WhatsApp.</p>
+    <div class="ctas rv"><a class="btn" href="#tienda">Ver la tienda</a><a class="btn claro" href="#personalizados">Diseños personalizados</a></div>
+  </div>
+  <div class="collage rv" aria-hidden="true">
+    <figure class="polaroid p1"><img src="fotos/jarra-lila.jpg" alt=""><figcaption>jarra lila</figcaption></figure>
+    <figure class="polaroid p2"><img src="fotos/tazas-frida-gato.jpg" alt=""><figcaption>Frida y gato</figcaption></figure>
+    <figure class="polaroid p3"><img src="fotos/cuenco-frida.jpg" alt=""><figcaption>cuenco Frida</figcaption></figure>
+    <p class="nota">cada pieza<br>es única ♡</p>
+  </div>
+</div></section>
+
+<section class="tienda" id="tienda"><div class="envolver">
+  <div class="tienda-cab">
+    <p class="kicker rv">La tienda</p>
+    <h2 class="h2 rv">Elegí tus <span class="mano">piezas</span></h2>
+  </div>
+  <div class="chips rv" id="filtros" role="tablist" aria-label="Categorías"></div>
+  <div class="grilla" id="grilla"></div>
+</div></section>
+
+<section class="pasos"><div class="envolver">
+  <p class="kicker rv">Cómo comprar</p>
+  <h2 class="h2 rv">Así de <span class="mano">fácil</span></h2>
+  <div class="pasos-lista">
+    <div class="paso rv"><b>1</b><div><h3>Elegís tus piezas</h3><p>Las sumás a tu pedido desde la tienda. Son casi todas únicas: cuando una se vende, deja de estar disponible.</p></div></div>
+    <div class="paso rv"><b>2</b><div><h3>Nos llega por WhatsApp</h3><p>Tu pedido nos llega armado y te confirmamos precio, disponibilidad y entrega.</p></div></div>
+    <div class="paso rv"><b>3</b><div><h3>Transferís y listo</h3><p>Te lo enviamos (el envío lo pagás al recibirlo) o lo retirás por el taller en Chapadmalal.</p></div></div>
+  </div>
+  <p class="cita rv">"Escribinos, elegí, transferís, te lo enviamos. Así de fácil." — Toia</p>
+</div></section>
+
+<section class="dos"><div class="envolver">
+  <div class="tarjeta rosa rv" id="personalizados">
+    <p class="kicker">Diseños personalizados</p>
+    <h3>¿Querés una pieza pensada para vos?</h3>
+    <p>Un color, un dibujo, un nombre, un regalo especial. Contanos qué te imaginás y la hacemos a mano.</p>
+    <button class="btn" data-mensaje="¡Hola Toia! Quiero encargar un diseño personalizado. Les cuento lo que me imagino:">Pedí tu diseño</button>
+    <svg class="garabato" viewBox="0 0 200 200" fill="none" stroke="#b9535d" stroke-width="3" stroke-linecap="round"><path d="M100 40c18 0 22 22 0 30-22-8-18-30 0-30Zm0 90c-18 0-22-22 0-30 22 8 18 30 0 30ZM60 85c0-18 22-22 30 0-8 22-30 18-30 0Zm80 0c0 18-22 22-30 0 8-22 30-18 30 0Z"/><circle cx="100" cy="85" r="8"/></svg>
+  </div>
+  <div class="tarjeta lila rv" id="mayoristas">
+    <p class="kicker">Mayoristas</p>
+    <h3>Combos para tu negocio</h3>
+    <p>Para bazares, tiendas y emprendimientos: combos de piezas con envío seguro y diseños exclusivos.</p>
+    <div class="combos"><span>17 piezas</span><span>26 piezas</span><span>30 piezas</span><span>36 piezas</span></div>
+    <button class="btn" data-mensaje="¡Hola Toia! Tengo un negocio y quiero info de los combos mayoristas.">Quiero info de combos</button>
+  </div>
+</div></section>
+
+<section class="nosotras" id="nosotras"><div class="envolver">
+  <div class="nos-fotos rv" aria-hidden="true"><img class="f1" src="fotos/taller.jpg" alt=""><img class="f2" src="fotos/cuencos-moteados.jpg" alt=""></div>
+  <div class="nos-txt">
+    <p class="kicker rv">Nosotras</p>
+    <h2 class="h2 rv">Madre e hija, <span class="mano">con las manos en el barro</span></h2>
+    <p class="rv">Somos Salomé y Victoria. Cada pieza nace en nuestro taller de Chapadmalal: empieza en un molde de yeso hecho a mano y termina con el último pincelazo. Por eso no hay dos iguales.</p>
+    <p class="firma rv">Salo y Vicky</p>
+  </div>
+</div></section>
+
+<section class="resenas"><div class="envolver">
+  <p class="kicker rv">Lo que dicen</p>
+  <div class="puntaje rv"><b>5,0</b><div><span>★★★★★</span><small>5 opiniones en Google</small></div></div>
+  <div class="res-lista">
+    <div class="resena rv"><q>Hermoso todo lo que ofrecen y excelente calidad, Vicky y Salo unas genias!! Recomiendo sin dudar.</q><small>Raúl M. · Google</small></div>
+    <div class="resena rv"><q>Hermosas piezas y amorosa atención en la Feria Filiberto en Chapa.</q><small>Ana C. · Google</small></div>
+    <div class="resena rv"><q>Muy recomendable, buen precio y calidad.</q><small>Ricardo R. · Google</small></div>
+  </div>
+  <p class="nota-res rv">Reseñas reales publicadas en Google.</p>
+</div></section>
+
+<section class="panel"><div class="envolver">
+  <div>
+    <p class="kicker rv">Para Salomé y Victoria</p>
+    <h2 class="h2 rv">Cargar una pieza nueva <span class="mano">lleva un minuto</span></h2>
+    <div class="panel-lista">
+      <div class="rv"><i>1</i><span>Sacás la foto desde el celu y completás nombre, precio y categoría.</span></div>
+      <div class="rv"><i>2</i><span>Tocás "Publicar" y aparece en la tienda al instante.</span></div>
+      <div class="rv"><i>3</i><span>Cuando se vende, la marcás como vendida con un toque. Sin llamar a nadie.</span></div>
+    </div>
+    <span class="etiqueta rv">Vista previa del panel · se arma si avanzamos</span>
+  </div>
+  <div class="tel rv" aria-label="Vista previa del panel para cargar piezas">
+    <div class="tel-pant">
+      <h4>Nueva pieza</h4>
+      <div class="tel-foto"><img src="fotos/jarra-floral.jpg" alt=""><span>Foto lista ✓<br>Tocá para cambiarla</span></div>
+      <div class="campo"><small>Nombre</small>Jarra floral</div>
+      <div class="campo"><small>Categoría</small>Jarras</div>
+      <div class="campo"><small>Precio</small>$ —</div>
+      <div class="interruptor" id="interruptor"><span class="on">Disponible</span><span>Vendida</span></div>
+      <span class="btn">Publicar</span>
+    </div>
+  </div>
+</div></section>
+
+<section class="faq"><div class="envolver">
+  <p class="kicker rv" style="margin-bottom:8px">Preguntas frecuentes</p>
+  <details><summary>¿Hacen envíos?<i></i></summary><p>Sí. El envío lo paga quien compra, al recibir el paquete.</p></details>
+  <details><summary>¿Puedo retirar en persona?<i></i></summary><p>Sí, por el taller en Chapadmalal. Coordinamos día y horario por WhatsApp.</p></details>
+  <details><summary>¿Cómo se paga?<i></i></summary><p>Por transferencia, cuando te confirmamos el pedido por WhatsApp.</p></details>
+  <details><summary>¿Todas las piezas son únicas?<i></i></summary><p>Casi todas: cada una se hace a mano y puede variar en color y forma. Si te gusta una que ya se vendió, preguntanos por un diseño personalizado.</p></details>
+</div></section>
+
+<footer class="pie"><div class="envolver">
+  <div class="pie-arriba"><a class="logo" href="#inicio"><b>Toia</b><span>cerámica</span></a><a class="btn" href="#tienda">Ver la tienda</a></div>
+  <div class="pie-cols">
+    <div><b>Taller</b>Chapadmalal<br>Mar del Plata</div>
+    <div><b>Instagram</b><a href="https://www.instagram.com/toia.ceramica/" target="_blank" rel="noopener">@toia.ceramica</a></div>
+    <div><b>Pedidos</b>Desde esta tienda<br>o por WhatsApp</div>
+    <div><b>Envíos</b>Los paga quien compra<br>o retiro por el taller</div>
+  </div>
+  <div class="creditos"><span>Propuesta de diseño para Toia Cerámica, armada con fotos y datos públicos de Google e Instagram. No es la tienda oficial.</span><span>Diseño y desarrollo: <a href="https://orionstudio.com.ar/webs/" target="_blank" rel="noopener">Orion Studio</a></span></div>
+</div></footer>
+
+<div class="barra" id="barra"><span><b id="barraTexto">1 pieza</b> en tu pedido</span><button class="btn" id="barraVer">Ver pedido</button></div>
+
+<div class="velo" id="velo"></div>
+<aside class="carrito" id="carrito" aria-label="Tu pedido" aria-hidden="true">
+  <div class="car-cab"><h4>Tu pedido</h4><button class="cerrar" id="cerrarCarrito" aria-label="Cerrar">✕</button></div>
+  <div class="car-cuerpo" id="items"></div>
+  <div class="car-pie">
+    <h5>¿Cómo lo recibís?</h5>
+    <div class="entrega">
+      <label><input type="radio" name="entrega" value="envío a domicilio (pago el envío al recibir)" checked><span>Envío a domicilio<small>El envío lo pagás al recibir el paquete</small></span></label>
+      <label><input type="radio" name="entrega" value="retiro por el taller en Chapadmalal"><span>Retiro por el taller<small>En Chapadmalal, coordinamos por WhatsApp</small></span></label>
+    </div>
+    <input type="text" id="nombre" placeholder="Tu nombre (opcional)" autocomplete="name">
+    <button class="btn wa" id="enviar" disabled>Enviar pedido por WhatsApp</button>
+    <p class="car-nota">Te confirmamos precio y disponibilidad por WhatsApp. Pagás recién cuando está todo confirmado.</p>
+  </div>
+</aside>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitulo"><div class="modal-caja">
+  <h5 id="mTitulo">Así les llega el pedido</h5>
+  <p class="sub">En la tienda real, este mensaje se abre en WhatsApp listo para enviar a su número. Ustedes confirman precio y envío, como hoy.</p>
+  <div class="chat"><div class="burbuja" id="mMensaje"></div><div class="burbuja ellas">¡Hola! Sí, está disponible 😊 Te pasamos el total y el alias para transferir.</div></div>
+  <div class="modal-btns"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/5492235639535?text=Hola%20Ori!%20Vi%20la%20propuesta%20de%20tienda%20para%20Toia%20Cer%C3%A1mica">¿Les gusta? Escribile a Ori</a><button class="btn claro" id="mCerrar">Cerrar</button></div>
+</div></div>
+
+<script>
+(() => {
+  const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  document.documentElement.classList.add('js');
+
+  /* catálogo: en la tienda real lo cargan ellas desde el panel */
+  const PIEZAS = [
+    {id: 'jarra-lila', nombre: 'Jarra lila', cat: 'Jarras', desc: 'Borde ondulado y lunares blancos.'},
+    {id: 'tazas-frida-gato', nombre: 'Tazas Frida y Gato', cat: 'Tazas', desc: 'Caritas pintadas a mano y flores de cerámica.'},
+    {id: 'cuenco-frida', nombre: 'Cuenco Frida', cat: 'Cuencos', desc: 'Con su corona de flores, una por una.'},
+    {id: 'tazas-vaca-zorro', nombre: 'Tazas Vaca y Zorro', cat: 'Tazas', desc: 'Para el desayuno más simpático de la casa.'},
+    {id: 'set-nubes', nombre: 'Set Nubes', cat: 'Sets', desc: 'Tazas y bandejitas celestes con nubes.'},
+    {id: 'cuencos-moteados', nombre: 'Cuencos moteados', cat: 'Cuencos', desc: 'Fondo moteado con manchas de acuarela.'},
+    {id: 'jarra-floral', nombre: 'Jarra floral', cat: 'Jarras', desc: 'Flores rosadas pintadas a mano.'},
+    {id: 'cuenco-pinceladas', nombre: 'Cuenco pinceladas', cat: 'Cuencos', desc: 'Pinceladas de color sobre fondo moteado.'},
+    {id: 'tazas-relieve', nombre: 'Tazas con espirales', cat: 'Tazas', desc: 'En grises y pasteles, cada una distinta.'},
+    {id: 'taza-y-cuenco-pastel', nombre: 'Taza y cuenco pastel', cat: 'Sets', desc: 'Rosa y durazno, para un desayuno suave.'},
+  ];
+  const CATS = ['Todo', ...new Set(PIEZAS.map(p => p.cat))];
+
+  /* el pedido se recuerda en este navegador (si se puede) */
+  let pedido = [];
+  try { pedido = JSON.parse(localStorage.getItem('toia-pedido') || '[]').filter(id => PIEZAS.some(p => p.id === id)); } catch (e) { pedido = []; }
+  const guardar = () => { try { localStorage.setItem('toia-pedido', JSON.stringify(pedido)); } catch (e) {} };
+
+  /* filtros y grilla */
+  let cat = 'Todo';
+  $('#filtros').innerHTML = CATS.map(c => `<button class="chip${c === cat ? ' sel' : ''}" data-cat="${c}" role="tab">${c}</button>`).join('');
+  const pintarGrilla = () => {
+    $('#grilla').innerHTML = PIEZAS.filter(p => cat === 'Todo' || p.cat === cat).map(p => `
+      <article class="pieza">
+        <div class="pieza-foto"><img src="fotos/${p.id}.jpg" alt="${p.nombre}" loading="lazy"><span class="unica">pieza única</span></div>
+        <div class="pieza-txt"><h3>${p.nombre}</h3><p>${p.desc}</p><span class="precio">Precio a confirmar por WhatsApp</span>
+          <button class="agregar${pedido.includes(p.id) ? ' en' : ''}" data-id="${p.id}">${pedido.includes(p.id) ? 'En tu pedido ✓' : 'Agregar al pedido'}</button></div>
+      </article>`).join('');
+  };
+  $('#filtros').addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    cat = b.dataset.cat; $$('.chip').forEach(x => x.classList.toggle('sel', x === b)); pintarGrilla();
+  });
+  $('#grilla').addEventListener('click', e => {
+    const b = e.target.closest('.agregar'); if (!b) return;
+    const id = b.dataset.id;
+    pedido = pedido.includes(id) ? pedido.filter(x => x !== id) : [...pedido, id];
+    guardar(); pintarGrilla(); pintarPedido(true);
+  });
+
+  /* pedido: contador, barra del celu y carrito */
+  const cuenta = $('#cuenta'), barra = $('#barra');
+  const pintarPedido = salto => {
+    const n = pedido.length;
+    cuenta.textContent = n;
+    if (salto) { cuenta.classList.add('salto'); setTimeout(() => cuenta.classList.remove('salto'), 250); }
+    $('#barraTexto').textContent = n === 1 ? '1 pieza' : `${n} piezas`;
+    barra.classList.toggle('ver', n > 0 && !carrito.classList.contains('ver'));
+    $('#enviar').disabled = n === 0;
+    $('#items').innerHTML = n ? pedido.map(id => {
+      const p = PIEZAS.find(x => x.id === id);
+      return `<div class="item"><img src="fotos/${p.id}.jpg" alt=""><div>${p.nombre}<small>${p.cat} · pieza única</small></div><button data-quitar="${p.id}" aria-label="Quitar ${p.nombre}">✕</button></div>`;
+    }).join('') : '<p class="vacio"><b>Todavía nada por acá</b>Sumá las piezas que te gusten desde la tienda.</p>';
+  };
+  const carrito = $('#carrito'), velo = $('#velo');
+  const abrir = () => { carrito.classList.add('ver'); velo.classList.add('ver'); carrito.setAttribute('aria-hidden', 'false'); barra.classList.remove('ver'); };
+  const cerrar = () => { carrito.classList.remove('ver'); velo.classList.remove('ver'); carrito.setAttribute('aria-hidden', 'true'); pintarPedido(); };
+  $('#abrirCarrito').addEventListener('click', abrir);
+  $('#barraVer').addEventListener('click', abrir);
+  $('#cerrarCarrito').addEventListener('click', cerrar);
+  velo.addEventListener('click', cerrar);
+  $('#items').addEventListener('click', e => {
+    const b = e.target.closest('[data-quitar]'); if (!b) return;
+    pedido = pedido.filter(x => x !== b.dataset.quitar); guardar(); pintarGrilla(); pintarPedido();
+  });
+
+  /* el mensaje que les llega */
+  const modal = $('#modal');
+  const mostrar = texto => { $('#mMensaje').textContent = texto; modal.classList.add('ver'); };
+  $('#enviar').addEventListener('click', () => {
+    const nombres = pedido.map(id => '• ' + PIEZAS.find(p => p.id === id).nombre).join('\n');
+    const entrega = $('input[name=entrega]:checked').value, quien = $('#nombre').value.trim();
+    mostrar(`¡Hola Toia! 👋 Quiero estas piezas:\n${nombres}\n\nEntrega: ${entrega}${quien ? `\nMi nombre: ${quien}` : ''}\n¿Me confirman precio y disponibilidad?`);
+  });
+  $$('[data-mensaje]').forEach(b => b.addEventListener('click', () => mostrar(b.dataset.mensaje)));
+  $('#mCerrar').addEventListener('click', () => modal.classList.remove('ver'));
+  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('ver'); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { modal.classList.remove('ver'); cerrar(); } });
+
+  /* el interruptor del panel de muestra */
+  $('#interruptor').addEventListener('click', e => { const s = e.target.closest('span'); if (s) $$('#interruptor span').forEach(x => x.classList.toggle('on', x === s)); });
+
+  /* cabecera con línea al bajar y apariciones */
+  const cab = $('.cab');
+  addEventListener('scroll', () => cab.classList.toggle('linea', scrollY > 10), {passive: true});
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('dentro'); io.unobserve(e.target); } }), {rootMargin: '0px 0px -8% 0px'});
+    $$('.rv').forEach(el => io.observe(el));
+  } else $$('.rv').forEach(el => el.classList.add('dentro'));
+
+  pintarGrilla(); pintarPedido();
+})();
+</script>
+<script>
+(function(){
+  if (window.self !== window.top) return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter', 'https://orionstudio.goatcounter.com/count');
+  document.head.appendChild(s);
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    window.goatcounter.count({ path: 'wa-click ' + location.pathname, title: 'Click de contacto', event: true });
+  });
+})();
+</script>
+</body>
+</html>
