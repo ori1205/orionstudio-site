@@ -1,0 +1,1226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Toia Cerámica · Cerámica hecha a mano en Chapadmalal</title>
+<meta name="description" content="Tazas, cuencos y jarras de cerámica hechas a mano por Salomé y Victoria en Chapadmalal. Elegí tus piezas o diseñá la tuya y pedila por WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f1ea">
+<meta property="og:title" content="Toia Cerámica · Propuesta de tienda online">
+<meta property="og:description" content="Propuesta de diseño de Orion Studio para Toia Cerámica.">
+<meta property="og:image" content="https://orionstudio.com.ar/webs/demos/toia-ceramica/fotos/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Young+Serif&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<style>
+:root{
+  --crema:#f7f1ea;--arcilla:#efe4d7;--papel:#fffdfa;--tinta:#3a2e2a;--tinta2:#6f625b;--linea:rgba(58,46,42,.13);
+  --rosa:#b9535d;--rosa2:#9f4550;--rosa-claro:#f6cfd1;--lila:#b3bbe8;--verde:#1f7a4a;
+  --serif:'Young Serif',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--mano:'Caveat',cursive;
+  --r:22px;--g:20px;--cinta:32px;--cab:64px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--crema);color:var(--tinta);font-family:var(--sans);font-size:16.5px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-top:var(--cinta)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+::selection{background:var(--rosa);color:#fff}
+.envolver{max-width:1180px;margin:0 auto;padding:0 var(--g)}
+.envolver>*{min-width:0}
+.mano{font-family:var(--mano);font-weight:700}
+.kicker{font-size:12.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rosa)}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,6.4vw,58px);line-height:1.05;letter-spacing:-.01em}
+.h2 .mano{font-size:1.15em;color:var(--rosa);font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--rosa);color:#fff;border-radius:999px;padding:15px 26px;font-weight:700;transition:background .25s,transform .25s}
+.btn:hover{background:var(--rosa2)}
+.btn.claro{background:rgba(255,253,250,.6);color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.btn.claro:hover{background:var(--tinta);color:var(--papel)}
+.btn.wa{background:var(--verde)}
+.btn.wa:hover{background:#17623a}
+.btn[disabled]{opacity:.4;pointer-events:none}
+
+.cinta{position:fixed;top:0;left:0;right:0;height:var(--cinta);z-index:70;background:var(--tinta);color:var(--arcilla);display:flex;align-items:center;justify-content:center;gap:12px;font-size:12px;letter-spacing:.05em;padding:0 12px;white-space:nowrap;overflow:hidden}
+.cinta a{color:#fff;font-weight:700;border-bottom:1px solid rgba(255,255,255,.5)}
+@media (max-width:600px){.cinta .largo{display:none}}
+.cab{position:sticky;top:var(--cinta);z-index:60;background:rgba(247,241,234,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+.cab.linea{border-color:var(--linea)}
+.cab .envolver{height:var(--cab);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:baseline;gap:8px}
+.logo b{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1}
+.logo span{font-family:var(--mano);font-size:20px;color:var(--rosa);line-height:1}
+.cab nav{display:none;gap:28px;font-size:15px;font-weight:500}
+.bolsa{position:relative;display:flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;background:var(--papel);box-shadow:inset 0 0 0 1.5px var(--linea);font-weight:700;font-size:14.5px;transition:transform .3s}
+.bolsa.recibe{transform:scale(1.12)}
+.bolsa svg{width:20px;height:20px}
+.bolsa i{min-width:22px;height:22px;border-radius:11px;background:var(--rosa);color:#fff;font-style:normal;font-size:12.5px;display:grid;place-items:center;padding:0 6px;transition:transform .3s cubic-bezier(.3,1.8,.5,1)}
+.bolsa i.salto{transform:scale(1.4)}
+@media (min-width:860px){.cab nav{display:flex}}
+
+/* banner: las piezas son protagonistas */
+.hero{position:relative;min-height:calc(100vh - var(--cinta) - var(--cab));min-height:calc(100svh - var(--cinta) - var(--cab));overflow:hidden}
+.hero #hero3d{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;opacity:0;transition:opacity 1.2s}
+.hero #hero3d.listo{opacity:1}
+.hero-env{position:relative;z-index:2;width:100%;pointer-events:none}
+.hero-txt{padding-top:22px;max-width:500px}
+.hero-txt a{pointer-events:auto}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,8.6vw,66px);line-height:1.02;letter-spacing:-.015em;margin:12px 0 14px}
+.hero h1 .mano{color:var(--rosa);font-size:1.12em}
+.bajada{font-size:16px;color:var(--tinta2);max-width:440px}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.pista-3d{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;font-family:var(--mano);font-size:21px;color:var(--tinta2);white-space:nowrap;pointer-events:none}
+.etiqueta3d{position:absolute;z-index:4;left:0;top:0;transform:translate(-50%,-110%);background:var(--papel);border-radius:16px;padding:10px 14px;box-shadow:0 14px 30px rgba(58,46,42,.18);font-size:13.5px;line-height:1.35;opacity:0;pointer-events:none;transition:opacity .25s;white-space:nowrap}
+.etiqueta3d.ver{opacity:1;pointer-events:auto}
+.etiqueta3d b{font-family:var(--serif);font-weight:400;font-size:17px;display:block}
+.etiqueta3d button{color:var(--rosa);font-weight:700;padding:2px 0}
+.collage{display:none}
+@media (min-width:900px){.hero{display:flex;align-items:center}.hero-txt{padding:0 0 40px}.bajada{font-size:18px}.ctas{margin-top:26px}}
+
+/* del barro a tu mesa */
+.barro{position:relative;height:100vh;height:100svh;background:linear-gradient(180deg,var(--crema),#efe3d4 60%,var(--crema));overflow:hidden}
+.barro canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.barro-txt{position:absolute;left:0;right:0;top:calc(var(--cinta) + var(--cab) + 18px);text-align:center;z-index:2;pointer-events:none;padding:0 var(--g)}
+.barro-txt .h2{font-size:clamp(30px,5.4vw,52px)}
+.pasos-barro{position:absolute;left:0;right:0;bottom:24px;z-index:2;display:flex;justify-content:center;gap:8px;padding:0 var(--g);pointer-events:none}
+.pb{border-radius:999px;padding:7px 14px;background:rgba(255,253,250,.78);font-size:13.5px;font-weight:700;color:var(--tinta2);transition:all .35s;white-space:nowrap}
+.pb.activo{background:var(--tinta);color:var(--papel);transform:translateY(-3px)}
+.leyenda{position:absolute;left:50%;bottom:76px;transform:translateX(-50%);z-index:2;width:min(520px,calc(100% - 40px));text-align:center;font-size:17px;color:var(--tinta);min-height:3.2em;pointer-events:none;text-shadow:0 1px 12px rgba(247,241,234,.9)}
+.leyenda b{display:block;font-family:var(--mano);font-size:30px;color:var(--rosa);line-height:1.1}
+.saltar{position:absolute;right:var(--g);top:calc(var(--cinta) + var(--cab) + 14px);z-index:3;font-size:13px;font-weight:700;color:var(--tinta2);border-bottom:1px solid var(--linea)}
+.reales{position:absolute;inset:0;z-index:1;pointer-events:none}
+.reales a{position:absolute;width:clamp(96px,13vw,170px);background:#fff;padding:7px 7px 26px;border-radius:4px;box-shadow:0 18px 34px rgba(58,46,42,.22);opacity:0;pointer-events:auto;transition:box-shadow .3s}
+.reales a img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
+.reales a span{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-family:var(--mano);font-size:16px;color:var(--tinta2)}
+.reales a:nth-child(1){left:7%;top:24%}
+.reales a:nth-child(2){left:13%;top:55%}
+.reales a:nth-child(3){right:8%;top:30%}
+.reales a:nth-child(4){right:13%;top:58%}
+.reales .ver-todas{position:absolute;left:50%;bottom:118px;transform:translateX(-50%);opacity:0;pointer-events:auto;white-space:nowrap}
+@media (max-width:700px){.reales a{width:84px;padding:5px 5px 18px}.reales a span{font-size:13px}.reales a:nth-child(1){left:3%;top:20%}.reales a:nth-child(2){left:4%;top:48%}.reales a:nth-child(3){right:3%;top:22%}.reales a:nth-child(4){right:4%;top:50%}.reales .ver-todas{bottom:112px}}
+@media (max-width:700px){.barro-txt{top:calc(var(--cinta) + var(--cab) + 10px)}.saltar{display:none}.pb{padding:5px 9px;font-size:12px}.pasos-barro{gap:5px}.leyenda{bottom:62px;font-size:15.5px}.leyenda b{font-size:27px}}
+
+/* la tienda: estantería */
+.tienda{padding:70px 0 30px}
+.tienda-cab{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.tienda-cab p:not(.kicker){color:var(--tinta2);max-width:520px}
+.vista{display:flex;gap:4px;background:var(--papel);border-radius:999px;padding:4px;box-shadow:inset 0 0 0 1.5px var(--linea);align-self:flex-start}
+.vista button{border-radius:999px;padding:8px 16px;font-size:14px;font-weight:700;color:var(--tinta2)}
+.vista button.sel{background:var(--tinta);color:var(--papel)}
+.zona{display:grid;gap:18px}
+.pared{position:relative;background:radial-gradient(120% 90% at 30% 0%,#f8efe4,#eadccb);border-radius:30px;padding:30px 0 10px;overflow:hidden}
+.pared::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(120,90,60,.07) 1px,transparent 1.4px);background-size:7px 7px;pointer-events:none}
+.estante{position:relative;margin-bottom:40px}
+.fila{display:flex;gap:16px;align-items:flex-end;overflow-x:auto;scroll-snap-type:x mandatory;padding:26px 22px 0;scrollbar-width:none;touch-action:pan-x pan-y}
+.fila::-webkit-scrollbar{display:none}
+.tabla{height:20px;margin:0 10px;border-radius:5px;background:linear-gradient(180deg,#dcb085 0,#c39265 50%,#9d7047 100%);box-shadow:0 14px 20px -6px rgba(74,48,28,.35),inset 0 2px 0 rgba(255,255,255,.3);position:relative}
+.tabla::after{content:"";position:absolute;inset:3px 0 auto;height:5px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 46px,rgba(80,50,20,.06) 46px 110px)}
+.objeto{flex:0 0 138px;scroll-snap-align:center;position:relative;cursor:grab;user-select:none;-webkit-user-select:none;transform-origin:50% 100%;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.objeto .marco{background:#fff;padding:7px 7px 28px;border-radius:4px;box-shadow:0 12px 18px -6px rgba(58,46,42,.32),0 2px 0 rgba(58,46,42,.05);transition:filter .3s}
+.objeto img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;pointer-events:none}
+.objeto .nom{position:absolute;left:4px;right:4px;bottom:5px;text-align:center;font-family:var(--mano);font-size:17px;color:var(--tinta2);line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.objeto .etq{position:absolute;right:-4px;top:-16px;background:#fffaf0;border-radius:3px;padding:1px 8px 3px;font-family:var(--mano);font-size:15px;color:var(--rosa);transform:rotate(9deg);box-shadow:0 2px 6px rgba(0,0,0,.12);pointer-events:none}
+.objeto .etq::before{content:"";position:absolute;left:9px;top:-11px;width:1px;height:13px;background:#a78b72}
+.objeto:hover{transform:translateY(-10px) rotate(0deg)!important}
+.fila{perspective:900px}
+.objeto .marco{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .2s,filter .3s}
+.objeto.vacio .marco{display:grid;place-items:center;aspect-ratio:4/5.9;background:repeating-linear-gradient(135deg,#fffaf3 0 10px,#f7ecdf 10px 20px);border:2px dashed rgba(185,83,93,.45);box-shadow:none;padding:12px;text-align:center}
+.objeto.vacio b{font-family:var(--mano);font-size:22px;color:var(--rosa);line-height:1.05}
+.objeto.vacio small{display:block;font-size:12.5px;color:var(--tinta2);margin-top:6px;line-height:1.3}
+.objeto:focus-visible{outline:3px solid var(--rosa);outline-offset:4px;border-radius:6px}
+.objeto.en .marco{filter:saturate(.35) opacity(.6)}
+.objeto.en::after{content:"En tu pedido ✓";position:absolute;left:50%;top:42%;transform:translate(-50%,-50%) rotate(-6deg);background:var(--rosa);color:#fff;font-weight:700;font-size:12.5px;border-radius:999px;padding:6px 12px;white-space:nowrap;box-shadow:0 6px 14px rgba(185,83,93,.35)}
+.estante-pista{text-align:center;font-family:var(--mano);font-size:20px;color:var(--tinta2);margin:-14px 0 16px}
+.canasta{display:none}
+.volando{position:fixed;z-index:95;pointer-events:none;will-change:transform}
+.volando .marco{background:#fff;padding:7px 7px 28px;border-radius:4px;box-shadow:0 24px 40px rgba(58,46,42,.35)}
+.volando img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
+body.arrastrando,body.arrastrando *{cursor:grabbing!important}
+@media (min-width:900px){
+  .zona{grid-template-columns:1fr 230px;align-items:start}
+  .fila{justify-content:center;overflow:visible;gap:18px}
+  .objeto{flex-basis:134px}
+  .estante-pista{display:none}
+  .canasta{display:flex;position:sticky;top:calc(var(--cinta) + var(--cab) + 26px);flex-direction:column;align-items:center;gap:10px;background:var(--papel);border-radius:26px;padding:24px 16px 20px;text-align:center;border:2px dashed rgba(58,46,42,.18);transition:transform .25s,border-color .25s,background .25s}
+  .canasta.lista{border-color:var(--rosa);background:#fff6f4}
+  .canasta.encima{transform:scale(1.05);background:var(--rosa-claro)}
+  .canasta svg{width:118px;height:auto}
+  .canasta b{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.1}
+  .canasta small{color:var(--tinta2);font-size:13.5px;line-height:1.4}
+  .canasta .btn{padding:11px 18px;font-size:14px;margin-top:4px}
+}
+.grilla{display:none;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
+.lista-on .grilla{display:grid}
+.lista-on .zona{display:none}
+.pieza{background:var(--papel);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 0 var(--linea)}
+.pieza-foto{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--arcilla)}
+.pieza-foto img{width:100%;height:100%;object-fit:cover}
+.unica{position:absolute;left:10px;top:10px;background:rgba(255,253,250,.94);border-radius:999px;padding:2px 12px 4px;font-family:var(--mano);font-size:18px;color:var(--rosa);transform:rotate(-4deg)}
+.pieza-txt{padding:14px 14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pieza h3{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.15}
+.pieza p{font-size:13.5px;color:var(--tinta2);line-height:1.45}
+.precio{font-size:13px;font-weight:700;color:var(--tinta2);margin-top:auto;padding-top:6px}
+.agregar{margin-top:8px;border-radius:999px;padding:11px 10px;box-shadow:inset 0 0 0 1.5px var(--tinta);font-weight:700;font-size:14px}
+.agregar.en{background:var(--rosa);color:#fff;box-shadow:none}
+@media (min-width:700px){.grilla{grid-template-columns:repeat(3,1fr);gap:18px}}
+@media (min-width:1050px){.grilla{grid-template-columns:repeat(4,1fr)}}
+
+/* asistente de regalos */
+.ayuda{padding:40px 0 80px}
+.ayuda .envolver{display:grid;gap:22px;align-items:center}
+.ayuda-txt p:not(.kicker){color:var(--tinta2);margin-top:12px;max-width:440px}
+.telefono{background:#1f1916;border-radius:36px;padding:10px;box-shadow:0 30px 60px rgba(58,46,42,.28);max-width:420px;width:100%;justify-self:center}
+.wa-cab{display:flex;align-items:center;gap:10px;background:#075e54;color:#fff;border-radius:28px 28px 0 0;padding:12px 14px}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--rosa-claro);color:var(--rosa);display:grid;place-items:center;font-family:var(--serif);font-size:20px;flex:none}
+.wa-cab b{display:block;font-size:15px}
+.wa-cab small{font-size:12px;opacity:.8}
+.wa-cuerpo{background:#efeae2;height:360px;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}
+.msg{max-width:86%;border-radius:4px 14px 14px 14px;padding:8px 11px;font-size:14.5px;line-height:1.4;background:#fff;align-self:flex-start;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:entra .3s ease both}
+.msg.yo{align-self:flex-end;background:#d9fdd3;border-radius:14px 4px 14px 14px}
+.escribiendo{display:inline-flex;gap:4px;padding:3px 0}
+.escribiendo i{width:7px;height:7px;border-radius:50%;background:#9a8f88;animation:salta 1s infinite}
+.escribiendo i:nth-child(2){animation-delay:.15s}.escribiendo i:nth-child(3){animation-delay:.3s}
+.sugeridas{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.sug{flex:0 0 118px;background:#fff;border-radius:12px;overflow:hidden;font-size:12.5px;line-height:1.25;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.sug img{width:100%;aspect-ratio:1;object-fit:cover}
+.sug div{padding:7px}
+.sug button{margin-top:6px;width:100%;border-radius:999px;padding:6px 4px;font-weight:700;font-size:12px;box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.sug button.en{background:var(--rosa);color:#fff;box-shadow:none}
+.msg.cards{background:transparent;box-shadow:none;padding:0;max-width:100%}
+.wa-ops{background:#f6f3ef;border-radius:0 0 28px 28px;padding:10px 12px 14px;display:flex;flex-wrap:wrap;gap:7px;min-height:58px;align-items:center}
+.wa-ops button{background:#fff;border-radius:999px;padding:9px 13px;font-weight:700;font-size:13.5px;box-shadow:inset 0 0 0 1.5px rgba(7,94,84,.35);color:#075e54}
+.wa-ops button:hover{background:#075e54;color:#fff}
+@keyframes entra{from{opacity:0;transform:translateY(8px)}}
+@keyframes salta{50%{transform:translateY(-4px)}}
+@media (min-width:900px){.ayuda .envolver{grid-template-columns:1fr 1fr;gap:50px}}
+
+/* diseñá tu pieza */
+.disenar{padding:80px 0;background:var(--arcilla)}
+.disenar .envolver{display:grid;gap:22px}
+.torno-cab p:not(.kicker){color:var(--tinta2);margin-top:12px;max-width:480px}
+.torno-escena{position:relative;height:min(56vh,470px);min-height:330px;border-radius:28px;background:radial-gradient(70% 60% at 50% 38%,#fffaf3,#ead9c6);overflow:hidden}
+.torno-escena canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+.torno-escena .pista-3d{left:16px;top:14px;bottom:auto;transform:none;font-size:20px}
+.torno-escena .pista-3d .solo-compu{display:none}
+@media (hover:hover) and (pointer:fine){.torno-escena .pista-3d .solo-compu{display:inline}}
+.ficha{position:absolute;right:14px;bottom:14px;background:rgba(255,253,250,.92);border-radius:16px;padding:10px 14px;font-size:13px;line-height:1.45;color:var(--tinta2);max-width:64%}
+.ficha b{color:var(--tinta)}
+.controles{display:flex;flex-direction:column;gap:18px;background:var(--papel);border-radius:28px;padding:22px 20px}
+.ctl h4{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta2);margin-bottom:10px}
+.presets{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.preset{flex:none;display:flex;align-items:center;gap:8px;border-radius:999px;padding:5px 14px 5px 5px;box-shadow:inset 0 0 0 1.5px var(--linea);background:#fff;font-weight:700;font-size:13.5px;white-space:nowrap}
+.preset img,.preset i{width:30px;height:30px;border-radius:50%;object-fit:cover;flex:none}
+.preset i{background:repeating-linear-gradient(90deg,rgba(71,89,143,.55) 0 4px,transparent 4px 10px),repeating-linear-gradient(0deg,rgba(71,89,143,.55) 0 4px,transparent 4px 10px),#f5eee2}
+.preset:hover{background:var(--tinta);color:var(--papel)}
+.formas,.decos{display:flex;flex-wrap:wrap;gap:8px}
+.op{border-radius:999px;padding:9px 15px;box-shadow:inset 0 0 0 1.5px var(--linea);font-size:14.5px;font-weight:500;background:#fff;transition:all .2s}
+.op.sel{background:var(--tinta);color:var(--papel);box-shadow:none}
+.esmaltes{display:flex;flex-wrap:wrap;gap:10px}
+.esm{width:38px;height:38px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1),0 2px 6px rgba(58,46,42,.12);transition:transform .2s,box-shadow .2s}
+.esm.sel{box-shadow:0 0 0 3px var(--papel),0 0 0 5px var(--tinta)}
+.esm:hover{transform:scale(1.08)}
+.reglas{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}
+.regla label{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700;margin-bottom:4px}
+.regla label span{color:var(--tinta2);font-weight:500}
+input[type=range]{width:100%;accent-color:var(--rosa)}
+.ctl input[type=text]{width:100%;border:0;border-radius:14px;background:#fff;padding:12px 14px;box-shadow:inset 0 0 0 1.5px var(--linea);outline:none}
+.acciones{display:flex;flex-wrap:wrap;gap:10px}
+.acciones .btn{flex:1 1 auto}
+.nota-torno{font-size:13px;color:var(--tinta2)}
+@media (min-width:900px){.disenar .envolver{grid-template-columns:1.15fr .85fr;align-items:start}.torno-cab{grid-column:1/-1}.torno-escena{height:640px;position:sticky;top:calc(var(--cinta) + var(--cab) + 20px)}}
+
+/* resto */
+.pasos{padding:80px 0}
+.pasos-lista{display:grid;gap:16px;margin-top:34px}
+.paso{background:var(--papel);border-radius:var(--r);padding:26px 24px;display:flex;gap:18px;align-items:flex-start}
+.paso b{font-family:var(--mano);font-size:46px;line-height:.9;color:var(--rosa);flex:none;width:34px}
+.paso h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.15;margin-bottom:6px}
+.paso p{color:var(--tinta2);font-size:15.5px}
+.cita{margin-top:26px;font-family:var(--mano);font-size:26px;color:var(--tinta2)}
+@media (min-width:860px){.pasos-lista{grid-template-columns:repeat(3,1fr)}}
+.dos{padding:10px 0 90px}
+.tarjeta{border-radius:28px;padding:34px 28px;display:flex;flex-direction:column;gap:14px;background:var(--lila)}
+.tarjeta h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,40px);line-height:1.08}
+.tarjeta p{max-width:520px}
+.tarjeta .btn{align-self:flex-start;margin-top:8px}
+.combos{display:flex;flex-wrap:wrap;gap:8px}
+.combos span{background:rgba(255,253,250,.7);border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px}
+.nosotras{padding:30px 0 90px}
+.nosotras .envolver{display:grid;gap:34px;align-items:center}
+.nos-fotos{position:relative;max-width:440px;height:340px;width:100%}
+.nos-fotos img{position:absolute;border-radius:18px;object-fit:cover;box-shadow:0 16px 36px rgba(58,46,42,.15)}
+.nos-fotos .f1{left:0;top:0;width:62%;height:62%}
+.nos-fotos .f2{right:0;bottom:0;width:56%;height:70%}
+.nos-txt p{color:var(--tinta2);font-size:17.5px;margin-top:16px;max-width:520px}
+.firma{margin-top:18px;font-family:var(--mano);font-size:30px;color:var(--rosa)}
+@media (min-width:860px){.nosotras .envolver{grid-template-columns:.9fr 1.1fr;gap:70px}.nos-fotos{height:420px}}
+.resenas{padding:80px 0;background:var(--arcilla)}
+.puntaje{display:flex;align-items:center;gap:14px;margin:14px 0 30px}
+.puntaje b{font-family:var(--serif);font-weight:400;font-size:64px;line-height:1}
+.puntaje span{color:var(--rosa);font-size:22px;letter-spacing:3px}
+.puntaje small{display:block;color:var(--tinta2);font-size:14px}
+.res-lista{display:grid;gap:14px}
+.resena{background:var(--papel);border-radius:var(--r);padding:26px 24px;display:flex;flex-direction:column;gap:14px}
+.resena q{font-family:var(--serif);font-size:21px;line-height:1.3;quotes:"“" "”"}
+.resena small{color:var(--tinta2);font-size:14px}
+@media (min-width:860px){.res-lista{grid-template-columns:repeat(3,1fr)}}
+.faq{padding:80px 0}
+.faq details{border-bottom:1px solid var(--linea)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-family:var(--serif);font-size:clamp(20px,3.2vw,26px);line-height:1.2}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--tinta);position:relative;transition:transform .35s}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--tinta);transform:translate(-50%,-50%)}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] summary i{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--tinta2);max-width:680px}
+.pie{background:var(--arcilla);padding:60px 0 28px}
+.pie-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;font-size:15px;color:var(--tinta2);margin-top:30px}
+.pie-cols b{display:block;color:var(--tinta);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.creditos{margin-top:40px;padding-top:18px;border-top:1px solid var(--linea);display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;font-size:12.5px;color:var(--tinta2)}
+.creditos a{color:var(--tinta);border-bottom:1px solid var(--linea)}
+@media (min-width:860px){.pie-cols{grid-template-columns:repeat(4,1fr)}}
+
+.barra{position:fixed;left:12px;right:12px;bottom:12px;z-index:58;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--tinta);color:var(--papel);border-radius:20px;padding:12px 12px 12px 18px;box-shadow:0 16px 36px rgba(58,46,42,.35);transform:translateY(140%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.barra.ver{transform:none}
+.barra .btn{padding:11px 18px;font-size:14.5px}
+@media (min-width:860px){.barra{display:none}}
+.velo{position:fixed;inset:0;z-index:80;background:rgba(40,30,27,.45);opacity:0;pointer-events:none;transition:opacity .3s}
+.velo.ver{opacity:1;pointer-events:auto}
+.carrito{position:fixed;top:0;right:0;bottom:0;z-index:81;width:min(420px,100%);background:var(--crema);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.carrito.ver{transform:none}
+.car-cab{display:flex;justify-content:space-between;align-items:center;padding:20px var(--g);border-bottom:1px solid var(--linea)}
+.car-cab h4{font-family:var(--serif);font-weight:400;font-size:26px}
+.cerrar{width:40px;height:40px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--linea);font-size:18px}
+.car-cuerpo{flex:1;overflow-y:auto;padding:16px var(--g);display:flex;flex-direction:column;gap:12px}
+.item{display:flex;gap:12px;align-items:center;background:var(--papel);border-radius:16px;padding:10px}
+.item img{width:58px;height:58px;border-radius:12px;object-fit:cover}
+.item div{flex:1;font-size:15px;line-height:1.3}
+.item small{display:block;color:var(--tinta2);font-size:12.5px}
+.item button{width:32px;height:32px;border-radius:50%;color:var(--tinta2)}
+.vacio{color:var(--tinta2);text-align:center;padding:40px 10px}
+.vacio b{display:block;font-family:var(--mano);font-size:28px;color:var(--rosa);margin-bottom:6px}
+.car-pie{padding:16px var(--g) 22px;border-top:1px solid var(--linea);display:flex;flex-direction:column;gap:12px}
+.car-pie h5{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta2)}
+.entrega{display:grid;gap:8px}
+.entrega label{display:flex;gap:10px;align-items:flex-start;background:var(--papel);border-radius:14px;padding:12px 14px;cursor:pointer;box-shadow:inset 0 0 0 1.5px transparent;font-size:15px;line-height:1.35}
+.entrega label:has(input:checked){box-shadow:inset 0 0 0 1.5px var(--rosa)}
+.entrega input{accent-color:var(--rosa);margin-top:3px}
+.entrega small{display:block;color:var(--tinta2);font-size:13px}
+.car-pie input[type=text]{border:0;border-radius:14px;background:var(--papel);padding:13px 14px;box-shadow:inset 0 0 0 1.5px var(--linea);outline:none}
+.car-nota{font-size:13px;color:var(--tinta2)}
+.modal{position:fixed;inset:0;z-index:90;background:rgba(40,30,27,.55);display:grid;place-items:end center;padding:14px;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal.ver{opacity:1;pointer-events:auto}
+.modal-caja{width:min(460px,100%);background:var(--papel);border-radius:28px;padding:26px 22px;transform:translateY(40px);transition:transform .45s cubic-bezier(.2,.8,.2,1);max-height:92vh;overflow-y:auto}
+.modal.ver .modal-caja{transform:none}
+.modal h5{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1}
+.modal .sub{font-size:14px;color:var(--tinta2);margin:8px 0 16px}
+.chat{background:#efeae2;border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.burbuja{align-self:flex-end;max-width:90%;background:#d9fdd3;color:#14240f;border-radius:16px 16px 4px 16px;padding:11px 13px;font-size:14.5px;line-height:1.45;white-space:pre-line}
+.burbuja.img{padding:5px}
+.burbuja.img img{border-radius:12px;width:190px}
+.burbuja.ellas{align-self:flex-start;background:#fff;color:var(--tinta);border-radius:16px 16px 16px 4px}
+.modal-btns{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+@media (min-width:600px){.modal{place-items:center}}
+
+.sin3d .hero #hero3d,.sin3d .pista-3d{display:none}
+.sin3d .collage{display:block;position:absolute;right:0;bottom:0;width:min(560px,100%);height:50%}
+.alt-sin3d{display:none}
+.sin3d .alt-sin3d{display:flex;flex-direction:column;gap:14px;background:var(--papel);border-radius:28px;padding:22px 20px}
+.sin3d .alt-sin3d p{color:var(--tinta2)}
+.sin3d .controles{display:none}
+.sin3d .collage img{position:absolute;width:48%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;border:10px solid #fff;box-shadow:0 18px 40px rgba(58,46,42,.18)}
+.sin3d .collage img:nth-child(1){left:4%;top:8%;transform:rotate(-6deg)}
+.sin3d .collage img:nth-child(2){right:4%;top:2%;transform:rotate(5deg)}
+.sin3d .collage img:nth-child(3){left:26%;top:26%;transform:rotate(-1deg)}
+.sin3d .barro{display:none}
+.sin3d .torno-escena canvas{display:none}
+.sin3d .torno-escena{background:url(../fotos/cuenco-frida.jpg) center/cover}
+</style>
+</head>
+<body>
+<div class="cinta"><span class="largo">Propuesta de diseño para&nbsp;</span>Toia Cerámica · demo de Orion Studio <a href="https://wa.me/5492235639535?text=Hola%20Ori!%20Vi%20la%20propuesta%20de%20tienda%20para%20Toia%20Cer%C3%A1mica" target="_blank" rel="noopener">Hablemos →</a></div>
+
+<header class="cab">
+  <div class="envolver">
+    <a class="logo" href="#inicio"><b>Toia</b><span>cerámica</span></a>
+    <nav><a href="#tienda">Tienda</a><a href="#regalos">Regalos</a><a href="#disenar">Diseñá tu pieza</a><a href="#nosotras">Nosotras</a></nav>
+    <button class="bolsa" id="abrirCarrito" aria-label="Ver tu pedido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Pedido <i id="cuenta">0</i></button>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <canvas id="hero3d" aria-label="Piezas de cerámica girando: tocalas para verlas"></canvas>
+  <div class="collage" aria-hidden="true"><img src="../fotos/jarra-lila.jpg" alt=""><img src="../fotos/tazas-frida-gato.jpg" alt=""><img src="../fotos/cuenco-frida.jpg" alt=""></div>
+  <div class="envolver hero-env"><div class="hero-txt">
+    <p class="kicker">Salomé y Victoria · madre e hija · Chapadmalal</p>
+    <h1>Cerámica hecha a mano, <span class="mano">pieza por pieza.</span></h1>
+    <p class="bajada">Elegí tus piezas o diseñá la tuya. Te confirmamos todo por WhatsApp.</p>
+    <div class="ctas"><a class="btn" href="#tienda">Ver la tienda</a><a class="btn claro" href="#disenar">Diseñá tu pieza</a></div>
+  </div></div>
+  <div class="etiqueta3d" id="etiqueta3d"></div>
+  <p class="pista-3d">tocá una pieza ✦ arrastrá para girarlas</p>
+</section>
+
+<section class="barro" id="barro">
+  <canvas id="barro3d" aria-label="Animación: una pieza que pasa de barro a taza esmaltada"></canvas>
+  <div class="barro-txt"><p class="kicker">Del barro a tu mesa</p><h2 class="h2">Así nace <span class="mano">cada pieza</span></h2></div>
+  <a class="saltar" href="#tienda">Saltar a la tienda ↓</a>
+  <div class="reales" id="reales" aria-hidden="true">
+    <a href="#tienda" tabindex="-1"><img src="../fotos/jarra-lila.jpg" alt=""><span>jarra lila</span></a>
+    <a href="#tienda" tabindex="-1"><img src="../fotos/cuenco-frida.jpg" alt=""><span>cuenco Frida</span></a>
+    <a href="#tienda" tabindex="-1"><img src="../fotos/tazas-frida-gato.jpg" alt=""><span>Frida y gato</span></a>
+    <a href="#tienda" tabindex="-1"><img src="../fotos/set-nubes.jpg" alt=""><span>set nubes</span></a>
+    <a class="btn ver-todas" href="#tienda" tabindex="-1">Ver todas las piezas ↓</a>
+  </div>
+  <p class="leyenda" id="leyenda"><b>El barro</b>Todo empieza con un bollo de arcilla en el torno.</p>
+  <div class="pasos-barro"><span class="pb activo">Barro</span><span class="pb">Torno</span><span class="pb">Horno</span><span class="pb">Esmalte</span><span class="pb">Tu mesa</span></div>
+</section>
+
+<section class="tienda" id="tienda"><div class="envolver">
+  <div class="tienda-cab">
+    <p class="kicker">La tienda</p>
+    <h2 class="h2">Agarrá tus <span class="mano">piezas</span></h2>
+    <p>Son casi todas únicas. Arrastrá la que te guste a la canasta, o tocala, y armá tu pedido.</p>
+    <div class="vista" role="tablist" aria-label="Cómo ver la tienda"><button class="sel" data-vista="estante">Estantería</button><button data-vista="lista">Lista</button></div>
+  </div>
+  <div class="zona">
+    <div class="pared" id="estanteria"></div>
+    <aside class="canasta" id="canasta" aria-label="Tu canasta">
+      <svg viewBox="0 0 120 92" fill="none" stroke="#3a2e2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M30 36c0-16 13-27 30-27s30 11 30 27"/><path d="M8 36h104l-9 46a8 8 0 0 1-8 6H25a8 8 0 0 1-8-6L8 36Z" fill="#f2dfc6"/><path d="M8 36h104" stroke-width="3"/><path d="M34 46l4 32M60 46v32M86 46l-4 32M22 56h76M25 68h70" stroke="#c39265"/></svg>
+      <b id="canastaTxt">Tu canasta</b>
+      <small id="canastaSub">Soltá acá las piezas que te gusten</small>
+      <button class="btn" id="canastaVer" hidden>Ver pedido</button>
+    </aside>
+  </div>
+  <p class="estante-pista">deslizá los estantes ↔ y tocá las que te gusten</p>
+  <div class="grilla" id="grilla"></div>
+</div></section>
+
+<section class="ayuda" id="regalos"><div class="envolver">
+  <div class="ayuda-txt">
+    <p class="kicker">¿Buscás un regalo?</p>
+    <h2 class="h2">Te ayudamos <span class="mano">a elegir</span></h2>
+    <p>Contanos para quién es y qué le gusta. Te recomendamos piezas y lo seguimos charlando por WhatsApp, como en el taller.</p>
+  </div>
+  <div class="telefono">
+    <div class="wa-cab"><span class="avatar">T</span><div><b>Salo y Vicky · Toia</b><small>responden por WhatsApp</small></div></div>
+    <div class="wa-cuerpo" id="ayudaCuerpo" aria-live="polite"></div>
+    <div class="wa-ops" id="ayudaOps"></div>
+  </div>
+</div></section>
+
+<section class="disenar" id="disenar"><div class="envolver">
+  <div class="torno-cab"><p class="kicker">Diseños personalizados</p><h2 class="h2">Diseñá <span class="mano">tu pieza</span></h2>
+    <p>Elegí la forma, el tamaño, el esmalte y la decoración. Nos llega tu diseño por WhatsApp y la hacemos a mano.</p></div>
+  <div class="torno-escena">
+    <canvas id="torno3d" aria-label="Vista 3D de tu pieza"></canvas>
+    <p class="pista-3d">girala arrastrando ↔<span class="solo-compu"> · estirala ↕</span></p>
+    <div class="ficha" id="ficha"></div>
+  </div>
+  <div class="controles">
+    <div class="ctl"><h4>Inspirate en piezas de Toia</h4><div class="presets" id="cPresets"></div></div>
+    <div class="ctl"><h4>Forma</h4><div class="formas" id="cFormas"></div></div>
+    <div class="ctl"><h4>Tamaño</h4><div class="reglas">
+      <div class="regla"><label>Alto <span id="vAlto">media</span></label><input type="range" id="cAlto" min="0.75" max="1.3" step="0.01" value="1"></div>
+      <div class="regla"><label>Ancho <span id="vAncho">media</span></label><input type="range" id="cAncho" min="0.8" max="1.3" step="0.01" value="1"></div>
+      <div class="regla"><label>Panza <span id="vPanza">suave</span></label><input type="range" id="cPanza" min="-0.4" max="0.8" step="0.01" value="0.15"></div>
+      <div class="regla"><label>Boca <span id="vBoca">recta</span></label><input type="range" id="cBoca" min="-0.3" max="0.6" step="0.01" value="0.05"></div>
+    </div></div>
+    <div class="ctl"><h4>Esmalte</h4><div class="esmaltes" id="cEsmaltes"></div></div>
+    <div class="ctl"><h4>Decoración</h4><div class="decos" id="cDecos"></div></div>
+    <div class="ctl"><h4>Un nombre o una inicial</h4><input type="text" id="cNombre" maxlength="10" placeholder="Opcional, ej.: Ana"></div>
+    <div class="acciones"><button class="btn" id="cSumar">Sumar a mi pedido</button><button class="btn wa" id="cPedir">Consultar ya por WhatsApp</button><button class="btn claro" id="cGuardar">Guardar imagen</button></div>
+    <p class="nota-torno">Tu diseño viaja en el mismo pedido que las piezas de la estantería. Te pasamos precio y demora por WhatsApp; como es hecha a mano, puede variar un poco, y eso es lo lindo.</p>
+  </div>
+  <div class="alt-sin3d"><p>Contanos qué te imaginás: la forma, los colores, un nombre. La hacemos a mano.</p><button class="btn wa" data-mensaje="¡Hola Toia! Quiero encargar un diseño personalizado. Les cuento lo que me imagino:">Contanos tu idea por WhatsApp</button></div>
+</div></section>
+
+<section class="pasos"><div class="envolver">
+  <p class="kicker">Cómo comprar</p>
+  <h2 class="h2">Así de <span class="mano">fácil</span></h2>
+  <div class="pasos-lista">
+    <div class="paso"><b>1</b><div><h3>Elegís o diseñás</h3><p>Sumás piezas de la estantería o mandás tu diseño. Son casi todas únicas: cuando una se vende, deja de estar disponible.</p></div></div>
+    <div class="paso"><b>2</b><div><h3>Nos llega por WhatsApp</h3><p>Tu pedido nos llega armado y te confirmamos precio, disponibilidad y entrega.</p></div></div>
+    <div class="paso"><b>3</b><div><h3>Transferís y listo</h3><p>Te lo enviamos (el envío lo pagás al recibirlo) o lo retirás por el taller en Chapadmalal.</p></div></div>
+  </div>
+  <p class="cita">"Escribinos, elegí, transferís, te lo enviamos. Así de fácil." — Toia</p>
+</div></section>
+
+<section class="dos" id="mayoristas"><div class="envolver">
+  <div class="tarjeta">
+    <p class="kicker">Mayoristas</p>
+    <h3>Combos para tu negocio</h3>
+    <p>Para bazares, tiendas y emprendimientos: combos de piezas con envío seguro y diseños exclusivos.</p>
+    <div class="combos"><span>17 piezas</span><span>26 piezas</span><span>30 piezas</span><span>36 piezas</span></div>
+    <button class="btn" data-mensaje="¡Hola Toia! Tengo un negocio y quiero info de los combos mayoristas.">Quiero info de combos</button>
+  </div>
+</div></section>
+
+<section class="nosotras" id="nosotras"><div class="envolver">
+  <div class="nos-fotos" aria-hidden="true"><img class="f1" src="../fotos/taller.jpg" alt=""><img class="f2" src="../fotos/cuencos-moteados.jpg" alt=""></div>
+  <div class="nos-txt">
+    <p class="kicker">Nosotras</p>
+    <h2 class="h2">Madre e hija, <span class="mano">con las manos en el barro</span></h2>
+    <p>Somos Salomé y Victoria. Cada pieza nace en nuestro taller de Chapadmalal: empieza en un molde de yeso hecho a mano y termina con el último pincelazo. Por eso no hay dos iguales.</p>
+    <p class="firma">Salo y Vicky</p>
+  </div>
+</div></section>
+
+<section class="resenas"><div class="envolver">
+  <p class="kicker">Lo que dicen</p>
+  <div class="puntaje"><b>5,0</b><div><span>★★★★★</span><small>5 opiniones en Google</small></div></div>
+  <div class="res-lista">
+    <div class="resena"><q>Hermoso todo lo que ofrecen y excelente calidad, Vicky y Salo unas genias!! Recomiendo sin dudar.</q><small>Raúl M. · Google</small></div>
+    <div class="resena"><q>Hermosas piezas y amorosa atención en la Feria Filiberto en Chapa.</q><small>Ana C. · Google</small></div>
+    <div class="resena"><q>Muy recomendable, buen precio y calidad.</q><small>Ricardo R. · Google</small></div>
+  </div>
+</div></section>
+
+<section class="faq"><div class="envolver">
+  <p class="kicker" style="margin-bottom:8px">Preguntas frecuentes</p>
+  <details><summary>¿Hacen envíos?<i></i></summary><p>Sí. El envío lo paga quien compra, al recibir el paquete.</p></details>
+  <details><summary>¿Puedo retirar en persona?<i></i></summary><p>Sí, por el taller en Chapadmalal. Coordinamos día y horario por WhatsApp.</p></details>
+  <details><summary>¿Cómo se paga?<i></i></summary><p>Por transferencia, cuando te confirmamos el pedido por WhatsApp.</p></details>
+  <details><summary>¿La pieza que diseño sale igual a la del 3D?<i></i></summary><p>Muy parecida: el 3D es una guía para que nos entiendas y te entendamos. Como es hecha a mano, cada pieza tiene su personalidad.</p></details>
+</div></section>
+
+<footer class="pie"><div class="envolver">
+  <a class="logo" href="#inicio"><b>Toia</b><span>cerámica</span></a>
+  <div class="pie-cols">
+    <div><b>Taller</b>Chapadmalal<br>Mar del Plata</div>
+    <div><b>Instagram</b>@toia.ceramica</div>
+    <div><b>Pedidos</b>Desde esta tienda<br>o por WhatsApp</div>
+    <div><b>Envíos</b>Los paga quien compra<br>o retiro por el taller</div>
+  </div>
+  <div class="creditos"><span>Propuesta de diseño para Toia Cerámica. No es la tienda oficial.</span><span>Diseño y desarrollo: <a href="https://orionstudio.com.ar/webs/" target="_blank" rel="noopener">Orion Studio</a></span></div>
+</div></footer>
+
+<div class="barra" id="barra"><span><b id="barraTexto">1 pieza</b> en tu pedido</span><button class="btn" id="barraVer">Ver pedido</button></div>
+<div class="velo" id="velo"></div>
+<aside class="carrito" id="carrito" aria-label="Tu pedido" aria-hidden="true">
+  <div class="car-cab"><h4>Tu pedido</h4><button class="cerrar" id="cerrarCarrito" aria-label="Cerrar">✕</button></div>
+  <div class="car-cuerpo" id="items"></div>
+  <div class="car-pie">
+    <h5>¿Cómo lo recibís?</h5>
+    <div class="entrega">
+      <label><input type="radio" name="entrega" value="envío a domicilio (pago el envío al recibir)" checked><span>Envío a domicilio<small>El envío lo pagás al recibir el paquete</small></span></label>
+      <label><input type="radio" name="entrega" value="retiro por el taller en Chapadmalal"><span>Retiro por el taller<small>En Chapadmalal, coordinamos por WhatsApp</small></span></label>
+    </div>
+    <input type="text" id="nombre" placeholder="Tu nombre (opcional)" autocomplete="name">
+    <button class="btn wa" id="enviar" disabled>Enviar pedido por WhatsApp</button>
+    <p class="car-nota">Te confirmamos precio y disponibilidad por WhatsApp. Pagás recién cuando está todo confirmado.</p>
+  </div>
+</aside>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitulo"><div class="modal-caja" tabindex="-1" style="outline:none">
+  <h5 id="mTitulo">Así les llega el pedido</h5>
+  <p class="sub">En la tienda real, este mensaje se abre en WhatsApp listo para enviar a su número. Ustedes responden como siempre.</p>
+  <div class="chat" id="mChat"><div class="burbuja" id="mMensaje"></div><div class="burbuja ellas" id="mRespuesta">¡Hola! Sí, se puede 😊 Te pasamos el precio y el alias para transferir.</div></div>
+  <div class="modal-btns"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/5492235639535?text=Hola%20Ori!%20Vi%20la%20propuesta%20de%20tienda%20para%20Toia%20Cer%C3%A1mica">¿Les gusta? Escribile a Ori</a><button class="btn claro" id="mCerrar">Cerrar</button></div>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* la tienda: estantería, lista, pedido, asistente y mensaje */
+window.TOIA = (() => {
+  const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const PIEZAS = [
+    {id: 'jarra-lila', nombre: 'Jarra lila', cat: 'Jarras', desc: 'Borde ondulado y lunares blancos.', estilo: ['delicado', 'colorido'], para: ['mama', 'yo']},
+    {id: 'tazas-frida-gato', nombre: 'Tazas Frida y Gato', cat: 'Tazas', desc: 'Caritas pintadas a mano y flores de cerámica.', estilo: ['divertido'], para: ['amiga', 'yo']},
+    {id: 'cuenco-frida', nombre: 'Cuenco Frida', cat: 'Cuencos', desc: 'Con su corona de flores, una por una.', estilo: ['divertido', 'colorido'], para: ['amiga', 'mama']},
+    {id: 'tazas-vaca-zorro', nombre: 'Tazas Vaca y Zorro', cat: 'Tazas', desc: 'Para el desayuno más simpático de la casa.', estilo: ['divertido'], para: ['amiga', 'yo']},
+    {id: 'set-nubes', nombre: 'Set Nubes', cat: 'Sets', desc: 'Tazas y bandejitas celestes con nubes.', estilo: ['delicado'], para: ['mama', 'yo', 'docente']},
+    {id: 'cuencos-moteados', nombre: 'Cuencos moteados', cat: 'Cuencos', desc: 'Fondo moteado con manchas de acuarela.', estilo: ['colorido', 'delicado'], para: ['yo', 'mama']},
+    {id: 'jarra-floral', nombre: 'Jarra floral', cat: 'Jarras', desc: 'Flores rosadas pintadas a mano.', estilo: ['delicado'], para: ['mama', 'docente']},
+    {id: 'cuenco-pinceladas', nombre: 'Cuenco pinceladas', cat: 'Cuencos', desc: 'Pinceladas de color sobre fondo moteado.', estilo: ['colorido'], para: ['amiga', 'yo']},
+    {id: 'tazas-relieve', nombre: 'Tazas con espirales', cat: 'Tazas', desc: 'En grises y pasteles, cada una distinta.', estilo: ['delicado'], para: ['docente', 'yo']},
+    {id: 'taza-y-cuenco-pastel', nombre: 'Taza y cuenco pastel', cat: 'Sets', desc: 'Rosa y durazno, para un desayuno suave.', estilo: ['delicado'], para: ['mama', 'docente', 'amiga']},
+  ];
+  const pieza = id => PIEZAS.find(p => p.id === id);
+  let pedido = [];
+  try { pedido = JSON.parse(localStorage.getItem('toia-pedido') || '[]').filter(pieza); } catch (e) { pedido = []; }
+  let disenos = [];
+  try { disenos = JSON.parse(localStorage.getItem('toia-disenos') || '[]').slice(0, 6); } catch (e) { disenos = []; }
+  const guardar = () => { try { localStorage.setItem('toia-pedido', JSON.stringify(pedido)); localStorage.setItem('toia-disenos', JSON.stringify(disenos)); } catch (e) {} };
+  const compu = () => matchMedia('(min-width: 900px)').matches;
+
+  /* estantería */
+  const pintarEstante = () => {
+    const filas = [PIEZAS.slice(0, 5), PIEZAS.slice(5)];
+    const vacio = '<div class="objeto vacio" data-ir="disenar" tabindex="0" role="button" aria-label="Diseñar una pieza a medida"><div class="marco"><div><b>¿No está la que buscás?</b><small>Diseñala a tu gusto →</small></div></div></div>';
+    $('#estanteria').innerHTML = filas.map((f, fi) => `<div class="estante"><div class="fila">${f.map((p, i) => {
+      const giro = [-2.5, 1.8, -1, 2.6, -1.8][(i + fi * 2) % 5];
+      return `<div class="objeto${pedido.includes(p.id) ? ' en' : ''}" data-id="${p.id}" style="transform:rotate(${giro}deg)" tabindex="0" role="button" aria-label="${p.nombre}: ${pedido.includes(p.id) ? 'quitar del' : 'agregar al'} pedido"><div class="marco"><img src="../fotos/${p.id}.jpg" alt="" draggable="false"></div><span class="nom">${p.nombre}</span><span class="etq">pieza única</span></div>`;
+    }).join('')}${fi === 1 ? vacio : ''}</div><div class="tabla"></div></div>`).join('');
+  };
+  /* la polaroid se inclina siguiendo el mouse */
+  $('#estanteria').addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse' || arr) return;
+    const o = e.target.closest('.objeto'); $$('.objeto .marco').forEach(m => { if (!o || m.parentElement !== o) { m.style.removeProperty('--rx'); m.style.removeProperty('--ry'); } });
+    if (!o) return; const r = o.getBoundingClientRect(), m = o.querySelector('.marco');
+    m.style.setProperty('--ry', (((e.clientX - r.left) / r.width - .5) * 16).toFixed(1) + 'deg');
+    m.style.setProperty('--rx', ((.5 - (e.clientY - r.top) / r.height) * 12).toFixed(1) + 'deg');
+  });
+  $('#estanteria').addEventListener('pointerleave', () => $$('.objeto .marco').forEach(m => { m.style.removeProperty('--rx'); m.style.removeProperty('--ry'); }));
+  /* lista (para quien prefiere lo clásico) */
+  const pintarLista = () => {
+    $('#grilla').innerHTML = PIEZAS.map(p => `
+      <article class="pieza"><div class="pieza-foto"><img src="../fotos/${p.id}.jpg" alt="${p.nombre}" loading="lazy"><span class="unica">pieza única</span></div>
+        <div class="pieza-txt"><h3>${p.nombre}</h3><p>${p.desc}</p><span class="precio">Precio a confirmar por WhatsApp</span>
+          <button class="agregar${pedido.includes(p.id) ? ' en' : ''}" data-id="${p.id}">${pedido.includes(p.id) ? 'En tu pedido ✓' : 'Agregar al pedido'}</button></div></article>`).join('');
+  };
+  $$('.vista button').forEach(b => b.addEventListener('click', () => {
+    $$('.vista button').forEach(x => x.classList.toggle('sel', x === b));
+    $('.tienda').classList.toggle('lista-on', b.dataset.vista === 'lista');
+  }));
+
+  const destino = () => (compu() && $('#canasta').getBoundingClientRect().top < innerHeight) ? $('#canasta') : $('#abrirCarrito');
+  const recibir = el => { el.classList.add('recibe'); setTimeout(() => el.classList.remove('recibe'), 280); };
+  const volar = (desde, id, fin, ancho) => {
+    let r = desde.getBoundingClientRect(); const d = destino(), dr = d.getBoundingClientRect();
+    if (ancho) r = {left: r.left + r.width / 2 - ancho / 2, top: r.top + r.height / 2 - ancho * .62, width: ancho, height: ancho * 1.25};
+    const c = document.createElement('div'); c.className = 'volando';
+    c.innerHTML = `<div class="marco"><img src="${/[/:]/.test(id) ? id : `../fotos/${id}.jpg`}" alt=""></div>`;
+    Object.assign(c.style, {left: r.left + 'px', top: r.top + 'px', width: r.width + 'px'});
+    document.body.appendChild(c);
+    if (!window.gsap) { c.remove(); fin && fin(); return; }
+    const dx = dr.left + dr.width / 2 - (r.left + r.width / 2), dy = dr.top + dr.height / 2 - (r.top + r.height / 2);
+    gsap.to(c, {x: dx, duration: .8, ease: 'power1.inOut'});
+    gsap.to(c, {y: dy, duration: .8, ease: 'back.in(1.5)'});
+    gsap.to(c, {scale: .16, rotation: 22, duration: .8, ease: 'power2.in', onComplete: () => { c.remove(); recibir(d); fin && fin(); }});
+  };
+  const agregar = (id, desde) => {
+    if (pedido.includes(id)) return;
+    const hecho = () => { pedido = [...pedido, id]; guardar(); pintarTodo(true); };
+    desde ? volar(desde, id, hecho) : hecho();
+  };
+  const quitar = id => { pedido = pedido.filter(x => x !== id); guardar(); pintarTodo(); };
+  const alternar = (id, desde) => pedido.includes(id) ? quitar(id) : agregar(id, desde);
+
+  /* tocar o arrastrar una pieza del estante */
+  let arr = null, recienArrastrado = false;
+  const dentro = (e, el) => { if (!el) return false; const r = el.getBoundingClientRect(); return e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom; };
+  $('#estanteria').addEventListener('pointerdown', e => {
+    const o = e.target.closest('.objeto'); if (!o || o.classList.contains('vacio') || e.pointerType === 'touch' || e.button > 0) return;
+    arr = {o, id: o.dataset.id, x: e.clientX, y: e.clientY, mov: false, clon: null};
+  });
+  addEventListener('pointermove', e => {
+    if (!arr) return;
+    const dx = e.clientX - arr.x, dy = e.clientY - arr.y;
+    if (!arr.mov && Math.hypot(dx, dy) > 7) {
+      arr.mov = true; const r = arr.o.getBoundingClientRect();
+      arr.clon = document.createElement('div'); arr.clon.className = 'volando';
+      arr.clon.innerHTML = arr.o.querySelector('.marco').outerHTML;
+      Object.assign(arr.clon.style, {left: r.left + 'px', top: r.top + 'px', width: r.width + 'px'});
+      document.body.appendChild(arr.clon); arr.o.style.visibility = 'hidden';
+      document.body.classList.add('arrastrando'); $('#canasta').classList.add('lista');
+    }
+    if (arr.mov) {
+      gsap.set(arr.clon, {x: dx, y: dy, rotation: gsap.utils.clamp(-14, 14, dx * .04), scale: 1.06});
+      $('#canasta').classList.toggle('encima', dentro(e, $('#canasta')) || dentro(e, $('#abrirCarrito')));
+    }
+  });
+  addEventListener('pointerup', e => {
+    if (!arr) return; const a = arr; arr = null;
+    if (!a.mov) return;
+    recienArrastrado = true; setTimeout(() => { recienArrastrado = false; }, 50);
+    document.body.classList.remove('arrastrando'); $('#canasta').classList.remove('lista', 'encima');
+    const soltado = dentro(e, $('#canasta')) || dentro(e, $('#abrirCarrito'));
+    if (soltado && !pedido.includes(a.id)) {
+      gsap.to(a.clon, {scale: .2, opacity: 0, rotation: 30, duration: .4, ease: 'power2.in', onComplete: () => { a.clon.remove(); a.o.style.visibility = ''; recibir(compu() ? $('#canasta') : $('#abrirCarrito')); }});
+      pedido = [...pedido, a.id]; guardar(); pintarTodo(true);
+    } else {
+      gsap.to(a.clon, {x: 0, y: 0, rotation: 0, scale: 1, duration: .5, ease: 'back.out(1.7)', onComplete: () => { a.clon.remove(); a.o.style.visibility = ''; }});
+    }
+  });
+  const activar = o => o.dataset.ir ? document.getElementById(o.dataset.ir).scrollIntoView({behavior: 'smooth'}) : alternar(o.dataset.id, o.querySelector('.marco'));
+  $('#estanteria').addEventListener('click', e => { const o = e.target.closest('.objeto'); if (o && !recienArrastrado) activar(o); });
+  $('#estanteria').addEventListener('keydown', e => {
+    const o = e.target.closest('.objeto'); if (!o || (e.key !== 'Enter' && e.key !== ' ')) return;
+    e.preventDefault(); activar(o);
+  });
+  $('#grilla').addEventListener('click', e => { const b = e.target.closest('.agregar'); if (b) alternar(b.dataset.id, b.closest('.pieza').querySelector('.pieza-foto')); });
+
+  /* pedido */
+  const cuenta = $('#cuenta'), barra = $('#barra'), carrito = $('#carrito'), velo = $('#velo');
+  const pintarPedido = salto => {
+    const n = pedido.length + disenos.length;
+    cuenta.textContent = n;
+    if (salto) { cuenta.classList.add('salto'); setTimeout(() => cuenta.classList.remove('salto'), 260); }
+    $('#barraTexto').textContent = n === 1 ? '1 pieza' : `${n} piezas`;
+    barra.classList.toggle('ver', n > 0 && !carrito.classList.contains('ver'));
+    $('#enviar').disabled = n === 0;
+    $('#canastaTxt').textContent = n ? (n === 1 ? '1 pieza' : `${n} piezas`) : 'Tu canasta';
+    $('#canastaSub').textContent = n ? 'Seguí sumando o mirá tu pedido' : 'Soltá acá las piezas que te gusten';
+    $('#canastaVer').hidden = !n;
+    $('#items').innerHTML = n ? pedido.map(id => { const p = pieza(id); return `<div class="item"><img src="../fotos/${p.id}.jpg" alt=""><div>${p.nombre}<small>${p.cat} · pieza única</small></div><button data-quitar="${p.id}" aria-label="Quitar ${p.nombre}">✕</button></div>`; }).join('')
+      + disenos.map(d => `<div class="item"><img src="${d.img}" alt=""><div>Diseño a medida<small>${d.txt}</small></div><button data-quitar-d="${d.id}" aria-label="Quitar este diseño">✕</button></div>`).join('')
+      : '<p class="vacio"><b>Todavía nada por acá</b>Sumá piezas de la estantería o diseñá la tuya.</p>';
+  };
+  const pintarTodo = salto => { pintarEstante(); pintarLista(); pintarPedido(salto); refrescarSugeridas(); };
+  const abrir = () => { carrito.classList.add('ver'); velo.classList.add('ver'); carrito.setAttribute('aria-hidden', 'false'); barra.classList.remove('ver'); };
+  const cerrar = () => { carrito.classList.remove('ver'); velo.classList.remove('ver'); carrito.setAttribute('aria-hidden', 'true'); pintarPedido(); };
+  $('#abrirCarrito').addEventListener('click', abrir); $('#barraVer').addEventListener('click', abrir); $('#canastaVer').addEventListener('click', abrir);
+  $('#cerrarCarrito').addEventListener('click', cerrar); velo.addEventListener('click', cerrar);
+  $('#items').addEventListener('click', e => {
+    const b = e.target.closest('[data-quitar]'); if (b) return quitar(b.dataset.quitar);
+    const d = e.target.closest('[data-quitar-d]'); if (d) { disenos = disenos.filter(x => x.id !== d.dataset.quitarD); guardar(); pintarPedido(); }
+  });
+  const agregarDiseno = (d, desde) => {
+    const nuevo = {id: 'd' + Date.now(), ...d};
+    const hecho = () => { disenos = [...disenos, nuevo].slice(-6); guardar(); pintarPedido(true); };
+    desde ? volar(desde, nuevo.img, hecho, 150) : hecho();
+  };
+
+  /* el mensaje que les llega */
+  const modal = $('#modal');
+  const mostrar = (texto, imagen, {titulo = 'Así les llega el pedido', respuesta = '¡Hola! Sí, se puede 😊 Te pasamos el precio y el alias para transferir.'} = {}) => {
+    $('#mChat .burbuja.img')?.remove();
+    if (imagen) $('#mMensaje').insertAdjacentHTML('beforebegin', `<div class="burbuja img"><img src="${imagen}" alt="Tu diseño"></div>`);
+    $('#mTitulo').textContent = titulo; $('#mMensaje').textContent = texto; $('#mRespuesta').textContent = respuesta;
+    volverA = document.activeElement; modal.classList.add('ver'); const caja = $('#modal .modal-caja'); caja.scrollTop = 0; setTimeout(() => caja.focus({preventScroll: true}), 60);
+  };
+  let volverA = null;
+  const cerrarModal = () => { modal.classList.remove('ver'); if (volverA && volverA.focus) volverA.focus(); };
+  $('#enviar').addEventListener('click', () => {
+    const lista = [...pedido.map(id => '• ' + pieza(id).nombre), ...disenos.map(d => '• A medida: ' + d.txt)].join('\n');
+    const entrega = $('input[name=entrega]:checked').value, quien = $('#nombre').value.trim();
+    const extra = disenos.length ? `\n(Les mando ${disenos.length === 1 ? 'la imagen de mi diseño' : 'las imágenes de mis diseños'})` : '';
+    mostrar(`¡Hola Toia! 👋 Quiero ${pedido.length ? 'estas piezas' : 'encargar'}:\n${lista}${extra}\n\nEntrega: ${entrega}${quien ? `\nMi nombre: ${quien}` : ''}\n¿Me confirman precio y disponibilidad?`, disenos[0] && disenos[0].img);
+  });
+  $$('[data-mensaje]').forEach(b => b.addEventListener('click', () => mostrar(b.dataset.mensaje, null, {titulo: 'Así les llega la consulta', respuesta: '¡Hola! Sí, te pasamos los combos y precios por acá 😊'})));
+  $('#mCerrar').addEventListener('click', cerrarModal);
+  modal.addEventListener('click', e => { if (e.target === modal) cerrarModal(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { if (modal.classList.contains('ver')) cerrarModal(); else cerrar(); } });
+
+  /* asistente de regalos: atención personalizada que termina en WhatsApp */
+  const cuerpo = $('#ayudaCuerpo'), ops = $('#ayudaOps');
+  const PARA = [['mama', 'Para mamá', 'para mi mamá'], ['amiga', 'Para una amiga', 'para una amiga'], ['yo', 'Para mí', 'para mí'], ['docente', 'Para una docente', 'para una docente'], ['negocio', 'Para mi negocio', '']];
+  const ESTILO = [['delicado', 'Delicado'], ['colorido', 'Colorido'], ['divertido', 'Divertido']];
+  let charla = {}, sugeridas = [];
+  const espera = ms => new Promise(r => setTimeout(r, ms));
+  const decir = async (html, ms = 750) => {
+    const m = document.createElement('div'); m.className = 'msg'; m.innerHTML = '<span class="escribiendo"><i></i><i></i><i></i></span>';
+    cuerpo.appendChild(m); cuerpo.scrollTop = cuerpo.scrollHeight; await espera(ms); m.innerHTML = html; cuerpo.scrollTop = cuerpo.scrollHeight;
+  };
+  const yo = t => { const m = document.createElement('div'); m.className = 'msg yo'; m.textContent = t; cuerpo.appendChild(m); cuerpo.scrollTop = cuerpo.scrollHeight; };
+  const opciones = (lista, fn) => new Promise(res => {
+    ops.innerHTML = lista.map(([v, n]) => `<button data-v="${v}">${n}</button>`).join('');
+    ops.onclick = e => { const b = e.target.closest('button'); if (!b) return; ops.innerHTML = ''; yo(b.textContent); res(b.dataset.v); };
+  });
+  const recomendar = (para, estilo) => {
+    const a = PIEZAS.filter(p => p.para.includes(para) && p.estilo.includes(estilo));
+    const b = PIEZAS.filter(p => p.estilo.includes(estilo) && !a.includes(p));
+    const c = PIEZAS.filter(p => p.para.includes(para) && !a.includes(p) && !b.includes(p));
+    return [...a, ...b, ...c].slice(0, 3);
+  };
+  function refrescarSugeridas() { $$('.sug button[data-id]').forEach(b => { const en = pedido.includes(b.dataset.id); b.classList.toggle('en', en); b.textContent = en ? 'En tu pedido ✓' : 'Agregar'; }); }
+  cuerpo.addEventListener('click', e => { const b = e.target.closest('.sug button[data-id]'); if (b) alternar(b.dataset.id, b.closest('.sug').querySelector('img')); });
+  let corriendo = false;
+  const charlar = async () => {
+    if (corriendo) return; corriendo = true;
+    cuerpo.innerHTML = ''; ops.innerHTML = ''; charla = {};
+    await decir('¡Hola! Somos Salo y Vicky 👋', 600);
+    await decir('¿Para quién es la pieza que buscás?');
+    const para = await opciones(PARA.map(([v, n]) => [v, n]));
+    charla.para = para;
+    if (para === 'negocio') {
+      await decir('¡Genial! Tenemos combos de 17, 26, 30 y 36 piezas, con envío seguro y diseños exclusivos.');
+      await decir('¿Te pasamos la info por WhatsApp?');
+      await opciones([['si', 'Sí, escribirles']]);
+      mostrar('¡Hola Toia! Tengo un negocio y quiero info de los combos mayoristas.', null, {titulo: 'Así les llega la consulta', respuesta: '¡Hola! Sí, te pasamos los combos y precios por acá 😊'});
+      corriendo = false; await decir('¿Te ayudamos con algo más?', 900); await opciones([['otra', 'Empezar de nuevo']]); return charlar();
+    }
+    await decir(para === 'yo' ? '¡Nos encanta! ¿Qué estilo te gusta?' : '¡Qué lindo regalo! ¿Qué estilo le va?');
+    const estilo = await opciones(ESTILO); charla.estilo = estilo;
+    sugeridas = recomendar(para, estilo);
+    await decir(para === 'yo' ? 'Mirá estas, creemos que te van a encantar:' : 'Mirá estas, creemos que le van a encantar:');
+    const m = document.createElement('div'); m.className = 'msg cards';
+    m.innerHTML = `<div class="sugeridas">${sugeridas.map(p => `<div class="sug"><img src="../fotos/${p.id}.jpg" alt=""><div><b>${p.nombre}</b><button data-id="${p.id}"></button></div></div>`).join('')}</div>`;
+    cuerpo.appendChild(m); refrescarSugeridas(); cuerpo.scrollTop = cuerpo.scrollHeight;
+    await decir('¿Lo seguimos por WhatsApp? Te ayudamos a elegir y te pasamos precios.', 1100);
+    const fin = await opciones([['wa', 'Sí, escribirles'], ['otra', 'Ver otras opciones']]);
+    corriendo = false;
+    if (fin === 'otra') return charlar();
+    const p = PARA.find(x => x[0] === para)[2], est = ESTILO.find(x => x[0] === estilo)[1].toLowerCase();
+    const elegidas = (pedido.length ? pedido : sugeridas.map(s => s.id)).map(id => pieza(id).nombre);
+    mostrar(`¡Hola Toia! 👋 ${para === 'yo' ? 'Busco una pieza para mí' : `Busco un regalo ${p}`}, algo ${est}.\nMe gustaron: ${elegidas.join(', ')}.\n¿Me ayudan a elegir?`, null,
+      {titulo: 'Así les llega la consulta', respuesta: '¡Hola! Qué lindo 😍 Te mandamos fotos de las que tenemos disponibles.'});
+    await decir('¡Listo! Te esperamos por WhatsApp 💛', 900); await opciones([['otra', 'Empezar de nuevo']]); charlar();
+  };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { io.disconnect(); charlar(); } }, {threshold: .35});
+    io.observe($('.telefono'));
+  } else charlar();
+
+  const cab = $('.cab'); addEventListener('scroll', () => cab.classList.toggle('linea', scrollY > 10), {passive: true});
+  pintarTodo();
+  return {mostrar, alternar, agregar, agregarDiseno};
+})();
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const chico = matchMedia('(max-width: 700px)').matches;
+const hay3D = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+
+/* ---------- el torno: perfiles de revolución ---------- */
+const N_PIE = 3, N_EXT = 30, N_BORDE = 7, N_INT = 24, SEG = chico ? 64 : 88;
+const P_TOTAL = N_PIE + N_EXT + N_BORDE + N_INT + 1;
+const V_BORDE = (N_PIE + N_EXT - 1) / (P_TOTAL - 1);
+const V_PIE = (N_PIE + 3) / (P_TOTAL - 1);
+const PALETA = {lila: '#aab3ec', rosa: '#f1b0b9', celeste: '#b3d4f1', crema: '#f3ead8', durazno: '#f4c09a', salvia: '#bcd2b4', blanco: '#f8f4ec', marino: '#47598f'};
+const NOMBRES_ESM = {lila: 'lila', rosa: 'rosa', celeste: 'celeste', crema: 'crema', durazno: 'durazno', salvia: 'verde salvia', blanco: 'blanco', marino: 'azul marino'};
+const PIE_ARCILLA = '#c49a74';
+const FORMAS = {
+  taza: {t: .034, fondo: .07, asa: true, ctrl: ({h, w, panza, boca}) => [[.27 * w, 0], [.30 * w, .05], [(.33 + .05 * panza) * w, .28 * h], [(.35 + .07 * panza) * w, .62 * h], [.35 * w * (1 + .12 * boca), .9 * h], [.355 * w * (1 + .22 * boca), h]]},
+  cuenco: {t: .032, fondo: .06, ctrl: ({h, w, panza, boca}) => { const a = .52 * h; return [[.19 * w, 0], [.23 * w, .035], [(.4 + .06 * panza) * w, .22 * a + .03], [(.53 + .03 * panza) * w, .62 * a], [.585 * w * (1 + .14 * boca), a]]; }},
+  jarra: {t: .034, fondo: .07, asa: true, pico: true, ctrl: ({h, w, panza, boca}) => [[.27 * w, 0], [.31 * w, .06], [(.43 + .1 * panza) * w, .38 * h], [.35 * w, .74 * h], [.255 * w, .98 * h], [.30 * w * (1 + .3 * boca), 1.2 * h]]},
+  maceta: {t: .045, fondo: .09, ctrl: ({h, w, panza, boca}) => [[.27 * w, 0], [.29 * w, .04], [(.38 + .04 * panza) * w, .55 * h], [.42 * w, .8 * h], [.47 * w * (1 + .06 * boca), .84 * h], [.475 * w * (1 + .08 * boca), .98 * h]]},
+  bollo: {t: .32, fondo: .22, ctrl: () => [[.44, 0], [.52, .07], [.56, .17], [.5, .3], [.36, .4], [.22, .44]]},
+};
+const V2 = (x, y) => new THREE.Vector2(x, y);
+function curva(ctrl, n) { return new THREE.SplineCurve(ctrl.map(([x, y]) => V2(x, y))).getSpacedPoints(n - 1); }
+function perfil(ctrl, t, fondo) {
+  const ext = curva(ctrl, N_EXT), r0 = ext[0].x;
+  const pie = [V2(.001, .012), V2(r0 * .55, .012), V2(r0 * .82, 0)];
+  const tope = ext[ext.length - 1], borde = [];
+  for (let i = 1; i <= N_BORDE; i++) { const a = Math.PI * i / (N_BORDE + 1); borde.push(V2(Math.max(tope.x - t / 2 + Math.cos(a) * t / 2, .002), tope.y + Math.sin(a) * t * .45)); }
+  const adentro = [];
+  for (let i = 0; i < N_INT; i++) {
+    const k = Math.round((ext.length - 1) * (1 - i / (N_INT - 1)));
+    const a = ext[Math.max(k - 1, 0)], b = ext[Math.min(k + 1, ext.length - 1)];
+    const tx = b.x - a.x, ty = b.y - a.y, l = Math.hypot(tx, ty) || 1;
+    adentro.push(V2(Math.max(ext[k].x - ty / l * t, .002), Math.max(ext[k].y + tx / l * t, fondo)));
+  }
+  return [...pie, ...ext, ...borde, ...adentro, V2(.001, fondo)];
+}
+const mezclar = (a, b, f) => a.map((p, i) => V2(p.x + (b[i].x - p.x) * f, p.y + (b[i].y - p.y) * f));
+function escribirTorno(geo, pts, pico = 0) {
+  const pos = geo.attributes.position, np = pts.length, yTop = pts[N_PIE + N_EXT - 1].y;
+  for (let i = 0; i <= SEG; i++) {
+    const phi = Math.PI + i / SEG * Math.PI * 2, s = Math.sin(phi), c = Math.cos(phi);
+    const g = pico ? Math.pow(Math.max(0, -s), 12) : 0;
+    for (let j = 0; j < np; j++) {
+      let r = pts[j].x, y = pts[j].y;
+      if (g > .001) { const f = THREE.MathUtils.smoothstep(y, yTop * .8, yTop); r *= 1 + pico * g * f; y += .05 * g * f * pico; }
+      pos.setXYZ(i * np + j, r * s, y, r * c);
+    }
+  }
+  pos.needsUpdate = true; geo.computeVertexNormals();
+  const nor = geo.attributes.normal;
+  for (let j = 0; j < np; j++) {
+    const a = j, b = SEG * np + j, x = nor.getX(a) + nor.getX(b), y = nor.getY(a) + nor.getY(b), z = nor.getZ(a) + nor.getZ(b), l = Math.hypot(x, y, z) || 1;
+    nor.setXYZ(a, x / l, y / l, z / l); nor.setXYZ(b, x / l, y / l, z / l);
+  }
+  nor.needsUpdate = true; geo.computeBoundingSphere(); geo.computeBoundingBox();
+}
+function radioEn(pts, y) {
+  const ext = pts.slice(N_PIE, N_PIE + N_EXT);
+  for (let k = 1; k < ext.length; k++) if (ext[k].y >= y) { const a = ext[k - 1], b = ext[k], f = (y - a.y) / ((b.y - a.y) || 1); return a.x + (b.x - a.x) * f; }
+  return ext[ext.length - 1].x;
+}
+function geoAsa(pts, tipo) {
+  const yTop = pts[N_PIE + N_EXT - 1].y, jarra = tipo === 'jarra';
+  const yA = yTop * .8, yB = yTop * (jarra ? .4 : .27);
+  const rA = radioEn(pts, yA) - .012, rB = radioEn(pts, yB) - .012, sale = jarra ? .27 : .22;
+  const c = new THREE.CatmullRomCurve3([new THREE.Vector3(rA, yA, 0), new THREE.Vector3(rA + sale * .6, yA + .045, 0), new THREE.Vector3(Math.max(rA, rB) + sale, (yA + yB) / 2 + .02, 0), new THREE.Vector3(rB + sale * .5, yB - .02, 0), new THREE.Vector3(rB, yB, 0)]);
+  return new THREE.TubeGeometry(c, 64, jarra ? .042 : .035, 16, false);
+}
+
+/* ---------- la superficie ---------- */
+function semilla(s) { return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+function luz(hex) { const n = parseInt(hex.slice(1), 16); return (.299 * (n >> 16) + .587 * ((n >> 8) & 255) + .114 * (n & 255)) / 255; }
+function punto(ctx, x, y, rx, ry, W) { for (const dx of [0, -W, W]) { if (x + dx < -rx || x + dx > W + rx) continue; ctx.beginPath(); ctx.ellipse(x + dx, y, rx, ry, 0, 0, Math.PI * 2); ctx.fill(); } }
+function flor(ctx, x, y, r, rot, petalo, centro) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.fillStyle = petalo;
+  for (let k = 0; k < 5; k++) { ctx.rotate(Math.PI * 2 / 5); ctx.beginPath(); ctx.ellipse(0, -r * .55, r * .32, r * .5, 0, 0, Math.PI * 2); ctx.fill(); }
+  ctx.fillStyle = centro; ctx.beginPath(); ctx.arc(0, 0, r * .22, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+}
+const PATRONES = {
+  liso() {},
+  moteado(ctx, W, H, yR, yP, sx, sy) { const rnd = semilla(11); for (let k = 0; k < 3200; k++) { const x = rnd() * W, y = rnd() * yP, r = .002 + rnd() * .006; ctx.fillStyle = `rgba(74,52,40,${.3 + rnd() * .55})`; punto(ctx, x, y, r * sx, r * sy, W); } },
+  lunares(ctx, W, H, yR, yP, sx, sy) {
+    const paso = .125, r = .026; ctx.fillStyle = 'rgba(255,253,248,.96)';
+    const cols = Math.max(6, Math.round(W / (paso * sx))), filas = Math.floor((yP - yR) / (paso * sy));
+    for (let f = 0; f <= filas; f++) for (let c = 0; c < cols; c++) { const y = yR + (f + .55) * paso * sy; if (y > yP - r * sy * 1.5) continue; punto(ctx, (c + (f % 2) * .5) * W / cols, y, r * sx, r * sy, W); }
+  },
+  rayas(ctx, W, H, yR, yP, sx, sy) { ctx.fillStyle = 'rgba(255,253,248,.92)'; for (let k = 0; k < 4; k++) ctx.fillRect(0, yR + (yP - yR) * (.16 + k * .2), W, .032 * sy); },
+  escoces(ctx, W, H, yR, yP, sx, sy, color) {
+    ctx.fillStyle = '#f5eee2'; ctx.fillRect(0, yR, W, yP - yR);
+    const paso = .26, ancho = .075; ctx.globalAlpha = .55; ctx.fillStyle = color;
+    for (let x = 0; x < W; x += paso * sx) ctx.fillRect(x, yR, ancho * sx, yP - yR);
+    for (let y = yR + paso * sy * .3; y < yP; y += paso * sy) ctx.fillRect(0, y, W, ancho * sy);
+    ctx.globalAlpha = .9; ctx.fillStyle = '#2f3a5e';
+    for (let x = paso * sx * .62; x < W; x += paso * sx) ctx.fillRect(x, yR, .012 * sx, yP - yR);
+    for (let y = yR + paso * sy * .82; y < yP; y += paso * sy) ctx.fillRect(0, y, W, .012 * sy);
+    ctx.globalAlpha = 1;
+  },
+  flores(ctx, W, H, yR, yP, sx, sy, color) {
+    const rnd = semilla(5), claro = luz(color) > .8, petalos = claro ? ['#ef9fae', '#b4a6e6', '#f3c95d', '#93bfe6'] : ['#fffaf4', '#f7d1d6'];
+    for (let k = 0; k < 24; k++) flor(ctx, rnd() * W, yR + (.12 + rnd() * .76) * (yP - yR), (.05 + rnd() * .03) * sx, rnd() * 6, petalos[k % petalos.length], claro ? '#f6d36b' : '#f2c14e');
+  },
+  pinceladas(ctx, W, H, yR, yP, sx, sy) {
+    const rnd = semilla(3), cols = ['#f0a6b1', '#a9c7a0', '#f4b98e', '#9fc2e7', '#d9b3e6'];
+    for (let k = 0; k < 18; k++) { ctx.fillStyle = cols[k % cols.length]; ctx.globalAlpha = .65; const x = rnd() * W, y = yR + (.2 + rnd() * .6) * (yP - yR); ctx.save(); ctx.translate(x, y); ctx.rotate(rnd() * 3); ctx.beginPath(); ctx.ellipse(0, 0, (.07 + rnd() * .05) * sx, (.035 + rnd() * .02) * sy, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+    ctx.globalAlpha = 1; PATRONES.moteado(ctx, W, H, yR, yP, sx, sy);
+  },
+  carita(ctx, W, H, yR, yP, sx, sy) {
+    const cx = W * .5, cy = yR + (yP - yR) * .46, u = sx;
+    ctx.strokeStyle = '#2b211d'; ctx.lineCap = 'round'; ctx.lineWidth = .011 * u;
+    for (const s of [-1, 1]) { ctx.beginPath(); ctx.ellipse(cx + s * .075 * u, cy, .04 * u, .022 * sy, 0, .15, Math.PI - .15); ctx.stroke(); for (let k = 0; k < 3; k++) { const a = .5 + k * .9; ctx.beginPath(); ctx.moveTo(cx + s * .075 * u + Math.cos(a) * .04 * u * s, cy + .02 * sy); ctx.lineTo(cx + s * .075 * u + Math.cos(a) * .05 * u * s, cy + .034 * sy); ctx.stroke(); } }
+    ctx.lineWidth = .016 * u; ctx.beginPath(); ctx.moveTo(cx - .13 * u, cy - .05 * sy); ctx.quadraticCurveTo(cx - .07 * u, cy - .085 * sy, cx, cy - .055 * sy); ctx.quadraticCurveTo(cx + .07 * u, cy - .085 * sy, cx + .13 * u, cy - .05 * sy); ctx.stroke();
+    ctx.fillStyle = 'rgba(232,120,130,.55)'; for (const s of [-1, 1]) punto(ctx, cx + s * .12 * u, cy + .07 * sy, .032 * u, .02 * sy, W);
+    ctx.fillStyle = '#c8414f'; ctx.beginPath(); ctx.ellipse(cx, cy + .11 * sy, .022 * u, .012 * sy, 0, 0, Math.PI * 2); ctx.fill();
+    [['#f2a7b4', -.1], ['#f6cf6a', 0], ['#a8c6ec', .1]].forEach(([c, dx]) => flor(ctx, cx + dx * u * 1.4, yR + (yP - yR) * .13, .05 * u, dx * 4, c, '#fff2c6'));
+  },
+};
+function pintarSuperficie(cvC, cvR, cvB, o, pts) {
+  const ext = pts.slice(N_PIE, N_PIE + N_EXT);
+  let largo = 0; for (let k = 1; k < ext.length; k++) largo += ext[k].distanceTo(ext[k - 1]);
+  const rMedio = ext.reduce((s, p) => s + p.x, 0) / ext.length;
+  const ctx = cvC.getContext('2d'), W = cvC.width, H = cvC.height;
+  const yR = (1 - V_BORDE) * H, yP = (1 - V_PIE) * H, sx = W / (Math.PI * 2 * rMedio), sy = (yP - yR) / largo;
+  ctx.globalAlpha = 1; ctx.fillStyle = o.color; ctx.fillRect(0, 0, W, H);
+  const g = ctx.createLinearGradient(0, yR, 0, yP); g.addColorStop(0, 'rgba(255,255,255,.10)'); g.addColorStop(.6, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(60,30,20,.14)');
+  ctx.fillStyle = g; ctx.fillRect(0, yR, W, yP - yR);
+  ctx.fillStyle = 'rgba(40,20,10,.06)'; ctx.fillRect(0, 0, W, yR);
+  (PATRONES[o.patron] || PATRONES.liso)(ctx, W, H, yR, yP, sx, sy, o.color);
+  const yBorde = (1 - (N_PIE + N_EXT + N_BORDE / 2) / (P_TOTAL - 1)) * H;
+  const gb = ctx.createLinearGradient(0, yBorde - 6, 0, yBorde + 6); gb.addColorStop(0, 'rgba(196,154,116,0)'); gb.addColorStop(.5, 'rgba(196,154,116,.55)'); gb.addColorStop(1, 'rgba(196,154,116,0)');
+  ctx.fillStyle = gb; ctx.fillRect(0, yBorde - 6, W, 12);
+  if (o.nombre) {
+    const carita = o.patron === 'carita', txt = o.nombre.slice(0, 10), alto = (carita ? .085 : .12) * sy;
+    ctx.font = `700 ${alto}px Caveat, cursive`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = o.colorNombre === 'marino' ? '#fffaf2' : '#3a2e2a';
+    const y = yR + (yP - yR) * (carita ? .8 : .52);
+    for (const dx of [0, W, -W]) ctx.fillText(txt, W * .5 + dx, y);
+  }
+  ctx.fillStyle = PIE_ARCILLA; ctx.fillRect(0, yP, W, H - yP);
+  const rnd = semilla(9); for (let k = 0; k < 900; k++) { ctx.fillStyle = `rgba(90,60,40,${rnd() * .25})`; ctx.fillRect(rnd() * W, yP + rnd() * (H - yP), 2, 2); }
+  const r = cvR.getContext('2d'), RW = cvR.width, RH = cvR.height;
+  r.fillStyle = 'rgb(58,58,58)'; r.fillRect(0, 0, RW, RH); r.fillStyle = 'rgb(232,232,232)'; r.fillRect(0, (1 - V_PIE) * RH, RW, RH);
+  const b = cvB.getContext('2d'), BW = cvB.width, BH = cvB.height, img = b.createImageData(BW, BH), d = img.data, rr = semilla(4);
+  const bR = (1 - V_BORDE) * BH, bP = (1 - V_PIE) * BH, per = Math.max(3, (bP - bR) / 34);
+  for (let y = 0; y < BH; y++) {
+    const ondas = y > bR && y < bP ? Math.sin(y / per * Math.PI * 2) * 14 + Math.sin(y / (per * 2.7)) * 6 : 0;
+    for (let x = 0; x < BW; x++) { const v = 128 + ondas + (y >= bP ? (rr() - .5) * 60 : (rr() - .5) * 6); const i = (y * BW + x) * 4; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+  }
+  b.putImageData(img, 0, 0);
+}
+let sombraTex;
+function texSombra() {
+  if (sombraTex) return sombraTex;
+  const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
+  const g = x.createRadialGradient(64, 64, 4, 64, 64, 64); g.addColorStop(0, 'rgba(60,38,26,.42)'); g.addColorStop(.5, 'rgba(60,38,26,.16)'); g.addColorStop(1, 'rgba(60,38,26,0)');
+  x.fillStyle = g; x.fillRect(0, 0, 128, 128); return (sombraTex = new THREE.CanvasTexture(c));
+}
+function nuevaPieza(op) {
+  const o = {tipo: 'taza', h: 1, w: 1, panza: .15, boca: .05, colorNombre: 'lila', patron: 'liso', nombre: '', tex: chico ? 512 : 1024, ...op};
+  o.color = PALETA[o.colorNombre];
+  const grupo = new THREE.Group();
+  const cvC = document.createElement('canvas'); cvC.width = cvC.height = o.tex;
+  const cvR = document.createElement('canvas'); cvR.width = cvR.height = 128;
+  const cvB = document.createElement('canvas'); cvB.width = cvB.height = chico ? 256 : 512;
+  const map = new THREE.CanvasTexture(cvC); map.colorSpace = THREE.SRGBColorSpace; map.anisotropy = 4;
+  const rug = new THREE.CanvasTexture(cvR), rel = new THREE.CanvasTexture(cvB);
+  const mat = new THREE.MeshPhysicalMaterial({map, roughnessMap: rug, roughness: 1, metalness: 0, bumpMap: rel, bumpScale: .9, clearcoat: .85, clearcoatRoughness: .14});
+  const matAsa = new THREE.MeshPhysicalMaterial({color: o.color, roughness: .24, metalness: 0, clearcoat: .85, clearcoatRoughness: .14});
+  const cuerpo = new THREE.Mesh(new THREE.BufferGeometry(), mat), asa = new THREE.Mesh(new THREE.BufferGeometry(), matAsa);
+  const sombra = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({map: texSombra(), transparent: true, depthWrite: false}));
+  sombra.rotation.x = -Math.PI / 2; sombra.position.y = .003; grupo.add(cuerpo, asa, sombra);
+  let pts;
+  const forma = () => {
+    const F = FORMAS[o.tipo]; pts = perfil(F.ctrl(o), F.t, F.fondo);
+    cuerpo.geometry.dispose(); const geo = new THREE.LatheGeometry(pts, SEG, Math.PI, Math.PI * 2); escribirTorno(geo, pts, F.pico ? .34 : 0); cuerpo.geometry = geo;
+    asa.geometry.dispose(); asa.geometry = F.asa ? geoAsa(pts, o.tipo) : new THREE.BufferGeometry(); asa.visible = !!F.asa;
+    const ancho = Math.max(...pts.map(p => p.x)) * 2.9 + (F.asa ? .35 : 0); sombra.scale.set(ancho, ancho * .92, 1);
+  };
+  const superficie = () => { pintarSuperficie(cvC, cvR, cvB, o, pts); map.needsUpdate = rug.needsUpdate = rel.needsUpdate = true; matAsa.color.set(o.color); };
+  forma(); superficie();
+  return {
+    grupo, cuerpo, asa, mat, matAsa, o, get pts() { return pts; },
+    alto() { return Math.max(...pts.map(p => p.y)); },
+    cambiar(n, rapido = false) { if (n.colorNombre) n.color = PALETA[n.colorNombre]; const f = ['tipo', 'h', 'w', 'panza', 'boca'].some(k => k in n && n[k] !== o[k]); Object.assign(o, n); if (f) forma(); if (!rapido) superficie(); },
+  };
+}
+
+/* ---------- escenas ---------- */
+function escena(canvas, {fov = 30, pos = [0, 1.4, 5], mira = [0, .5, 0]} = {}) {
+  const renderer = new THREE.WebGLRenderer({canvas, antialias: true, alpha: true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, chico ? 1.75 : 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.04;
+  renderer.localClippingEnabled = true;
+  const scene = new THREE.Scene();
+  const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(renderer), .04).texture;
+  const camera = new THREE.PerspectiveCamera(fov, 1, .1, 60); camera.position.set(...pos); camera.lookAt(...mira);
+  scene.add(new THREE.HemisphereLight(0xfff4e8, 0xcdb8a4, .55));
+  const key = new THREE.DirectionalLight(0xfff0dc, 1.45); key.position.set(2.4, 4, 3.2); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xdde8ff, .75); rim.position.set(-3, 2.2, -2.6); scene.add(rim);
+  const st = {renderer, scene, camera, cbs: [], visible: true, aspecto: 1};
+  const resize = () => { const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = st.aspecto = w / h; camera.updateProjectionMatrix(); };
+  new ResizeObserver(resize).observe(canvas); resize();
+  new IntersectionObserver(es => { st.visible = es[0].isIntersecting; }, {rootMargin: '150px'}).observe(canvas);
+  const reloj = new THREE.Clock();
+  renderer.setAnimationLoop(() => { if (!st.visible) return; const t = reloj.getElapsedTime(); st.cbs.forEach(f => f(t)); renderer.render(scene, camera); });
+  st.cada = f => { st.cbs.push(f); return f; };
+  return st;
+}
+function arrastre(canvas, alMover) {
+  let x0 = null;
+  canvas.addEventListener('pointerdown', e => { x0 = e.clientX; });
+  addEventListener('pointermove', e => { if (x0 === null) return; alMover(e.clientX - x0); x0 = e.clientX; });
+  addEventListener('pointerup', () => { x0 = null; }); addEventListener('pointercancel', () => { x0 = null; });
+}
+
+if (!hay3D) document.documentElement.classList.add('sin3d');
+else {
+  await document.fonts.load('700 60px Caveat').catch(() => {});
+  /* cada escena se arma recién cuando te acercás: el celu abre más rápido */
+  const cuando = (el, fn) => { const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { io.disconnect(); fn(); } }, {rootMargin: '700px 0px'}); io.observe(el); };
+  let torno = null, barroE = null, progBarro = 0;
+  const iniciarTorno = () => torno || (torno = crearTorno());
+
+  /* 3) diseñá tu pieza */
+  function crearTorno() {
+  const T = escena($('#torno3d'), {fov: 27, pos: [0, 1.45, 5.4], mira: [0, .55, 0]});
+  const ruedaT = new THREE.Mesh(new THREE.CylinderGeometry(.95, 1, .07, 72), new THREE.MeshStandardMaterial({color: '#e7d6c3', roughness: .7})); ruedaT.position.y = -.035; T.scene.add(ruedaT);
+  const estado = {tipo: 'taza', h: 1, w: 1, panza: .15, boca: .05, colorNombre: 'lila', patron: 'lunares', nombre: ''};
+  const mia = nuevaPieza(estado); T.scene.add(mia.grupo);
+  let rot = -.3, vel = 0, pausa = 0, objetivo = null, camY = 1.3, camZ = 5.4, mirY = .5;
+  arrastre(T.renderer.domElement, dx => { objetivo = null; rot += dx * .012; vel = dx * .0015; pausa = performance.now() + 1500; });
+  const alFrente = () => { objetivo = Math.round(rot / (Math.PI * 2)) * Math.PI * 2 - .3; pausa = performance.now() + 3500; };
+  const encuadre = () => {
+    const alto = mia.alto(), ancho = Math.max(...mia.pts.map(p => p.x)) * 2 + (FORMAS[estado.tipo].asa ? .3 : 0);
+    const fov = THREE.MathUtils.degToRad(T.camera.fov), asp = Math.max(T.aspecto, .5);
+    const dAlto = (alto * 1.55) / (2 * Math.tan(fov / 2)), dAncho = (ancho * 1.5) / (2 * Math.tan(fov / 2) * asp);
+    camZ = Math.max(dAlto, dAncho, 3.2); mirY = alto * .46; camY = mirY + camZ * .17;
+  };
+  T.cada(() => {
+    if (objetivo !== null) { rot += (objetivo - rot) * .09; if (Math.abs(objetivo - rot) < .002) objetivo = null; }
+    else if (performance.now() > pausa && !reducir) { vel += (.0042 - vel) * .03; rot += vel; }
+    else { vel *= .9; rot += vel; }
+    mia.grupo.rotation.y = rot;
+    T.camera.position.z += (camZ - T.camera.position.z) * .08; T.camera.position.y += (camY - T.camera.position.y) * .08;
+    T.camera.lookAt(0, mirY, 0);
+  });
+  const FORMAS_UI = [['taza', 'Taza'], ['cuenco', 'Cuenco'], ['jarra', 'Jarra'], ['maceta', 'Maceta']];
+  const DECOS = [['liso', 'Liso'], ['lunares', 'Lunares'], ['moteado', 'Moteado'], ['rayas', 'Rayas'], ['escoces', 'Escocés'], ['flores', 'Flores'], ['pinceladas', 'Pinceladas'], ['carita', 'Carita']];
+  const PRESETS = [
+    {n: 'Taza Frida', foto: 'tazas-frida-gato', cfg: {tipo: 'taza', colorNombre: 'blanco', patron: 'carita', h: 1.04, w: 1, panza: .1, boca: 0, nombre: ''}},
+    {n: 'Jarra lila', foto: 'jarra-lila', cfg: {tipo: 'jarra', colorNombre: 'lila', patron: 'lunares', h: 1, w: 1, panza: .35, boca: .25, nombre: ''}},
+    {n: 'Cuenco pinceladas', foto: 'cuenco-pinceladas', cfg: {tipo: 'cuenco', colorNombre: 'crema', patron: 'pinceladas', h: 1, w: 1.1, panza: .2, boca: .1, nombre: ''}},
+    {n: 'Taza escocesa', foto: '', cfg: {tipo: 'taza', colorNombre: 'marino', patron: 'escoces', h: .95, w: 1.05, panza: .05, boca: .05, nombre: ''}},
+    {n: 'Jarra floral', foto: 'jarra-floral', cfg: {tipo: 'jarra', colorNombre: 'blanco', patron: 'flores', h: 1.05, w: .95, panza: .5, boca: .3, nombre: ''}},
+  ];
+  $('#cPresets').innerHTML = PRESETS.map((p, i) => `<button class="preset" data-i="${i}">${p.foto ? `<img src="../fotos/${p.foto}.jpg" alt="">` : '<i></i>'}${p.n}</button>`).join('');
+  $('#cFormas').innerHTML = FORMAS_UI.map(([v, n]) => `<button class="op" data-v="${v}">${n}</button>`).join('');
+  $('#cDecos').innerHTML = DECOS.map(([v, n]) => `<button class="op" data-v="${v}">${n}</button>`).join('');
+  $('#cEsmaltes').innerHTML = Object.entries(PALETA).map(([k, c]) => `<button class="esm" data-v="${k}" style="background:${c}" aria-label="Esmalte ${NOMBRES_ESM[k]}" title="${NOMBRES_ESM[k]}"></button>`).join('');
+  const palabras = {
+    alto: v => v < .88 ? 'baja' : v > 1.14 ? 'alta' : 'media', ancho: v => v < .92 ? 'angosta' : v > 1.12 ? 'ancha' : 'media',
+    panza: v => v < 0 ? 'recta' : v > .45 ? 'bien panzona' : 'suave', boca: v => v < -.05 ? 'cerrada' : v > .3 ? 'bien abierta' : 'recta',
+  };
+  const nomDeco = v => DECOS.find(d => d[0] === v)[1].toLowerCase(), nomForma = v => FORMAS_UI.find(f => f[0] === v)[1];
+  const fem = () => estado.tipo !== 'cuenco';
+  const tamano = () => {
+    const a = palabras.alto(estado.h), b = palabras.ancho(estado.w), f = fem();
+    const ajusta = x => f ? x : x.replace(/a$/, 'o');
+    if (a === 'media' && b === 'media') return f ? 'mediana' : 'mediano';
+    if (a === 'media') return ajusta(b);
+    if (b === 'media') return ajusta(a);
+    return `${ajusta(a)} y ${ajusta(b)}`;
+  };
+  const sincronizar = () => {
+    $$('#cFormas .op').forEach(b => b.classList.toggle('sel', b.dataset.v === estado.tipo));
+    $$('#cDecos .op').forEach(b => b.classList.toggle('sel', b.dataset.v === estado.patron));
+    $$('#cEsmaltes .esm').forEach(b => b.classList.toggle('sel', b.dataset.v === estado.colorNombre));
+    $('#cAlto').value = estado.h; $('#cAncho').value = estado.w; $('#cPanza').value = estado.panza; $('#cBoca').value = estado.boca;
+    if (document.activeElement !== $('#cNombre')) $('#cNombre').value = estado.nombre;
+    $('#vAlto').textContent = palabras.alto(estado.h); $('#vAncho').textContent = palabras.ancho(estado.w);
+    $('#vPanza').textContent = palabras.panza(estado.panza); $('#vBoca').textContent = palabras.boca(estado.boca);
+    $('#ficha').innerHTML = `<b>${nomForma(estado.tipo)}</b> ${tamano()}<br>Esmalte ${NOMBRES_ESM[estado.colorNombre]} · ${nomDeco(estado.patron)}${estado.nombre ? ` · “${estado.nombre}”` : ''}`;
+  };
+  const aplicar = (n, {frente = false, rapido = false} = {}) => { Object.assign(estado, n); mia.cambiar(n, rapido); encuadre(); sincronizar(); if (frente) alFrente(); };
+  const grupoOps = (sel, clave) => $(sel).addEventListener('click', e => { const b = e.target.closest('button'); if (b) aplicar({[clave]: b.dataset.v}, {frente: clave !== 'tipo'}); });
+  grupoOps('#cFormas', 'tipo'); grupoOps('#cDecos', 'patron'); grupoOps('#cEsmaltes', 'colorNombre');
+  $('#cPresets').addEventListener('click', e => { const b = e.target.closest('.preset'); if (b) aplicar({...PRESETS[+b.dataset.i].cfg}, {frente: true}); });
+  [['#cAlto', 'h'], ['#cAncho', 'w'], ['#cPanza', 'panza'], ['#cBoca', 'boca']].forEach(([s, k]) => {
+    $(s).addEventListener('input', e => aplicar({[k]: +e.target.value}, {rapido: true}));
+    $(s).addEventListener('change', () => aplicar({}));
+  });
+  /* con el mouse, arrastrar para arriba o para abajo la estira: tornear de verdad */
+  let estirar = null;
+  T.renderer.domElement.addEventListener('pointerdown', e => { if (e.pointerType !== 'touch') estirar = {y: e.clientY, h: estado.h}; });
+  addEventListener('pointermove', e => {
+    if (!estirar) return; const dy = estirar.y - e.clientY; if (Math.abs(dy) < 5) return;
+    const h = THREE.MathUtils.clamp(estirar.h + dy * .0045, .75, 1.3); if (Math.abs(h - estado.h) > .004) aplicar({h: +h.toFixed(3)}, {rapido: true});
+  });
+  addEventListener('pointerup', () => { if (estirar) { estirar = null; aplicar({}); } });
+  $('#cNombre').addEventListener('input', e => aplicar({nombre: e.target.value.trim()}, {frente: true}));
+  const foto = () => {
+    const r0 = mia.grupo.rotation.y; mia.grupo.rotation.y = Math.round(r0 / (Math.PI * 2)) * Math.PI * 2 - .35;
+    T.renderer.render(T.scene, T.camera);
+    const src = T.renderer.domElement, w = src.width, h = src.height, lado = Math.min(w, h) * .92;
+    const c = document.createElement('canvas'); c.width = c.height = 600; const x = c.getContext('2d');
+    const g = x.createRadialGradient(300, 240, 40, 300, 300, 420); g.addColorStop(0, '#fffaf3'); g.addColorStop(1, '#ead9c6'); x.fillStyle = g; x.fillRect(0, 0, 600, 600);
+    x.drawImage(src, (w - lado) / 2, (h - lado) / 2, lado, lado, 0, 0, 600, 600);
+    x.font = '700 34px Caveat, cursive'; x.fillStyle = '#b9535d'; x.fillText('mi pieza Toia', 22, 570);
+    mia.grupo.rotation.y = r0; return c.toDataURL('image/jpeg', .9);
+  };
+  $('#cPedir').addEventListener('click', () => {
+    const txt = `¡Hola Toia! Diseñé esta pieza en su web:\n• Forma: ${nomForma(estado.tipo).toLowerCase()} ${tamano()}\n• Panza ${palabras.panza(estado.panza)}, boca ${palabras.boca(estado.boca)}\n• Esmalte: ${NOMBRES_ESM[estado.colorNombre]}\n• Decoración: ${nomDeco(estado.patron)}${estado.nombre ? `\n• Con el nombre: “${estado.nombre}”` : ''}\n¿Me pasan precio y demora?`;
+    window.TOIA.mostrar(txt, foto(), {titulo: 'Así les llega tu diseño', respuesta: '¡Qué linda! 😍 Te pasamos precio y en cuánto la tenemos.'});
+  });
+  $('#cGuardar').addEventListener('click', () => { const a = document.createElement('a'); a.href = foto(); a.download = 'mi-pieza-toia.jpg'; a.click(); });
+  const resumen = () => `${nomForma(estado.tipo)} ${tamano()} · esmalte ${NOMBRES_ESM[estado.colorNombre]} · ${nomDeco(estado.patron)}${estado.nombre ? ` · “${estado.nombre}”` : ''}`;
+  $('#cSumar').addEventListener('click', () => window.TOIA.agregarDiseno({txt: resumen(), img: foto()}, $('#torno3d')));
+  encuadre(); sincronizar();
+  return {aplicar, T};
+  }
+  cuando($('#disenar'), iniciarTorno);
+
+  /* 1) el banner: las piezas son protagonistas */
+  const H = escena($('#hero3d'), {fov: 27, pos: [0, 1.7, 6.4], mira: [0, .5, 0]});
+  const TRIO = [
+    {n: 'Cuenco moteado', d: 'pintado con pinceladas', cfg: {tipo: 'cuenco', colorNombre: 'crema', patron: 'pinceladas', w: 1.12, h: 1, panza: .2, boca: .1}},
+    {n: 'Taza lila', d: 'con lunares blancos', cfg: {tipo: 'taza', colorNombre: 'lila', patron: 'lunares', h: 1, w: 1, panza: .15, boca: .05}},
+    {n: 'Jarra rosa', d: 'con flores pintadas', cfg: {tipo: 'jarra', colorNombre: 'rosa', patron: 'flores', h: 1.02, w: 1, panza: .15, boca: .05}},
+  ];
+  const trio = TRIO.map(x => nuevaPieza(x.cfg)); trio.forEach(p => H.scene.add(p.grupo));
+  const enCompu = () => H.aspecto >= .95;
+  const lugares = () => enCompu()
+    ? {pos: [[1.85, 0, -.55], [2.7, 0, .6], [3.35, 0, -.5]], esc: 1.3, cam: [1.2, 2.0, 7.2], mira: [1.2, .66, 0]}
+    : {pos: [[-.46, 0, -.75], [.04, 0, .55], [.42, 0, -.6]], esc: .92, cam: [0, 2.6, 8.4], mira: [0, 1.45, 0]};
+  let giroU = 0, velU = 0, px = 0, py = 0, sobre = -1, elegido = -1;
+  const lift = [0, 0, 0];
+  arrastre(H.renderer.domElement, dx => { velU = dx * .012; });
+  addEventListener('pointermove', e => { px = e.clientX / innerWidth - .5; py = e.clientY / innerHeight - .5; }, {passive: true});
+  const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), etq = $('#etiqueta3d');
+  const tocada = e => {
+    const r = H.renderer.domElement.getBoundingClientRect();
+    ndc.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
+    ray.setFromCamera(ndc, H.camera);
+    const hits = ray.intersectObjects(trio.flatMap(p => [p.cuerpo, p.asa]), false);
+    return hits.length ? trio.findIndex(p => p.cuerpo === hits[0].object || p.asa === hits[0].object) : -1;
+  };
+  H.renderer.domElement.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') { sobre = tocada(e); H.renderer.domElement.style.cursor = sobre >= 0 ? 'pointer' : ''; } });
+  H.renderer.domElement.addEventListener('pointerleave', () => { sobre = -1; });
+  H.renderer.domElement.addEventListener('click', e => { const i = tocada(e); elegido = i; if (i >= 0) mostrarEtiqueta(i); else etq.classList.remove('ver'); });
+  const mostrarEtiqueta = i => {
+    etq.innerHTML = `<b>${TRIO[i].n}</b>${TRIO[i].d} · <button data-i="${i}">diseñala así →</button>`;
+    etq.classList.add('ver');
+  };
+  etq.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; iniciarTorno().aplicar({...TRIO[+b.dataset.i].cfg, nombre: ''}, {frente: true}); $('#disenar').scrollIntoView({behavior: 'smooth'}); etq.classList.remove('ver'); });
+  const v3 = new THREE.Vector3(), t0 = performance.now();
+  H.cada(t => {
+    const L = lugares(), seg = (performance.now() - t0) / 1000; giroU += velU; velU *= .93;
+    trio.forEach((p, i) => {
+      const [x, y, z] = L.pos[i], activo = i === sobre || i === elegido;
+      lift[i] += ((activo ? .22 : 0) - lift[i]) * .1;
+      const e = reducir ? 1 : THREE.MathUtils.clamp((seg - .25 - i * .22) / 1.1, 0, 1), cae = Math.pow(1 - e, 3) * 2.4;
+      const aterriza = e > .55 && e < 1 ? Math.sin((e - .55) / .45 * Math.PI) * .06 : 0;
+      p.grupo.position.set(x, y + cae + lift[i] + (reducir ? 0 : Math.sin(t * 1.1 + i * 2.1) * .05 + .05), z);
+      p.grupo.scale.set(L.esc * (1 + aterriza), L.esc * (1 - aterriza), L.esc * (1 + aterriza));
+      p.grupo.rotation.y = (reducir ? 0 : t * (activo ? .6 : .22)) + i * 1.9 + giroU + (1 - e) * 2.5;
+      p.grupo.rotation.z = reducir ? 0 : Math.sin(t * .8 + i) * .035 + (1 - e) * .25;
+    });
+    H.camera.position.x += ((L.cam[0] + px * .6) - H.camera.position.x) * .04;
+    H.camera.position.y += ((L.cam[1] - py * .35) - H.camera.position.y) * .04;
+    H.camera.position.z = L.cam[2]; H.camera.lookAt(...L.mira);
+    if (elegido >= 0 && etq.classList.contains('ver')) {
+      const p = trio[elegido]; v3.set(0, p.alto() + .12, 0).applyMatrix4(p.grupo.matrixWorld).project(H.camera);
+      const r = H.renderer.domElement;
+      etq.style.left = ((v3.x + 1) / 2 * r.clientWidth) + 'px'; etq.style.top = ((1 - v3.y) / 2 * r.clientHeight) + 'px';
+    }
+  });
+  requestAnimationFrame(() => H.renderer.domElement.classList.add('listo'));
+
+  /* 2) del barro a tu mesa: el pin se crea ya (no salta el layout); la escena, al acercarte */
+  if (window.gsap && window.ScrollTrigger && !reducir) {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.create({trigger: '#barro', start: 'top top', end: () => '+=' + innerHeight * 3.2, pin: true, scrub: .6, onUpdate: s => { progBarro = s.progress; if (barroE) barroE.pasarA(progBarro); }});
+  } else progBarro = 1;
+  const iniciarBarro = () => barroE || (barroE = crearBarro());
+  cuando($('#barro'), iniciarBarro);
+  function crearBarro() {
+  const B = escena($('#barro3d'), {fov: 30, pos: [0, 1.35, 4.6], mira: [0, .45, 0]});
+  const rueda = new THREE.Mesh(new THREE.CylinderGeometry(.78, .82, .07, 72), new THREE.MeshStandardMaterial({color: '#a89482', roughness: .35, metalness: .25}));
+  rueda.position.y = -.035; B.scene.add(rueda);
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(.3, .44, .9, 48), new THREE.MeshStandardMaterial({color: '#d8c6b2', roughness: .85})); base.position.y = -.52; B.scene.add(base);
+  const pB = perfil(FORMAS.bollo.ctrl({}), FORMAS.bollo.t, FORMAS.bollo.fondo);
+  const final = {tipo: 'taza', h: 1, w: 1, panza: .25, boca: .12};
+  const pT = perfil(FORMAS.taza.ctrl(final), FORMAS.taza.t, FORMAS.taza.fondo);
+  const ARCILLA = new THREE.Color('#8a5a3e'), BIZCOCHO = new THREE.Color('#ece1d1');
+  const matBarro = new THREE.MeshPhysicalMaterial({color: ARCILLA.clone(), roughness: .5, metalness: 0, clearcoat: .45, clearcoatRoughness: .45, emissive: new THREE.Color('#ff6a20'), emissiveIntensity: 0});
+  const geoBarro = new THREE.LatheGeometry(pB, SEG, Math.PI, Math.PI * 2); escribirTorno(geoBarro, pB);
+  const barro = new THREE.Mesh(geoBarro, matBarro);
+  const asaBarro = new THREE.Mesh(geoAsa(pT, 'taza'), matBarro); asaBarro.geometry.setDrawRange(0, 0);
+  const plano = new THREE.Plane(new THREE.Vector3(0, -1, 0), -.02);
+  const esmaltada = nuevaPieza({...final, colorNombre: 'lila', patron: 'lunares'});
+  esmaltada.mat.clippingPlanes = esmaltada.matAsa.clippingPlanes = [plano];
+  esmaltada.grupo.scale.setScalar(1.006); esmaltada.grupo.children[2].visible = false;
+  const giro = new THREE.Group(); giro.add(barro, asaBarro, esmaltada.grupo); B.scene.add(giro);
+  const sombraB = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 1.5), new THREE.MeshBasicMaterial({map: texSombra(), transparent: true, depthWrite: false})); sombraB.rotation.x = -Math.PI / 2; sombraB.position.y = .004; B.scene.add(sombraB);
+  const brasa = new THREE.PointLight(0xff7a2a, 0, 6); brasa.position.set(0, .7, 1.2); B.scene.add(brasa);
+  const LEYENDAS = [
+    ['El barro', 'Todo empieza con un bollo de arcilla en el torno. Seguí bajando ↓'],
+    ['El torno', 'Con las manos mojadas, el barro sube y se abre. Así nace la forma.'],
+    ['El horno', 'Se seca y va al horno. Sale dura, blanca, lista para pintar.'],
+    ['El esmalte', 'La bañamos en esmalte y la pintamos a mano. Otra vez al horno.'],
+    ['Tu mesa', 'Y queda lista para acompañarte todos los días. Única, como vos.'],
+  ];
+  const leyenda = $('#leyenda'), pbs = $$('.pb'), secBarro = $('#barro'), reales = $$('#reales > a'); let etapa = -1;
+  const fase = (p, a, b) => THREE.MathUtils.clamp((p - a) / (b - a), 0, 1), suave = x => x * x * (3 - 2 * x);
+  const pasarA = p => {
+    escribirTorno(geoBarro, mezclar(pB, pT, suave(fase(p, .06, .42))));
+    const nAsa = asaBarro.geometry.index.count; asaBarro.geometry.setDrawRange(0, Math.floor(nAsa * fase(p, .36, .46) / 6) * 6);
+    const fH = fase(p, .46, .62);
+    matBarro.color.copy(ARCILLA).lerp(BIZCOCHO, suave(fH)); matBarro.roughness = .5 + .38 * fH; matBarro.clearcoat = .45 * (1 - fH);
+    const brillo = Math.sin(Math.PI * fH); matBarro.emissiveIntensity = brillo * 1.25; brasa.intensity = brillo * 7;
+    secBarro.style.background = brillo > .01 ? `radial-gradient(60% 50% at 50% 60%, rgba(232,128,63,${.38 * brillo}), transparent), linear-gradient(180deg,#f7f1ea,#efe3d4 60%,#f7f1ea)` : '';
+    plano.constant = -.02 + 1.3 * suave(fase(p, .62, .84));
+    const fM = suave(fase(p, .86, 1));
+    giro.position.y = fM * .06;
+    reales.forEach((el, i) => {
+      const f = suave(fase(p, .88 + i * .02, .97 + i * .008)), lado = i < 2 || i === 4 ? -1 : 1;
+      el.style.opacity = f.toFixed(3);
+      el.style.transform = i === 4 ? `translate(-50%, ${(1 - f) * 30}px)` : `translate(${lado * (1 - f) * 60}px, ${(1 - f) * 20}px) rotate(${(i % 2 ? 5 : -6) * f}deg)`;
+      el.tabIndex = f > .5 ? 0 : -1;
+    });
+    if (B.aspecto < .8) { B.camera.position.set(0, 1.35 + fM * .25, 4.6 + fM * 1.5); B.camera.lookAt(0, .45 + fM * .12, 0); }
+    else { B.camera.position.set(0, 1.35 - fM * .12, 4.6 - fM * .45); B.camera.lookAt(0, .45 + fM * .06, 0); }
+    const e = p < .06 ? 0 : p < .44 ? 1 : p < .62 ? 2 : p < .86 ? 3 : 4;
+    if (e !== etapa) { etapa = e; leyenda.innerHTML = `<b>${LEYENDAS[e][0]}</b>${LEYENDAS[e][1]}`; pbs.forEach((x, i) => x.classList.toggle('activo', i === e)); }
+  };
+  let ang = 0;
+  B.cada(() => { const v = etapa <= 1 ? .09 : etapa === 4 ? .006 : .02; ang += reducir ? 0 : v; giro.rotation.y = ang; rueda.rotation.y = ang; });
+  pasarA(progBarro);
+  return {pasarA, B};
+  }
+
+  window.__toia3d = {H, pasarA: p => iniciarBarro().pasarA(p), aplicar: (...a) => iniciarTorno().aplicar(...a), elegir: i => { elegido = i; mostrarEtiqueta(i); }, listo: true};
+}
+</script>
+<script>
+(function(){
+  if (window.self !== window.top) return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter', 'https://orionstudio.goatcounter.com/count');
+  document.head.appendChild(s);
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    window.goatcounter.count({ path: 'wa-click ' + location.pathname, title: 'Click de contacto', event: true });
+  });
+})();
+</script>
+</body>
+</html>
