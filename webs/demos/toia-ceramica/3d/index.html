@@ -102,58 +102,78 @@ button{background:none;border:0;cursor:pointer}
 @media (max-width:700px){.reales a{width:84px;padding:5px 5px 18px}.reales a span{font-size:13px}.reales a:nth-child(1){left:3%;top:20%}.reales a:nth-child(2){left:4%;top:48%}.reales a:nth-child(3){right:3%;top:22%}.reales a:nth-child(4){right:4%;top:50%}.reales .ver-todas{bottom:112px}}
 @media (max-width:700px){.barro-txt{top:calc(var(--cinta) + var(--cab) + 10px)}.saltar{display:none}.pb{padding:5px 9px;font-size:12px}.pasos-barro{gap:5px}.leyenda{bottom:62px;font-size:15.5px}.leyenda b{font-size:27px}}
 
-/* la tienda: estantería */
-.tienda{padding:70px 0 30px}
-.tienda-cab{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+/* la tienda: el tendedero (las piezas cuelgan de una soga y la que tocás pasa adelante) */
+.tienda{padding:70px 0 10px}
+.tienda-cab{display:flex;flex-direction:column;gap:12px;margin-bottom:4px}
 .tienda-cab p:not(.kicker){color:var(--tinta2);max-width:520px}
-.vista{display:flex;gap:4px;background:var(--papel);border-radius:999px;padding:4px;box-shadow:inset 0 0 0 1.5px var(--linea);align-self:flex-start}
+.tienda-ops{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:4px}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0;max-width:100%}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border-radius:999px;padding:9px 16px;background:var(--papel);box-shadow:inset 0 0 0 1.5px var(--linea);font-size:14.5px;font-weight:500;transition:background .2s,color .2s}
+.chip.sel{background:var(--tinta);color:var(--papel);box-shadow:none}
+.vista{display:flex;gap:4px;background:var(--papel);border-radius:999px;padding:4px;box-shadow:inset 0 0 0 1.5px var(--linea)}
 .vista button{border-radius:999px;padding:8px 16px;font-size:14px;font-weight:700;color:var(--tinta2)}
 .vista button.sel{background:var(--tinta);color:var(--papel)}
-.zona{display:grid;gap:18px}
-.pared{position:relative;background:radial-gradient(120% 90% at 30% 0%,#f8efe4,#eadccb);border-radius:30px;padding:30px 0 10px;overflow:hidden}
-.pared::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(120,90,60,.07) 1px,transparent 1.4px);background-size:7px 7px;pointer-events:none}
-.estante{position:relative;margin-bottom:40px}
-.fila{display:flex;gap:16px;align-items:flex-end;overflow-x:auto;scroll-snap-type:x mandatory;padding:26px 22px 0;scrollbar-width:none;touch-action:pan-x pan-y}
-.fila::-webkit-scrollbar{display:none}
-.tabla{height:20px;margin:0 10px;border-radius:5px;background:linear-gradient(180deg,#dcb085 0,#c39265 50%,#9d7047 100%);box-shadow:0 14px 20px -6px rgba(74,48,28,.35),inset 0 2px 0 rgba(255,255,255,.3);position:relative}
-.tabla::after{content:"";position:absolute;inset:3px 0 auto;height:5px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 46px,rgba(80,50,20,.06) 46px 110px)}
-.objeto{flex:0 0 138px;scroll-snap-align:center;position:relative;cursor:grab;user-select:none;-webkit-user-select:none;transform-origin:50% 100%;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-.objeto .marco{background:#fff;padding:7px 7px 28px;border-radius:4px;box-shadow:0 12px 18px -6px rgba(58,46,42,.32),0 2px 0 rgba(58,46,42,.05);transition:filter .3s}
-.objeto img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;pointer-events:none}
-.objeto .nom{position:absolute;left:4px;right:4px;bottom:5px;text-align:center;font-family:var(--mano);font-size:17px;color:var(--tinta2);line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.objeto .etq{position:absolute;right:-4px;top:-16px;background:#fffaf0;border-radius:3px;padding:1px 8px 3px;font-family:var(--mano);font-size:15px;color:var(--rosa);transform:rotate(9deg);box-shadow:0 2px 6px rgba(0,0,0,.12);pointer-events:none}
-.objeto .etq::before{content:"";position:absolute;left:9px;top:-11px;width:1px;height:13px;background:#a78b72}
-.objeto:hover{transform:translateY(-10px) rotate(0deg)!important}
-.fila{perspective:900px}
-.objeto .marco{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .2s,filter .3s}
-.objeto.vacio .marco{display:grid;place-items:center;aspect-ratio:4/5.9;background:repeating-linear-gradient(135deg,#fffaf3 0 10px,#f7ecdf 10px 20px);border:2px dashed rgba(185,83,93,.45);box-shadow:none;padding:12px;text-align:center}
-.objeto.vacio b{font-family:var(--mano);font-size:22px;color:var(--rosa);line-height:1.05}
-.objeto.vacio small{display:block;font-size:12.5px;color:var(--tinta2);margin-top:6px;line-height:1.3}
-.objeto:focus-visible{outline:3px solid var(--rosa);outline-offset:4px;border-radius:6px}
-.objeto.en .marco{filter:saturate(.35) opacity(.6)}
-.objeto.en::after{content:"En tu pedido ✓";position:absolute;left:50%;top:42%;transform:translate(-50%,-50%) rotate(-6deg);background:var(--rosa);color:#fff;font-weight:700;font-size:12.5px;border-radius:999px;padding:6px 12px;white-space:nowrap;box-shadow:0 6px 14px rgba(185,83,93,.35)}
-.estante-pista{text-align:center;font-family:var(--mano);font-size:20px;color:var(--tinta2);margin:-14px 0 16px}
-.canasta{display:none}
+.tendedero{position:relative;isolation:isolate;height:min(96vw,560px);overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;outline:none;background:radial-gradient(70% 60% at 50% 34%,#fdf8f2,rgba(253,248,242,0) 72%)}
+.tendedero.arrastra{cursor:grabbing}
+.tendedero:focus-visible{box-shadow:inset 0 0 0 3px var(--rosa)}
+.soga{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.soga path{fill:none;stroke-linecap:round}
+#soga{stroke:#b09070;stroke-width:3}
+.soga .hebra{stroke:#d8c09e;stroke-width:1.3;stroke-dasharray:3 4}
+.soga .sombra-soga{stroke:rgba(58,46,42,.08);stroke-width:2.5;transform:translateY(7px)}
+.colgada{position:absolute;left:0;top:0;transform-origin:50% 0;will-change:transform;cursor:pointer;margin:0}
+.colgada .polaroid{background:#fff;padding:9px 9px 36px;border-radius:3px;box-shadow:0 26px 34px -16px rgba(58,46,42,.5),0 2px 0 rgba(58,46,42,.04);position:relative}
+.colgada img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;pointer-events:none;display:block}
+.colgada figcaption{position:absolute;left:6px;right:6px;bottom:5px;text-align:center;font-family:var(--mano);font-size:21px;line-height:1.1;color:var(--tinta2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.colgada.sin-foto .polaroid{visibility:hidden}
+.broche{position:absolute;left:50%;top:-22px;width:15px;height:42px;transform:translateX(-50%);z-index:3;border-radius:3px;background:linear-gradient(90deg,#e6c99e 0,#d2ab78 46%,#b98d5a 50%,#d9b585 54%,#e2c295 100%);box-shadow:0 3px 5px rgba(58,46,42,.28)}
+.broche::after{content:"";position:absolute;left:1px;right:1px;top:15px;height:6px;border:1.5px solid #9c9c9c;border-radius:2px;background:rgba(255,255,255,.3)}
+.colgada.en .polaroid::after{content:"En tu pedido ✓";position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-6deg);background:var(--rosa);color:#fff;font-weight:700;font-size:13px;border-radius:999px;padding:6px 12px;white-space:nowrap;box-shadow:0 6px 14px rgba(185,83,93,.35)}
+.colgada.vacia .polaroid{background:repeating-linear-gradient(135deg,#fffaf3 0 10px,#f7ecdf 10px 20px);box-shadow:inset 0 0 0 2px rgba(185,83,93,.35),0 22px 30px -18px rgba(58,46,42,.4);display:grid;place-items:center;text-align:center;aspect-ratio:4/5.5;padding:18px}
+.colgada.vacia b{font-family:var(--mano);font-size:27px;color:var(--rosa);line-height:1.05;display:block}
+.colgada.vacia small{display:block;font-size:13.5px;color:var(--tinta2);margin-top:8px;line-height:1.3}
+.flecha{position:absolute;top:40%;width:50px;height:50px;border-radius:50%;background:rgba(255,253,250,.94);box-shadow:0 6px 16px rgba(58,46,42,.15);font-size:26px;line-height:1;display:none;place-items:center;z-index:200;color:var(--tinta);transition:transform .2s}
+.flecha:hover{transform:scale(1.08)}
+.flecha.izq{left:24px}.flecha.der{right:24px}
+.tend-pista{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);font-family:var(--mano);font-size:20px;color:var(--tinta2);white-space:nowrap;pointer-events:none;z-index:150;transition:opacity .5s}
+.tendedero.usado .tend-pista{opacity:0}
+.ficha-pieza{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;min-height:184px}
+.ficha-pieza .cont{font-size:12.5px;letter-spacing:.18em;font-weight:700;color:var(--tinta2)}
+.ficha-pieza h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,6vw,40px);line-height:1.1}
+.ficha-pieza p{color:var(--tinta2);max-width:420px}
+.meta{font-size:14px;color:var(--tinta2)}
+.meta b{font-family:var(--mano);font-size:21px;color:var(--rosa);font-weight:700}
+.ficha-pieza .btn{margin-top:8px}
+@media (max-width:699px){.ficha-pieza{gap:4px;min-height:170px}.ficha-pieza h3{font-size:28px}.ficha-pieza .btn{padding:13px 24px;margin-top:6px}}
 .volando{position:fixed;z-index:95;pointer-events:none;will-change:transform}
 .volando .marco{background:#fff;padding:7px 7px 28px;border-radius:4px;box-shadow:0 24px 40px rgba(58,46,42,.35)}
 .volando img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
-body.arrastrando,body.arrastrando *{cursor:grabbing!important}
-@media (min-width:900px){
-  .zona{grid-template-columns:1fr 230px;align-items:start}
-  .fila{justify-content:center;overflow:visible;gap:18px}
-  .objeto{flex-basis:134px}
-  .estante-pista{display:none}
-  .canasta{display:flex;position:sticky;top:calc(var(--cinta) + var(--cab) + 26px);flex-direction:column;align-items:center;gap:10px;background:var(--papel);border-radius:26px;padding:24px 16px 20px;text-align:center;border:2px dashed rgba(58,46,42,.18);transition:transform .25s,border-color .25s,background .25s}
-  .canasta.lista{border-color:var(--rosa);background:#fff6f4}
-  .canasta.encima{transform:scale(1.05);background:var(--rosa-claro)}
-  .canasta svg{width:118px;height:auto}
-  .canasta b{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.1}
-  .canasta small{color:var(--tinta2);font-size:13.5px;line-height:1.4}
-  .canasta .btn{padding:11px 18px;font-size:14px;margin-top:4px}
-}
+@media (min-width:900px){.tendedero{height:560px}.flecha{display:grid}.tend-pista{display:none}}
 .grilla{display:none;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
 .lista-on .grilla{display:grid}
-.lista-on .zona{display:none}
+.lista-on .tendedero,.lista-on .ficha-pieza{display:none}
+/* primer plano: la foto se descuelga y viene adelante */
+.zoom{position:fixed;inset:0;z-index:92;display:grid;place-items:center;padding:16px;visibility:hidden;touch-action:none}
+.zoom::before{content:"";position:absolute;inset:0;background:rgba(40,30,27,.82);opacity:0;transition:opacity .35s}
+.zoom.ver{visibility:visible}
+.zoom.ver::before{opacity:1}
+.zoom.cierra::before{opacity:0}
+.zoom-caja{position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;width:min(420px,100%);max-height:100%;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;outline:none;padding:4px}
+.zoom-foto{background:#fff;padding:11px 11px 48px;border-radius:4px;width:min(70vw,330px,calc(80vh - 290px));width:min(70vw,330px,calc(80svh - 290px));margin:0;position:relative;flex:none;box-shadow:0 40px 60px -24px rgba(0,0,0,.6);will-change:transform}
+.zoom-foto img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-radius:2px}
+.zoom-foto figcaption{position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:var(--mano);font-size:28px;line-height:1.1;color:var(--tinta2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.zoom-txt{background:var(--papel);border-radius:22px;padding:18px 20px 16px;text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;transform:translateY(18px);transition:opacity .3s,transform .4s cubic-bezier(.2,.8,.2,1)}
+.zoom.ver .zoom-txt{opacity:1;transform:none;transition-delay:.2s}
+.zoom.cierra .zoom-txt{opacity:0;transform:translateY(18px);transition-delay:0s}
+.zoom-txt h3{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.1}
+.zoom-txt p{color:var(--tinta2);font-size:15px;line-height:1.45}
+.zoom-txt .btn{margin-top:8px;padding:13px 22px}
+.volver{font-family:var(--mano);font-size:21px;color:var(--tinta2);padding:4px 10px}
+.zoom-x{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;background:rgba(255,253,250,.92);font-size:18px;opacity:0;transition:opacity .3s}
+.zoom.ver .zoom-x{opacity:1}
+.zoom.cierra .zoom-x{opacity:0}
+@media (min-width:900px){.zoom-caja{flex-direction:row;width:min(880px,100%);gap:40px}.zoom-foto{width:390px}.zoom-txt{text-align:left;align-items:flex-start;padding:28px 30px 22px}}
 .pieza{background:var(--papel);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 0 var(--linea)}
 .pieza-foto{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--arcilla)}
 .pieza-foto img{width:100%;height:100%;object-fit:cover}
@@ -229,7 +249,37 @@ input[type=range]{width:100%;accent-color:var(--rosa)}
 .acciones{display:flex;flex-wrap:wrap;gap:10px}
 .acciones .btn{flex:1 1 auto}
 .nota-torno{font-size:13px;color:var(--tinta2)}
-@media (min-width:900px){.disenar .envolver{grid-template-columns:1.15fr .85fr;align-items:start}.torno-cab{grid-column:1/-1}.torno-escena{height:640px;position:sticky;top:calc(var(--cinta) + var(--cab) + 20px)}}
+@media (min-width:900px){.torno-zona{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}.torno-escena{height:640px;position:sticky;top:calc(var(--cinta) + var(--cab) + 20px)}}
+.torno-zona>*{min-width:0}
+.pestanas{display:none}
+.ficha .sep{display:none}
+@media (max-width:899px){
+  .torno-zona{display:flex;flex-direction:column;gap:12px}
+  .torno-escena{position:sticky;top:calc(var(--cinta) + var(--cab) + 8px);z-index:4;height:42vh;height:42svh;min-height:250px;max-height:420px;border-radius:24px;box-shadow:0 18px 30px -22px rgba(58,46,42,.55)}
+  .torno-escena .pista-3d{font-size:18px;left:14px;top:10px}
+  .ficha{left:10px;right:10px;bottom:10px;max-width:none;text-align:center;padding:6px 12px;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:12px}
+  .ficha br{display:none}
+  .ficha .sep{display:inline}
+  .controles{padding:12px 12px 16px;gap:12px;border-radius:24px}
+  .pestanas{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;background:var(--crema);border-radius:16px;padding:3px}
+  .pestanas button{padding:9px 0;border-radius:13px;font-size:12.5px;font-weight:700;color:var(--tinta2);transition:background .2s,color .2s}
+  .pestanas button[aria-selected=true]{background:var(--tinta);color:var(--papel)}
+  .controles .ctl{display:none;min-height:104px;padding:0 2px}
+  .controles .ctl.activa{display:block;animation:entra .3s ease both}
+  .ctl h4{display:none}
+  .presets{padding:6px 4px 8px;margin:0 -2px}
+  .presets::-webkit-scrollbar{display:none}
+  .formas,.decos,.esmaltes{padding:4px 2px}
+  .decos{gap:6px}
+  .decos .op{padding:8px 11px;font-size:13.5px}
+  .op,.preset,.esm{flex:none}
+  .acciones{display:grid;grid-template-columns:1fr auto;gap:8px}
+  #cSumar{grid-column:1/-1}
+  .acciones .btn{padding:13px 16px}
+  #cGuardar{width:52px;padding:0}
+  .no-celu{display:none}
+  .nota-torno{font-size:12.5px}
+}
 
 /* resto */
 .pasos{padding:80px 0}
@@ -284,6 +334,7 @@ input[type=range]{width:100%;accent-color:var(--rosa)}
 
 .barra{position:fixed;left:12px;right:12px;bottom:12px;z-index:58;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--tinta);color:var(--papel);border-radius:20px;padding:12px 12px 12px 18px;box-shadow:0 16px 36px rgba(58,46,42,.35);transform:translateY(140%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
 .barra.ver{transform:none}
+.barra.oculta,.barra.ver.oculta{transform:translateY(140%)}
 .barra .btn{padding:11px 18px;font-size:14.5px}
 @media (min-width:860px){.barra{display:none}}
 .velo{position:fixed;inset:0;z-index:80;background:rgba(40,30,27,.45);opacity:0;pointer-events:none;transition:opacity .3s}
@@ -368,35 +419,57 @@ input[type=range]{width:100%;accent-color:var(--rosa)}
   <div class="barro-txt"><p class="kicker">Del barro a tu mesa</p><h2 class="h2">Así nace <span class="mano">cada pieza</span></h2></div>
   <a class="saltar" href="#tienda">Saltar a la tienda ↓</a>
   <div class="reales" id="reales" aria-hidden="true">
-    <a href="#tienda" tabindex="-1"><img src="../fotos/jarra-lila.jpg" alt=""><span>jarra lila</span></a>
-    <a href="#tienda" tabindex="-1"><img src="../fotos/cuenco-frida.jpg" alt=""><span>cuenco Frida</span></a>
-    <a href="#tienda" tabindex="-1"><img src="../fotos/tazas-frida-gato.jpg" alt=""><span>Frida y gato</span></a>
-    <a href="#tienda" tabindex="-1"><img src="../fotos/set-nubes.jpg" alt=""><span>set nubes</span></a>
+    <a href="#tienda" tabindex="-1" data-pieza="jarra-lila"><img src="../fotos/jarra-lila.jpg" alt=""><span>jarra lila</span></a>
+    <a href="#tienda" tabindex="-1" data-pieza="cuenco-frida"><img src="../fotos/cuenco-frida.jpg" alt=""><span>cuenco Frida</span></a>
+    <a href="#tienda" tabindex="-1" data-pieza="tazas-frida-gato"><img src="../fotos/tazas-frida-gato.jpg" alt=""><span>Frida y gato</span></a>
+    <a href="#tienda" tabindex="-1" data-pieza="set-nubes"><img src="../fotos/set-nubes.jpg" alt=""><span>set nubes</span></a>
     <a class="btn ver-todas" href="#tienda" tabindex="-1">Ver todas las piezas ↓</a>
   </div>
   <p class="leyenda" id="leyenda"><b>El barro</b>Todo empieza con un bollo de arcilla en el torno.</p>
   <div class="pasos-barro"><span class="pb activo">Barro</span><span class="pb">Torno</span><span class="pb">Horno</span><span class="pb">Esmalte</span><span class="pb">Tu mesa</span></div>
 </section>
 
-<section class="tienda" id="tienda"><div class="envolver">
-  <div class="tienda-cab">
+<section class="tienda" id="tienda">
+  <div class="envolver"><div class="tienda-cab">
     <p class="kicker">La tienda</p>
-    <h2 class="h2">Agarrá tus <span class="mano">piezas</span></h2>
-    <p>Son casi todas únicas. Arrastrá la que te guste a la canasta, o tocala, y armá tu pedido.</p>
-    <div class="vista" role="tablist" aria-label="Cómo ver la tienda"><button class="sel" data-vista="estante">Estantería</button><button data-vista="lista">Lista</button></div>
+    <h2 class="h2">Elegí del <span class="mano">tendedero</span></h2>
+    <p>Las colgamos como fotos para que las mires de cerca. Deslizá para recorrerlas y tocá la que te guste: son casi todas únicas.</p>
+    <div class="tienda-ops">
+      <div class="chips" id="filtros" role="group" aria-label="Filtrar por tipo de pieza"></div>
+      <div class="vista" role="group" aria-label="Cómo ver la tienda"><button class="sel" data-vista="tendedero" aria-pressed="true">Tendedero</button><button data-vista="lista" aria-pressed="false">Lista</button></div>
+    </div>
+  </div></div>
+  <div class="tendedero" id="tendedero" role="region" aria-roledescription="carrusel" aria-label="Piezas colgadas: recorrelas con las flechas del teclado y abrí la del medio con Enter" tabindex="0">
+    <svg class="soga" aria-hidden="true"><path class="sombra-soga" id="sogaSombra"/><path id="soga"/><path class="hebra" id="sogaHebra"/></svg>
+    <div id="colgadas"></div>
+    <button class="flecha izq" id="tendAnt" aria-label="Pieza anterior">‹</button>
+    <button class="flecha der" id="tendSig" aria-label="Pieza siguiente">›</button>
+    <p class="tend-pista" aria-hidden="true">deslizá ↔ · tocá una para traerla</p>
   </div>
-  <div class="zona">
-    <div class="pared" id="estanteria"></div>
-    <aside class="canasta" id="canasta" aria-label="Tu canasta">
-      <svg viewBox="0 0 120 92" fill="none" stroke="#3a2e2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M30 36c0-16 13-27 30-27s30 11 30 27"/><path d="M8 36h104l-9 46a8 8 0 0 1-8 6H25a8 8 0 0 1-8-6L8 36Z" fill="#f2dfc6"/><path d="M8 36h104" stroke-width="3"/><path d="M34 46l4 32M60 46v32M86 46l-4 32M22 56h76M25 68h70" stroke="#c39265"/></svg>
-      <b id="canastaTxt">Tu canasta</b>
-      <small id="canastaSub">Soltá acá las piezas que te gusten</small>
-      <button class="btn" id="canastaVer" hidden>Ver pedido</button>
-    </aside>
+  <div class="envolver">
+    <div class="ficha-pieza" id="fichaPieza">
+      <span class="cont" id="fpCont"></span>
+      <h3 id="fpNombre" aria-live="polite"></h3>
+      <p id="fpDesc"></p>
+      <p class="meta" id="fpMeta"><b>pieza única</b> · precio por WhatsApp</p>
+      <button class="btn" id="fpAgregar">Agregar al pedido</button>
+    </div>
+    <div class="grilla" id="grilla"></div>
   </div>
-  <p class="estante-pista">deslizá los estantes ↔ y tocá las que te gusten</p>
-  <div class="grilla" id="grilla"></div>
-</div></section>
+</section>
+<div class="zoom" id="zoom" aria-hidden="true">
+  <div class="zoom-caja" role="dialog" aria-modal="true" aria-labelledby="zNombre" tabindex="-1">
+    <figure class="zoom-foto"><img alt=""><figcaption></figcaption></figure>
+    <div class="zoom-txt">
+      <h3 id="zNombre"></h3>
+      <p id="zDesc"></p>
+      <p class="meta"><b>pieza única</b> · precio por WhatsApp</p>
+      <button class="btn" id="zAgregar">Agregar al pedido</button>
+      <button class="volver" id="zCerrar">← volver al tendedero</button>
+    </div>
+  </div>
+  <button class="zoom-x" id="zX" aria-label="Cerrar">✕</button>
+</div>
 
 <section class="ayuda" id="regalos"><div class="envolver">
   <div class="ayuda-txt">
@@ -414,6 +487,7 @@ input[type=range]{width:100%;accent-color:var(--rosa)}
 <section class="disenar" id="disenar"><div class="envolver">
   <div class="torno-cab"><p class="kicker">Diseños personalizados</p><h2 class="h2">Diseñá <span class="mano">tu pieza</span></h2>
     <p>Elegí la forma, el tamaño, el esmalte y la decoración. Nos llega tu diseño por WhatsApp y la hacemos a mano.</p></div>
+  <div class="torno-zona">
   <div class="torno-escena">
     <canvas id="torno3d" aria-label="Vista 3D de tu pieza"></canvas>
     <p class="pista-3d">girala arrastrando ↔<span class="solo-compu"> · estirala ↕</span></p>
@@ -431,17 +505,18 @@ input[type=range]{width:100%;accent-color:var(--rosa)}
     <div class="ctl"><h4>Esmalte</h4><div class="esmaltes" id="cEsmaltes"></div></div>
     <div class="ctl"><h4>Decoración</h4><div class="decos" id="cDecos"></div></div>
     <div class="ctl"><h4>Un nombre o una inicial</h4><input type="text" id="cNombre" maxlength="10" placeholder="Opcional, ej.: Ana"></div>
-    <div class="acciones"><button class="btn" id="cSumar">Sumar a mi pedido</button><button class="btn wa" id="cPedir">Consultar ya por WhatsApp</button><button class="btn claro" id="cGuardar">Guardar imagen</button></div>
-    <p class="nota-torno">Tu diseño viaja en el mismo pedido que las piezas de la estantería. Te pasamos precio y demora por WhatsApp; como es hecha a mano, puede variar un poco, y eso es lo lindo.</p>
+    <div class="acciones"><button class="btn" id="cSumar">Sumar a mi pedido</button><button class="btn wa" id="cPedir"><span>Consultar<span class="no-celu"> ya</span> por WhatsApp</span></button><button class="btn claro" id="cGuardar" aria-label="Guardar imagen"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span class="no-celu">Guardar imagen</span></button></div>
+    <p class="nota-torno">Tu diseño viaja en el mismo pedido que las piezas del tendedero. Te pasamos precio y demora por WhatsApp; como es hecha a mano, puede variar un poco, y eso es lo lindo.</p>
   </div>
   <div class="alt-sin3d"><p>Contanos qué te imaginás: la forma, los colores, un nombre. La hacemos a mano.</p><button class="btn wa" data-mensaje="¡Hola Toia! Quiero encargar un diseño personalizado. Les cuento lo que me imagino:">Contanos tu idea por WhatsApp</button></div>
+  </div>
 </div></section>
 
 <section class="pasos"><div class="envolver">
   <p class="kicker">Cómo comprar</p>
   <h2 class="h2">Así de <span class="mano">fácil</span></h2>
   <div class="pasos-lista">
-    <div class="paso"><b>1</b><div><h3>Elegís o diseñás</h3><p>Sumás piezas de la estantería o mandás tu diseño. Son casi todas únicas: cuando una se vende, deja de estar disponible.</p></div></div>
+    <div class="paso"><b>1</b><div><h3>Elegís o diseñás</h3><p>Sumás piezas del tendedero o mandás tu diseño. Son casi todas únicas: cuando una se vende, deja de estar disponible.</p></div></div>
     <div class="paso"><b>2</b><div><h3>Nos llega por WhatsApp</h3><p>Tu pedido nos llega armado y te confirmamos precio, disponibilidad y entrega.</p></div></div>
     <div class="paso"><b>3</b><div><h3>Transferís y listo</h3><p>Te lo enviamos (el envío lo pagás al recibirlo) o lo retirás por el taller en Chapadmalal.</p></div></div>
   </div>
@@ -523,7 +598,7 @@ input[type=range]{width:100%;accent-color:var(--rosa)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-/* la tienda: estantería, lista, pedido, asistente y mensaje */
+/* la tienda: tendedero, lista, pedido, asistente y mensaje */
 window.TOIA = (() => {
   const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const PIEZAS = [
@@ -546,37 +621,30 @@ window.TOIA = (() => {
   const guardar = () => { try { localStorage.setItem('toia-pedido', JSON.stringify(pedido)); localStorage.setItem('toia-disenos', JSON.stringify(disenos)); } catch (e) {} };
   const compu = () => matchMedia('(min-width: 900px)').matches;
 
-  /* estantería */
-  const pintarEstante = () => {
-    const filas = [PIEZAS.slice(0, 5), PIEZAS.slice(5)];
-    const vacio = '<div class="objeto vacio" data-ir="disenar" tabindex="0" role="button" aria-label="Diseñar una pieza a medida"><div class="marco"><div><b>¿No está la que buscás?</b><small>Diseñala a tu gusto →</small></div></div></div>';
-    $('#estanteria').innerHTML = filas.map((f, fi) => `<div class="estante"><div class="fila">${f.map((p, i) => {
-      const giro = [-2.5, 1.8, -1, 2.6, -1.8][(i + fi * 2) % 5];
-      return `<div class="objeto${pedido.includes(p.id) ? ' en' : ''}" data-id="${p.id}" style="transform:rotate(${giro}deg)" tabindex="0" role="button" aria-label="${p.nombre}: ${pedido.includes(p.id) ? 'quitar del' : 'agregar al'} pedido"><div class="marco"><img src="../fotos/${p.id}.jpg" alt="" draggable="false"></div><span class="nom">${p.nombre}</span><span class="etq">pieza única</span></div>`;
-    }).join('')}${fi === 1 ? vacio : ''}</div><div class="tabla"></div></div>`).join('');
-  };
-  /* la polaroid se inclina siguiendo el mouse */
-  $('#estanteria').addEventListener('pointermove', e => {
-    if (e.pointerType !== 'mouse' || arr) return;
-    const o = e.target.closest('.objeto'); $$('.objeto .marco').forEach(m => { if (!o || m.parentElement !== o) { m.style.removeProperty('--rx'); m.style.removeProperty('--ry'); } });
-    if (!o) return; const r = o.getBoundingClientRect(), m = o.querySelector('.marco');
-    m.style.setProperty('--ry', (((e.clientX - r.left) / r.width - .5) * 16).toFixed(1) + 'deg');
-    m.style.setProperty('--rx', ((.5 - (e.clientY - r.top) / r.height) * 12).toFixed(1) + 'deg');
-  });
-  $('#estanteria').addEventListener('pointerleave', () => $$('.objeto .marco').forEach(m => { m.style.removeProperty('--rx'); m.style.removeProperty('--ry'); }));
+  /* el tendedero: las piezas cuelgan de una soga, se mecen al moverla y la que tocás pasa adelante */
+  const tend = $('#tendedero'), colg = $('#colgadas'), zoom = $('#zoom'), zFig = $('.zoom-foto', zoom);
+  const reduceMov = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CATS = ['Todo', ...new Set(PIEZAS.map(p => p.cat))];
+  const GIRO = [-2.2, 1.6, -.8, 2.4, -1.6, 1, -2.6, 1.9];
+  let cat = 'Todo', lista = [], els = [], geo = [], ang = [], velA = [], caida = [];
+  let pos = 0, posPrevia = 0, fichaIdx = -1, colgado = false, recienArrastrado = false, M = null;
+  const E = {p: 0};
+
   /* lista (para quien prefiere lo clásico) */
   const pintarLista = () => {
-    $('#grilla').innerHTML = PIEZAS.map(p => `
+    $('#grilla').innerHTML = PIEZAS.filter(p => cat === 'Todo' || p.cat === cat).map(p => `
       <article class="pieza"><div class="pieza-foto"><img src="../fotos/${p.id}.jpg" alt="${p.nombre}" loading="lazy"><span class="unica">pieza única</span></div>
         <div class="pieza-txt"><h3>${p.nombre}</h3><p>${p.desc}</p><span class="precio">Precio a confirmar por WhatsApp</span>
           <button class="agregar${pedido.includes(p.id) ? ' en' : ''}" data-id="${p.id}">${pedido.includes(p.id) ? 'En tu pedido ✓' : 'Agregar al pedido'}</button></div></article>`).join('');
   };
   $$('.vista button').forEach(b => b.addEventListener('click', () => {
-    $$('.vista button').forEach(x => x.classList.toggle('sel', x === b));
-    $('.tienda').classList.toggle('lista-on', b.dataset.vista === 'lista');
+    $$('.vista button').forEach(x => { x.classList.toggle('sel', x === b); x.setAttribute('aria-pressed', String(x === b)); });
+    const enLista = b.dataset.vista === 'lista';
+    $('.tienda').classList.toggle('lista-on', enLista);
+    if (!enLista) requestAnimationFrame(() => { medir(); acomodar(); });
   }));
 
-  const destino = () => (compu() && $('#canasta').getBoundingClientRect().top < innerHeight) ? $('#canasta') : $('#abrirCarrito');
+  const destino = () => $('#abrirCarrito');
   const recibir = el => { el.classList.add('recibe'); setTimeout(() => el.classList.remove('recibe'), 280); };
   const volar = (desde, id, fin, ancho) => {
     let r = desde.getBoundingClientRect(); const d = destino(), dr = d.getBoundingClientRect();
@@ -591,57 +659,211 @@ window.TOIA = (() => {
     gsap.to(c, {y: dy, duration: .8, ease: 'back.in(1.5)'});
     gsap.to(c, {scale: .16, rotation: 22, duration: .8, ease: 'power2.in', onComplete: () => { c.remove(); recibir(d); fin && fin(); }});
   };
+  const enVuelo = new Set();
   const agregar = (id, desde) => {
-    if (pedido.includes(id)) return;
-    const hecho = () => { pedido = [...pedido, id]; guardar(); pintarTodo(true); };
+    if (pedido.includes(id) || enVuelo.has(id)) return;
+    enVuelo.add(id);
+    const hecho = () => { enVuelo.delete(id); pedido = [...pedido, id]; guardar(); pintarTodo(true); };
     desde ? volar(desde, id, hecho) : hecho();
   };
   const quitar = id => { pedido = pedido.filter(x => x !== id); guardar(); pintarTodo(); };
   const alternar = (id, desde) => pedido.includes(id) ? quitar(id) : agregar(id, desde);
+  $('#grilla').addEventListener('click', e => { const b = e.target.closest('.agregar'); if (b) alternar(b.dataset.id, b.closest('.pieza').querySelector('.pieza-foto')); });
 
-  /* tocar o arrastrar una pieza del estante */
-  let arr = null, recienArrastrado = false;
-  const dentro = (e, el) => { if (!el) return false; const r = el.getBoundingClientRect(); return e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom; };
-  $('#estanteria').addEventListener('pointerdown', e => {
-    const o = e.target.closest('.objeto'); if (!o || o.classList.contains('vacio') || e.pointerType === 'touch' || e.button > 0) return;
-    arr = {o, id: o.dataset.id, x: e.clientX, y: e.clientY, mov: false, clon: null};
+  /* colgar las piezas (de nuevo, cuando cambiás el filtro) */
+  $('#filtros').innerHTML = CATS.map(c => `<button class="chip${c === cat ? ' sel' : ''}" data-cat="${c}" aria-pressed="${c === cat}">${c}</button>`).join('');
+  const colgar = (caer = true) => {
+    lista = [...PIEZAS.filter(p => cat === 'Todo' || p.cat === cat), {vacia: true}];
+    colg.innerHTML = lista.map((p, i) => p.vacia
+      ? `<figure class="colgada vacia" data-i="${i}"><span class="broche"></span><div class="polaroid"><div><b>¿No está la que buscás?</b><small>Diseñala a tu gusto →</small></div></div></figure>`
+      : `<figure class="colgada${pedido.includes(p.id) ? ' en' : ''}" data-i="${i}"><span class="broche"></span><div class="polaroid"><img src="../fotos/${p.id}.jpg" alt="${p.nombre}" draggable="false"><figcaption>${p.nombre}</figcaption></div></figure>`).join('');
+    els = [...colg.children]; geo = els.map(() => ({x: 0, y: 0, s: 1, r: 0}));
+    ang = els.map((_, i) => GIRO[i % GIRO.length]); velA = els.map(() => 0);
+    caida = els.map(() => ({y: caer && window.gsap && !reduceMov ? -380 : 0}));
+    if (window.gsap) gsap.killTweensOf(E);
+    pos = E.p = posPrevia = 0; fichaIdx = -1;
+    medir(); pintarFicha(0); acomodar();
+    if (caer && colgado) soltar();
+  };
+  /* caen sobre la soga de a una, desde la del medio hacia afuera, y quedan meciéndose */
+  const soltar = () => {
+    if (!window.gsap || reduceMov) { caida.forEach(c => { c.y = 0; }); acomodar(); return; }
+    const centro = Math.round(pos);
+    caida.forEach((c, i) => gsap.to(c, {y: 0, duration: 1.15, delay: .05 + Math.abs(i - centro) * .09, ease: 'elastic.out(1, .45)',
+      onStart: () => { velA[i] += (i % 2 ? 1 : -1) * 60; }, onUpdate: () => { if (!corre) acomodar(); }}));
+  };
+
+  /* dónde va cada una: la del medio grande y nítida, las de los costados chicas y fuera de foco */
+  const medir = () => {
+    const W = tend.clientWidth, H = tend.clientHeight; if (!W) return;
+    const chico = W < 700, ancho = chico ? Math.min(W * .52, 250) : Math.min(300, W * .24);
+    const y0 = H * (chico ? .06 : .09), y1 = y0 + (chico ? 30 : 44);
+    M = {W, H, ancho, sep: chico ? W * .35 : ancho * 1.1, y0, c: 2 * y1 - y0};
+    const d = `M0 ${y0.toFixed(1)} Q ${(W / 2).toFixed(1)} ${M.c.toFixed(1)} ${W} ${y0.toFixed(1)}`;
+    ['#soga', '#sogaSombra', '#sogaHebra'].forEach(s => $(s).setAttribute('d', d));
+    els.forEach(el => { el.style.width = ancho + 'px'; });
+  };
+  const ySoga = x => { const t = Math.max(0, Math.min(1, x / M.W)); return M.y0 + 2 * t * (1 - t) * (M.c - M.y0); };
+  const poner = (el, prop, v) => { if (el['_' + prop] !== v) { el.style[prop] = v; el['_' + prop] = v; } };
+  const acomodar = () => {
+    if (!M) return;
+    els.forEach((el, i) => {
+      const k = i - pos, a = Math.abs(k);
+      poner(el, 'visibility', a > 3.6 ? 'hidden' : 'visible');
+      if (a > 3.6) return;
+      const x = M.W / 2 + Math.sign(k) * (a <= 1 ? a * M.sep : M.sep + (a - 1) * M.sep * .62);
+      const s = a < 1 ? 1 - a * .4 : Math.max(.34, .6 - (a - 1) * .1);
+      const y = ySoga(x) - 2 + caida[i].y, g = geo[i];
+      g.x = x; g.y = y; g.s = s; g.r = ang[i];
+      el.style.transform = `translate(${(x - M.ancho / 2).toFixed(1)}px,${y.toFixed(1)}px) rotate(${ang[i].toFixed(2)}deg) scale(${s.toFixed(3)})`;
+      poner(el, 'zIndex', String(100 - Math.round(a * 10)));
+      poner(el, 'filter', a > .4 ? `blur(${Math.min(2, a * .8).toFixed(1)}px) saturate(${(1 - Math.min(.3, a * .12)).toFixed(2)})` : 'none');
+      poner(el, 'opacity', a > 2.7 ? Math.max(0, 3.6 - a).toFixed(2) : '1');
+    });
+  };
+  /* el péndulo de cada polaroid: el movimiento de la soga la empuja, un resorte la vuelve y una brisa la mece */
+  let corre = false, visible = false, antes = 0;
+  const bucle = ahora => {
+    if (!visible) { corre = false; return; }
+    const dt = Math.min(.05, (ahora - antes) / 1000 || .016); antes = ahora;
+    const v = (pos - posPrevia) / dt; posPrevia = pos;
+    for (let i = 0; i < els.length; i++) {
+      const acc = -36 * (ang[i] - GIRO[i % GIRO.length] * .8) - 4.2 * velA[i] - v * 45 + Math.sin(ahora / 650 + i * .6) * 38;
+      velA[i] += acc * dt; ang[i] = Math.max(-22, Math.min(22, ang[i] + velA[i] * dt));
+    }
+    acomodar(); requestAnimationFrame(bucle);
+  };
+  const arrancar = () => { if (corre || reduceMov) return; corre = true; antes = performance.now(); posPrevia = pos; requestAnimationFrame(bucle); };
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) arrancar(); }, {rootMargin: '100px 0px'}).observe(tend);
+  new IntersectionObserver((es, io) => { if (!es[0].isIntersecting) return; io.disconnect(); colgado = true; soltar(); }, {threshold: .3}).observe(tend);
+  new ResizeObserver(() => { medir(); acomodar(); }).observe(tend);
+
+  const actualIdx = () => Math.max(0, Math.min(lista.length - 1, Math.round(pos)));
+  const irA = i => {
+    i = Math.max(0, Math.min(lista.length - 1, i)); pintarFicha(i);
+    if (!window.gsap || reduceMov) { pos = E.p = i; acomodar(); return; }
+    gsap.killTweensOf(E); E.p = pos;
+    gsap.to(E, {p: i, duration: .75, ease: 'back.out(1.1)', onUpdate: () => { pos = E.p; if (!corre) acomodar(); }});
+  };
+  const irADisenar = () => document.getElementById('disenar').scrollIntoView({behavior: 'smooth'});
+  const verPieza = id => {
+    if (cat !== 'Todo') { cat = 'Todo'; $$('.chip', $('#filtros')).forEach(x => { x.classList.toggle('sel', x.dataset.cat === 'Todo'); x.setAttribute('aria-pressed', String(x.dataset.cat === 'Todo')); }); colgar(colgado); pintarLista(); }
+    const i = lista.findIndex(p => p.id === id); if (i < 0) return;
+    if (colgado) irA(i); else { pos = E.p = posPrevia = i; pintarFicha(i); acomodar(); }
+  };
+  $$('[data-pieza]').forEach(a => a.addEventListener('click', () => verPieza(a.dataset.pieza)));
+
+  /* arrastrar con el dedo o el mouse: de costado mueve la soga, para arriba o abajo deja scrollear */
+  let arr = null;
+  tend.addEventListener('pointerdown', e => {
+    if (e.button > 0 || e.target.closest('.flecha')) return;
+    arr = {x: e.clientX, y: e.clientY, p: pos, lp: pos, lt: performance.now(), v: 0, mov: false, id: e.pointerId};
   });
   addEventListener('pointermove', e => {
-    if (!arr) return;
+    if (!arr || e.pointerId !== arr.id || !M) return;
     const dx = e.clientX - arr.x, dy = e.clientY - arr.y;
-    if (!arr.mov && Math.hypot(dx, dy) > 7) {
-      arr.mov = true; const r = arr.o.getBoundingClientRect();
-      arr.clon = document.createElement('div'); arr.clon.className = 'volando';
-      arr.clon.innerHTML = arr.o.querySelector('.marco').outerHTML;
-      Object.assign(arr.clon.style, {left: r.left + 'px', top: r.top + 'px', width: r.width + 'px'});
-      document.body.appendChild(arr.clon); arr.o.style.visibility = 'hidden';
-      document.body.classList.add('arrastrando'); $('#canasta').classList.add('lista');
+    if (!arr.mov) {
+      if (Math.abs(dx) < 8) { if (Math.abs(dy) > 10) arr = null; return; }
+      arr.mov = true; tend.classList.add('arrastra', 'usado'); if (window.gsap) gsap.killTweensOf(E);
     }
-    if (arr.mov) {
-      gsap.set(arr.clon, {x: dx, y: dy, rotation: gsap.utils.clamp(-14, 14, dx * .04), scale: 1.06});
-      $('#canasta').classList.toggle('encima', dentro(e, $('#canasta')) || dentro(e, $('#abrirCarrito')));
-    }
+    const max = lista.length - 1; let p = arr.p - dx / M.sep;
+    if (p < 0) p *= .3; if (p > max) p = max + (p - max) * .3;
+    const ahora = performance.now(), dt = Math.max(1, ahora - arr.lt);
+    arr.v = arr.v * .6 + (p - arr.lp) / dt * 1000 * .4; arr.lp = p; arr.lt = ahora;
+    pos = p; if (actualIdx() !== fichaIdx) pintarFicha(); if (!corre) acomodar();
   });
-  addEventListener('pointerup', e => {
-    if (!arr) return; const a = arr; arr = null;
+  const soltarDedo = () => {
+    if (!arr) return; const a = arr; arr = null; tend.classList.remove('arrastra');
     if (!a.mov) return;
-    recienArrastrado = true; setTimeout(() => { recienArrastrado = false; }, 50);
-    document.body.classList.remove('arrastrando'); $('#canasta').classList.remove('lista', 'encima');
-    const soltado = dentro(e, $('#canasta')) || dentro(e, $('#abrirCarrito'));
-    if (soltado && !pedido.includes(a.id)) {
-      gsap.to(a.clon, {scale: .2, opacity: 0, rotation: 30, duration: .4, ease: 'power2.in', onComplete: () => { a.clon.remove(); a.o.style.visibility = ''; recibir(compu() ? $('#canasta') : $('#abrirCarrito')); }});
-      pedido = [...pedido, a.id]; guardar(); pintarTodo(true);
-    } else {
-      gsap.to(a.clon, {x: 0, y: 0, rotation: 0, scale: 1, duration: .5, ease: 'back.out(1.7)', onComplete: () => { a.clon.remove(); a.o.style.visibility = ''; }});
-    }
+    recienArrastrado = true; setTimeout(() => { recienArrastrado = false; }, 80);
+    const v = performance.now() - a.lt > 120 ? 0 : a.v;
+    irA(Math.round(pos + Math.max(-2.5, Math.min(2.5, v * .16))));
+  };
+  addEventListener('pointerup', soltarDedo); addEventListener('pointercancel', soltarDedo);
+  /* con el trackpad, deslizar de costado también la mueve */
+  let ruedaT = 0;
+  tend.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) || !M) return;
+    e.preventDefault(); if (window.gsap) gsap.killTweensOf(E);
+    pos = Math.max(-.3, Math.min(lista.length - .7, pos + e.deltaX / M.sep));
+    if (actualIdx() !== fichaIdx) pintarFicha(); if (!corre) acomodar();
+    clearTimeout(ruedaT); ruedaT = setTimeout(() => irA(Math.round(pos)), 140);
+  }, {passive: false});
+  tend.addEventListener('click', e => {
+    if (recienArrastrado || e.target.closest('.flecha')) return;
+    const el = e.target.closest('.colgada'); if (!el) return;
+    const i = +el.dataset.i; tend.classList.add('usado');
+    if (i !== actualIdx()) return irA(i);
+    lista[i].vacia ? irADisenar() : ampliar(i);
   });
-  const activar = o => o.dataset.ir ? document.getElementById(o.dataset.ir).scrollIntoView({behavior: 'smooth'}) : alternar(o.dataset.id, o.querySelector('.marco'));
-  $('#estanteria').addEventListener('click', e => { const o = e.target.closest('.objeto'); if (o && !recienArrastrado) activar(o); });
-  $('#estanteria').addEventListener('keydown', e => {
-    const o = e.target.closest('.objeto'); if (!o || (e.key !== 'Enter' && e.key !== ' ')) return;
-    e.preventDefault(); activar(o);
+  $('#tendAnt').addEventListener('click', () => irA(actualIdx() - 1));
+  $('#tendSig').addEventListener('click', () => irA(actualIdx() + 1));
+  tend.addEventListener('keydown', e => {
+    if (e.target !== tend) return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); irA(actualIdx() - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); irA(actualIdx() + 1); }
+    if (e.key === 'Enter') { const i = actualIdx(); lista[i].vacia ? irADisenar() : ampliar(i); }
   });
-  $('#grilla').addEventListener('click', e => { const b = e.target.closest('.agregar'); if (b) alternar(b.dataset.id, b.closest('.pieza').querySelector('.pieza-foto')); });
+  $('#filtros').addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b || b.dataset.cat === cat) return;
+    cat = b.dataset.cat; $$('.chip', $('#filtros')).forEach(x => { x.classList.toggle('sel', x === b); x.setAttribute('aria-pressed', String(x === b)); });
+    colgar(colgado); pintarLista();
+  });
+
+  /* la ficha de la que está adelante */
+  const pintarFicha = (i = actualIdx()) => {
+    const p = lista[i]; if (!p) return;
+    const cambio = i !== fichaIdx; fichaIdx = i;
+    const dos = n => String(n).padStart(2, '0');
+    $('#fpCont').textContent = p.vacia ? 'A MEDIDA' : `${dos(i + 1)} / ${dos(lista.length - 1)}`;
+    $('#fpNombre').textContent = p.vacia ? 'Tu pieza, a tu gusto' : p.nombre;
+    $('#fpDesc').textContent = p.vacia ? 'Elegí la forma, el esmalte y la decoración en el torno, y la hacemos a mano.' : p.desc;
+    $('#fpMeta').hidden = !!p.vacia;
+    const b = $('#fpAgregar');
+    if (p.vacia) { b.textContent = 'Ir a diseñarla'; b.classList.remove('claro'); b.dataset.id = ''; }
+    else { const en = pedido.includes(p.id); b.textContent = en ? 'En tu pedido ✓ · quitar' : 'Agregar al pedido'; b.classList.toggle('claro', en); b.dataset.id = p.id; }
+    if (cambio && window.gsap && !reduceMov) gsap.fromTo(['#fpNombre', '#fpDesc'], {opacity: 0, y: 6}, {opacity: 1, y: 0, duration: .3, overwrite: true});
+  };
+  $('#fpAgregar').addEventListener('click', e => {
+    const id = e.currentTarget.dataset.id; if (!id) return irADisenar();
+    const el = els[lista.findIndex(p => p.id === id)];
+    alternar(id, el && el.querySelector('.polaroid'));
+  });
+
+  /* primer plano: la foto se descuelga de su broche y viene adelante */
+  let zIdx = -1, zRect = null, zVolver = null;
+  const vueloDesde = i => { const g = geo[i], r = tend.getBoundingClientRect(); return {x: r.left + g.x - (zRect.left + zRect.width / 2), y: r.top + g.y - zRect.top, scale: M.ancho * g.s / zRect.width, rotation: g.r}; };
+  const zBoton = () => { const p = lista[zIdx]; if (!p || p.vacia) return; const en = pedido.includes(p.id), b = $('#zAgregar'); b.textContent = en ? 'En tu pedido ✓ · quitar' : 'Agregar al pedido'; b.classList.toggle('claro', en); };
+  const ampliar = i => {
+    const p = lista[i]; if (!p || p.vacia || zoom.classList.contains('ver')) return;
+    zIdx = i; zVolver = document.activeElement;
+    const img = $('img', zFig); img.src = `../fotos/${p.id}.jpg`; img.alt = p.nombre; $('figcaption', zFig).textContent = p.nombre;
+    $('#zNombre').textContent = p.nombre; $('#zDesc').textContent = p.desc; zBoton();
+    zoom.classList.remove('cierra'); zoom.classList.add('ver'); zoom.setAttribute('aria-hidden', 'false');
+    if (window.gsap) gsap.set(zFig, {clearProps: 'transform'});
+    zRect = zFig.getBoundingClientRect(); els[i].classList.add('sin-foto');
+    if (window.gsap && !reduceMov) gsap.fromTo(zFig, {...vueloDesde(i), transformOrigin: '50% 0'}, {x: 0, y: 0, scale: 1, rotation: -1.5, duration: .6, ease: 'power3.out'});
+    setTimeout(() => $('.zoom-caja', zoom).focus({preventScroll: true}), 60);
+  };
+  const cerrarZoom = () => {
+    if (!zoom.classList.contains('ver') || zoom.classList.contains('cierra')) return;
+    const fin = () => {
+      zoom.classList.remove('ver', 'cierra'); zoom.setAttribute('aria-hidden', 'true');
+      if (els[zIdx]) els[zIdx].classList.remove('sin-foto');
+      if (window.gsap) gsap.set(zFig, {clearProps: 'transform'});
+      if (zVolver && zVolver.focus) zVolver.focus({preventScroll: true});
+    };
+    if (!window.gsap || reduceMov || !els[zIdx]) return fin();
+    zoom.classList.add('cierra');
+    gsap.to(zFig, {...vueloDesde(zIdx), duration: .45, ease: 'power2.inOut', onComplete: fin});
+  };
+  $('#zAgregar').addEventListener('click', () => { const p = lista[zIdx]; if (p) alternar(p.id, zFig); });
+  $('#zCerrar').addEventListener('click', cerrarZoom); $('#zX').addEventListener('click', cerrarZoom);
+  zoom.addEventListener('click', e => { if (e.target === zoom || e.target.classList.contains('zoom-caja')) cerrarZoom(); });
+  const marcarColgadas = () => {
+    els.forEach((el, i) => { const p = lista[i]; if (p && !p.vacia) el.classList.toggle('en', pedido.includes(p.id)); });
+    pintarFicha(); if (zoom.classList.contains('ver')) zBoton();
+  };
 
   /* pedido */
   const cuenta = $('#cuenta'), barra = $('#barra'), carrito = $('#carrito'), velo = $('#velo');
@@ -652,17 +874,14 @@ window.TOIA = (() => {
     $('#barraTexto').textContent = n === 1 ? '1 pieza' : `${n} piezas`;
     barra.classList.toggle('ver', n > 0 && !carrito.classList.contains('ver'));
     $('#enviar').disabled = n === 0;
-    $('#canastaTxt').textContent = n ? (n === 1 ? '1 pieza' : `${n} piezas`) : 'Tu canasta';
-    $('#canastaSub').textContent = n ? 'Seguí sumando o mirá tu pedido' : 'Soltá acá las piezas que te gusten';
-    $('#canastaVer').hidden = !n;
     $('#items').innerHTML = n ? pedido.map(id => { const p = pieza(id); return `<div class="item"><img src="../fotos/${p.id}.jpg" alt=""><div>${p.nombre}<small>${p.cat} · pieza única</small></div><button data-quitar="${p.id}" aria-label="Quitar ${p.nombre}">✕</button></div>`; }).join('')
       + disenos.map(d => `<div class="item"><img src="${d.img}" alt=""><div>Diseño a medida<small>${d.txt}</small></div><button data-quitar-d="${d.id}" aria-label="Quitar este diseño">✕</button></div>`).join('')
-      : '<p class="vacio"><b>Todavía nada por acá</b>Sumá piezas de la estantería o diseñá la tuya.</p>';
+      : '<p class="vacio"><b>Todavía nada por acá</b>Sumá piezas del tendedero o diseñá la tuya.</p>';
   };
-  const pintarTodo = salto => { pintarEstante(); pintarLista(); pintarPedido(salto); refrescarSugeridas(); };
+  const pintarTodo = salto => { marcarColgadas(); pintarLista(); pintarPedido(salto); refrescarSugeridas(); };
   const abrir = () => { carrito.classList.add('ver'); velo.classList.add('ver'); carrito.setAttribute('aria-hidden', 'false'); barra.classList.remove('ver'); };
   const cerrar = () => { carrito.classList.remove('ver'); velo.classList.remove('ver'); carrito.setAttribute('aria-hidden', 'true'); pintarPedido(); };
-  $('#abrirCarrito').addEventListener('click', abrir); $('#barraVer').addEventListener('click', abrir); $('#canastaVer').addEventListener('click', abrir);
+  $('#abrirCarrito').addEventListener('click', abrir); $('#barraVer').addEventListener('click', abrir);
   $('#cerrarCarrito').addEventListener('click', cerrar); velo.addEventListener('click', cerrar);
   $('#items').addEventListener('click', e => {
     const b = e.target.closest('[data-quitar]'); if (b) return quitar(b.dataset.quitar);
@@ -693,7 +912,7 @@ window.TOIA = (() => {
   $$('[data-mensaje]').forEach(b => b.addEventListener('click', () => mostrar(b.dataset.mensaje, null, {titulo: 'Así les llega la consulta', respuesta: '¡Hola! Sí, te pasamos los combos y precios por acá 😊'})));
   $('#mCerrar').addEventListener('click', cerrarModal);
   modal.addEventListener('click', e => { if (e.target === modal) cerrarModal(); });
-  addEventListener('keydown', e => { if (e.key === 'Escape') { if (modal.classList.contains('ver')) cerrarModal(); else cerrar(); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { if (zoom.classList.contains('ver')) cerrarZoom(); else if (modal.classList.contains('ver')) cerrarModal(); else cerrar(); } });
 
   /* asistente de regalos: atención personalizada que termina en WhatsApp */
   const cuerpo = $('#ayudaCuerpo'), ops = $('#ayudaOps');
@@ -756,7 +975,29 @@ window.TOIA = (() => {
   } else charlar();
 
   const cab = $('.cab'); addEventListener('scroll', () => cab.classList.toggle('linea', scrollY > 10), {passive: true});
-  pintarTodo();
+  colgar(); pintarTodo();
+
+  /* el torno en el celu: la pieza queda fija arriba y los controles van en pestañas */
+  const ctls = $$('.controles .ctl'), pest = document.createElement('div');
+  const NOMS = ['Ideas', 'Forma', 'Tamaño', 'Color', 'Diseño', 'Nombre'];
+  pest.className = 'pestanas'; pest.setAttribute('role', 'tablist'); pest.setAttribute('aria-label', 'Partes del diseño');
+  pest.innerHTML = ctls.map((c, i) => `<button role="tab" id="pt${i}" aria-controls="pc${i}">${NOMS[i] || c.querySelector('h4').textContent}</button>`).join('');
+  ctls.forEach((c, i) => { c.id = 'pc' + i; c.setAttribute('role', 'tabpanel'); c.setAttribute('aria-labelledby', 'pt' + i); });
+  $('.controles').prepend(pest);
+  const elegirPest = i => {
+    $$('button', pest).forEach((b, j) => { b.setAttribute('aria-selected', String(i === j)); b.tabIndex = i === j ? 0 : -1; });
+    ctls.forEach((c, j) => c.classList.toggle('activa', i === j));
+  };
+  pest.addEventListener('click', e => { const b = e.target.closest('button'); if (b) elegirPest($$('button', pest).indexOf(b)); });
+  pest.addEventListener('keydown', e => {
+    const bs = $$('button', pest), i = bs.indexOf(document.activeElement); if (i < 0) return;
+    const j = e.key === 'ArrowRight' ? (i + 1) % bs.length : e.key === 'ArrowLeft' ? (i - 1 + bs.length) % bs.length : -1;
+    if (j >= 0) { e.preventDefault(); elegirPest(j); bs[j].focus(); }
+  });
+  elegirPest(0);
+  /* mientras diseñás, la barra del pedido no tapa los botones */
+  new IntersectionObserver(es => barra.classList.toggle('oculta', es[0].isIntersecting), {rootMargin: '-25% 0px -25% 0px'}).observe($('.torno-zona'));
+
   return {mostrar, alternar, agregar, agregarDiseno};
 })();
 </script>
@@ -1044,7 +1285,7 @@ else {
     if (document.activeElement !== $('#cNombre')) $('#cNombre').value = estado.nombre;
     $('#vAlto').textContent = palabras.alto(estado.h); $('#vAncho').textContent = palabras.ancho(estado.w);
     $('#vPanza').textContent = palabras.panza(estado.panza); $('#vBoca').textContent = palabras.boca(estado.boca);
-    $('#ficha').innerHTML = `<b>${nomForma(estado.tipo)}</b> ${tamano()}<br>Esmalte ${NOMBRES_ESM[estado.colorNombre]} · ${nomDeco(estado.patron)}${estado.nombre ? ` · “${estado.nombre}”` : ''}`;
+    $('#ficha').innerHTML = `<b>${nomForma(estado.tipo)}</b> ${tamano()}<span class="sep"> · </span><br>Esmalte ${NOMBRES_ESM[estado.colorNombre]} · ${nomDeco(estado.patron)}${estado.nombre ? ` · “${estado.nombre}”` : ''}`;
   };
   const aplicar = (n, {frente = false, rapido = false} = {}) => { Object.assign(estado, n); mia.cambiar(n, rapido); encuadre(); sincronizar(); if (frente) alFrente(); };
   const grupoOps = (sel, clave) => $(sel).addEventListener('click', e => { const b = e.target.closest('button'); if (b) aplicar({[clave]: b.dataset.v}, {frente: clave !== 'tipo'}); });
