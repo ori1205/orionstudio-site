@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Cocina para vos: recetas ricas, fáciles, rápidas y económicas para una familia de 4, comida de la semana y guía de freezer.">
+<meta name="theme-color" content="#D9442E">
+<meta property="og:title" content="Cocina para vos">
+<meta property="og:description" content="Rico, fácil y rápido. Recetas económicas para toda la familia.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cocina para vos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: libro de cocina familiar para celular. Portada a color, pestañas grandes con íconos, recetas en tarjetas que se abren */
+:root{
+  --bg:#F3F8EF; --card:#FFFFFF; --ink:#24302A; --soft:#5F6D64; --line:#E1E9DC;
+  --tomato:#D9442E; --tomato-soft:#FCE6E1;
+  --sun:#B57900; --sun-bright:#FFC93C; --sun-soft:#FFF2CC;
+  --leaf:#2F8F4E; --leaf-soft:#E0F2E5;
+  --ice:#2B7BBF; --ice-soft:#E1EEFA;
+  --on-tomato:#FFFFFF; --nav:#F3F8EFF0;
+  --display:"Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141A16; --card:#1E2620; --ink:#ECF1EA; --soft:#A7B4AA; --line:#2F3A32;
+  --tomato:#FF7A5C; --tomato-soft:#3A221D; --sun:#FFD566; --sun-bright:#FFC93C; --sun-soft:#3A3018;
+  --leaf:#72D18F; --leaf-soft:#1E3526; --ice:#80BBEC; --ice-soft:#1B2C3B;
+  --on-tomato:#1A0E0B; --nav:#141A16F0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141A16; --card:#1E2620; --ink:#ECF1EA; --soft:#A7B4AA; --line:#2F3A32;
+  --tomato:#FF7A5C; --tomato-soft:#3A221D; --sun:#FFD566; --sun-bright:#FFC93C; --sun-soft:#3A3018;
+  --leaf:#72D18F; --leaf-soft:#1E3526; --ice:#80BBEC; --ice-soft:#1B2C3B;
+  --on-tomato:#1A0E0B; --nav:#141A16F0; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--tomato)}
+.wrap{max-width:680px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0;font-weight:700}
+p{margin:0}
+svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid var(--sun-bright);outline-offset:2px;border-radius:10px}
+.num{font-variant-numeric:tabular-nums}
+
+/* Portada */
+.cover{background:var(--tomato);color:var(--on-tomato);border-radius:0 0 32px 32px}
+.cover .wrap{padding-block:34px 30px;display:flex;flex-direction:column;gap:14px}
+.cover-art{width:96px;height:96px}
+.cover h1{font-size:clamp(2.4rem,10vw,3.4rem);font-weight:800;line-height:1.02}
+.cover h1 mark{background:none;color:var(--sun-bright)}
+.tagline{font-weight:800;font-size:.95rem;opacity:.9}
+.slogan{font-family:var(--display);font-weight:700;font-size:1.45rem;line-height:1.1;margin-top:-6px}
+.cover .lead{font-size:1.1rem;max-width:30em;opacity:.95}
+.family{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;background:var(--card);color:var(--ink);font-weight:800;padding:10px 16px;border-radius:999px}
+.family svg{color:var(--tomato)}
+
+/* Pestañas */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--nav);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.nav .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding-block:10px}
+.nav a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--ink);font-weight:700;font-size:.8rem;line-height:1.2;text-align:center;padding:8px 4px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.nav a svg{color:var(--tomato)}
+.nav a:hover{border-color:var(--tomato)}
+
+section.part{padding-block:34px 4px;scroll-margin-top:84px}
+.part-head{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-weight:800;color:var(--tomato);font-size:.95rem}
+.part-head h2{font-size:2rem;font-weight:800}
+.part-head p{color:var(--soft);font-size:1.02rem}
+.block{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.block > h3{font-size:1.4rem}
+.block > p{color:var(--soft)}
+
+/* Listas */
+ul.dots,ol.steps{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.dots li{position:relative;padding-left:22px}
+ul.dots li::before{content:"";position:absolute;left:3px;top:.6em;width:9px;height:9px;border-radius:50%;background:var(--sun-bright)}
+ol.steps{counter-reset:s}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+ol.steps li::before{content:counter(s);font-family:var(--display);font-weight:800;font-size:1.05rem;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--tomato);color:var(--on-tomato)}
+
+.card{background:var(--card);border-radius:22px;padding:18px;border:1px solid var(--line)}
+.grid2{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){.grid2{grid-template-columns:1fr 1fr}}
+
+/* Cómo usar */
+.how{display:grid;gap:10px}
+.how .card{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:center}
+.bubble{width:48px;height:48px;border-radius:16px;display:grid;place-items:center}
+.bubble svg{width:26px;height:26px}
+.b-tomato{background:var(--tomato-soft);color:var(--tomato)}
+.b-sun{background:var(--sun-soft);color:var(--sun)}
+.b-leaf{background:var(--leaf-soft);color:var(--leaf)}
+.b-ice{background:var(--ice-soft);color:var(--ice)}
+.how b{display:block;font-size:1.02rem}
+.how span{color:var(--soft);font-size:.95rem}
+
+.pantry .card h4{font-size:1.1rem;margin-bottom:4px}
+.pantry .card p{color:var(--soft);font-size:.95rem}
+
+/* Recetas: elegir grupo */
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.pick button{font:inherit;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:20px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
+.pick button .bubble{width:42px;height:42px;border-radius:14px}
+.pick button b{font-family:var(--display);font-size:1.08rem;line-height:1.15;font-weight:700}
+.pick button span.n{font-size:.88rem;color:var(--soft)}
+.pick button[aria-pressed="true"]{border-color:var(--tomato);background:var(--tomato-soft)}
+.searchbox{position:relative;margin-top:12px}
+.searchbox svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--soft)}
+.searchbox input{width:100%;font:inherit;font-size:1rem;padding:14px 16px 14px 48px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
+.searchbox input:focus{border-color:var(--tomato);outline:none}
+.hint{font-size:.9rem;color:var(--soft);margin-top:8px}
+
+.group{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.group-head{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center}
+.group-head .bubble{width:52px;height:52px}
+.group-head h3{font-size:1.5rem}
+.group-head p{color:var(--soft);font-size:.95rem;line-height:1.4}
+
+/* Tarjeta de receta */
+details.rec{background:var(--card);border-radius:22px;border:1px solid var(--line);overflow:hidden}
+details.rec[data-c="des"]{--c:var(--sun);--cs:var(--sun-soft)}
+details.rec[data-c="alm"]{--c:var(--tomato);--cs:var(--tomato-soft)}
+details.rec[data-c="base"]{--c:var(--leaf);--cs:var(--leaf-soft)}
+details.rec[data-c="mar"]{--c:var(--ice);--cs:var(--ice-soft)}
+.pick button[data-cat="all"]{grid-column:span 2;flex-direction:row;align-items:center;gap:12px}
+details.rec[open]{border-color:var(--c)}
+details.rec summary{list-style:none;cursor:pointer;padding:16px;display:flex;flex-direction:column;gap:10px}
+details.rec summary::-webkit-details-marker{display:none}
+.rec-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.rec-name{font-family:var(--display);font-weight:700;font-size:1.28rem;line-height:1.15}
+.rec-sub{display:block;font-size:.95rem;color:var(--soft);margin-top:3px;font-family:var(--body);font-weight:400;line-height:1.35}
+.open-btn{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--cs);color:var(--c);transition:transform .2s}
+details.rec[open] .open-btn{transform:rotate(180deg)}
+.quick{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:.92rem;font-weight:700;color:var(--ink)}
+.quick span{display:inline-flex;align-items:center;gap:6px}
+.quick svg{width:19px;height:19px;color:var(--c)}
+.quick .frz{color:var(--ice)}
+.quick .frz svg{color:var(--ice)}
+
+.rec-body{padding:0 16px 20px;display:flex;flex-direction:column;gap:20px}
+.rec-body h4{font-size:1.15rem;margin-bottom:10px;color:var(--c)}
+.facts{display:grid;grid-template-columns:1fr;gap:8px}
+.fact{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:center;padding:12px;border-radius:16px;background:var(--cs)}
+.fact .bubble{width:40px;height:40px;border-radius:12px;background:var(--card);color:var(--c)}
+.fact b{display:block;font-size:.98rem}
+.fact span{font-size:.9rem;color:var(--soft)}
+.macros{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.macro{text-align:center;padding:12px 6px;border-radius:16px;border:2px solid var(--line)}
+.macro b{font-family:var(--display);font-size:1.5rem;font-weight:800;display:block;line-height:1.05}
+.macro span{font-size:.82rem;color:var(--soft)}
+.small{font-size:.88rem;color:var(--soft)}
+
+ul.check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+ul.check label{display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:start;cursor:pointer;padding:6px 4px;border-radius:12px}
+ul.check input{appearance:none;-webkit-appearance:none;width:24px;height:24px;margin:1px 0 0;border:2px solid var(--c);border-radius:8px;background:var(--card);display:grid;place-items:center;cursor:pointer}
+ul.check input:checked{background:var(--c)}
+ul.check input:checked::after{content:"";width:10px;height:6px;border-left:3px solid var(--card);border-bottom:3px solid var(--card);transform:rotate(-45deg) translate(1px,-1px)}
+ul.check input:checked + span{text-decoration:line-through;color:var(--soft)}
+
+.tip{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:14px;border-radius:16px;background:var(--sun-soft)}
+.tip svg{color:var(--sun)}
+.tip b{display:block}
+.tip p{font-size:.95rem}
+.tips{display:flex;flex-direction:column;gap:8px}
+.adapt{display:grid;grid-template-columns:1fr;gap:8px}
+@media (min-width:560px){.adapt{grid-template-columns:1fr 1fr}}
+.adapt div{padding:14px;border-radius:16px;border:2px dashed var(--line)}
+.adapt b{display:flex;align-items:center;gap:6px}
+.adapt b svg{width:18px;height:18px;color:var(--leaf)}
+.adapt p{font-size:.95rem;color:var(--soft);margin-top:4px}
+.empty{padding:28px 16px;text-align:center;color:var(--soft)}
+
+/* Meal prep */
+.timeline{display:flex;flex-direction:column;gap:10px}
+.slot{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.slot .time{font-family:var(--display);font-weight:700;background:var(--tomato);color:var(--on-tomato);border-radius:12px;padding:4px 10px;font-size:.95rem;white-space:nowrap}
+.slot ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+.slot li{font-size:.95rem}
+.slot li b{color:var(--soft);font-weight:700}
+.days{display:flex;flex-direction:column;gap:10px}
+.day h4{font-size:1.2rem;margin-bottom:8px;color:var(--tomato)}
+.day dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px}
+.day dt{font-weight:800;font-size:.92rem;color:var(--soft)}
+.day dd{margin:0;font-size:.98rem}
+.day .frozen{color:var(--ice);font-weight:700;font-size:.85rem;white-space:nowrap}
+.shop .card h4{font-size:1.1rem;margin-bottom:6px}
+.shop .card ul{margin:0;padding-left:20px}
+
+/* Freezer */
+.veg{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){.veg{grid-template-columns:1fr 1fr}}
+.veg .card{display:flex;flex-direction:column;gap:6px;padding:16px}
+.veg .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.veg .top b{font-family:var(--display);font-weight:700;font-size:1.15rem}
+.pill{display:inline-flex;align-items:center;gap:4px;font-size:.82rem;font-weight:800;padding:3px 10px;border-radius:999px;background:var(--ice-soft);color:var(--ice);white-space:nowrap}
+.veg p{font-size:.95rem}
+.veg .use{font-size:.9rem;color:var(--soft)}
+.icebox{background:var(--ice-soft);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.icebox h3{color:var(--ice);font-size:1.4rem}
+.icebox ol.steps li::before{background:var(--ice);color:var(--card)}
+.mix .card h4{font-size:1.15rem}
+.mix .card p{font-size:.95rem}
+.mix .card span{display:block;font-size:.9rem;color:var(--soft);margin-top:4px}
+.durations{display:grid;grid-template-columns:1fr;gap:0;padding:6px 18px}
+.durations div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.durations div:last-child{border-bottom:0}
+.durations b{font-weight:700;white-space:nowrap;color:var(--ice)}
+.nope{background:var(--tomato-soft);border-radius:22px;padding:18px}
+.nope h4{color:var(--tomato);font-size:1.15rem;margin-bottom:6px}
+.zones{display:grid;gap:10px}
+.zone{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:center}
+.zone b{display:block}
+.zone span{font-size:.95rem;color:var(--soft)}
+.closing{padding-block:40px 60px;color:var(--soft);font-size:.88rem;text-align:center}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-pot" viewBox="0 0 24 24"><path d="M3 10h18M5 10v7a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-7M1.5 12H3m18 0h1.5M9 6c0-1 1-1 1-2M14 6c0-1 1-1 1-2"/></symbol>
+  <symbol id="i-cup" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 3c0 1-1 1-1 2.5M12 3c0 1-1 1-1 2.5"/></symbol>
+  <symbol id="i-jar" viewBox="0 0 24 24"><path d="M7 3h10v3H7zM6 6h12l-1 2v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V8zM9 12h6"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M4 6.5l16 11M20 6.5 4 17.5M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0M13.5 20a4 4 0 0 1 8 0"/></symbol>
+  <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.4 0-2.5.8-2.5 2s1.1 1.6 2.5 2 2.5.8 2.5 2-1.1 2-2.5 2c-1.1 0-2-.4-2.5-1.2M12 6.5V8m0 8v1.5"/></symbol>
+  <symbol id="i-fridge" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M5 10h14M8 6v1.5M8 13v2.5"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15zM5 19l7-7"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.5 11h10L20 7H6.5M9 20h.01M17 20h.01"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 4h14v16H5zM5 8h14M9 13l2 2 4-4"/></symbol>
+  <symbol id="i-box"viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5zM3 8l9 5 9-5M12 13v8"/></symbol>
+</svg>
+
+<header class="cover">
+  <div class="wrap">
+    <svg class="cover-art" viewBox="0 0 96 96" aria-hidden="true">
+      <ellipse cx="48" cy="84" rx="34" ry="5" fill="currentColor" opacity=".18"/>
+      <path d="M14 44h68v20a18 18 0 0 1-18 18H32a18 18 0 0 1-18-18z" fill="var(--sun-bright)"/>
+      <rect x="10" y="38" width="76" height="9" rx="4.5" fill="var(--card)"/>
+      <rect x="40" y="30" width="16" height="9" rx="4" fill="var(--card)"/>
+      <path d="M4 52h10M82 52h10" stroke="var(--card)" stroke-width="5" stroke-linecap="round"/>
+      <path d="M36 24c0-5 5-5 5-10M48 22c0-5 5-5 5-10M60 24c0-5 5-5 5-10" fill="none" stroke="var(--card)" stroke-width="3.5" stroke-linecap="round" opacity=".85"/>
+      <circle cx="34" cy="60" r="3" fill="var(--tomato)"/><circle cx="48" cy="64" r="3" fill="var(--tomato)"/><circle cx="62" cy="60" r="3" fill="var(--tomato)"/>
+    </svg>
+    <span class="tagline">Cocina fácil</span>
+    <h1>Cocina<br><mark>para vos</mark></h1>
+    <p class="slogan">Rico, fácil y rápido</p>
+    <p class="lead">Recetas ricas y baratas, la comida de la semana lista en una tarde y el freezer ordenado para que cocinar no sea una carga.</p>
+    <span class="family"><svg class="i"><use href="#i-people"/></svg>Todas las recetas son para 4 personas</span>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Partes del libro">
+  <div class="wrap">
+    <a href="#inicio"><svg class="i"><use href="#i-bulb"/></svg>Para empezar</a>
+    <a href="#recetas"><svg class="i"><use href="#i-pot"/></svg>Recetas</a>
+    <a href="#mealprep"><svg class="i"><use href="#i-cal"/></svg>Comida de la semana</a>
+    <a href="#freezer"><svg class="i"><use href="#i-snow"/></svg>Freezer</a>
+  </div>
+</nav>
+
+<main>
+<!-- PARA EMPEZAR -->
+<section class="part" id="inicio">
+  <div class="wrap">
+    <div class="part-head">
+      <span class="kicker"><svg class="i"><use href="#i-bulb"/></svg>Para empezar</span>
+      <h2>Comer bien sin gastar de más</h2>
+      <p>Este libro está pensado para una familia de 4 que tiene poco tiempo. Con ingredientes baratos (legumbres, huevos, pollo, avena, arroz y verduras de estación) se puede comer rico y sano toda la semana.</p>
+    </div>
+
+    <div class="block">
+      <h3>Cómo usar este libro</h3>
+      <div class="how">
+        <div class="card"><div class="bubble b-tomato"><svg class="i"><use href="#i-pot"/></svg></div><div><b>Recetas</b><span>Tocá una receta para abrirla. Podés ir marcando los ingredientes que ya tenés.</span></div></div>
+        <div class="card"><div class="bubble b-sun"><svg class="i"><use href="#i-cal"/></svg></div><div><b>Comida de la semana</b><span>Cocinás 2 horas el domingo y tenés casi todo listo de lunes a viernes.</span></div></div>
+        <div class="card"><div class="bubble b-ice"><svg class="i"><use href="#i-snow"/></svg></div><div><b>Freezer</b><span>Qué verduras y comidas se pueden congelar, cómo hacerlo y cuánto duran.</span></div></div>
+      </div>
+      <p class="small">¿Son menos en casa? Hacé la receta igual y congelá lo que sobra: ya tenés otra comida resuelta.</p>
+    </div>
+
+    <div class="block">
+      <h3>Trucos para gastar menos</h3>
+      <ul class="dots">
+        <li>Comprá legumbres secas: cocinadas en casa cuestan la mitad que las de lata.</li>
+        <li>Elegí cortes baratos: pata-muslo, carne picada, paleta de cerdo.</li>
+        <li>Hacé el yogur en casa: 2 litros cuestan lo mismo que 4 potes chicos.</li>
+        <li>Comprá la verdura de estación y congelá lo que sobra antes de que se ponga fea.</li>
+        <li>No tires el caldo del pollo ni de las legumbres: le da sabor al arroz y a los guisos.</li>
+      </ul>
+    </div>
+
+    <div class="block pantry">
+      <h3>Qué tener siempre en casa</h3>
+      <p>Con esto podés hacer casi todas las recetas sin salir a comprar.</p>
+      <div class="grid2">
+        <div class="card"><h4>Almacén</h4><p>Avena, arroz, harina 000, harina integral, polenta, fideos, lentejas, garbanzos secos, harina de garbanzo, puré de tomate</p></div>
+        <div class="card"><h4>Heladera</h4><p>Huevos, leche entera (para el yogur), queso rallado, queso cremoso</p></div>
+        <div class="card"><h4>Carnes</h4><p>Pechuga y pata-muslo, carne picada magra, atún al natural</p></div>
+        <div class="card"><h4>Verdulería</h4><p>Cebolla, morrón, zanahoria, zapallo, zapallitos, espinaca, tomate, banana, manzana, limón</p></div>
+        <div class="card"><h4>Para dar sabor</h4><p>Sal, pimienta, pimentón, comino, orégano, curry, laurel, canela, ajo</p></div>
+        <div class="card"><h4>Extras</h4><p>Aceite, semillas (girasol, lino, sésamo), pasta de maní, miel</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECETAS -->
+<section class="part" id="recetas">
+  <div class="wrap">
+    <div class="part-head">
+      <span class="kicker"><svg class="i"><use href="#i-pot"/></svg>Recetas</span>
+      <h2>¿Qué cocinamos hoy?</h2>
+      <p>Elegí qué querés ver. Las preparaciones para el freezer conviene hacerlas primero: se usan en muchas otras recetas.</p>
+    </div>
+    <div class="pick" id="pick">
+      <button type="button" data-cat="all" aria-pressed="true"><span class="bubble b-tomato"><svg class="i"><use href="#i-pot"/></svg></span><b>Todas</b><span class="n" data-count="all"></span></button>
+      <button type="button" data-cat="des" aria-pressed="false"><span class="bubble b-sun"><svg class="i"><use href="#i-cup"/></svg></span><b>Desayunos y meriendas</b><span class="n" data-count="des"></span></button>
+      <button type="button" data-cat="alm" aria-pressed="false"><span class="bubble b-tomato"><svg class="i"><use href="#i-pot"/></svg></span><b>Almuerzos y cenas</b><span class="n" data-count="alm"></span></button>
+      <button type="button" data-cat="base" aria-pressed="false"><span class="bubble b-leaf"><svg class="i"><use href="#i-jar"/></svg></span><b>Para tener en el freezer</b><span class="n" data-count="base"></span></button>
+      <button type="button" data-cat="mar" aria-pressed="false"><span class="bubble b-ice"><svg class="i"><use href="#i-bag"/></svg></span><b>Bolsitas marinadas</b><span class="n" data-count="mar"></span></button>
+    </div>
+    <div class="searchbox">
+      <svg class="i"><use href="#i-search"/></svg>
+      <input id="q" type="search" placeholder="¿Qué tenés en casa? Ej.: lentejas" aria-label="Buscar receta por ingrediente" autocomplete="off">
+    </div>
+    <p class="hint" id="shown"></p>
+    <div id="list"></div>
+  </div>
+</section>
+
+<!-- COMIDA DE LA SEMANA -->
+<section class="part" id="mealprep">
+  <div class="wrap">
+    <div class="part-head">
+      <span class="kicker"><svg class="i"><use href="#i-cal"/></svg>Comida de la semana (meal prep)</span>
+      <h2>Cociná un día, comé toda la semana</h2>
+      <p>La idea es simple: el domingo dejás cocinadas algunas cosas básicas y durante la semana solo las combinás y calentás. Así comen distinto cada día sin pasar horas en la cocina.</p>
+    </div>
+
+    <div class="block">
+      <h3>Los 5 pasos</h3>
+      <ol class="steps">
+        <li><span><b>Planificá.</b> Elegí qué van a comer: 2 carnes o legumbres, arroz, 3 o 4 verduras y una salsa.</span></li>
+        <li><span><b>Comprá con lista.</b> Solo lo que vas a usar. Sumá verduras congeladas por si te falta algo.</span></li>
+        <li><span><b>Usá todo a la vez.</b> Mientras algo está en el horno, otra cosa se cocina en la hornalla.</span></li>
+        <li><span><b>Enfriá rápido.</b> Repartí en recipientes bajos y llevalos a la heladera antes de una hora.</span></li>
+        <li><span><b>Guardá y anotá.</b> Lo de lunes a miércoles va a la heladera; lo de jueves y viernes, al freezer.</span></li>
+      </ol>
+    </div>
+
+    <div class="block">
+      <h3>Tu domingo de cocina, paso a paso</h3>
+      <p>El sábado a la noche dejá los garbanzos en remojo.</p>
+      <div class="card timeline">
+        <div class="slot"><span class="time">0 a 15 min</span><ul><li><b>Horno:</b> prendelo a 200 °C</li><li><b>Hornalla:</b> arroz y garbanzos</li><li><b>Mesada:</b> picá y embolsá el sofrito</li></ul></div>
+        <div class="slot"><span class="time">15 a 45 min</span><ul><li><b>Horno:</b> muffins de huevo</li><li><b>Hornalla:</b> pollo para desmenuzar</li><li><b>Mesada:</b> armá la avena en frascos</li></ul></div>
+        <div class="slot"><span class="time">45 a 75 min</span><ul><li><b>Hornalla:</b> guiso de lentejas</li><li><b>Mesada:</b> desmenuzá el pollo y rebozá las milanesas para freezar</li></ul></div>
+        <div class="slot"><span class="time">75 a 105 min</span><ul><li><b>Horno:</b> medallones de lentejas</li><li><b>Hornalla:</b> sopa crema de zapallo</li><li><b>Mesada:</b> hummus</li></ul></div>
+        <div class="slot"><span class="time">105 a 120 min</span><ul><li>Apagá todo, dejá enfriar, repartí en porciones y anotá la fecha</li></ul></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Menú de ejemplo para la familia</h3>
+      <p>Para 4 personas, con lo que cocinaste el domingo.</p>
+      <div class="days">
+        <div class="card day"><h4>Lunes</h4><dl><dt>Desayuno</dt><dd>Avena en frasco</dd><dt>Almuerzo</dt><dd>Bowl de pollo, arroz y verduras</dd><dt>Cena</dt><dd>Guiso de lentejas</dd></dl></div>
+        <div class="card day"><h4>Martes</h4><dl><dt>Desayuno</dt><dd>Muffins de huevo</dd><dt>Almuerzo</dt><dd>Ensalada de garbanzos con huevo</dd><dt>Cena</dt><dd>Medallones de lentejas con ensalada</dd></dl></div>
+        <div class="card day"><h4>Miércoles</h4><dl><dt>Desayuno</dt><dd>Avena en frasco</dd><dt>Almuerzo</dt><dd>Rapiditas con pollo</dd><dt>Cena</dt><dd>Sopa crema de zapallo</dd></dl></div>
+        <div class="card day"><h4>Jueves</h4><dl><dt>Desayuno</dt><dd>Panqueques con banana y yogur</dd><dt>Almuerzo</dt><dd>Guiso de lentejas <span class="frozen">del freezer</span></dd><dt>Cena</dt><dd>Milanesas de pollo con ensalada <span class="frozen">del freezer</span></dd></dl></div>
+        <div class="card day"><h4>Viernes</h4><dl><dt>Desayuno</dt><dd>Budín de banana y yogur</dd><dt>Almuerzo</dt><dd>Arroz con atún y vegetales</dd><dt>Cena</dt><dd>Pizza casera <span class="frozen">del freezer</span></dd></dl></div>
+      </div>
+      <p class="small">Para la merienda podés ir rotando: crackers con hummus, yogur casero con granola o bolitas de avena.</p>
+    </div>
+
+    <div class="block shop">
+      <h3>Lista de compras de esa semana</h3>
+      <div class="grid2">
+        <div class="card"><h4>Carnes y huevos</h4><ul><li>2 kg de pechuga</li><li>2 maples de huevos (60)</li><li>2 latas de atún</li></ul></div>
+        <div class="card"><h4>Almacén</h4><ul><li>1 kg de avena</li><li>1 kg de arroz</li><li>500 g de lentejas</li><li>500 g de garbanzos secos</li><li>1 kg de harina 000 y 500 g de integral</li><li>Pan rallado, levadura</li><li>4 purés de tomate</li></ul></div>
+        <div class="card"><h4>Verdulería</h4><ul><li>6 cebollas y 4 morrones</li><li>2 kg de zapallo</li><li>6 zanahorias</li><li>2 atados de espinaca</li><li>2 lechugas y 1 kg de tomates</li><li>Ajo y limones</li><li>1 kg de bananas y 1 kg de manzanas</li></ul></div>
+        <div class="card"><h4>Lácteos y freezer</h4><ul><li>5 litros de leche (2 para el yogur)</li><li>1 pote de yogur natural</li><li>Queso rallado</li><li>300 g de queso cremoso</li><li>Frutillas congeladas</li></ul></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Cuánto dura cada cosa en la heladera</h3>
+      <div class="card durations">
+        <div><span>Arroz, legumbres y pollo cocidos</span><b>3 a 4 días</b></div>
+        <div><span>Verdura cruda cortada (con una servilleta adentro)</span><b>3 a 5 días</b></div>
+        <div><span>Huevos duros con cáscara</span><b>7 días</b></div>
+        <div><span>Yogur casero</span><b>10 días</b></div>
+      </div>
+      <ul class="dots">
+        <li>Usá frascos y recipientes de vidrio con tapa: van del freezer al microondas.</li>
+        <li>Guardá las salsas y aderezos aparte, así nada se humedece.</li>
+        <li>Si algo huele o se ve raro, no lo comas.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FREEZER -->
+<section class="part" id="freezer">
+  <div class="wrap">
+    <div class="part-head">
+      <span class="kicker"><svg class="i"><use href="#i-snow"/></svg>Freezer y cocina</span>
+      <h2>Tu freezer, tu mejor ayuda</h2>
+      <p>Una hora picando y guardando te ahorra un montón de tiempo cada día. Congelá en porciones, poné siempre la fecha y usá primero lo más viejo.</p>
+    </div>
+
+    <div class="block">
+      <h3>Las reglas de oro</h3>
+      <ol class="steps">
+        <li><span><b>Enfriá antes.</b> Nunca metas comida caliente al freezer: primero a la heladera.</span></li>
+        <li><span><b>Separá en porciones.</b> Congelá lo que la familia come en una comida.</span></li>
+        <li><span><b>Sacá el aire.</b> Aplastá las bolsas antes de cerrarlas, así no se “queman” con el frío.</span></li>
+        <li><span><b>Congelá chato.</b> Las bolsas acostadas se congelan y descongelan más rápido, y después se guardan paradas, como libros.</span></li>
+        <li><span><b>Primero sueltos, después en bolsa.</b> Albóndigas, milanesas, frutas y verduras en trocitos van 2 horas en una placa; así no se pegan.</span></li>
+        <li><span><b>Anotá qué es y la fecha.</b> Con cinta de papel y marcador alcanza.</span></li>
+        <li><span><b>No vuelvas a congelar algo crudo.</b> Si descongelaste carne o pollo, cocinalo antes de volver a guardarlo.</span></li>
+      </ol>
+    </div>
+
+    <div class="block">
+      <h3>Verduras: cómo dejarlas listas</h3>
+      <p>Casi todas las verduras se pueden congelar. Quedan perfectas para cocinar (sofritos, guisos, tartas), no para ensalada.</p>
+      <div class="veg" id="veg"></div>
+    </div>
+
+    <div class="block">
+      <div class="icebox">
+        <h3>Cómo blanquear verduras</h3>
+        <p>“Blanquear” es hervirlas un ratito. Así no pierden color ni sabor en el freezer.</p>
+        <ol class="steps">
+          <li><span>Poné a hervir una olla grande con agua y prepará un bol con agua y hielo.</span></li>
+          <li><span>Meté la verdura cortada el tiempo que dice cada una (1 a 3 minutos).</span></li>
+          <li><span>Pasala enseguida al agua con hielo, el mismo tiempo.</span></li>
+          <li><span>Escurrila y secala bien con un repasador.</span></li>
+          <li><span>Congelala suelta en una placa 2 horas y después pasala a bolsas.</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="block mix">
+      <h3>Bolsitas listas para tener siempre</h3>
+      <div class="grid2">
+        <div class="card"><h4>Sofrito</h4><p>Cebolla, morrón y ajo picados.</p><span>Para guisos, salsas, rellenos y arroces.</span></div>
+        <div class="card"><h4>Para salteado</h4><p>Cebolla, morrón y zanahoria en tiras.</p><span>Con arroz o fideos, en 10 minutos.</span></div>
+        <div class="card"><h4>Para sopa</h4><p>Zapallo, zanahoria, puerro y apio en cubos.</p><span>Directo a la olla, sin descongelar.</span></div>
+        <div class="card"><h4>Para tarta</h4><p>Espinaca o acelga hervida con cebolla rehogada.</p><span>Tartas, tortillas y canelones.</span></div>
+        <div class="card"><h4>Para licuado</h4><p>Banana en rodajas y frutillas.</p><span>Licuados, avena y budines.</span></div>
+        <div class="card"><h4>Carne marinada</h4><p>Pollo o cerdo crudo con su condimento, por ejemplo soja y jengibre.</p><span>Se marina mientras se descongela. Hay 5 recetas en Bolsitas marinadas.</span></div>
+        <div class="card"><h4>Cubitos de sabor</h4><p>Ajo, perejil, caldo o jugo de limón en cubetera.</p><span>Un cubito por receta.</span></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Más ideas para el freezer</h3>
+      <ul class="dots">
+        <li><b>Ajo picado</b> en cubetera con un chorrito de aceite: 1 cubito equivale a 2 dientes.</li>
+        <li><b>Perejil, albahaca y cilantro</b> picados en cubetera con aceite o agua.</li>
+        <li><b>Jengibre</b> entero y pelado: se ralla más fácil congelado.</li>
+        <li><b>Limón:</b> el jugo en cubetera y la cáscara rallada en un frasquito.</li>
+        <li><b>Pan</b> en rodajas: se tuesta directo del freezer.</li>
+        <li><b>Queso rallado</b> en bolsa: sacudila al guardarla para que no se apelmace.</li>
+        <li><b>Bananas muy maduras</b> peladas y en rodajas, para budines y licuados.</li>
+        <li><b>Tapas de tarta y empanadas caseras</b> separadas con papel manteca y envueltas en film.</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>Cuánto dura cada cosa en el freezer</h3>
+      <div class="card durations">
+        <div><span>Pollo crudo</span><b>9 meses</b></div>
+        <div><span>Carne picada cruda</span><b>3 a 4 meses</b></div>
+        <div><span>Cerdo crudo en trozos</span><b>4 a 6 meses</b></div>
+        <div><span>Guisos, salsas y comidas cocidas</span><b>2 a 3 meses</b></div>
+        <div><span>Arroz y legumbres cocidos</span><b>2 a 3 meses</b></div>
+        <div><span>Verduras blanqueadas</span><b>8 a 12 meses</b></div>
+        <div><span>Cebolla y morrón crudos</span><b>6 meses</b></div>
+        <div><span>Frutas</span><b>6 a 8 meses</b></div>
+        <div><span>Pan, panqueques, budines y masas</span><b>3 meses</b></div>
+      </div>
+      <div class="nope">
+        <h4>Esto mejor no congelarlo</h4>
+        <p>Lechuga, rúcula, pepino y tomate para ensalada; papa cruda o hervida entera (queda arenosa); huevo duro; mayonesa; yogur y salsas con crema solos (se cortan).</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Ordená el freezer por zonas</h3>
+      <div class="zones">
+        <div class="card zone"><div class="bubble b-tomato"><svg class="i"><use href="#i-box"/></svg></div><div><b>Abajo: carnes crudas</b><span>Pollo, carne y milanesas, para que no goteen sobre lo demás.</span></div></div>
+        <div class="card zone"><div class="bubble b-sun"><svg class="i"><use href="#i-pot"/></svg></div><div><b>Al medio: comidas listas</b><span>Guisos, salsas, albóndigas. Tu “delivery” casero.</span></div></div>
+        <div class="card zone"><div class="bubble b-leaf"><svg class="i"><use href="#i-leaf"/></svg></div><div><b>Arriba: verduras y bases</b><span>Sofrito, arroz, legumbres y bolsitas de verdura.</span></div></div>
+        <div class="card zone"><div class="bubble b-ice"><svg class="i"><use href="#i-snow"/></svg></div><div><b>En la puerta: lo chiquito</b><span>Cubitos de ajo, hierbas y caldo, pan y queso rallado.</span></div></div>
+      </div>
+      <p class="small">Pegá en la puerta del freezer una lista con lo que hay adentro y tachá lo que van usando.</p>
+    </div>
+
+    <div class="block">
+      <h3>Cómo descongelar sin riesgo</h3>
+      <ul class="dots">
+        <li><b>En la heladera</b> (lo mejor): pasá la porción la noche anterior.</li>
+        <li><b>En agua fría:</b> con la bolsa cerrada, cambiando el agua cada media hora.</li>
+        <li><b>En el microondas:</b> con la opción descongelar, y cociná enseguida.</li>
+        <li><b>Directo a la olla:</b> sofrito, verduras, salsas, sopas, arroz y legumbres.</li>
+        <li>Nunca descongeles carne o pollo arriba de la mesada.</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>La cocina ordenada ayuda</h3>
+      <ul class="dots">
+        <li><b>Heladera:</b> lácteos y sobras arriba, carnes crudas abajo, verduras en el cajón. Adelante, lo que vence primero.</li>
+        <li><b>Alacena:</b> frascos transparentes con etiqueta para arroz, legumbres y semillas.</li>
+        <li><b>Rincón del desayuno:</b> avena, frascos y tazas juntos, así los chicos se sirven solos.</li>
+        <li><b>Mesada libre:</b> solo lo de todos los días (tabla, cuchillo, aceite, sal).</li>
+        <li><b>Antes de ir a comprar:</b> revisá heladera, freezer y alacena para no repetir.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<p class="closing wrap">Precios aproximados de octubre de 2026. Los valores nutricionales son aproximados.</p>
+</main>
+
+<script>
+const CATS={
+  base:{t:"Para tener en el freezer",d:"Se hacen una vez y se usan en muchas recetas.",ic:"i-jar",b:"b-leaf"},
+  des:{t:"Desayunos y meriendas",d:"Rápidos, con avena, fruta, huevo y yogur casero.",ic:"i-cup",b:"b-sun"},
+  alm:{t:"Almuerzos y cenas",d:"Platos completos con legumbres, huevo, pollo, carne y verduras.",ic:"i-pot",b:"b-tomato"},
+  mar:{t:"Bolsitas marinadas",d:"Carne cruda con su condimento, congelada en bolsa. Se marina sola mientras se descongela.",ic:"i-bag",b:"b-ice"}
+};
+/* np = cantidad de porciones; cp = costo por porción en pesos */
+const R=[
+/* ===== PARA TENER EN EL FREEZER ===== */
+{c:"base",n:"Yogur natural casero",s:"Sale mucho más barato que el comprado",np:10,r:"2 litros (10 vasitos de 200 g)",t:"15 min + 8 h de reposo",cp:460,h:"10 días",z:"No conviene",f:false,m:[7,10,7],p:"Cada porción es un vasito de 200 g.",
+i:["2 litros de leche entera","2 potes de yogur natural sin azúcar (o 6 cucharadas de tu tanda anterior)","Opcional: 4 cucharadas de leche en polvo, para que quede más firme","Frascos de vidrio con tapa"],
+st:["Calentá la leche hasta que esté por hervir y apagá. Si usás leche en polvo, agregala ahora.","Dejala entibiar. Tiene que estar como para meter el dedo y aguantar 10 segundos sin quemarte.","Mezclá el yogur con una taza de esa leche tibia y después sumalo al resto.","Pasalo a los frascos, tapalos y dejalos en un lugar tibio de 6 a 10 horas sin moverlos: adentro del horno apagado con la luz prendida, o envueltos en una manta.","Cuando esté firme, llevalo a la heladera por lo menos 4 horas."],
+x:[["Yogur griego (más espeso)","Colalo con un lienzo o un filtro de café, 2 a 4 horas en la heladera."],["Para que siempre salga","Guardá 6 cucharadas de cada tanda para la próxima. Cada 4 o 5 veces, empezá de nuevo con un pote comprado."]],
+v:"Usá leche de soja sin azúcar y yogur vegetal para arrancar. Queda más líquido: sumá 2 cucharadas de almidón de maíz al calentar.",g:"Ya es sin TACC. Fijate que el yogur que usás para arrancar tenga el logo."},
+
+{c:"base",n:"Sofrito en bolsitas",s:"Cebolla y morrón picados, listos para la sartén",np:8,r:"8 bolsitas de 1 taza",t:"25 min",cp:400,h:"4 días",z:"3 meses",f:true,m:[1,9,0],p:"Cada porción es una bolsita.",
+i:["4 cebollas","2 morrones rojos","1 morrón verde","4 dientes de ajo","Bolsas con cierre"],
+st:["Pelá y picá chiquito las cebollas, los morrones y el ajo.","Mezclá todo en un bol grande.","Poné 1 taza en cada bolsa.","Aplastá cada bolsa, sacale el aire y cerrala.","Congelalas acostadas, una arriba de la otra.","Para usar: directo del freezer a la sartén con un chorrito de aceite, tapado, 5 minutos."],
+x:[["Versión ya cocida","Rehogá todo con 3 cucharadas de aceite 15 minutos, dejá enfriar y embolsá. Te ahorra todavía más tiempo."],["Para no llorar","Poné las cebollas 20 minutos en la heladera antes de cortarlas."]],
+v:"Ya es vegano.",g:"Ya es sin TACC."},
+
+{c:"base",n:"Arroz listo para usar",s:"Se calienta en 3 minutos",np:8,r:"8 porciones (2 comidas para 4)",t:"5 min + 40 min de cocción",cp:250,h:"4 días",z:"2 meses",f:true,m:[5,45,2],p:"Cada porción es 1 taza de arroz cocido.",
+i:["500 g de arroz integral (o blanco)","5 tazas de agua o caldo","1 cucharada de aceite","Sal"],
+st:["Enjuagá el arroz.","Hervi el agua con la sal y el aceite, y agregá el arroz.","Tapá y cociná a fuego mínimo 35 a 40 minutos (el blanco, 15).","Dejalo reposar 5 minutos tapado.","Extendelo en una fuente para que se enfríe rápido.","Repartilo en 2 bolsas de 4 tazas (una por comida), aplastalas y congelalas."],
+x:[["Para calentarlo","En la sartén con un chorrito de agua, tapado, 3 o 4 minutos. O 2 minutos en el microondas."],["Importante","Guardalo antes de una hora. El arroz cocido fuera de la heladera se echa a perder rápido."]],
+v:"Ya es vegano.",g:"Ya es sin TACC."},
+
+{c:"base",n:"Salsa de tomate casera",s:"Para fideos, albóndigas, pizzas y rellenos",np:8,r:"8 bolsitas de 1 taza",t:"35 min",cp:520,h:"5 días",z:"3 meses",f:true,m:[3,15,5],p:"Cada porción es 1 taza.",
+i:["4 envases de puré de tomate (520 g cada uno)","2 bolsitas de sofrito","3 dientes de ajo picados","1 cucharada de orégano","2 hojas de laurel","3 cucharadas de aceite","1 cucharadita de azúcar (opcional, le saca lo ácido)","Sal y pimienta"],
+st:["Cociná el sofrito con el aceite, tapado, 5 minutos.","Sumá el ajo y cociná 1 minuto.","Agregá el puré, los condimentos y 1 taza de agua.","Cociná a fuego bajo, con la tapa a medias, 25 minutos.","Dejala enfriar y repartila en bolsitas de 1 taza, bien chatas."],
+x:[["Para descongelar rápido","Si está congelada chata, se descongela en 5 minutos bajo la canilla."]],
+v:"Ya es vegana.",g:"Ya es sin TACC. Revisá la etiqueta del puré."},
+
+{c:"base",n:"Garbanzos cocidos",s:"Cocinás una vez y tenés para varias comidas",np:6,r:"6 tazas (para 2 o 3 recetas)",t:"20 min + remojo y cocción",cp:300,h:"4 días",z:"3 meses",f:true,m:[14,40,4],p:"Cada porción es 1 taza cocida.",
+i:["500 g de garbanzos secos","Agua para remojar y para cocinar","1 hoja de laurel (opcional)","Sal","Bolsas para freezer"],
+st:["Dejalos en remojo, tapados con bastante agua, de 8 a 12 horas.","Tirá esa agua y enjuagalos.","Ponelos en una olla con agua nueva (tres veces más agua que garbanzos) y el laurel.","Hervilos a fuego medio de 1 hora a 1 hora y media, hasta que estén tiernos. Si hace falta, agregá agua caliente.","Poné la sal al final y dejá 5 minutos más.","Escurrilos, dejalos enfriar y guardalos en bolsas de 1 taza con un poquito del caldo."],
+x:[["Lentejas y porotos","Las lentejas no necesitan remojo y se cocinan en 25 a 30 minutos. Los porotos, igual que los garbanzos."],["Si usás de lata","Enjuagalos bien antes de usarlos."]],
+v:"Ya es vegano.",g:"Ya es sin TACC."},
+
+{c:"base",n:"Pollo desmenuzado",s:"Para empanadas, rapiditas, sándwiches y ensaladas",np:8,r:"8 porciones (2 comidas para 4)",t:"10 min + 25 min de cocción",cp:1250,h:"4 días",z:"3 meses",f:true,m:[34,0,3],p:"Cada porción son unos 150 g de pollo.",
+i:["1,2 kg de pechuga de pollo","1 cebolla","3 dientes de ajo","2 hojas de laurel","2 cucharaditas de sal","Agua para cubrir"],
+st:["Poné las pechugas en una olla con la cebolla, el ajo, el laurel y la sal. Cubrí con agua.","Cuando hierva, bajá el fuego, tapá y cociná 20 minutos.","Sacá el pollo y dejalo entibiar.","Desmenuzalo con dos tenedores.","Guardalo en 2 bolsas (una por comida) con un poco del caldo. Aplastalas y congelalas.","Colá el caldo y guardalo en cubetera o en un frasco."],
+x:[["Ideas para usarlo","Rapiditas, empanadas, sándwiches, arroz con verduras o ensaladas."],["No tires el caldo","Sirve para el arroz, los garbanzos o el guiso de lentejas."]],
+v:"Usá soja texturizada hidratada y escurrida.",g:"Ya es sin TACC."},
+
+/* ===== DESAYUNOS Y MERIENDAS ===== */
+{c:"des",n:"Avena en frasco con yogur y fruta",s:"Se prepara la noche anterior",np:4,r:"4 frascos",t:"5 min + 4 h en heladera",cp:1100,h:"3 días",z:"No conviene",f:false,m:[11,41,10],p:"Cada porción es un frasco.",
+i:["2 tazas de avena","2 tazas de yogur natural (casero o comprado)","1 taza de leche","2 tazas de fruta picada o congelada","4 frascos con tapa","Opcional: canela, semillas o miel"],
+st:["En cada frasco poné 1/2 taza de avena.","Agregá 1/2 taza de yogur y 1/4 de taza de leche. Mezclá.","Poné la fruta arriba.","Tapalos y dejalos en la heladera por lo menos 4 horas, o toda la noche."],
+x:[["Con fruta congelada","Ponela directo: se descongela mientras la avena se ablanda."],["Más cremosa","Si la querés más blanda, agregá un poco más de leche."]],
+v:"Usá yogur y leche vegetales.",g:"Usá avena con el logo sin TACC."},
+
+{c:"des",n:"Avena caliente con manzana y canela",s:"El desayuno caliente más barato",np:4,r:"4 porciones",t:"10 min",cp:750,h:"2 días",z:"No conviene",f:false,m:[11,50,7],p:"Cada porción es un bowl.",
+i:["2 tazas de avena","4 tazas de leche (o mitad agua)","2 manzanas ralladas","2 cucharaditas de canela","Opcional: miel o pasas"],
+st:["Hervi la avena con la leche 5 minutos, revolviendo.","Agregá las manzanas y la canela y cociná 2 minutos más.","Serví con miel o pasas si querés."],
+x:[["Para toda la semana","Hacé el doble y guardala en frascos. Calentala con un chorrito de leche."]],
+v:"Usá leche vegetal.",g:"Usá avena con el logo sin TACC."},
+
+{c:"des",n:"Panqueques integrales",s:"Para rellenar con dulce o salado",np:4,r:"12 panqueques (3 por persona)",t:"10 min + 20 min de cocción",cp:600,h:"3 días",z:"3 meses",f:true,m:[15,49,10],p:"Cada porción son 3 panqueques, sin relleno.",
+i:["2 tazas de harina integral","2 tazas de leche","2 huevos","1 cucharada de aceite","1 pizca de sal","Un poco de aceite para la sartén"],
+st:["Batí los huevos con la leche y el aceite.","Agregá la harina y la sal. Batí hasta que no queden grumos y dejá descansar 10 minutos.","Calentá una sartén y pasale un poco de aceite con una servilleta.","Volcá un cucharón de mezcla y mové la sartén para que quede finito.","Cuando se dore y aparezcan burbujitas, dalo vuelta y cociná 1 minuto más.","Apilalos con papel manteca entre cada uno."],
+x:[["Rellenos dulces","Banana con yogur, ricota con fruta o manzana cocida."],["Rellenos salados","Espinaca con ricota, queso y tomate, o atún."],["Para freezar","Con papel manteca entre cada uno, si no se pegan. Se calientan en la sartén 30 segundos de cada lado."]],
+v:"Usá leche vegetal y, en vez de los huevos, 2 cucharadas de semillas de lino molidas con 6 de agua.",g:"Usá 2 tazas de harina de arroz o de avena sin TACC."},
+
+{c:"des",n:"Panqueques de avena y banana",s:"Solo tres ingredientes, sin harina",np:4,r:"12 panqueques (3 por persona)",t:"15 min",cp:480,h:"3 días",z:"2 meses",f:true,m:[9,30,6],p:"Cada porción son 3 panqueques.",
+i:["2 bananas maduras","4 huevos","1 taza de avena","1 cucharadita de polvo para hornear","Canela"],
+st:["Licuá todo.","Cociná cucharadas de la mezcla en una sartén, 2 minutos de cada lado.","Para freezar, separalos con papel manteca. Se calientan en la tostadora."],
+x:[["Para servir","Con yogur casero y fruta, o con mermelada de frutilla."]],
+v:"En vez de los huevos, 4 cucharadas de lino molido con 12 de agua. Cocinalos a fuego más bajo.",g:"Usá avena con el logo sin TACC."},
+
+{c:"des",n:"Muffins de huevo y verduras",s:"Desayuno salado para llevar",np:4,r:"12 muffins (3 por persona)",t:"10 min + 20 min de horno",cp:900,h:"4 días",z:"2 meses",f:true,m:[19,4,15],p:"Cada porción son 3 muffins.",
+i:["8 huevos","1 taza de verduras picadas (sofrito, espinaca, zapallito)","1/2 taza de queso rallado","Sal, pimienta y orégano","Molde para muffins con aceite"],
+st:["Prendé el horno a 180 °C.","Repartí las verduras en el molde.","Batí los huevos con el queso y los condimentos, y llená cada lugar.","Horneá de 18 a 20 minutos, hasta que estén firmes."],
+x:[["Para calentar","30 segundos en el microondas, o 1 minuto si están congelados."]],
+v:"En vez de los huevos, 1 taza de harina de garbanzo con 1 y 1/4 taza de agua. Horneá 25 minutos.",g:"Ya es sin TACC. Revisá el queso."},
+
+{c:"des",n:"Tostadas con huevo y tomate",s:"Listas en 10 minutos",np:4,r:"4 porciones",t:"10 min",cp:750,h:"Para comer en el momento",z:"No conviene",f:false,m:[12,26,8],p:"Cada porción son 2 tostadas con 1 huevo.",
+i:["8 rodajas de pan integral","4 huevos","2 tomates","Orégano, sal y aceite"],
+st:["Tostá el pan y frotalo con el tomate cortado al medio.","Cociná los huevos a la plancha.","Ponelos arriba, con orégano y un chorrito de aceite."],
+x:[["Para variar","Agregá espinaca salteada, o cambiá el huevo por hummus."]],
+v:"En vez del huevo, hummus o palta pisada.",g:"Usá pan sin TACC."},
+
+{c:"des",n:"Budín de banana y avena",s:"Sin azúcar agregada",np:8,r:"8 rodajas (2 desayunos para 4)",t:"10 min + 40 min de horno",cp:300,h:"5 días",z:"3 meses",f:true,m:[4,21,3],p:"Cada porción es una rodaja.",
+i:["3 bananas maduras","2 huevos","1 y 1/2 taza de avena","1/4 taza de leche","1 cucharadita de polvo para hornear","1 cucharadita de canela","Opcional: nueces o pasas","Molde de budín con aceite"],
+st:["Prendé el horno a 180 °C.","Pisá las bananas con un tenedor.","Mezclalas con los huevos y la leche.","Agregá la avena, el polvo para hornear y la canela.","Volcá en el molde y horneá de 35 a 40 minutos, hasta que un palito salga seco.","Dejalo enfriar antes de desmoldar y cortalo en 8 rodajas."],
+x:[["Para freezar","En rodajas con papel manteca entre cada una. Se tuestan o se calientan 30 segundos en el microondas."],["Más dulce","Cuanto más maduras las bananas, más dulce queda. Si están verdes, agregá 1 cucharada de miel."]],
+v:"En vez de los huevos, 1 banana más y 1 cucharada de lino molido con 3 de agua. Usá leche vegetal.",g:"Usá avena con el logo sin TACC."},
+
+{c:"des",n:"Galletitas de avena y banana",s:"Dos ingredientes, para la merienda",np:4,r:"20 galletitas (5 por persona)",t:"5 min + 15 min de horno",cp:350,h:"5 días",z:"3 meses",f:true,m:[4,30,3],p:"Cada porción son 5 galletitas.",
+i:["3 bananas maduras","2 tazas de avena","Opcional: pasas, chips de chocolate o canela"],
+st:["Prendé el horno a 180 °C.","Pisá las bananas y mezclalas con la avena.","Armá las galletitas en una placa con papel manteca.","Horneá 15 minutos, hasta que estén doradas abajo."],
+x:[["No te asustes","Salen blanditas del horno y se ponen firmes al enfriarse."]],
+v:"Ya es vegana.",g:"Usá avena con el logo sin TACC."},
+
+{c:"des",n:"Licuado de banana y avena",s:"Más cremoso con banana congelada",np:4,r:"4 vasos",t:"5 min",cp:700,h:"Para tomar en el momento",z:"No conviene",f:false,m:[9,45,5],p:"Cada porción es un vaso.",
+i:["4 bananas (mejor congeladas)","4 cucharadas de avena","4 tazas de leche","Canela"],
+st:["Licuá todo hasta que quede cremoso.","Servilo enseguida."],
+x:[["Para variar","Agregá 1 taza de frutillas congeladas o 2 cucharadas de pasta de maní."]],
+v:"Usá leche vegetal.",g:"Usá avena con el logo sin TACC."},
+
+{c:"des",n:"Granola casera",s:"Mucho más barata que la comprada",np:10,r:"10 porciones (dura varias semanas)",t:"5 min + 20 min de horno",cp:250,h:"1 mes en frasco",z:"No hace falta",f:false,m:[5,25,7],p:"Cada porción es 1/3 de taza.",
+i:["3 tazas de avena","1/2 taza de semillas (girasol, lino, sésamo)","3 cucharadas de miel","2 cucharadas de aceite","1 cucharadita de canela"],
+st:["Prendé el horno a 170 °C.","Mezclá todo y extendelo en una placa.","Horneá 20 minutos, revolviendo a la mitad.","Dejala enfriar del todo y guardala en un frasco cerrado."],
+x:[["Ojo con el horno","Se pone crocante cuando se enfría. No la dejes más tiempo porque se quema."]],
+v:"En vez de la miel, 3 cucharadas de azúcar mascabo con 2 cucharadas de agua.",g:"Usá avena con el logo sin TACC."},
+
+{c:"des",n:"Crackers de avena y semillas",s:"Para la merienda, con hummus o queso",np:4,r:"40 crackers (10 por persona)",t:"15 min + 20 min de horno",cp:225,h:"7 días en frasco",z:"No hace falta",f:false,m:[7,42,15],p:"Cada porción son 10 crackers.",
+i:["1 taza de avena fina","1 taza de harina integral","2 cucharadas de semillas (sésamo, girasol o lino)","1/2 cucharadita de sal","3 cucharadas de aceite","1/2 taza de agua, más o menos"],
+st:["Mezclá la avena, la harina, las semillas y la sal.","Agregá el aceite y el agua de a poco, hasta tener una masa que no se pegue.","Estirala bien finita entre dos papeles manteca.","Marcá cuadraditos con un cuchillo, sin separarlos, y pinchalos con un tenedor.","Horneá a 180 °C de 15 a 20 minutos, hasta que estén dorados.","Dejalos enfriar, cortalos por las marcas y guardalos en un frasco."],
+x:[["Para que queden crocantes","Si están blandos en el centro, apagá el horno y dejalos 5 minutos más adentro."]],
+v:"Ya es vegana.",g:"Usá avena sin TACC y cambiá la harina integral por harina de garbanzo."},
+
+{c:"des",n:"Hummus casero",s:"Para untar tostadas o con palitos de zanahoria",np:6,r:"6 porciones (alcanza para varias meriendas)",t:"10 min",cp:300,h:"5 días",z:"3 meses",f:true,m:[4,8,6],p:"Cada porción son 3 cucharadas.",
+i:["2 tazas de garbanzos cocidos","Jugo de 1 limón","2 cucharadas de aceite","1 diente de ajo","1 cucharadita de comino","Sal","Agua o caldo, lo necesario"],
+st:["Procesá o pisá los garbanzos con el ajo.","Agregá el limón, el aceite, el comino y la sal.","Sumá agua de a cucharadas hasta que quede como una crema.","Probalo y agregá sal o limón si hace falta."],
+x:[["Merienda armada","Tostada integral con hummus y zanahoria rallada arriba."],["Para variar","Agregale pimentón, espinaca cocida o morrón asado."]],
+v:"Ya es vegano.",g:"Ya es sin TACC."},
+
+{c:"des",n:"Bolitas de avena y maní",s:"Un dulce para la tarde",np:10,r:"30 bolitas (para varias meriendas)",t:"15 min + 10 min de heladera",cp:540,h:"1 semana",z:"3 meses",f:true,m:[8,25,13],p:"Cada porción son 3 bolitas.",
+i:["2 tazas de avena","1 taza de pasta de maní","6 cucharadas de miel","4 cucharadas de cacao amargo"],
+st:["Mezclá todo hasta que se una.","Llevá la mezcla 10 minutos a la heladera.","Armá bolitas con las manos mojadas."],
+x:[["Si queda seca","Agregá 1 o 2 cucharadas de agua o leche."]],
+v:"En vez de la miel, jarabe de agave o de maple.",g:"Usá avena con el logo sin TACC."},
+
+{c:"des",n:"Chipá de sartén",s:"Sin horno, en 15 minutos",np:4,r:"8 chipás (2 por persona)",t:"15 min",cp:950,h:"2 días",z:"2 meses (crudos)",f:true,m:[12,45,11],p:"Cada porción son 2 chipás.",
+i:["2 tazas de fécula de mandioca","2 huevos","1 taza de queso rallado","6 cucharadas de yogur casero","Sal"],
+st:["Mezclá todo hasta tener una masa húmeda.","Armá 8 bollitos y aplastalos.","Cocinalos en una sartén tapada, a fuego bajo, 4 minutos de cada lado."],
+x:[["Para freezar","Congelá los bollitos crudos en una placa y después pasalos a una bolsa. Se cocinan directo, 2 minutos más de cada lado."]],
+v:"No tiene una versión vegana que salga bien: el queso es lo principal.",g:"Ya es sin TACC. Usá fécula y queso con el logo."},
+
+{c:"des",n:"Scones de queso y avena",s:"Salados, para el mate",np:4,r:"12 scones (3 por persona)",t:"10 min + 15 min de horno",cp:560,h:"4 días",z:"3 meses",f:true,m:[13,42,10],p:"Cada porción son 3 scones.",
+i:["1 taza de harina integral","1 taza de avena","1 cucharada de polvo para hornear","1 huevo","1/2 taza de yogur","1/2 taza de queso rallado","Sal"],
+st:["Prendé el horno a 200 °C.","Uní todo sin amasar mucho.","Estirá la masa de 2 cm de alto y cortá los scones.","Horneá 15 minutos, hasta que estén dorados."],
+x:[["Para que queden tiernos","Cuanto menos amases, mejor salen."]],
+v:"Usá yogur vegetal, 1 cucharada de lino molido con 3 de agua en vez del huevo, y orégano y semillas en vez del queso.",g:"Usá premezcla sin TACC y avena con el logo."},
+
+{c:"des",n:"Mermelada de frutilla y chía",s:"Sin azúcar agregada",np:8,r:"1 frasco (8 porciones)",t:"15 min",cp:360,h:"1 semana",z:"3 meses",f:true,m:[1,6,1],p:"Cada porción son 2 cucharadas.",
+i:["2 tazas de frutillas (frescas o congeladas)","2 cucharadas de semillas de chía","1 cucharada de miel (opcional)"],
+st:["Cociná las frutillas 10 minutos, pisándolas.","Apagá y agregá la chía y la miel.","Pasala a un frasco y dejala espesar en la heladera."],
+x:[["Para freezar","En cubetera: cada cubito es una porción."]],
+v:"Usá azúcar mascabo o nada en vez de la miel.",g:"Ya es sin TACC."},
+
+/* ===== ALMUERZOS Y CENAS ===== */
+{c:"alm",n:"Guiso de lentejas",s:"Una olla y listo: alcanza para dos comidas",np:8,r:"8 porciones (2 comidas para 4)",t:"40 min",cp:720,h:"4 días",z:"3 meses",f:true,m:[17,52,3],p:"Cada porción es un plato hondo.",
+i:["500 g de lentejas secas","2 bolsitas de sofrito (o 2 cebollas y 1 morrón picados)","3 zanahorias en cubos","1 y 1/2 envase de puré de tomate","2 cucharaditas de pimentón","1 cucharadita de comino","2 hojas de laurel","2 litros de agua","Sal y pimienta"],
+st:["Enjuagá las lentejas.","En una olla grande, cociná el sofrito con un chorrito de aceite 5 minutos.","Agregá las lentejas, las zanahorias, el puré, los condimentos y el agua.","Cuando hierva, bajá el fuego y cociná tapado de 30 a 35 minutos.","Dejalo enfriar y separá la mitad para el freezer."],
+x:[["Para freezar","En recipientes o bolsas, sin llenarlos hasta el borde."],["Sobre la papa","Si le ponés papa, no lo congeles: queda arenosa. Mejor agregala cuando lo calentás."],["Para que rinda más","Servilo con un huevo duro o un poco de pollo desmenuzado."]],
+v:"Ya es vegano.",g:"Ya es sin TACC. Revisá el puré y los condimentos."},
+
+{c:"alm",n:"Guiso de garbanzos y zapallo",s:"En 30 minutos, con garbanzos ya cocidos",np:8,r:"8 porciones (2 comidas para 4)",t:"30 min",cp:650,h:"4 días",z:"3 meses",f:true,m:[9,29,3],p:"Cada porción es un plato hondo.",
+i:["4 tazas de garbanzos cocidos","2 bolsitas de sofrito","700 g de zapallo en cubos","1 y 1/2 envase de puré de tomate","2 cucharaditas de pimentón","1 cucharadita de comino","1 litro y medio de agua o caldo","3 tazas de espinaca (opcional)","Sal y pimienta"],
+st:["Cociná el sofrito con un chorrito de aceite, tapado, 5 minutos.","Agregá el zapallo, el puré, los condimentos y el agua.","Cuando hierva, bajá el fuego y cociná tapado 15 minutos.","Sumá los garbanzos y la espinaca. Cociná 10 minutos más.","Pisá un poco de zapallo contra la olla para que espese."],
+x:[["Más espeso","Cocinalo sin tapa los últimos 10 minutos."]],
+v:"Ya es vegano.",g:"Ya es sin TACC. Revisá el puré y los condimentos."},
+
+{c:"alm",n:"Bowl de pollo, arroz y verduras",s:"Comida completa en un plato",np:4,r:"4 porciones",t:"25 min",cp:1730,h:"3 días",z:"2 meses (sin la verdura cruda)",f:true,m:[37,50,7],p:"Cada porción es un bowl.",
+i:["600 g de pechuga en cubos (o 1 bolsa de pollo desmenuzado)","4 tazas de arroz cocido","2 zanahorias ralladas","2 tazas de repollo cortado finito","2 cucharadas de salsa de soja","Jugo de 1 limón","2 cucharadas de aceite","Opcional: semillas de sésamo"],
+st:["Dorá el pollo en la sartén con el aceite, de 8 a 10 minutos.","Agregale la soja y el limón.","Calentá el arroz.","Armá cada plato con arroz, pollo, zanahoria y repollo."],
+x:[["Para la vianda","Llevá la verdura cruda en un frasco aparte y mezclala al momento de comer."]],
+v:"Cambiá el pollo por garbanzos cocidos dorados en la sartén.",g:"Usá salsa de soja sin TACC: muchas tienen trigo."},
+
+{c:"alm",n:"Arroz con atún y verduras",s:"Listo en 15 minutos",np:4,r:"4 porciones",t:"15 min",cp:1250,h:"3 días",z:"No conviene",f:false,m:[21,52,6],p:"Cada porción es un plato.",
+i:["4 tazas de arroz cocido","2 latas de atún","1 bolsita de sofrito","2 tazas de verduras congeladas (arvejas, zanahoria, choclo)","1 cucharada de aceite","Jugo de 1/2 limón","Sal, pimienta y orégano"],
+st:["Calentá el aceite y cociná el sofrito, tapado, 5 minutos.","Agregá las verduras congeladas y cociná 5 minutos más.","Sumá el arroz y revolvé 3 minutos.","Escurrí el atún y mezclalo.","Condimentá con el limón, la sal, la pimienta y el orégano."],
+x:[["Arroz congelado","Ponelo directo en la sartén con un chorrito de agua y tapá unos minutos."]],
+v:"Cambiá el atún por 2 tazas de garbanzos cocidos.",g:"Ya es sin TACC. Revisá la lata de atún."},
+
+{c:"alm",n:"Arroz salteado con huevo",s:"Para aprovechar el arroz que sobró",np:4,r:"4 porciones",t:"15 min",cp:1050,h:"3 días",z:"No conviene",f:false,m:[14,52,10],p:"Cada porción es un plato.",
+i:["4 tazas de arroz cocido","4 huevos","2 zanahorias en cubitos","1 bolsita de sofrito","Cebolla de verdeo","2 cucharadas de salsa de soja","2 cucharadas de aceite"],
+st:["Saltéa el sofrito y la zanahoria a fuego fuerte 4 minutos.","Corré las verduras a un costado, poné los huevos batidos y revolvé.","Agregá el arroz y la soja y revolvé 3 minutos.","Terminá con cebolla de verdeo picada."],
+x:[["El secreto","El arroz frío o congelado sale mejor que el recién hecho: no se pega."]],
+v:"Cambiá los huevos por garbanzos o tofu.",g:"Usá salsa de soja sin TACC."},
+
+{c:"alm",n:"Ensalada de garbanzos, tomate y huevo",s:"Sin cocinar, en 10 minutos",np:4,r:"4 porciones",t:"10 min",cp:1100,h:"3 días (sin condimentar)",z:"No conviene",f:false,m:[19,40,12],p:"Cada porción es un plato.",
+i:["4 tazas de garbanzos cocidos","4 tomates","1 cebolla morada","4 huevos duros","Aceite, jugo de limón, sal y comino"],
+st:["Picá los tomates, la cebolla y los huevos.","Mezclalos con los garbanzos.","Condimentá cuando la vayan a comer."],
+x:[["Para la vianda","Llevá el aderezo en un frasquito aparte."]],
+v:"Sin huevo, agregá palta o semillas de girasol.",g:"Ya es sin TACC."},
+
+{c:"alm",n:"Pata-muslo al horno con papas",s:"Todo en una sola fuente",np:4,r:"4 porciones",t:"10 min + 45 min de horno",cp:1930,h:"3 días",z:"3 meses (solo el pollo)",f:true,m:[35,30,14],p:"Cada porción es 1 pata-muslo con verduras.",
+i:["4 pata-muslos sin piel","4 papas","3 zanahorias","1 cebolla","2 dientes de ajo","Jugo de 1 limón","Pimentón, orégano, sal y aceite"],
+st:["Prendé el horno a 200 °C.","Cortá las verduras en trozos y ponelas en una fuente con el pollo.","Condimentá con aceite, limón, ajo y especias.","Horneá 45 minutos, dando vuelta todo a la mitad."],
+x:[["Para freezar","Congelá solo el pollo, sin las papas: se ponen arenosas."]],
+v:"Cambiá el pollo por garbanzos cocidos y calabaza. Horneá 30 minutos.",g:"Ya es sin TACC."},
+
+{c:"alm",n:"Guiso de arroz con pollo",s:"Comida de olla para toda la familia",np:4,r:"4 porciones",t:"40 min",cp:1500,h:"3 días",z:"2 meses",f:true,m:[30,60,11],p:"Cada porción es un plato hondo.",
+i:["4 pata-muslos cortados en presas","2 tazas de arroz","1 bolsita de sofrito","2 zanahorias en cubos","1 taza de arvejas congeladas","2 cucharaditas de pimentón","1 cucharadita de cúrcuma","5 tazas de agua o caldo","Sal y aceite"],
+st:["Dorá el pollo en la olla con un chorrito de aceite y sacalo.","Cociná el sofrito y la zanahoria 5 minutos.","Volvé a poner el pollo y agregá el arroz, las especias y el agua.","Cociná tapado 20 minutos. Sumá las arvejas los últimos 5."],
+x:[["Si lo vas a freezar","Dejalo un poco caldoso: el arroz sigue chupando el líquido."]],
+v:"Cambiá el pollo por garbanzos y calabaza, con caldo de verduras.",g:"Ya es sin TACC. Revisá el caldo si es comprado."},
+
+{c:"alm",n:"Pollo al curry con zanahoria",s:"Cremoso, con yogur casero",np:4,r:"4 porciones",t:"30 min",cp:1800,h:"3 días",z:"3 meses",f:true,m:[42,52,8],p:"Cada porción viene con 1 taza de arroz.",
+i:["700 g de pechuga en cubos","1 bolsita de sofrito","3 zanahorias en rodajas","1 cucharada de curry","1 taza de yogur casero","4 tazas de arroz cocido","Sal y aceite"],
+st:["Dorá el pollo con el sofrito.","Agregá la zanahoria, el curry y 1/2 taza de agua. Cociná 15 minutos.","Apagá el fuego y mezclá el yogur.","Serví con el arroz."],
+x:[["Para freezar","Congelalo antes de poner el yogur, porque se corta. Agregalo cuando lo calentás."]],
+v:"Cambiá el pollo por garbanzos y usá yogur vegetal.",g:"Ya es sin TACC. Revisá el curry."},
+
+{c:"alm",n:"Cerdo desmechado con salsa",s:"Cocción lenta en una olla común",np:8,r:"8 porciones (2 comidas para 4)",t:"15 min + 1 h 45 de cocción",cp:1650,h:"4 días",z:"3 meses",f:true,m:[34,6,14],p:"Cada porción son unos 170 g de carne con salsa.",
+i:["1,3 kg de paleta o bondiola de cerdo, en trozos","1 bolsita de sofrito","1 y 1/2 envase de puré de tomate","3 dientes de ajo picados","1 cucharada de pimentón","1 cucharadita de orégano","1 taza de agua","Sal, pimienta y aceite"],
+st:["Salpimentá la carne.","Dorala en la olla con un poco de aceite, de todos lados.","Agregá el sofrito, el ajo y los condimentos. Cociná 3 minutos.","Sumá el puré y el agua. Tapá y cociná a fuego bajo de 1 hora y media a 2 horas, dando vuelta la carne a la mitad.","Cuando se deshaga con un tenedor, sacala, desmenuzala y volvela a la salsa.","Dejala enfriar y separá la mitad para el freezer."],
+x:[["Ideas para usarlo","En sándwiches, con arroz, en rapiditas o para rellenar zapallitos."],["Ojo con el agua","Mirá cada tanto y agregá un chorrito si se seca."]],
+v:"Cambiá el cerdo por soja texturizada hidratada y cociná la salsa solo 20 minutos.",g:"Ya es sin TACC. Revisá el puré y los condimentos."},
+
+{c:"alm",n:"Milanesas de pollo al horno",s:"Se preparan una vez y se congelan crudas",np:4,r:"8 milanesas (2 por persona)",t:"25 min + 30 min de horno",cp:2000,h:"3 días",z:"3 meses",f:true,m:[52,22,14],p:"Cada porción son 2 milanesas.",
+i:["800 g de pechuga cortada en 8 bifes finitos","3 huevos","1 taza de avena fina","1/2 taza de pan rallado","2 dientes de ajo picados","2 cucharadas de perejil picado","Sal, pimienta y pimentón","2 cucharadas de aceite para la placa","Papel manteca"],
+st:["Aplastá los bifes con un palo de amasar o una botella, hasta que queden finitos y parejos.","Batí los huevos con el ajo, el perejil y los condimentos.","Mezclá la avena con el pan rallado en un plato.","Pasá cada bife por el huevo y después por el pan rallado, apretando bien.","Para freezar: en una placa con papel manteca, 2 horas al freezer. Después a una bolsa, con papel entre cada una.","Para cocinar: en una placa con aceite, a 200 °C. Frescas, 15 minutos de un lado y 10 del otro; congeladas, 20 y 10."],
+x:[["Para variar","Se hacen igual con bifes de cerdo o con rodajas de berenjena."],["El secreto","Si quedan parejas, se cocinan igual y no se secan en los bordes."]],
+v:"Usá rodajas gruesas de berenjena y, en vez del huevo, 1/2 taza de harina de garbanzo con 3/4 de taza de agua.",g:"Usá avena y pan rallado sin TACC, o solo avena."},
+
+{c:"alm",n:"Albóndigas de pollo y espinaca",s:"Se cocinan directo en la salsa",np:8,r:"40 albóndigas (2 comidas para 4)",t:"20 min + 25 min de cocción",cp:1600,h:"4 días",z:"3 meses",f:true,m:[30,11,5],p:"Cada porción son 5 albóndigas con salsa.",
+i:["1 kg de pollo picado (pechuga)","3 tazas de espinaca congelada, descongelada y bien exprimida","2 huevos","3/4 de taza de avena","3 dientes de ajo picados","Sal, pimienta y orégano","4 tazas de salsa de tomate casera"],
+st:["Mezclá todo menos la salsa, hasta que se una.","Con las manos mojadas, armá unas 40 bolitas del tamaño de una nuez grande.","Calentá la salsa en una olla ancha con 1/2 taza de agua.","Cuando hierva, poné las albóndigas. Bajá el fuego, tapá y cociná 25 minutos sin revolver mucho.","Dejalas enfriar y separá la mitad para el freezer."],
+x:[["Para freezar crudas","Armá las bolitas en una placa con papel manteca, 2 horas al freezer y después a una bolsa. Se cocinan directo en la salsa, 10 minutos más."],["Importante","Exprimí muy bien la espinaca: si queda con agua, las albóndigas se desarman."]],
+v:"Cambiá el pollo por 4 tazas de lentejas cocidas y los huevos por 4 cucharadas de harina de garbanzo con 8 de agua.",g:"Usá avena con el logo sin TACC."},
+
+{c:"alm",n:"Zapallitos rellenos",s:"Con carne, arroz, salsa y queso",np:4,r:"8 mitades (2 por persona)",t:"20 min + 30 min de cocción",cp:2100,h:"3 días",z:"3 meses",f:true,m:[17,23,7],p:"Cada porción son 2 mitades.",
+i:["4 zapallitos redondos","300 g de carne picada magra","1 bolsita de sofrito","1 taza de arroz cocido","1 cucharadita de pimentón","1/2 cucharadita de comino","1 taza de salsa de tomate casera","1/2 taza de queso rallado","Sal y pimienta"],
+st:["Cortá los zapallitos al medio, sacales el centro dejando 1 cm de borde y picá lo que sacaste.","Hervilos en agua con sal 8 minutos y dejalos escurrir boca abajo.","Cociná el sofrito, tapado, 5 minutos. Agregá la carne y dorala.","Sumá lo picado del zapallito, el arroz y los condimentos. Cociná 3 minutos.","Rellená las mitades, ponelas en una fuente y cubrilas con la salsa y el queso.","Horneá a 200 °C unos 20 minutos, hasta que se gratine."],
+x:[["Para freezar","Armalos hasta el paso 4, sin salsa ni queso. Después descongelalos en la heladera y seguí con los pasos 5 y 6."]],
+v:"Cambiá la carne por 1 y 1/2 taza de lentejas cocidas. Sin queso.",g:"Ya es sin TACC. Revisá el queso."},
+
+{c:"alm",n:"Pastel de calabaza y carne",s:"Carne abajo, puré de calabaza arriba",np:8,r:"8 porciones (2 comidas para 4)",t:"30 min + 25 min de horno",cp:1400,h:"4 días",z:"3 meses",f:true,m:[22,18,12],p:"Cada porción es un cuadrado.",
+i:["1,3 kg de calabaza o zapallo","700 g de carne picada magra","2 bolsitas de sofrito","2 cucharaditas de pimentón","1 cucharadita de comino","3/4 de taza de queso rallado","Sal, pimienta y nuez moscada","Fuente grande o 2 fuentes medianas"],
+st:["Cortá la calabaza en cubos y hervila 15 minutos. Escurrila y hacela puré con sal, pimienta y nuez moscada.","Mientras, cociná el sofrito tapado 5 minutos. Agregá la carne y dorala.","Condimentá con pimentón, comino, sal y pimienta.","Poné la carne en la fuente y cubrila con el puré.","Espolvoreá el queso y horneá a 200 °C 25 minutos."],
+x:[["Para freezar","Hacelo en 2 fuentes y congelá una entera, o cortá cuadrados y congelalos separados."],["Importante","Escurrí bien la calabaza: si queda con agua, el pastel queda aguado."]],
+v:"Cambiá la carne por 3 tazas de lentejas cocidas. Sin queso.",g:"Ya es sin TACC. Revisá el queso."},
+
+{c:"alm",n:"Rapiditas caseras con pollo",s:"Las tortillas y el relleno se congelan aparte",np:4,r:"8 rapiditas (2 por persona)",t:"40 min",cp:1200,h:"3 días",z:"3 meses",f:true,m:[29,54,13],p:"Cada porción son 2 rapiditas rellenas.",
+i:["Tortillas: 2 tazas de harina 000, 1 cucharadita de sal, 1 cucharadita de polvo para hornear, 3 cucharadas de aceite y 3/4 de taza de agua tibia","Relleno: 400 g de pechuga en tiras (o 1 bolsa de pollo desmenuzado)","1 bolsita de sofrito","1 taza de verduras congeladas","1 cucharadita de pimentón y 1 de comino","Sal y pimienta"],
+st:["Mezclá la harina con la sal y el polvo para hornear. Agregá el aceite y el agua y amasá 3 minutos. Dejala descansar 15 minutos.","Dividila en 8 bollitos y estirá cada uno bien finito.","Cocinalos en una sartén sin aceite y bien caliente, 1 minuto de cada lado.","Apilalos con papel manteca entre cada uno.","Para el relleno, cociná el sofrito tapado 5 minutos. Agregá el pollo y cociná 5 minutos más.","Sumá las verduras y los condimentos. Cociná 4 minutos.","Rellená las rapiditas y enrollalas."],
+x:[["Para freezar","Las tortillas apiladas con papel manteca y el relleno en bolsitas. Las tortillas se calientan 30 segundos de cada lado."],["El secreto","Cuanto más finitas, más ricas. Tapalas con un repasador mientras hacés las otras."]],
+v:"Rellenalas con garbanzos salteados con el sofrito y las verduras.",g:"Usá premezcla sin TACC o tortillas de maíz."},
+
+{c:"alm",n:"Wrap de atún y verduras",s:"Rápido, con las tortillas de las rapiditas",np:4,r:"4 wraps",t:"10 min",cp:1600,h:"1 día armado",z:"No conviene",f:false,m:[25,35,7],p:"Cada porción es un wrap.",
+i:["4 tortillas caseras o integrales","2 latas de atún al natural","4 cucharadas de yogur casero","2 cucharaditas de mostaza","Lechuga, tomate y zanahoria rallada"],
+st:["Mezclá el atún con el yogur y la mostaza.","Calentá las tortillas 30 segundos de cada lado.","Rellenalas con la mezcla y las verduras, y enrollalas."],
+x:[["Para la vianda","Envolvelo en papel manteca y film: aguanta bien hasta el mediodía."]],
+v:"Cambiá el atún por hummus y garbanzos pisados.",g:"Usá tortillas de maíz sin TACC."},
+
+{c:"alm",n:"Empanadas al horno",s:"Con masa casera, se congelan crudas",np:4,r:"12 empanadas (3 por persona)",t:"40 min + 25 min de horno",cp:1200,h:"3 días",z:"3 meses",f:true,m:[33,78,22],p:"Cada porción son 3 empanadas.",
+i:["Masa: 3 tazas de harina 000, 1/3 de taza de aceite, 1 cucharadita de sal y 3/4 de taza de agua tibia","Relleno: 1 bolsa de pollo desmenuzado (unas 2 tazas)","1 bolsita de sofrito","1 cucharadita de comino y 1 de pimentón","Sal y pimienta","1 huevo para pintar (opcional)"],
+st:["Mezclá la harina con la sal. Agregá el aceite y el agua y amasá 5 minutos. Dejala descansar tapada 20 minutos.","Para el relleno, cociná el sofrito tapado 5 minutos. Agregá el pollo y los condimentos y cociná 3 minutos. Dejalo enfriar.","Estirá la masa finita y cortá 12 círculos con un plato chico.","Poné 2 cucharadas de relleno en cada una, doblá y cerrá con repulgue o con un tenedor.","Para freezar, ponelas 2 horas en una placa y después pasalas a una bolsa.","Pintalas con huevo y horneá a 200 °C unos 25 minutos (30 si están congeladas)."],
+x:[["Otros rellenos","Carne picada con sofrito y comino; choclo con sofrito y queso; espinaca con ricota."],["Importante","El relleno tiene que estar frío: si está caliente, la masa se rompe."]],
+v:"Rellenalas con lentejas cocidas, sofrito y comino, y pintalas con aceite.",g:"Usá premezcla sin TACC para empanadas."},
+
+{c:"alm",n:"Pizza casera",s:"Prepizzas al freezer, listas en 12 minutos",np:4,r:"2 pizzas (una comida para 4)",t:"20 min + 1 h de levado",cp:1700,h:"Mejor congeladas",z:"3 meses",f:true,m:[28,102,22],p:"Cada porción es 1/4 del total (4 porciones de pizza).",
+i:["4 tazas de harina 000 (500 g)","25 g de levadura fresca o 1 sobre de levadura seca","300 ml de agua tibia","2 cucharadas de aceite","1 cucharadita de sal","1 cucharadita de azúcar","2 tazas de salsa de tomate casera","300 g de queso cremoso","Opcional: tomate, morrón, aceitunas, jamón"],
+st:["Mezclá la levadura y el azúcar con el agua tibia y esperá 10 minutos.","Mezclá la harina con la sal, agregá el aceite y la levadura, y amasá 10 minutos.","Tapala y dejala levar 1 hora, hasta que duplique su tamaño.","Dividila en 2, estirá cada parte y pinchala con un tenedor.","Cocinalas a 220 °C unos 8 minutos, sin que se doren. Dejalas enfriar.","Envolvelas en film o en bolsa y congelalas.","Para comer: sin descongelar, con salsa, queso y lo que quieras arriba, 10 a 12 minutos a 220 °C."],
+x:[["Importante","No dejes que se dore la primera vez: termina de cocinarse cuando la armás."]],
+v:"La masa ya es vegana. Cubrila con verduras salteadas en vez de queso.",g:"Usá premezcla sin TACC para pizza."},
+
+{c:"alm",n:"Fainá",s:"Pocos ingredientes y muy barata",np:4,r:"12 porciones (3 por persona)",t:"5 min + 1 h de reposo + 25 min de horno",cp:375,h:"3 días",z:"3 meses",f:true,m:[12,33,12],p:"Cada porción son 3 cuadrados.",
+i:["2 tazas de harina de garbanzo","3 tazas de agua","3 cucharadas de aceite","1 cucharadita de sal","Pimienta"],
+st:["Batí la harina con el agua hasta que no queden grumos. Agregá la sal y 1 cucharada de aceite.","Dejala descansar 1 hora tapada y sacale la espuma de arriba.","Prendé el horno a 220 °C con la asadera adentro y 2 cucharadas de aceite.","Volcá la mezcla en la asadera caliente.","Horneá de 20 a 25 minutos, hasta que esté firme y dorada en los bordes.","Cortala en 12 cuadrados."],
+x:[["Para acompañar","Con la pizza, con una ensalada o con un huevo arriba."],["No te saltees el descanso","Si no reposa, puede quedar con gusto a harina cruda."]],
+v:"Ya es vegana.",g:"Ya es sin TACC."},
+
+{c:"alm",n:"Medallones de lentejas",s:"Ricos, baratos y sin carne",np:4,r:"12 medallones (3 por persona)",t:"20 min + 30 min de horno",cp:410,h:"4 días",z:"3 meses",f:true,m:[13,37,3],p:"Cada porción son 3 medallones.",
+i:["2 tazas de lentejas cocidas, bien escurridas","1 zanahoria rallada","1 bolsita de sofrito","1 taza de avena","1 huevo","1 cucharadita de comino","1 cucharadita de pimentón","Sal y pimienta"],
+st:["Pisá las lentejas con un tenedor, sin hacerlas puré del todo.","Mezclalas con la zanahoria, el sofrito escurrido, la avena, el huevo y los condimentos.","Dejá descansar la mezcla 10 minutos.","Armá 12 medallones con las manos mojadas, sobre una placa con papel manteca.","Horneá a 200 °C, 15 minutos de un lado y 10 del otro."],
+x:[["Para comerlos","En pan, con arroz o con ensalada. Se calientan 10 minutos en la sartén."],["Importante","Escurrí bien las lentejas: si están mojadas, se desarman."]],
+v:"En vez del huevo, 2 cucharadas de harina de garbanzo con 4 de agua.",g:"Usá avena con el logo sin TACC."},
+
+{c:"alm",n:"Fideos con salsa de lentejas",s:"Como una boloñesa, a mitad de precio",np:4,r:"4 porciones",t:"30 min",cp:960,h:"4 días",z:"3 meses (la salsa)",f:true,m:[20,85,6],p:"Cada porción es un plato de fideos con salsa.",
+i:["400 g de fideos","2 tazas de lentejas cocidas","1 bolsita de sofrito","1 zanahoria rallada","2 tazas de salsa de tomate casera","Orégano y queso rallado para servir"],
+st:["Cociná el sofrito y la zanahoria 5 minutos.","Agregá la salsa y las lentejas y cociná 15 minutos.","Hervi los fideos y servilos con la salsa."],
+x:[["Para freezar","Solo la salsa. Los fideos se hacen en el momento."]],
+v:"Ya es vegana, sin el queso.",g:"Usá fideos sin TACC."},
+
+{c:"alm",n:"Tortilla de zapallitos al horno",s:"Sin tener que darla vuelta",np:4,r:"4 porciones",t:"10 min + 30 min de horno",cp:1200,h:"3 días",z:"2 meses",f:true,m:[18,9,15],p:"Cada porción es 1/4 de la tortilla.",
+i:["5 zapallitos rallados y bien escurridos","1 bolsita de sofrito","8 huevos","3/4 de taza de queso rallado","Sal y pimienta"],
+st:["Prendé el horno a 180 °C.","Cociná el sofrito 5 minutos.","Mezclalo con los zapallitos, los huevos y el queso.","Horneá en una fuente con aceite 25 a 30 minutos, hasta que esté firme."],
+x:[["El secreto","Exprimí el zapallito rallado con las manos: larga mucha agua."]],
+v:"En vez de huevos y queso, 1 y 1/2 taza de harina de garbanzo con 1 y 1/2 taza de agua.",g:"Ya es sin TACC. Revisá el queso."},
+
+{c:"alm",n:"Tarta de acelga y cebolla",s:"Con masa integral casera",np:4,r:"1 tarta grande (4 porciones generosas)",t:"20 min + 35 min de horno",cp:1100,h:"4 días",z:"3 meses",f:true,m:[18,38,19],p:"Cada porción es 1/4 de la tarta.",
+i:["Masa: 1 taza de harina integral, 1/2 taza de avena, 1/4 taza de aceite, 1/2 taza de agua y sal","1 atado grande de acelga","2 cebollas","4 huevos","3/4 de taza de queso rallado","Sal, pimienta y nuez moscada"],
+st:["Uní los ingredientes de la masa, estirala y forrá una tartera.","Hervi la acelga 2 minutos, escurrila muy bien y picala.","Rehogá las cebollas 10 minutos y mezclalas con la acelga, los huevos y el queso.","Rellená la masa y horneá a 200 °C de 30 a 35 minutos."],
+x:[["Para freezar","En porciones envueltas en film. Se calientan en el horno sin descongelar."]],
+v:"En vez de huevos y queso, 1 taza de harina de garbanzo con 1 taza de agua.",g:"Hacé la base con arroz cocido apretado en la tartera, o usá premezcla sin TACC."},
+
+{c:"alm",n:"Sopa crema de zapallo",s:"Con garbanzos, para los días fríos",np:4,r:"4 porciones",t:"30 min",cp:590,h:"4 días",z:"3 meses",f:true,m:[7,35,3],p:"Cada porción es un plato hondo.",
+i:["1 kg de zapallo","1 cebolla","1 papa","1 taza de garbanzos cocidos","1 litro y medio de agua","Nuez moscada y sal"],
+st:["Hervi el zapallo, la cebolla y la papa en cubos en el agua, 20 minutos.","Licuala o procesala hasta que quede cremosa.","Agregá los garbanzos enteros y calentá 5 minutos más."],
+x:[["Se congela bien","Licuada, la papa no queda arenosa."]],
+v:"Ya es vegana.",g:"Ya es sin TACC."},
+
+{c:"alm",n:"Arroz con lentejas y cebolla",s:"Tres ingredientes, mucho sabor",np:4,r:"4 porciones",t:"40 min",cp:630,h:"4 días",z:"3 meses",f:true,m:[15,65,8],p:"Cada porción es un plato.",
+i:["1 taza de lentejas","1 taza de arroz","3 cebollas en tiras","1 cucharadita de comino","3 cucharadas de aceite","Sal"],
+st:["Hervi las lentejas 15 minutos.","Agregá el arroz, el comino, sal y agua que los cubra. Cociná 15 minutos más.","Mientras, dorá las cebollas en el aceite a fuego bajo 20 minutos.","Serví el arroz con las cebollas arriba."],
+x:[["Para freezar","Congelá la cebolla aparte, así no se ablanda."]],
+v:"Ya es vegano.",g:"Ya es sin TACC."},
+
+{c:"alm",n:"Guiso de fideos con carne",s:"El clásico de olla, rinde mucho",np:4,r:"4 porciones",t:"45 min",cp:1400,h:"3 días",z:"2 meses (sin la papa)",f:true,m:[28,70,10],p:"Cada porción es un plato hondo.",
+i:["400 g de carne para guiso en cubos (paleta o roast)","1 bolsita de sofrito","2 zanahorias en rodajas","1 papa en cubos","1 envase de puré de tomate","300 g de fideos mostachol o tirabuzón","1 litro y medio de agua o caldo","1 cucharadita de pimentón","1 hoja de laurel","Sal, pimienta y aceite"],
+st:["Dorá la carne en la olla con un chorrito de aceite.","Agregá el sofrito y cociná 5 minutos.","Sumá la zanahoria, el puré, el pimentón, el laurel y el agua. Cociná tapado 20 minutos a fuego bajo.","Agregá la papa y los fideos. Cociná 12 minutos más, revolviendo cada tanto.","Probá y corregí la sal."],
+x:[["Si lo vas a freezar","Congelá el guiso sin la papa y sin los fideos. Agregalos cuando lo calentás."],["Más barato todavía","Usá la mitad de carne y sumá 1 taza de lentejas cocidas."]],
+v:"Cambiá la carne por 2 tazas de lentejas cocidas y usá caldo de verduras.",g:"Usá fideos sin TACC."},
+
+{c:"alm",n:"Hamburguesas caseras",s:"De carne y avena, se congelan crudas",np:4,r:"8 hamburguesas (2 por persona)",t:"15 min + 10 min de cocción",cp:1500,h:"2 días crudas",z:"3 meses",f:true,m:[30,10,16],p:"Cada porción son 2 hamburguesas.",
+i:["600 g de carne picada","1/2 taza de avena","1 huevo","1 zanahoria rallada","1/2 cebolla rallada","1 diente de ajo picado","Sal y pimienta","Papel manteca"],
+st:["Mezclá todo con las manos hasta que se una.","Armá 8 bollitos y aplastalos entre dos papeles manteca.","Cocinalas en una sartén o plancha bien caliente, 4 minutos de cada lado.","Para freezar: crudas, con papel manteca entre cada una, en una bolsa."],
+x:[["Congeladas","Van directo a la sartén, 6 minutos de cada lado, sin descongelar."],["Para armar","En pan con lechuga, tomate y zanahoria rallada, o con arroz y ensalada."]],
+v:"Hacé los medallones de lentejas de este libro.",g:"Usá avena con el logo sin TACC."},
+
+{c:"alm",n:"Canelones de verdura",s:"Con los panqueques integrales del freezer",np:4,r:"12 canelones (3 por persona)",t:"25 min + 20 min de horno",cp:1300,h:"3 días",z:"3 meses",f:true,m:[24,52,16],p:"Cada porción son 3 canelones con salsa.",
+i:["12 panqueques integrales (ver receta)","1 atado de acelga o espinaca, hervida y bien exprimida","1 bolsita de sofrito","300 g de ricota","1 huevo","Nuez moscada, sal y pimienta","2 tazas de salsa de tomate casera","1/2 taza de queso rallado"],
+st:["Cociná el sofrito tapado 5 minutos.","Picá la verdura y mezclala con el sofrito, la ricota, el huevo y los condimentos.","Poné una tira de relleno en cada panqueque y enrollalo.","Acomodalos en una fuente con un poco de salsa abajo.","Cubrilos con el resto de la salsa y el queso.","Horneá a 200 °C unos 20 minutos."],
+x:[["Para freezar","Armalos en una fuente descartable, sin salsa ni queso, y tapalos con film. Después agregás la salsa y van directo al horno, 30 minutos."]],
+v:"Usá los panqueques en versión vegana y cambiá la ricota y el huevo por garbanzos pisados.",g:"Usá los panqueques en versión sin TACC."},
+
+/* ===== BOLSITAS MARINADAS ===== */
+{c:"mar",n:"Cerdo con jengibre y soja",s:"Para saltear con verduras y arroz",np:4,r:"4 porciones",t:"10 min + 10 min de cocción",cp:1800,h:"2 días marinado",z:"3 meses",f:true,m:[36,8,18],p:"Cada porción son unos 200 g de carne cruda.",
+i:["800 g de bondiola o paleta de cerdo en tiras finitas","4 cucharadas de salsa de soja","1 cucharada de jengibre rallado","2 dientes de ajo picados","1 cucharada de miel","1 cucharada de aceite","1 bolsa con cierre"],
+st:["Poné todo en la bolsa y masajeala para que la carne quede cubierta.","Sacale el aire, cerrala y aplastala bien chata.","Anotá el nombre y la fecha, y congelala acostada.","La noche anterior, pasala a la heladera: se marina mientras se descongela.","Saltéala en una sartén bien caliente 8 a 10 minutos. Sumá una bolsita de verduras para salteado los últimos 5.","Serví con arroz."],
+x:[["Cortes económicos","La paleta y la bondiola son de los cortes de cerdo más baratos. Cortadas finitas quedan tiernas."],["Hacé de a varias","Armá 2 o 3 bolsitas distintas el mismo día y tenés la semana resuelta."]],
+v:"Usá tofu firme en cubos o garbanzos cocidos con la misma marinada.",g:"Usá salsa de soja sin TACC."},
+
+{c:"mar",n:"Pollo al limón y ajo",s:"Para el horno o la plancha",np:4,r:"4 porciones",t:"5 min + 40 min de horno",cp:1700,h:"2 días marinado",z:"3 meses",f:true,m:[35,2,12],p:"Cada porción es 1 pata-muslo.",
+i:["4 pata-muslos sin piel (o 800 g de pechuga)","Jugo y ralladura de 2 limones","3 dientes de ajo picados","1 cucharada de orégano","2 cucharadas de aceite","Sal y pimienta","1 bolsa con cierre"],
+st:["Poné todo en la bolsa y masajeala.","Sacale el aire, cerrala, anotá la fecha y congelala acostada.","La noche anterior, pasala a la heladera.","Cociná el pollo al horno a 200 °C unos 40 minutos (la pechuga, 25), o a la plancha.","Acompañá con papas al horno, arroz o ensalada."],
+x:[["En la misma fuente","Poné cubos de zapallo o batata alrededor del pollo y tenés todo listo junto."]],
+v:"Usá la marinada con rodajas de calabaza y garbanzos al horno.",g:"Ya es sin TACC."},
+
+{c:"mar",n:"Pollo para rapiditas",s:"Con pimentón, comino y verduras en la misma bolsa",np:4,r:"4 porciones",t:"10 min + 10 min de cocción",cp:1500,h:"2 días marinado",z:"3 meses",f:true,m:[38,6,9],p:"Cada porción son unos 175 g de pollo con verduras.",
+i:["700 g de pechuga en tiras","1 morrón en tiras","1 cebolla en tiras","1 cucharada de pimentón","1 cucharadita de comino","1 cucharadita de orégano","Jugo de 1 limón","2 cucharadas de aceite","Sal","1 bolsa con cierre"],
+st:["Poné todo en la bolsa y mezclá bien.","Sacale el aire, cerrala, anotá la fecha y congelala acostada.","La noche anterior, pasala a la heladera.","Cociná todo junto en una sartén bien caliente 10 minutos.","Rellená las rapiditas caseras o servilo con arroz."],
+x:[["Comida en 15 minutos","Con las tortillas de las rapiditas en el freezer, la cena sale en un ratito."]],
+v:"Usá garbanzos cocidos o soja texturizada hidratada.",g:"Ya es sin TACC. Usá tortillas de maíz."},
+
+{c:"mar",n:"Cerdo a la mostaza y miel",s:"Dulce y saladito, al horno",np:4,r:"4 porciones",t:"5 min + 40 min de horno",cp:1900,h:"2 días marinado",z:"3 meses",f:true,m:[35,10,18],p:"Cada porción son unos 200 g de carne cruda.",
+i:["800 g de paleta de cerdo en cubos grandes (o 4 bifes de carré)","3 cucharadas de mostaza","2 cucharadas de miel","2 dientes de ajo picados","1 cucharadita de orégano o romero","1 cucharada de aceite","Sal y pimienta","1 bolsa con cierre"],
+st:["Mezclá la mostaza, la miel, el ajo, el aceite y los condimentos en la bolsa.","Agregá la carne y masajeala.","Sacale el aire, cerrala, anotá la fecha y congelala acostada.","La noche anterior, pasala a la heladera.","Cociná en una fuente a 200 °C de 35 a 40 minutos, dando vuelta a la mitad."],
+x:[["Para acompañar","Calabaza o batata en cubos en la misma fuente, o puré."]],
+v:"Usá la marinada con calabaza, cebolla y garbanzos al horno.",g:"Ya es sin TACC. Revisá la mostaza."},
+
+{c:"mar",n:"Pollo al yogur y curry",s:"El yogur casero lo deja muy tierno",np:4,r:"4 porciones",t:"5 min + 45 min de horno",cp:1650,h:"2 días marinado",z:"3 meses",f:true,m:[38,5,13],p:"Cada porción es 1 pata-muslo.",
+i:["4 pata-muslos sin piel","1 taza de yogur casero","1 cucharada de curry","1 cucharadita de pimentón","2 dientes de ajo picados","Jugo de 1/2 limón","Sal","1 bolsa con cierre"],
+st:["Mezclá el yogur con los condimentos, el ajo y el limón en la bolsa.","Agregá el pollo y masajeala.","Sacale el aire, cerrala, anotá la fecha y congelala acostada.","La noche anterior, pasala a la heladera.","Cociná en una fuente a 200 °C unos 45 minutos.","Serví con arroz y zanahoria rallada."],
+x:[["¿El yogur no se corta?","Como marinada no hay problema: se cocina pegado al pollo y queda como una costrita dorada."]],
+v:"Usá yogur vegetal con coliflor y garbanzos.",g:"Ya es sin TACC. Revisá el curry."}
+];
+
+const VEG=[
+["Cebolla","Picada o en tiras, cruda. En bolsitas chatas de 1 taza.","Va directo a la sartén.","6 meses"],
+["Morrón","En tiras o picado, crudo. Primero suelto en una placa, después en bolsa.","Salteados, rellenos y sofritos.","6 meses"],
+["Verdeo y puerro","En rodajitas, crudos, sueltos en una bolsa.","Arroces, tortillas y sopas.","6 meses"],
+["Ajo","Picado, en cubetera con un chorrito de aceite.","1 cubito son 2 dientes.","6 meses"],
+["Zanahoria","En rodajas, hervida 2 minutos. Rallada, cruda.","Guisos, salteados y medallones.","10 meses"],
+["Zapallo y calabaza","En cubos crudos, o hecho puré en bolsas.","Sopas, al horno y pastel.","10 meses"],
+["Zapallito","Rallado crudo y bien escurrido, o en cubos salteados.","Tortillas, rellenos y salsas.","6 meses"],
+["Espinaca y acelga","Hervidas 1 minuto, exprimidas y en bollitos.","Tartas, albóndigas y guisos.","10 meses"],
+["Brócoli y coliflor","En ramitos, hervidos 2 a 3 minutos.","Al horno, salteados y sopas.","10 meses"],
+["Chauchas","Sin las puntas, hervidas 2 minutos.","Ensaladas tibias y guisos.","10 meses"],
+["Choclo","En granos, hervidos 2 minutos.","Arroces, tartas y empanadas.","10 meses"],
+["Tomate","Entero y crudo. Al descongelarlo, la piel sale sola.","Solo para salsas, no para ensalada.","6 meses"],
+["Champiñones","Cortados y salteados 5 minutos.","Pizzas, salsas y salteados.","6 meses"],
+["Berenjena","En rodajas asadas, o empanadas crudas como milanesa.","Milanesas, salsas y lasañas.","6 meses"],
+["Batata","En cubos hervidos 3 minutos, o en puré.","Al horno, puré y guisos.","10 meses"],
+["Papa","Nunca cruda ni hervida entera. Sí en bastones hervidos 3 minutos, o en puré.","Papas al horno y puré.","6 meses"],
+["Perejil y albahaca","Picados, en cubetera con aceite o agua.","Salsas, guisos y sopas.","6 meses"],
+["Jengibre","Entero y pelado, en una bolsa.","Se ralla congelado.","6 meses"]
+];
+
+const $=s=>document.querySelector(s);
+const money=n=>"$"+Math.round(n).toLocaleString("es-AR");
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+const ic=id=>`<svg class="i" aria-hidden="true"><use href="#${id}"/></svg>`;
+
+function card(r,idx){
+  const kcal=r.m[0]*4+r.m[1]*4+r.m[2]*9;
+  const total=r.cp*r.np;
+  const tips=(r.x||[]).map(([t,p])=>`<div class="tip">${ic("i-bulb")}<div><b>${esc(t)}</b><p>${esc(p)}</p></div></div>`).join("");
+  return `<details class="rec" data-c="${r.c}" data-i="${idx}">
+  <summary>
+    <span class="rec-top"><span class="rec-name">${esc(r.n)}<span class="rec-sub">${esc(r.s)}</span></span><span class="open-btn">${ic("i-down")}</span></span>
+    <span class="quick">
+      <span>${ic("i-clock")}${esc(r.t)}</span>
+      <span>${ic("i-people")}${esc(r.r)}</span>
+      <span class="num">${ic("i-coin")}${money(r.cp)} por porción</span>
+      ${r.f?`<span class="frz">${ic("i-snow")}Se puede freezar</span>`:""}
+    </span>
+  </summary>
+  <div class="rec-body">
+    <div class="facts">
+      <div class="fact"><span class="bubble">${ic("i-coin")}</span><div><b class="num">${money(total)} en total</b><span>Unos ${money(r.cp)} por porción</span></div></div>
+      <div class="fact"><span class="bubble">${ic("i-fridge")}</span><div><b>Heladera: ${esc(r.h)}</b><span>Freezer: ${esc(r.z)}</span></div></div>
+    </div>
+    <div><h4>Ingredientes</h4><p class="small" style="margin:-4px 0 6px">Tocá para tachar lo que ya tenés.</p><ul class="check">${r.i.map((x,j)=>`<li><label><input type="checkbox" id="ing-${idx}-${j}"><span>${esc(x)}</span></label></li>`).join("")}</ul></div>
+    <div><h4>Paso a paso</h4><ol class="steps">${r.st.map(x=>`<li><span>${esc(x)}</span></li>`).join("")}</ol></div>
+    ${tips?`<div class="tips">${tips}</div>`:""}
+    <div>
+      <h4>Qué aporta cada porción</h4>
+      <div class="macros num">
+        <div class="macro"><b>${r.m[0]} g</b><span>Proteínas</span></div>
+        <div class="macro"><b>${r.m[1]} g</b><span>Carbohidratos</span></div>
+        <div class="macro"><b>${r.m[2]} g</b><span>Grasas</span></div>
+      </div>
+      <p class="small" style="margin-top:6px">${esc(r.p)} Unas ${kcal} calorías. Son valores aproximados.</p>
+    </div>
+    <div><h4>Si en casa alguien…</h4><div class="adapt"><div><b>${ic("i-leaf")}No come productos animales</b><p>${esc(r.v)}</p></div><div><b>${ic("i-leaf")}Es celíaco (sin TACC)</b><p>${esc(r.g)}</p></div></div></div>
+  </div></details>`;
+}
+
+const order=["base","mar","des","alm"];
+let state={cat:"all",q:""};
+const counts={all:R.length};order.forEach(c=>counts[c]=R.filter(r=>r.c===c).length);
+document.querySelectorAll("[data-count]").forEach(el=>{const n=counts[el.dataset.count];el.textContent=n+" recetas"});
+
+$("#list").innerHTML=order.map(c=>`<div class="group" data-cat="${c}"><div class="group-head"><span class="bubble ${CATS[c].b}">${ic(CATS[c].ic)}</span><div><h3>${CATS[c].t}</h3><p>${CATS[c].d}</p></div></div>${R.map((r,i)=>r.c===c?card(r,i):"").join("")}</div>`).join("")+`<p class="empty" id="empty" hidden>No encontramos recetas con eso. Probá con otro ingrediente.</p>`;
+
+const hay=R.map(r=>norm([r.n,r.s,...r.i].join(" ")));
+function apply(){
+  let n=0;
+  document.querySelectorAll("details.rec").forEach(d=>{
+    const i=+d.dataset.i,r=R[i];
+    const ok=(state.cat==="all"||r.c===state.cat)&&(!state.q||hay[i].includes(state.q));
+    d.hidden=!ok; if(ok)n++;
+  });
+  document.querySelectorAll(".group").forEach(g=>g.hidden=!g.querySelector("details.rec:not([hidden])"));
+  $("#empty").hidden=n>0;
+  $("#shown").textContent=state.q?(n===1?"Encontramos 1 receta.":`Encontramos ${n} recetas.`):"";
+}
+$("#pick").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;state.cat=b.dataset.cat;document.querySelectorAll("#pick button").forEach(x=>x.setAttribute("aria-pressed",x===b));apply()});
+$("#q").addEventListener("input",e=>{state.q=norm(e.target.value.trim());apply()});
+apply();
+
+$("#veg").innerHTML=VEG.map(([n,c,u,d])=>`<div class="card"><div class="top"><b>${n}</b><span class="pill">${ic("i-snow")}${d}</span></div><p>${c}</p><span class="use">Sirve para: ${u}</span></div>`).join("");
+document.querySelectorAll(".pill svg").forEach(s=>{s.style.width="14px";s.style.height="14px"});
+</script>
+
+</body>
+</html>
